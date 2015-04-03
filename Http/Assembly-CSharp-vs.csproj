@@ -48,6 +48,8 @@
   <ItemGroup>
      <Compile Include="Assets\GoogleMaps.cs" />
      <Compile Include="Assets\GoogleMaps\Scripts\GoogleMap.cs" />
+     <Compile Include="Assets\Left.cs" />
+     <Compile Include="Assets\Right.cs" />
      <None Include="Assets\GoogleMaps\README.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
