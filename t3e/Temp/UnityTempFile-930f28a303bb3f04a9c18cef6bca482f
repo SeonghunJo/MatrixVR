@@ -1,0 +1,127 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll"
+-r:Assets/LeapCSharp.NET3.5.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_4_6_0
+-define:UNITY_4_6
+-define:UNITY_STANDALONE_WIN
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_NEW_HIERARCHY 
+-define:ENABLE_AUDIO_FMOD
+-define:UNITY_STANDALONE
+-define:ENABLE_MONO
+-define:ENABLE_TERRAIN
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_GENERICS
+-define:INCLUDE_WP8SUPPORT
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_4_6_FEATURES
+-define:INCLUDE_WP_BLUE_SUPPORT
+-define:ENABLE_WEBCAM
+-define:INCLUDE_METROSUPPORT
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_2D_PHYSICS
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_NAVMESH_CARVING
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_WIN
+"Assets/LeapMotion+OVR/DemoResources/Scripts/BlocksPlaneGenerator.cs"
+"Assets/LeapMotion+OVR/DemoResources/Scripts/MovementManager.cs"
+"Assets/LeapMotion+OVR/DemoResources/Scripts/RandomBlocksGenerator.cs"
+"Assets/LeapMotion+OVR/Scripts/PassthroughEnabler.cs"
+"Assets/LeapMotion+OVR/SystemWipe/QuickSwitcher.cs"
+"Assets/LeapMotion+OVR/SystemWipe/SystemWipeRecognizerListener.cs"
+"Assets/LeapMotion+OVR/SystemWipe/SystemWipeRecognizerNative.cs"
+"Assets/LeapMotion+OVR/s/NewBehaviourScript.cs"
+Assets/LeapMotion/DemoResources/Scripts/AerodynamicLeaf.cs
+Assets/LeapMotion/DemoResources/Scripts/ChangeMaterialOnGrab.cs
+Assets/LeapMotion/DemoResources/Scripts/CubeWave.cs
+Assets/LeapMotion/DemoResources/Scripts/FloatingStem.cs
+Assets/LeapMotion/DemoResources/Scripts/FlowerBloom.cs
+Assets/LeapMotion/DemoResources/Scripts/FlowerGrower.cs
+Assets/LeapMotion/DemoResources/Scripts/HandCycler.cs
+Assets/LeapMotion/DemoResources/Scripts/HandDetector.cs
+Assets/LeapMotion/DemoResources/Scripts/IgnoreInternalCollisions.cs
+Assets/LeapMotion/DemoResources/Scripts/ImageRetrieverTypes.cs
+Assets/LeapMotion/DemoResources/Scripts/ParticlesOnCollision.cs
+Assets/LeapMotion/DemoResources/Scripts/PetalMesh.cs
+Assets/LeapMotion/DemoResources/Scripts/PressAnyKeyToReset.cs
+Assets/LeapMotion/DemoResources/Scripts/RecordingControls.cs
+Assets/LeapMotion/DemoResources/Scripts/ResetCollisionsOnBreak.cs
+Assets/LeapMotion/DemoResources/Scripts/StemMesh.cs
+Assets/LeapMotion/DemoResources/Scripts/VoxelSheet.cs
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/ApiDemo/AddRemoveBodies.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/ApiDemo/HoldingCallbacks.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/DllWrapper/Body.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/DllWrapper/Holding.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/DllWrapper/Math.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/DllWrapper/Native.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/DllWrapper/Scene.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/DllWrapper/Shape.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/InteractionSceneSetup.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/LeapInteraction.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/UnityIntegration/AddRemoveBodyUtil.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/UnityIntegration/HandViewer.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/UnityIntegration/MathWithUnity.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/UnityIntegration/TransformSyncUtil.cs"
+"Assets/LeapMotion/InteractionUtils (alpha)/Scripts/UnityIntegration/UnityUtil.cs"
+Assets/LeapMotion/Scripts/HandController.cs
+Assets/LeapMotion/Scripts/Hands/DebugFinger.cs
+Assets/LeapMotion/Scripts/Hands/DebugHand.cs
+Assets/LeapMotion/Scripts/Hands/FingerModel.cs
+Assets/LeapMotion/Scripts/Hands/HandModel.cs
+Assets/LeapMotion/Scripts/Hands/PolyFinger.cs
+Assets/LeapMotion/Scripts/Hands/PolyHand.cs
+Assets/LeapMotion/Scripts/Hands/RiggedFinger.cs
+Assets/LeapMotion/Scripts/Hands/RiggedHand.cs
+Assets/LeapMotion/Scripts/Hands/RigidFinger.cs
+Assets/LeapMotion/Scripts/Hands/RigidHand.cs
+Assets/LeapMotion/Scripts/Hands/SkeletalFinger.cs
+Assets/LeapMotion/Scripts/Hands/SkeletalHand.cs
+Assets/LeapMotion/Scripts/LeapImageRetriever.cs
+Assets/LeapMotion/Scripts/Tools/ToolModel.cs
+Assets/LeapMotion/Scripts/Utils/ConfidenceTransparency.cs
+Assets/LeapMotion/Scripts/Utils/DisconnectionNotice.cs
+Assets/LeapMotion/Scripts/Utils/FitHeightToScreen.cs
+Assets/LeapMotion/Scripts/Utils/GrabbableObject.cs
+Assets/LeapMotion/Scripts/Utils/GrabbingHand.cs
+Assets/LeapMotion/Scripts/Utils/LeapRecorder.cs
+Assets/LeapMotion/Scripts/Utils/LeapUnityExtensions.cs
+Assets/LeapMotion/Scripts/Utils/MagneticPinch.cs
+Assets/LeapMotion/Scripts/Utils/StretchToScreen.cs
+Assets/LeapMotion/Scripts/Utils/TriggerDrawing.cs
+Assets/LeapMotion/Scripts/Utils/Utils.cs
+Assets/OVR/Scripts/OVRCameraRig.cs
+Assets/OVR/Scripts/OVRCommon.cs
+Assets/OVR/Scripts/OVRDisplay.cs
+Assets/OVR/Scripts/OVRManager.cs
+Assets/OVR/Scripts/OVRPluginEvent.cs
+Assets/OVR/Scripts/OVRTracker.cs
+Assets/OVR/Scripts/OvrCapi.cs
+Assets/OVR/Scripts/Util/OVRCrosshair.cs
+Assets/OVR/Scripts/Util/OVRGUI.cs
+Assets/OVR/Scripts/Util/OVRGamepadController.cs
+Assets/OVR/Scripts/Util/OVRGridCube.cs
+Assets/OVR/Scripts/Util/OVRMainMenu.cs
+Assets/OVR/Scripts/Util/OVRPlayerController.cs
+Assets/OVR/Scripts/Util/OVRScreenFade.cs
+Assets/OVR/Scripts/Util/OVRUGUI.cs
+Assets/OVR/Scripts/Util/OVRVisionGuide.cs
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"
