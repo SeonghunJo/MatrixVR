@@ -7,20 +7,22 @@ public class GoogleMaps : MonoBehaviour {
 	LocationInfo myLocation;
 	WWW www;
 
+	// Texture Size
 	int width = 400;
 	int height = 400;
-
+	
+	// Default Location Value
 	double lat = 46.414382;
 	double lon = 10.013988;
-	double g_heading = 151.78;
+	double g_heading = 90;
 	double g_pitch = -0.76;
 
 	double sideHeading = 0.0;
 	double sidePitch = 0.0;
 	
-	#define Google
+	const string API_KEY = "AIzaSyD8CoRMKjg-6awvAx9JGkZyTj1pGubHwQo";
 
-	string key = "AIzaSyD8CoRMKjg-6awvAx9JGkZyTj1pGubHwQo";
+	string key = API_KEY;
 
 	// Use this for initialization
 	void Start () {
