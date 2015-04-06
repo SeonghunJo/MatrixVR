@@ -4,18 +4,18 @@ Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
     Renderer: Intel(R) HD Graphics Family (ID=0xa16)
     Vendor:   Intel
-    VRAM:     64 MB
+    VRAM:     0 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Jinwoo\Desktop\150330 교수님 미팅\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Jinwoo\Desktop\150330 교수님 미팅\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Jinwoo\Desktop\150330 교수님 미팅\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Jinwoo\Desktop\150330 교수님 미팅\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Jinwoo\Desktop\150330 교수님 미팅\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Jinwoo\Desktop\150330 교수님 미팅\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.058 seconds
+Platform assembly: C:\Users\hjin4_000\Documents\GitHub\Matrix\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\hjin4_000\Documents\GitHub\Matrix\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\hjin4_000\Documents\GitHub\Matrix\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\hjin4_000\Documents\GitHub\Matrix\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\hjin4_000\Documents\GitHub\Matrix\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\hjin4_000\Documents\GitHub\Matrix\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.193 seconds
 <RI> Initializing input.
 XInput1_3.dll not found.
 <RI> Input initialized.
-desktop: 1600x900 60Hz; virtual: 3520x1080 at 0,0
-Platform assembly: C:\Users\Jinwoo\Desktop\150330 교수님 미팅\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Jinwoo\Desktop\150330 교수님 미팅\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+Platform assembly: C:\Users\hjin4_000\Documents\GitHub\Matrix\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\hjin4_000\Documents\GitHub\Matrix\Cubedemo_headtracking\cubedemo_headtracking_Data\Managed\System.dll (this message is harmless)

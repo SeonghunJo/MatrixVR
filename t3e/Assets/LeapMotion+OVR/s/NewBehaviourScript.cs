@@ -40,17 +40,17 @@ public class NewBehaviourScript : MonoBehaviour {
 		for(int i =0;i < gestures.Count;i++)
 		{
 			Gesture gesture = gestures[i];
-			if(gesture.Type == KeyTapGesture.ClassType())
+			if(gesture.Type == KeyTapGesture.ClassType())   //click event
 			{
 				KeyTapGesture keytapGesture = new KeyTapGesture(gesture);
 				Debug.Log ("ktap");
-				Pointable tappingPointable = keytap.Pointable;
+                Pointable tappingPointable = keytapGesture.Pointable;
 				blockOne.renderer.material.color = Color.blue;
 				blockTwo.renderer.material.color = Color.blue;
 				blockThree.renderer.material.color = Color.blue;
 				blockFour.renderer.material.color = Color.blue;
 			}
-			else if(gesture.Type == Gesture.GestureType.TYPESWIPE)
+			else if(gesture.Type == Gesture.GestureType.TYPESWIPE)  //swipe event
 			{
 				SwipeGesture Swipe = new SwipeGesture(gesture);
 				Vector swipeDirection = Swipe.Direction;
@@ -92,6 +92,6 @@ public class NewBehaviourScript : MonoBehaviour {
 			//else if(hand.IsRight swipeDirection.x <0)	
 		
 
-		d}	
+		}	
 	}
 }

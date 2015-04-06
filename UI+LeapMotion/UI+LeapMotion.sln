@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{68E8FCCF-FB33-2D9F-80ED-C256E44C4FCD}") = "UI+LeapMotion", "Assembly-CSharp.csproj", "{4A01A714-09AA-A5F4-4D8C-A941E30E501E}"
+EndProject
+Project("{68E8FCCF-FB33-2D9F-80ED-C256E44C4FCD}") = "UI+LeapMotion", "Assembly-CSharp-Editor.csproj", "{E095416A-D27F-41EB-717E-7878FFBF6EC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A01A714-09AA-A5F4-4D8C-A941E30E501E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A01A714-09AA-A5F4-4D8C-A941E30E501E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A01A714-09AA-A5F4-4D8C-A941E30E501E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A01A714-09AA-A5F4-4D8C-A941E30E501E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E095416A-D27F-41EB-717E-7878FFBF6EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E095416A-D27F-41EB-717E-7878FFBF6EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E095416A-D27F-41EB-717E-7878FFBF6EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E095416A-D27F-41EB-717E-7878FFBF6EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+											GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
+
+EndGlobal
