@@ -25,4 +25,4 @@ public class ButtonClick : MonoBehaviour {
     {
         Application.LoadLevel(0);
     }
-}-
+}

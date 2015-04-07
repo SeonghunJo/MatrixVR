@@ -46,8 +46,9 @@ public class EarthScript : MonoBehaviour
 
         if (LeapmotionScript.motionClick)
         {
-            var clickPos = Input.mousePosition;
-            clickPos.z = 10;
+            //var clickPos = Input.mousePosition;
+			var clickPos=LeapmotionScript.position;
+			clickPos.z = 10;
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(clickPos);
             Debug.Log("mousePosition = " + clickPos + "," + worldPos);
         }
