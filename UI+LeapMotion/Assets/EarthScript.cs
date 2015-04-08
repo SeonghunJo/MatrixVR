@@ -31,7 +31,7 @@ public class EarthScript : MonoBehaviour
 
     void Update()
     {
-
+        //키보드 좌우 키로 지구 회전
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(Vector3.up, Speed * Time.deltaTime * 5, Space.Self);
@@ -43,23 +43,21 @@ public class EarthScript : MonoBehaviour
             rotatePosY -= Speed * Time.deltaTime * 5;
         }
 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            CameraFade.FadeOutMain();
+        }
 
         if (LeapmotionScript.motionClick)
         {
-            //var clickPos = Input.mousePosition;
-			var clickPos=LeapmotionScript.position;
-			clickPos.z = 10;
+            var clickPos = Input.mousePosition;
+            clickPos.z = 10;
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(clickPos);
             Debug.Log("mousePosition = " + clickPos + "," + worldPos);
+
+            LeapmotionScript.motionClick = false;
         }
 
-        if (leftClick)
-        {
-           //Debug.Log()
-            //확대되는 효과 후 Fade 후 씬 전환
-           // CameraFade.ZoomCameraMain(chooseWorld);
-               //CameraFade.FadeOutMain();
-        }
   
     }
 
@@ -75,13 +73,14 @@ public class EarthScript : MonoBehaviour
         pos = Input.mousePosition - pos;
         baseAngle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
         baseAngle -= Mathf.Atan2(transform.right.y, transform.right.x) * Mathf.Rad2Deg;*/
-
+        //leftClick = true;
         //var clickPos = Input.mousePosition;
-
         //clickPos.z = 10;
+
         //Vector3 worldPos = Camera.main.ScreenToWorldPoint(clickPos);
-        //if(NewBehaviourScript.motionClick)
-        //    Debug.Log(clickPos + "," + worldPos);
+        //Debug.Log(clickPos + "," + worldPos);
+        //if (LeapmotionScript.motionClick)
+           
 
         //***********clickPos말고 worldPos를 이용하도록 변경
         //if (rotatePosY >= 170 && rotatePosY <= 220 && clickPos.x >= 155 && clickPos.x <= 310 && clickPos.y >= 200 && clickPos.y <= 280) //아시아

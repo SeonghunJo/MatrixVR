@@ -100,13 +100,13 @@ public class OVRCameraRig : MonoBehaviour
 		OVRPose leftEye = OVRManager.display.GetEyePose(OVREye.Left);
 		OVRPose rightEye = OVRManager.display.GetEyePose(OVREye.Right);
 
-		leftEyeAnchor.localRotation = leftEye.orientation;
-		centerEyeAnchor.localRotation = leftEye.orientation; // using left eye for now
-		rightEyeAnchor.localRotation = rightEye.orientation;
+		//leftEyeAnchor.localRotation = leftEye.orientation;
+		//centerEyeAnchor.localRotation = leftEye.orientation; // using left eye for now
+		//rightEyeAnchor.localRotation = rightEye.orientation;
 
-		leftEyeAnchor.localPosition = leftEye.position;
-		centerEyeAnchor.localPosition = 0.5f * (leftEye.position + rightEye.position);
-		rightEyeAnchor.localPosition = rightEye.position;
+        //leftEyeAnchor.localPosition = leftEye.position;
+        //centerEyeAnchor.localPosition = 0.5f * (leftEye.position + rightEye.position);
+        //rightEyeAnchor.localPosition = rightEye.position;
 	}
 
 	private void UpdateCameras()

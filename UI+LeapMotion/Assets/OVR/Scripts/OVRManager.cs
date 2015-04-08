@@ -255,12 +255,12 @@ public class OVRManager : MonoBehaviour
 	/// <summary>
 	/// If true, TimeWarp will be used to correct the output of each OVRCameraRig for rotational latency.
 	/// </summary>
-	public bool timeWarp = true;
+	public bool timeWarp = false;
 
 	/// <summary>
 	/// If this is true and TimeWarp is true, each OVRCameraRig will stop tracking and only TimeWarp will respond to head motion.
 	/// </summary>
-	public bool freezeTimeWarp = false;
+	public bool freezeTimeWarp = true;
 
 	/// <summary>
 	/// If true, each scene load will cause the head pose to reset.

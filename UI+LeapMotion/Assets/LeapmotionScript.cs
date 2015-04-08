@@ -5,7 +5,7 @@ using Leap;
 public class LeapmotionScript : MonoBehaviour
 {
     Controller controller;
-    public int Speed = 10; //좌우 이동 속도
+    public int Speed; //좌우 이동 속도
     
     public GameObject Earth;
     public static bool motionClick;
@@ -41,14 +41,21 @@ public class LeapmotionScript : MonoBehaviour
         Hand hand = frame.Hands.Frontmost;
         for (int i = 0; i < gestures.Count; i++)
         {
+            
             Gesture gesture = gestures[i];
+
             if (gesture.Type == KeyTapGesture.ClassType())   //click event
             {
                 KeyTapGesture keytapGesture = new KeyTapGesture(gesture);
+
                 Pointable tappingPointable = keytapGesture.Pointable;
-                Vector position = tappingPointable.TipPosition;
-                Debug.Log("LeapMotion position = " + position);
-                //motionClick = true;
+                Vector3 position = new Vector3(tappingPointable.TipPosition.x, tappingPointable.TipPosition.y, -tappingPointable.TipPosition.z);
+                position.z = camera.farClipPlane;
+                Vector3 worldPos = Camera.main.ScreenToWorldPoint(position);
+                
+                Debug.Log("LeapmotionPosition = " + position + "," + worldPos);
+
+                motionClick = true;
             }
             else if (gesture.Type == Gesture.GestureType.TYPESWIPE)  //swipe event
             {

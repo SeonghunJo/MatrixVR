@@ -127,8 +127,8 @@ public class OVRPlayerController : MonoBehaviour
 			if (InitialPose == null)
 			{
 				InitialPose = new OVRPose() {
-					position = CameraController.transform.localPosition,
-					orientation = CameraController.transform.localRotation
+					//position = CameraController.transform.localPosition,
+					//orientation = CameraController.transform.localRotation
 				};
 			}
 

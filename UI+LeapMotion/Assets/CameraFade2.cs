@@ -29,7 +29,7 @@ public class CameraFade2 : MonoBehaviour
     {
         fadeOutDelegate2 = target;
     }
- 
+
     // ---------------------------------------- 
     // 	PRIVATE FIELDS
     // ----------------------------------------
@@ -167,8 +167,8 @@ public class CameraFade2 : MonoBehaviour
         {
             FadeIn();
         }
-        Camera.main.orthographic = true;
-        Camera.main.orthographicSize = 2;       //zoom in
+       // Camera.main.orthographic = true;
+        //Camera.main.orthographicSize = 2;       //zoom in
     }
  
     // ---------------------------------------- 
@@ -203,26 +203,26 @@ public class CameraFade2 : MonoBehaviour
     }
 
     void Update () {
-		 Vector3 newPosition = Camera.main.transform.position;
+        // Vector3 newPosition = Camera.main.transform.position;
 
-        if (EarthScript.chooseWorld == 0)
-        {
-            newPosition.x = 0.0f;
-            newPosition.z = 0.0f;
+        //if (EarthScript.chooseWorld == 0)
+        //{
+        //    newPosition.x = 0.0f;
+        //    newPosition.z = 0.0f;
 
-        }
-        else if (EarthScript.chooseWorld == 1)
-        {
-            newPosition.x = 4.36f;
-            newPosition.z = 1.34f;
-        }
-        else if (EarthScript.chooseWorld == 2)
-        {
-            newPosition.x = -2.62f;
-            newPosition.z = -1.03f;
-        }
+        //}
+        //else if (EarthScript.chooseWorld == 1)
+        //{
+        //    newPosition.x = 4.36f;
+        //    newPosition.z = 1.34f;
+        //}
+        //else if (EarthScript.chooseWorld == 2)
+        //{
+        //    newPosition.x = -2.62f;
+        //    newPosition.z = -1.03f;
+        //}
 
-        Camera.main.transform.position = newPosition;
+        //Camera.main.transform.position = newPosition;
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {

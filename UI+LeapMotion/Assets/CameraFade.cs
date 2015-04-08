@@ -24,7 +24,6 @@ public class CameraFade : MonoBehaviour
 
     public delegate void FadeOutEnd(); // 대신 불러줄 함수 형태
     static FadeOutEnd fadeOutDelegate;
-
     public static void setFadeOutEndEvent(FadeOutEnd target)
     {
         fadeOutDelegate = target;
@@ -137,25 +136,8 @@ public class CameraFade : MonoBehaviour
     {
         GetInstance().FadeOut(duration);
     }
-    
-    public static void ZoomCameraMain(int world)
-    {
-       GetInstance().ZoomCamera(world);
-    }
-    public void ZoomCamera(int world)
-    {
-        switch(world)
-        {
-            case 2 : 
-                transform.Translate(new Vector3(0.0f, -1.2f, 1.0f)*Time.deltaTime*0.5f);
-                Camera.main.orthographicSize -= 0.1f;
-                break;
-            default :
-                break;
-        }
-        if(Camera.main.orthographicSize <= 1)
-            FadeOutMain();
-    }
+   
+   
     // Get script fom Camera
     public static CameraFade GetInstance()
     {
