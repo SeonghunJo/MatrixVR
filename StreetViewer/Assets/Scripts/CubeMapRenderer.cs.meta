@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: c6d4aa0b029ebec47afe010ed9c47dda
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - cubemap: {fileID: 8900000, guid: 7ed17c4c0b3048748a725cead50279d4, type: 2}
+  - t: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
