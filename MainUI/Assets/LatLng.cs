@@ -3,7 +3,8 @@ using System.Collections;
 
 public class LatLng : MonoBehaviour
 {
-
+    public TextAsset imageAsset;
+    public GameObject map_pin;
     public string ID;
 
     // Use this for initialization
@@ -24,7 +25,13 @@ public class LatLng : MonoBehaviour
     void OnMouseOver()
     {
         //표지판 그리기
+        Texture2D tex = new Texture2D(2, 2);
+        tex.LoadImage(imageAsset.bytes);
+        GetComponent<Renderer>().material.mainTexture = tex;
+
+
     }
+
     public void SetPosition()
     {
         ID = CreateCube.panoID;

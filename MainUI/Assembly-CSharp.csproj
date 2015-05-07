@@ -51,7 +51,6 @@
      <Compile Include="Assets\EarthScript.cs" />
      <Compile Include="Assets\LatLng.cs" />
      <Compile Include="Assets\PrimitivePlus\Scripts\PrimitivePlusEditor.cs" />
-     <None Include="Assets\cabin_condensed\OFL.txt" />
      <None Include="Assets\PrimitivePlus\Documentation\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
