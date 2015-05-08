@@ -7,7 +7,7 @@ using LitJson; // http://lbv.github.io/litjson/
 
 public class StreetViewRenderer : MonoBehaviour
 {
-	public string panoramaID = "2C2MIWjhrZUAAAQfCVLQkw";
+	public string panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
 	// zMrHSTO0GCYAAAQINlCkXg
 	// 2C2MIWjhrZUAAAQfCVLQkw
 
