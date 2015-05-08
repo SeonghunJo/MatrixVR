@@ -206,6 +206,7 @@ public class CameraFade : MonoBehaviour
     }
 
     void Update () {
+
 		//zoom in/out
 		if(Input.GetAxis("Mouse ScrollWheel") < 0) { 
 			Camera.main.orthographicSize += 0.1f;       //zoom out

@@ -9,12 +9,12 @@ public class EarthScript : MonoBehaviour
     public float rotatePosY; //y axis rotate degree
     public float rotatePosX; //x axis rotate degree
 
-    void Start()
+    public void Start()
     {
         Speed = 10;
         rotatePosY = 25;
         rotatePosX = 0;
-
+        
     }
 
     void Update()
@@ -29,14 +29,10 @@ public class EarthScript : MonoBehaviour
             transform.Rotate(Vector3.down, Speed * Time.deltaTime * 5, Space.Self);
             rotatePosY -= Speed * Time.deltaTime * 5;
         }
+
   
     }
 
-
-    void OnMouseDown()
-    {
-
-    }
 
 }
 

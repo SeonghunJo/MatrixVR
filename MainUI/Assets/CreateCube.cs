@@ -51,7 +51,7 @@ public class CreateCube : MonoBehaviour
 
             child.transform.parent = earth.transform;
             child.GetComponent<LatLng>().SetPosition();
-
+            
             Debug.Log(Lat + " " + Lng + " " + panoID );
         }
     }
