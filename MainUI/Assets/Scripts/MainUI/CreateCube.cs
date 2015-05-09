@@ -36,7 +36,7 @@ public class CreateCube : MonoBehaviour
     {
         //test value
 		panoramas[0] = new PanoramaInfo(31.137713f, 29.979465f, "TXymVghDgJk2ViaA69pNaQ"); // 이집트
-		panoramas[1] = new PanoramaInfo(12.340583f, 45.432805f, "CgDdLMNL25XX9atw3dEZog"); // 이탈리아
+		panoramas[1] = new PanoramaInfo(45.432805f, 12.340583f, "CgDdLMNL25XX9atw3dEZog"); // 이탈리아
 
         for(int i=0 ; i<2; i++) 
         {
