@@ -15,8 +15,9 @@ public class StreetViewRenderer : MonoBehaviour
     public string saveTextureFileName;
 	public Material skyboxMaterial;
 
+	// DRAW ARROWS
 	public GameObject arrowModel;
-
+	private GameObject[] arrowModelList;
 	// SET BY GOOGLE
 	private string cbkURL = "http://maps.google.com/cbk?";
 	private int imageWidth = 0;
@@ -34,9 +35,7 @@ public class StreetViewRenderer : MonoBehaviour
 
 	// SET BY DEVELOPER
 	private int zoom = 3;
-
 	Texture2D[,] tiles;
-    
     int count;
 
 	// Panorama To Cubemap
@@ -355,11 +354,21 @@ public class StreetViewRenderer : MonoBehaviour
 
 	void DrawArrows()
 	{
+		
+		// 만약 기존의 화살표 프리팹이 있다면 정리해준다.
+		if(arrowModelList != null && arrowModelList.Length > 0)
+		{
+			for(int i=0; i<arrowModelList.Length; i++)
+			{
+				Destroy(arrowModelList[i]);
+			}
+		}
+
+		arrowModelList = new GameObject[Manager.Instance.nextDegrees.Length];
 		for(int i=0; i<Manager.Instance.nextDegrees.Length; i++)
 		{
-			GameObject child = Instantiate(arrowModel, transform.position, Quaternion.identity) as GameObject;
-			child.GetComponent<Arrow>().SetDegree(Convert.ToSingle(Manager.Instance.nextDegrees[i]));
-
+			arrowModelList[i] = Instantiate(arrowModel, transform.position, Quaternion.identity) as GameObject;
+			arrowModelList[i].GetComponent<Arrow>().SetDegree(Convert.ToSingle(Manager.Instance.nextDegrees[i]));
 		}
 	}
 
@@ -427,8 +436,9 @@ public class StreetViewRenderer : MonoBehaviour
 	void RenderStreetView()
 	{
 		/* 파노라마 렌더링 시작 */
+		// 파노라마 아이디를 통해 파노라마 이미지에 대한 부가 정보를 받는다.
 		panoramaID = Manager.Instance.panoramaID;
-		print (Manager.Instance.panoramaID);
+		print ("Panorama ID : " + Manager.Instance.panoramaID);
 		if(panoramaID == null)
 		{
 			panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
