@@ -64,6 +64,7 @@
      <Compile Include="Assets\OVR\Scripts\Util\OVRUGUI.cs" />
      <Compile Include="Assets\Prefab\Arrow.cs" />
      <Compile Include="Assets\PrimitivePlus\Scripts\PrimitivePlusEditor.cs" />
+     <Compile Include="Assets\Scripts\LoadingScreen.cs" />
      <Compile Include="Assets\Scripts\MainUI\CameraFade.cs" />
      <Compile Include="Assets\Scripts\MainUI\CreateCube.cs" />
      <Compile Include="Assets\Scripts\MainUI\EarthScript.cs" />

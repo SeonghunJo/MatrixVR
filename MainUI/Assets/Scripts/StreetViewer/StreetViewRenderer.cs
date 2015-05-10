@@ -369,6 +369,7 @@ public class StreetViewRenderer : MonoBehaviour
 		{
 			arrowModelList[i] = Instantiate(arrowModel, transform.position, Quaternion.identity) as GameObject;
 			arrowModelList[i].GetComponent<Arrow>().SetDegree(Convert.ToSingle(Manager.Instance.nextDegrees[i]));
+			arrowModelList[i].GetComponent<Arrow>().SetPanoramaID(Manager.Instance.nextIDs[i]);
 		}
 	}
 
@@ -433,7 +434,7 @@ public class StreetViewRenderer : MonoBehaviour
 	}
 	 */
 
-	void RenderStreetView()
+	public void RenderStreetView()
 	{
 		/* 파노라마 렌더링 시작 */
 		// 파노라마 아이디를 통해 파노라마 이미지에 대한 부가 정보를 받는다.
