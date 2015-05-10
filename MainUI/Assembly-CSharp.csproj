@@ -63,8 +63,8 @@
      <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
      <Compile Include="Assets\OVR\Scripts\Util\OVRUGUI.cs" />
      <Compile Include="Assets\Prefab\Arrow.cs" />
+     <Compile Include="Assets\Prefab\LoadingScreen.cs" />
      <Compile Include="Assets\PrimitivePlus\Scripts\PrimitivePlusEditor.cs" />
-     <Compile Include="Assets\Scripts\LoadingScreen.cs" />
      <Compile Include="Assets\Scripts\MainUI\CameraFade.cs" />
      <Compile Include="Assets\Scripts\MainUI\CreateCube.cs" />
      <Compile Include="Assets\Scripts\MainUI\EarthScript.cs" />
@@ -86,7 +86,7 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>C:/Users/Jo/Documents/GitHub/Matrix/Matrix/MainUI/Assets/Scripts/StreetViewer/LitJson.dll</HintPath>
+ <HintPath>C:/Users/Jo/Documents/GitHub/Matrix/MainUI/Assets/Scripts/StreetViewer/LitJson.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
