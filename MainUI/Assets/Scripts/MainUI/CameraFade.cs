@@ -170,8 +170,6 @@ public class CameraFade : MonoBehaviour
             FadeIn();
         }
 
-        Camera.main.orthographic = true;
-        Camera.main.orthographicSize = 3;
     }
  
     // ---------------------------------------- 
@@ -208,11 +206,15 @@ public class CameraFade : MonoBehaviour
     void Update () {
 
 		//zoom in/out
-		if(Input.GetAxis("Mouse ScrollWheel") < 0) { 
-			Camera.main.orthographicSize += 0.1f;       //zoom out
+		if(Input.GetAxis("Mouse ScrollWheel") < 0) {
+            if(Camera.main.fieldOfView < 80)
+                Camera.main.fieldOfView += 3.0f;
+			//Camera.main.orthographicSize += 0.1f;       //zoom out
 		} 
-		if(Input.GetAxis("Mouse ScrollWheel") > 0) { 
-			Camera.main.orthographicSize -= 0.1f;       //zoom in
+		if(Input.GetAxis("Mouse ScrollWheel") > 0) {
+            if (Camera.main.fieldOfView > 40)
+                Camera.main.fieldOfView -= 3.0f;
+			//Camera.main.orthographicSize -= 0.1f;       //zoom in
 		} 
 	}
 }

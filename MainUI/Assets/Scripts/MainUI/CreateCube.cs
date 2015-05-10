@@ -37,8 +37,8 @@ public class CreateCube : MonoBehaviour
         //test value
 		panoramas[0] = new PanoramaInfo(31.137713f, 29.979465f, "TXymVghDgJk2ViaA69pNaQ"); // 이집트
 		panoramas[1] = new PanoramaInfo(45.432805f, 12.340583f, "CgDdLMNL25XX9atw3dEZog"); // 이탈리아
-
-        for(int i=0 ; i<2; i++) 
+        panoramas[2] = new PanoramaInfo(37.0f, 127.0f, "zMrHSTO0GCYAAAQINlCkXg");
+        for(int i=0 ; i<3; i++) 
         {
             Lat = panoramas[i].lat;
             Lng = panoramas[i].lng;
@@ -50,7 +50,7 @@ public class CreateCube : MonoBehaviour
             GameObject child = Instantiate(obj, transform.position, Quaternion.identity) as GameObject;
 
             child.transform.parent = earth.transform;
-            child.GetComponent<LatLng>().SetPosition();
+            child.GetComponent<StreetviewPoint>().SetPosition();
             
             Debug.Log(Lat + " " + Lng + " " + panoID );
         }

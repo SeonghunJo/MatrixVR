@@ -47,7 +47,7 @@ public class StreetViewRenderer : MonoBehaviour
 	public const int FACE_DOWN   = 5;
 
 	private float m_direction = 0.0f;
-	private string [] m_textureSize = {"64", "128", "256", "512", "1024", "2048"};
+	//private string [] m_textureSize = {"64", "128", "256", "512", "1024", "2048"};
 	private int m_textureSizeIndex = 4;
 
 	public Texture2D cubeTextureFront  = null;
