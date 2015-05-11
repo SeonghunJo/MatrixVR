@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
 public class LoadingScreen : MonoBehaviour {
 
 	public string levelToLoad;
@@ -44,11 +45,17 @@ public class LoadingScreen : MonoBehaviour {
 			yield return null;
 		}
 	}
+
+	
 }
-/*
+*/
 public class LoadingScreen : MonoBehaviour {
 
-	public Texture2D texture;
+	public GameObject background;
+	public GameObject text;
+	public GameObject progressBar;
+	public GameObject locationText;
+
 	static LoadingScreen _instance;
 
 	void Awake()
@@ -59,38 +66,68 @@ public class LoadingScreen : MonoBehaviour {
 			return;
 		}
 		_instance = this;
-		gameObject.AddComponent<GUITexture>().enabled = false;
-		guiTexture.texture = texture;
-		transform.position = new Vector3(0.5f, 0.5f, 0.0f);
+
+		//gameObject.AddComponent<GUITexture>().enabled = false;
+		//guiTexture.texture = texture;
+		//transform.position = new Vector3(0.5f, 0.5f, 0.0f);
+		Deactive();
+
 		DontDestroyOnLoad(this);
-	} 
+	}
+
+	static void Active()
+	{
+		print ("Active");
+		_instance.background.SetActive(true);
+		_instance.text.SetActive(true);
+		_instance.progressBar.SetActive(true);
+		_instance.locationText.SetActive(true);
+	}
+
+	static void Deactive()
+	{
+		print ("Deactive");
+		_instance.background.SetActive(false);
+		_instance.text.SetActive(false);
+		_instance.progressBar.SetActive(false);
+		_instance.locationText.SetActive(false);
+	}
 
 	public static void Load(int index)
 	{
 		if(NoInstance()) return;
-		_instance.guiTexture.enabled = true;
+
+		Active();
 		Application.LoadLevel(index);
-		_instance.guiTexture.enabled = false;
+		Deactive();
 	}
 
 	public static void Load(string name)
 	{
 		if(NoInstance()) return;
-		_instance.guiTexture.enabled = true;
+		Active();
 		Application.LoadLevel(name);
-		_instance.guiTexture.enabled = false;
+		Deactive();
+	}
+
+	public static void SetLocationText(string text)
+	{
+		if(NoInstance()) return;
+		_instance.locationText.guiText.text = text;
 	}
 
 	public static void Show()
 	{
 		if(NoInstance()) return;
-		_instance.guiTexture.enabled = true;
+
+		Active();
 	}
 
 	public static void Hide()
 	{
 		if(NoInstance()) return;
-		_instance.guiTexture.enabled = false;
+
+		Deactive();
 	}
 
 	static bool NoInstance()
@@ -98,14 +135,14 @@ public class LoadingScreen : MonoBehaviour {
 		if(!_instance)
 		{
 			Debug.LogError("Loading Screen is not existing in scence.");
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -113,4 +150,3 @@ public class LoadingScreen : MonoBehaviour {
 	
 	}
 }
-*/

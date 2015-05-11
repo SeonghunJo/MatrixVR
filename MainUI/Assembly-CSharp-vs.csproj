@@ -86,7 +86,7 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>C:/Users/Jo/Documents/GitHub/Matrix/MainUI/Assets/Scripts/StreetViewer/LitJson.dll</HintPath>
+ <HintPath>C:/Users/Jo/Documents/GitHub/Matrix/Matrix/MainUI/Assets/Scripts/StreetViewer/LitJson.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
