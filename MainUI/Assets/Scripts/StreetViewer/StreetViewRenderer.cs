@@ -26,6 +26,10 @@ public class StreetViewRenderer : MonoBehaviour
 	private int tileHeight = 0;
 	private int zoomLevels;
 
+	private string description;
+	private string country;
+	private string region;
+
 	// SET BY SCRIPT & CALCULATE
 	private int textureWidth = 0; // imageWidth / (( zoomLevels - zoom ) * 2)
 	private int textureHeight = 0;// imageHeight / (( zoomLevels - zoom ) * 2)
@@ -109,7 +113,6 @@ public class StreetViewRenderer : MonoBehaviour
         if (saveTextureFileName != "")
         {
             string realSavePath = Application.persistentDataPath + "/" + saveTextureFileName + "_" + y + "_" + x + ".png";
-            Debug.Log("Encode Texture : " + realSavePath);
 
             byte[] png = tiles[y, x].EncodeToPNG();
             File.WriteAllBytes(realSavePath, png);
@@ -163,6 +166,8 @@ public class StreetViewRenderer : MonoBehaviour
 		cubeTextureDown   = m_CreateCubemapTexture(texSize, StreetViewRenderer.FACE_DOWN,   panoramaID + "_down.png");
 
 		RenderSettings.skybox = SkyboxRenderer.CreateSkyboxMaterial(cubeTextureFront, cubeTextureBack, cubeTextureLeft, cubeTextureRight, cubeTextureUp, cubeTextureDown);
+		
+		LoadingScreen.Hide();
 	}
 
 	private Texture2D m_CreateCubemapTexture(int texSize, int faceIndex, string fileName = null) {
@@ -226,14 +231,12 @@ public class StreetViewRenderer : MonoBehaviour
 			tex.SetPixels(0, y, texSize, 1, cols);
 			fy += dy;
 		}
-		tex.wrapMode = TextureWrapMode.Clamp;		// cubemapの場合は、wrapModeでClampしないと境界が見えてしまう.
+		tex.wrapMode = TextureWrapMode.Clamp;
 		tex.Apply();
 
 		if (saveTextureFileName != "")
 		{
 			string realSavePath = Application.persistentDataPath + "/" + fileName;
-			Debug.Log("Encode Texture : " + realSavePath);
-			
 			byte[] png = tex.EncodeToPNG();
 			File.WriteAllBytes(realSavePath, png);
 		}
@@ -243,8 +246,8 @@ public class StreetViewRenderer : MonoBehaviour
 
 	
 	private Color m_CalcProjectionSpherical(Vector3 vDir) {
-		float theta = Mathf.Atan2(vDir.z, vDir.x);		// -π ～ +π（水平方向の円周上の回転）.
-		float phi   = Mathf.Acos(vDir.y);				//  0  ～ +π（垂直方向の回転）.
+		float theta = Mathf.Atan2(vDir.z, vDir.x);		// -π ～ +π.
+		float phi   = Mathf.Acos(vDir.y);				//  0  ～ +π
 		
 		theta += m_direction * Mathf.PI / 180.0f;
 		while (theta < -Mathf.PI) theta += Mathf.PI + Mathf.PI;
@@ -302,6 +305,14 @@ public class StreetViewRenderer : MonoBehaviour
 
 		print ("Draw Skybox Texture");
 
+		if (saveTextureFileName != "")
+		{
+			string realSavePath = Application.persistentDataPath + "/" + saveTextureFileName + ".png";
+			byte[] png = panoramaTexture.EncodeToPNG();
+			File.WriteAllBytes(realSavePath, png);
+		}
+
+
 		m_ConvertPanoramaToCubemap();
     }
 
@@ -327,7 +338,25 @@ public class StreetViewRenderer : MonoBehaviour
 
 		JsonData location = json["Location"];
 		zoomLevels = Convert.ToInt32(location["zoomLevels"].ToString());
+		
+		string locationText = "";
+		if(location.Keys.Contains("description"))
+		{
+			description = location["description"].ToString();
+			locationText += description;
+		}
+		if(location.Keys.Contains("country"))
+		{
+			country = location["country"].ToString();
+			locationText += ", " + country;
+		}
+		if(location.Keys.Contains("region"))
+		{
+			region = location["region"].ToString();
+			locationText += ", " + region;
+		}
 
+		LoadingScreen.SetLocationText(locationText);
 		// 현재 파노라마 위치에서 갈 수 있는 방향 및 파노라마 ID 정보를 파싱한다.
 		JsonData links = json["Links"];
 		int count = links.Count;
@@ -347,14 +376,16 @@ public class StreetViewRenderer : MonoBehaviour
 
 		textureWidth = imageWidth / (( zoomLevels - zoom ) * 2);
 		textureHeight = imageHeight / (( zoomLevels - zoom) * 2);
+
+
 		// 타일과 더불어 통합된 파노라마 텍스쳐 이미지를 얻는다.
 		GetPanoramaImage(panoramaID, textureWidth, textureHeight);
+
 		DrawArrows();
 	}
 
 	void DrawArrows()
-	{
-		
+	{	
 		// 만약 기존의 화살표 프리팹이 있다면 정리해준다.
 		if(arrowModelList != null && arrowModelList.Length > 0)
 		{
@@ -369,6 +400,7 @@ public class StreetViewRenderer : MonoBehaviour
 		{
 			arrowModelList[i] = Instantiate(arrowModel, transform.position, Quaternion.identity) as GameObject;
 			arrowModelList[i].GetComponent<Arrow>().SetDegree(Convert.ToSingle(Manager.Instance.nextDegrees[i]));
+			arrowModelList[i].GetComponent<Arrow>().SetPanoramaID(Manager.Instance.nextIDs[i]);
 		}
 	}
 
@@ -433,7 +465,7 @@ public class StreetViewRenderer : MonoBehaviour
 	}
 	 */
 
-	void RenderStreetView()
+	public void RenderStreetView()
 	{
 		/* 파노라마 렌더링 시작 */
 		// 파노라마 아이디를 통해 파노라마 이미지에 대한 부가 정보를 받는다.
@@ -443,6 +475,8 @@ public class StreetViewRenderer : MonoBehaviour
 		{
 			panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
 		}
+
+		LoadingScreen.Show();
 		WWWHelper helper = WWWHelper.Instance;
 		helper.OnHttpRequest += OnHttpRequest;
 		helper.get (100, cbkURL + "output=json" + "&panoid=" + panoramaID);
