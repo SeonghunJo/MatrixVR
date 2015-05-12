@@ -38,6 +38,15 @@ public class StreetviewPoint : MonoBehaviour
         Application.LoadLevel("StreetViewer");
 
     }
+
+	public void Clicked()
+	{
+		Debug.Log("mouse click : " + ID);
+		
+		CameraFade.setFadeOutEndEvent(FadeOutEnd);
+		CameraFade.FadeOutMain();
+	}
+
     void OnMouseDown()
     {
         Debug.Log("mouse click : " + ID);
