@@ -11,6 +11,7 @@ public class EarthScript : MonoBehaviour
 
     public void Start()
     {
+        Screen.showCursor = true;
         Speed = 10;
         rotatePosY = 25;
         rotatePosX = 0;
@@ -29,10 +30,12 @@ public class EarthScript : MonoBehaviour
             transform.Rotate(Vector3.down, Speed * Time.deltaTime * 5, Space.Self);
             rotatePosY -= Speed * Time.deltaTime * 5;
         }
-
   
     }
-
+    void OnMouseDown()
+    {
+        Debug.Log("click");
+    }
 
 }
 

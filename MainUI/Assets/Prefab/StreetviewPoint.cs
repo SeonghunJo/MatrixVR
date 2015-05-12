@@ -5,6 +5,7 @@ public class StreetviewPoint : MonoBehaviour
 {
     public GameObject thumbnail;
     public GameObject earth;
+    public GameObject child;
 
     public float Lat;
     public float Lng;
@@ -58,27 +59,26 @@ public class StreetviewPoint : MonoBehaviour
     void OnMouseEnter()
     {
         Debug.Log("mouse enter : " + ID);
-        GameObject child = Instantiate(thumbnail, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity) as GameObject;
+        child = Instantiate(thumbnail, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity) as GameObject;
 
         child.GetComponent<Thumbnails>().SetPosition(ID);
 
     }
     void OnMouseExit()
     {
-        //Destroy(GameObject.FindObjectOfType<Thumbnails>());
-        Destroy(GameObject.Find("ThumbnailPrefab(Clone)"));
+        Destroy(child);
 
         Debug.Log("destroy : " + ID);
 
     }
     public void SetPosition()
     {
-        Lat = CreateCube._rotation.x;
-        Lng = -(CreateCube._rotation.y);
-        ID = CreateCube.panoID;
+        Lat = CreatePoint._rotation.x;
+        Lng = -(CreatePoint._rotation.y);
+        ID = CreatePoint.panoID;
 
-        transform.Rotate(CreateCube._rotation);
-        transform.Translate(CreateCube._translate);
+        transform.Rotate(CreatePoint._rotation);
+        transform.Translate(CreatePoint._translate);
 
         Debug.Log("move object : " + Lat + ", " + Lng + ", " + ID);
     }

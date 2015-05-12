@@ -15,7 +15,7 @@ public class PanoramaInfo
     }
 }
 
-public class CreateCube : MonoBehaviour
+public class CreatePoint : MonoBehaviour
 {
     public GameObject obj;
     public GameObject earth;
