@@ -1,0 +1,7 @@
+Unity에서 LeapMotion이 가능하게 Build하는 방법
+
+Edit -> Project Settings -> Quality 선택
+Inspector뷰에 Rendering에 보면
+Anti Aliasing 부분을 4x Multi Sampling으로 바꾸고
+Soft Particles 체크 (안해도 크게 차이는 없음)
+그 다음 File -> Build Settings -> Build
