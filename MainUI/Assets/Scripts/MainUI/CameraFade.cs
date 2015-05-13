@@ -207,14 +207,18 @@ public class CameraFade : MonoBehaviour
 
 		//zoom in/out
 		if(Input.GetAxis("Mouse ScrollWheel") < 0) {
+            Debug.Log("zoomout");
             if(Camera.main.fieldOfView < 80)
                 Camera.main.fieldOfView += 3.0f;
 			//Camera.main.orthographicSize += 0.1f;       //zoom out
 		} 
 		if(Input.GetAxis("Mouse ScrollWheel") > 0) {
+            Debug.Log("zoomin");
             if (Camera.main.fieldOfView > 40)
                 Camera.main.fieldOfView -= 3.0f;
 			//Camera.main.orthographicSize -= 0.1f;       //zoom in
 		} 
 	}
+
+	///test test test Erase it!///test test test Erase it!///test test test Erase it!
 }
