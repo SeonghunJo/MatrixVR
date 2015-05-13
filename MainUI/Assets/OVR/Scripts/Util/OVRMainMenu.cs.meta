@@ -2,10 +2,7 @@ fileFormatVersion: 2
 guid: e437ffb7de5844b42b64f89763daf449
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - FadeInTexture: {instanceID: 0}
-  - FontReplace: {instanceID: 0}
-  - CrosshairImage: {fileID: 2800000, guid: 64ce76f827a71b44da62c30c0b506fd2, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

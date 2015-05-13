@@ -6,7 +6,8 @@ public class CameraFade : MonoBehaviour
     // ---------------------------------------- 
     // 	PUBLIC FIELDS
     // ----------------------------------------
- 
+	public Camera leftCamera;
+	public Camera rightCamera;
     // Alpha start value
     public float startAlpha = 1;
  
@@ -142,7 +143,7 @@ public class CameraFade : MonoBehaviour
     public static CameraFade GetInstance()
     {
     	// Get Script
-        CameraFade fader = (CameraFade)Camera.main.GetComponent("CameraFade");
+		CameraFade fader = (CameraFade)Camera.main.GetComponent("CameraFade");
         // Check if script exists
         if (fader == null) 
         {
@@ -169,6 +170,11 @@ public class CameraFade : MonoBehaviour
         {
             FadeIn();
         }
+
+		leftCamera.camera.orthographic = false;
+		leftCamera.camera.fieldOfView = 74;
+		rightCamera.camera.orthographic = false;
+		rightCamera.camera.fieldOfView = 74;
 
     }
  
@@ -208,14 +214,17 @@ public class CameraFade : MonoBehaviour
 		//zoom in/out
 		if(Input.GetAxis("Mouse ScrollWheel") < 0) {
             Debug.Log("zoomout");
-            if(Camera.main.fieldOfView < 80)
-                Camera.main.fieldOfView += 3.0f;
+			if( leftCamera.camera.fieldOfView < 80)
+				leftCamera.camera.fieldOfView += 3.0f; 
+				rightCamera.camera.fieldOfView += 3.0f; 
 			//Camera.main.orthographicSize += 0.1f;       //zoom out
+
 		} 
 		if(Input.GetAxis("Mouse ScrollWheel") > 0) {
             Debug.Log("zoomin");
-            if (Camera.main.fieldOfView > 40)
-                Camera.main.fieldOfView -= 3.0f;
+			if ( rightCamera.camera.fieldOfView > 40)
+				leftCamera.camera.fieldOfView -= 3.0f;
+				rightCamera.camera.fieldOfView -= 3.0f;
 			//Camera.main.orthographicSize -= 0.1f;       //zoom in
 		} 
 	}

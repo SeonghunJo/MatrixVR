@@ -2,14 +2,22 @@
 using System.Collections;
 using Leap;
 
-public class Positiion : MonoBehaviour {
+public class positiion : MonoBehaviour {
 	Controller controller;       //립모션 컨트롤러
 	int speed = 1; //좌우 이동 속도
+
 	public GameObject cursor;    // 손 포인터 끝 (커서)
 	public GameObject target;   // RayCast 충돌위치로  옮겨 표시하는 물체 
-	public GameObject leftCamera;
-	public GameObject rightCamera;
+	public GameObject leftCamera,rightCamera ;
+	public GameObject Earth;
 
+	public string swipestart= "none";
+
+	Vector de;
+	
+	
+	
+	
 	// Use this for initializatio
 	void Start () {
 		
@@ -111,10 +119,25 @@ public class Positiion : MonoBehaviour {
 		
 		if (Physics.Raycast (r, out hit, Mathf.Infinity)) 
 		{
+
 			//Debug.Log ("Hit Object Name = " + hit.collider.gameObject.name);
 			target.transform.position=hit.transform.position;
 			//sph.transform.position =hit.point;0
 			//hit.transform.renderer.material.color=Color.green;
+
+			StreetviewPoint pointed = GameObject.Find (hit.collider.gameObject.name).GetComponent("StreetviewPoint") as StreetviewPoint ;
+			
+			if(pointed != null  )
+			{
+				if(Manager.Instance.thumbnailID == null)
+				{
+					Manager.Instance.thumbnailID = pointed.ID;
+					pointed.Pointed();
+				}
+			}
+			else { // 선택된 포인트가 없을 경우
+				pointed.PointedOut();
+			}
 		}
 		
 		//립모션 제스쳐 감지 
@@ -142,24 +165,117 @@ public class Positiion : MonoBehaviour {
 					//hit.transform.renderer.material.color=Color.green;
 
 
-					StreetviewPoint point = GameObject.Find (hit.collider.gameObject.name).GetComponent("StreetviewPoint") as StreetviewPoint ;
-
-					if(point != null)
+					StreetviewPoint clicked = GameObject.Find (hit.collider.gameObject.name).GetComponent("StreetviewPoint") as StreetviewPoint ;
+					
+					if(clicked != null)
 					{
-						point.Clicked();
+						clicked.Clicked();
 					}
 				}
 			}
 			if(gesture.Type == Gesture.GestureType.TYPE_SCREEN_TAP)   //손가락 쭉뼈서 찌르는 모션 
 			{
-				Debug.Log ("TYPE_SCREEN_TAP" + gestures.Count);
+				Debug.Log ("TYPE_SCREEN_TAP"+gestures.Count);
 				cursor.renderer.material.color = Color.red;
 			}	
 			if(gesture.Type == Gesture.GestureType.TYPE_SWIPE)   //스와이프 모션 
 			{
-				Debug.Log ("TYPE_SWIPE" + gestures.Count);
-				cursor.renderer.material.color = Color.green;
-			}	
+				//Debug.Log ("TYPE_SWIPE"+gestures.Count);
+				//switch (gesture.State)
+				//{
+				//case Gesture.GestureState.STATE_START:
+					
+					swipe(gesture);
+					//break;
+				//case Gesture.GestureState.STATE_UPDATE:
+					if (swipestart == "right")
+					{
+					Debug.Log ("right SWIPE"+gestures.Count);
+						Earth.transform.Rotate(new Vector3(0,-Time.deltaTime*40,0));
+					}
+					else if (swipestart == "left")
+					{
+					Debug.Log ("left SWIPE"+gestures.Count);
+					Earth.transform.Rotate(new Vector3(0,Time.deltaTime*40,0)); 
+					}
+					//break;
+				//case Gesture.GestureState.STATE_STOP:
+					////swipestart = "none";
+					//break;
+				//default:
+					//Handle unrecognized states
+					//break;
+				//}
+			}
+
+			if(num_hands==2)
+			{
+				HandList hands2 = gesture.Hands;
+				
+				if (hands2[0].IsLeft && gesture.Type == Gesture.GestureType.TYPESWIPE)
+				{
+					
+					Debug.Log("left zoom");
+					SwipeGesture Swipe = new SwipeGesture(gesture);
+					Vector swipeDirection = Swipe.Direction;
+					if (swipeDirection.x < 0)
+					{
+						//Debug.Log("left zoomin " + GetComponent<Camera>().fieldOfView + Camera.main.fieldOfView);
+						//Camera.main.orthographicSize += 1f;
+						leftCamera.camera.fieldOfView += 2f;
+						rightCamera.camera.fieldOfView += 2f;
+						
+						
+					}
+					else if (swipeDirection.x > 0)
+					{
+						//Debug.Log("left zoomout " + GetComponent<Camera>().fieldOfView + Camera.main.fieldOfView);
+						leftCamera.camera.fieldOfView -= 2f;
+						rightCamera.camera.fieldOfView -= 2f;
+					}
+				}
+				else if ((!hands2[0].IsLeft) && gesture.Type == Gesture.GestureType.TYPESWIPE)
+				{
+					Debug.Log("right zoom");
+					SwipeGesture Swipe = new SwipeGesture(gesture);
+					Vector swipeDirection = Swipe.Direction;
+					if (swipeDirection.x > 0)
+					{
+						//Debug.Log("zoomin" + GetComponent<Camera>().fieldOfView + Camera.main.fieldOfView);
+							leftCamera.camera.fieldOfView += 2f;
+							rightCamera.camera.fieldOfView += 2f;
+						
+						
+					}
+					else if (swipeDirection.x < 0)
+					{
+						//Debug.Log("zoomout" + GetComponent<Camera>().fieldOfView + Camera.main.fieldOfView);
+							leftCamera.camera.fieldOfView -= 2f;
+							rightCamera.camera.fieldOfView -= 2f;
+						
+						
+					}
+				}//Time.deltaTime*smooth*/
+			}
+
+
+		}		
+		
+	}
+
+	void swipe(Gesture gesture)
+	{
+		SwipeGesture Swipe = new SwipeGesture(gesture);
+		Vector swipeDirection = Swipe.Direction;
+		de = swipeDirection;
+		if (swipeDirection.x < 0)
+		{
+			swipestart = "right";
+			
+		}
+		else if (swipeDirection.x > 0)
+		{
+			swipestart = "left";
 		}
 	}
 	

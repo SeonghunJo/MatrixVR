@@ -17,6 +17,7 @@ public class Manager {
 	}
 	// FOR STREETVIEWER.SCENE VARIABLES AND FUNCTIONS
 	public string panoramaID;
+	public string thumbnailID;
 	public string[] nextIDs;
 	public string[] nextDegrees;
 

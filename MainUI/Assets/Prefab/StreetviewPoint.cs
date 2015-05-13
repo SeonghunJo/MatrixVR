@@ -46,7 +46,8 @@ public class StreetviewPoint : MonoBehaviour
         CameraFade.FadeOutMain();
     }
 
-    void OnMouseEnter()
+    //void OnMouseEnter()
+	public void Pointed ()
     {
         Debug.Log("mouse enter : " + ID);
         child = Instantiate(thumbnail, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity) as GameObject;
@@ -54,12 +55,16 @@ public class StreetviewPoint : MonoBehaviour
         child.GetComponent<Thumbnails>().SetPosition(ID);
 
     }
+
+	public void PointedOut()
+	{
+		Destroy(child);
+	}
+
     void OnMouseExit()
     {
         Destroy(child);
-
         Debug.Log("destroy : " + ID);
-
     }
     public void SetPosition()
     {

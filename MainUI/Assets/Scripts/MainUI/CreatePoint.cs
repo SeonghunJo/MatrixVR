@@ -45,7 +45,7 @@ public class CreatePoint : MonoBehaviour
             panoID = panoramas[i].panoid;
 
             _rotation = new Vector3(Lat, -Lng, 0.0f);
-            _translate = new Vector3(0, 0, -2.5f);
+            _translate = new Vector3(0, 0, -37.5f);
 
             GameObject child = Instantiate(obj, transform.position, Quaternion.identity) as GameObject;
 

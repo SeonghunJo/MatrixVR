@@ -87,8 +87,9 @@ public class OVRUGUI
 
     [HideInInspector]
     public static bool InitUIComponent = false;
-    internal static bool isInited = false;
-    private static float offsetY = 55.0f;    
+    private static float offsetY = 55.0f;
+    private static bool isInited = false;
+    private static int numOfGUI = 0;
     private static GameObject text;
 
     /// <summary>
@@ -244,7 +245,7 @@ public class OVRUGUI
     {
         gameObject = ComponentComposition(gameObject);
         gameObject.name = name;
-        gameObject.transform.SetParent(NewGUIManager.transform);
+        gameObject.transform.parent = NewGUIManager.transform;
 
 		RectTransform r = gameObject.GetComponent<RectTransform>();
         r.localPosition = new Vector3(0.0f, posY -= offsetY, 0.0f);
@@ -281,7 +282,7 @@ public class OVRUGUI
         text.GetComponent<Text>().font = (Font)Resources.Load("DINPro-Bold");
         text.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
 
-        text.transform.SetParent(GO.transform);
+        text.transform.parent = GO.transform;
         text.name = "TextBox";
 
         return GO;
