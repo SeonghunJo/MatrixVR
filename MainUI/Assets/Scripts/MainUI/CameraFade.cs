@@ -217,4 +217,6 @@ public class CameraFade : MonoBehaviour
 			//Camera.main.orthographicSize -= 0.1f;       //zoom in
 		} 
 	}
+
+	///test test test Erase it!///test test test Erase it!///test test test Erase it!
 }
