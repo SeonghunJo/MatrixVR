@@ -2,7 +2,7 @@
 using System.Collections;
 using Leap;
 
-public class positiion : MonoBehaviour {
+public class Position : MonoBehaviour {
 	Controller controller;       //립모션 컨트롤러
 	int speed = 1; //좌우 이동 속도
 
