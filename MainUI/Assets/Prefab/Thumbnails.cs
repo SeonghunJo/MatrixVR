@@ -2,6 +2,8 @@
 using System.Collections;
 using LitJson;
 
+// 썸네일 이미지는 EarthScene에서 하나만 존재하도록 구현 해야한다.
+
 public class Thumbnails : MonoBehaviour {
 
     public GameObject image;
