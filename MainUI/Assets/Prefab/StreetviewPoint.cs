@@ -15,9 +15,6 @@ public class StreetviewPoint : MonoBehaviour
     // Use this for initialization
     void Start() {
 
-        child = Instantiate(thumbnail, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity) as GameObject;
-
-        child.GetComponent<Thumbnails>().SetPosition(ID);
 
     }
 
@@ -42,18 +39,37 @@ public class StreetviewPoint : MonoBehaviour
 
     void OnMouseDown()
     {
+		
+		Debug.Log (ID);
+
         CameraFade.setFadeOutEndEvent(FadeOutEnd);
-        CameraFade.FadeOutMain();
+        CameraFade.FadeOutMain(); 
     }
 
-    //void OnMouseEnter()
+	
 	public void Pointed ()
+	{
+
+	}
+
+	public void StereoDrawTexture(float X, float Y, float wX, float hY, ref Texture image, Color color)
+	{
+				StereoDrawTexture ((int)(X * PixelWidth), 
+		                   (int)(Y * PixelHeight),
+		                   (int)(wX * PixelWidth),
+		                   (int)(hY * PixelHeight),
+		                   ref image, color);
+	}
+
+    void OnMouseEnter()
     {
         Debug.Log("mouse enter : " + ID);
-        child = Instantiate(thumbnail, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity) as GameObject;
+
+	
+        /*child = Instantiate(thumbnail, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity) as GameObject;
 
         child.GetComponent<Thumbnails>().SetPosition(ID);
-
+*/
     }
 
 	public void PointedOut()
