@@ -1404,6 +1404,7 @@ GameObject:
   - 114: {fileID: 1618223999}
   - 114: {fileID: 1618224001}
   - 114: {fileID: 1618224002}
+  - 114: {fileID: 1618224003}
   m_Layer: 0
   m_Name: LeapOVRCameraRig
   m_TagString: MainCamera
@@ -1488,12 +1489,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0ff5dcd84c0b748ba5ae5ce2a86d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 0}
-  target: {fileID: 0}
-  leftCamera: {fileID: 0}
-  rightCamera: {fileID: 0}
-  Earth: {fileID: 0}
+  cursor: {fileID: 646260989}
+  target: {fileID: 94473156}
+  leftCamera: {fileID: 1155711274}
+  rightCamera: {fileID: 279232523}
+  Earth: {fileID: 370142936}
   swipestart: none
+--- !u!114 &1618224003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1618223997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292540b54c14dab48bc17a3405dd4dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeInTime: 2
+  FadeInTexture: {fileID: 0}
+  FontReplace: {fileID: 0}
+  ToggleKey: 32
+  QuitKey: 27
+  ScenesVisible: 0
+  GUIRenderTexture: {fileID: 0}
+  LayerName: Default
+  CrosshairImage: {fileID: 0}
 --- !u!1 &1810283449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,7 +1534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1810283450
 AudioListener:
   m_ObjectHideFlags: 0

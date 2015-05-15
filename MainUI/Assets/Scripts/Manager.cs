@@ -21,5 +21,7 @@ public class Manager {
 	public string[] nextIDs;
 	public string[] nextDegrees;
 
+	public string thumbnailText;
+	public Texture2D thumbnailImg;
 	// FOR MainUI.scene VARIABLES AND FUNCTIONS
 }

@@ -1,20 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
+using LitJson;
 
 public class StreetviewPoint : MonoBehaviour
 {
-    public GameObject thumbnail;
-    public GameObject earth;
-    public GameObject child;
-
     public float Lat;
     public float Lng;
-    public string ID;
+    public string panoID;
 
+	public string thumbnailURL = "http://maps.google.com/cbk?output=thumbnail&panoid=";
+	public string metaURL = "http://maps.google.com/cbk?output=json&panoid=";
 
-    // Use this for initialization
-    void Start() {
+	public Texture2D myThumbnailImg;
+	public string myThumbnailText;
 
+	// Use this for initialization
+    IEnumerator Start() {		
+		Debug.Log ("start : " + panoID);
+
+		WWW www = new WWW(thumbnailURL);
+		yield return www;
+
+		myThumbnailImg = www.texture;
+
+		Manager.Instance.thumbnailImg = myThumbnailImg;
+
+		WWWHelper helper = WWWHelper.Instance;
+		helper.OnHttpRequest += OnHttpRequest;
+		helper.get(100, metaURL + panoID);
 
     }
 
@@ -26,7 +39,6 @@ public class StreetviewPoint : MonoBehaviour
     void FadeOutEnd()
     {
         //panoID에 따라 Scene 전환(street view)
-        Manager.Instance.panoramaID = ID;
         Application.LoadLevel("StreetViewer");
 
     }
@@ -39,57 +51,92 @@ public class StreetviewPoint : MonoBehaviour
 
     void OnMouseDown()
     {
-		
-		Debug.Log (ID);
-
         CameraFade.setFadeOutEndEvent(FadeOutEnd);
         CameraFade.FadeOutMain(); 
     }
 
-	
 	public void Pointed ()
 	{
 
 	}
-
-	public void StereoDrawTexture(float X, float Y, float wX, float hY, ref Texture image, Color color)
+	void OnMouseEnter()
 	{
-				StereoDrawTexture ((int)(X * PixelWidth), 
-		                   (int)(Y * PixelHeight),
-		                   (int)(wX * PixelWidth),
-		                   (int)(hY * PixelHeight),
-		                   ref image, color);
-	}
+		Debug.Log("mouse enter : " + panoID);
+		/*
+		Manager.Instance.thumbnailText = myThumbnailText;
+		Manager.Instance.thumbnailImg = myThumbnailImg;
 
-    void OnMouseEnter()
-    {
-        Debug.Log("mouse enter : " + ID);
-
-	
-        /*child = Instantiate(thumbnail, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity) as GameObject;
-
-        child.GetComponent<Thumbnails>().SetPosition(ID);
+		Debug.Log ("myThumbnailText : " + myThumbnailText);
+		Debug.Log ("myTumbnailImg : " + myThumbnailImg);
 */
-    }
+		OVRThumbnailUI thumbnailImg = GameObject.Find ("LeapOVRCameraRig").GetComponent<OVRThumbnailUI>();
+		thumbnailImg.ShowScreen();
+	}
 
 	public void PointedOut()
 	{
-		Destroy(child);
+
 	}
 
     void OnMouseExit()
     {
-        Destroy(child);
-        Debug.Log("destroy : " + ID);
+        Debug.Log("destroy : " + panoID);
+
+		OVRThumbnailUI thumbnailImg = GameObject.Find ("LeapOVRCameraRig").GetComponent<OVRThumbnailUI>();
+		thumbnailImg.HideScreen();
     }
+
     public void SetPosition()
     {
         Lat = CreatePoint._rotation.x;
         Lng = -(CreatePoint._rotation.y);
-        ID = CreatePoint.panoID;
+        panoID = CreatePoint.panoID;
+
+		thumbnailURL = thumbnailURL + panoID;
+
+		Debug.Log(Lat + " " + Lng + " " + panoID );
 
         transform.Rotate(CreatePoint._rotation);
         transform.Translate(CreatePoint._translate);
+
     }
 
+	// For WWWHelper Class
+	void OnHttpRequest(int id, WWW www)
+	{
+		if (www.error != null)
+		{
+			Debug.Log("[Error] " + www.error);
+			return;
+		}
+		
+		string description;
+		string country;
+		string region;
+		
+		string locationText = "";
+		JsonData json = JsonMapper.ToObject(www.text);
+		JsonData data = json["Data"];
+		
+		JsonData location = json["Location"];
+		
+		if (location.Keys.Contains("description"))
+		{
+			description = location["description"].ToString();
+			locationText += description;
+		}
+		if (location.Keys.Contains("country"))
+		{
+			country = location["country"].ToString();
+			locationText += ", " + country;
+		}
+		if (location.Keys.Contains("region"))
+		{
+			region = location["region"].ToString();
+			locationText += ", " + region;
+		}
+		myThumbnailText = locationText;
+
+		Manager.Instance.thumbnailText = myThumbnailText;
+	}
 }
