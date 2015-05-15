@@ -40,7 +40,7 @@ public class StreetViewRenderer : MonoBehaviour
 	// SET BY DEVELOPER
 	private int zoom = 3;
 	Texture2D[,] tiles;
-    int count;
+    int tileCount;
 
 	// Panorama To Cubemap
 	public const int FACE_FRONT  = 0;
@@ -51,7 +51,7 @@ public class StreetViewRenderer : MonoBehaviour
 	public const int FACE_DOWN   = 5;
 
 	private float m_direction = 0.0f;
-	//private string [] m_textureSize = {"64", "128", "256", "512", "1024", "2048"};
+	private int []m_textureSize = {64, 128, 256, 512, 1024, 2048};
 	private int m_textureSizeIndex = 4;
 
 	public Texture2D cubeTextureFront  = null;
@@ -91,8 +91,6 @@ public class StreetViewRenderer : MonoBehaviour
             + "&x=" + x
             + "&y=" + y;
 
-        print("Download : " + url);
-
         WWW www = new WWW(url);
         yield return www;
         if (!string.IsNullOrEmpty(www.error))
@@ -100,13 +98,11 @@ public class StreetViewRenderer : MonoBehaviour
         else
             print("Panorama " + name + " loaded url " + url);
 
-        print(y + "," + x + " image Downloaded");
         tiles[y, x] = www.texture;
-
-        count++;
-		if (count == totalTilesNum)
+        tileCount++;
+		if (tileCount == totalTilesNum)
         {
-            count = 0;
+			tileCount = 0;
             MergeTiles();
         }
 
@@ -131,25 +127,9 @@ public class StreetViewRenderer : MonoBehaviour
 
 	private int m_GetCubemapTextureSize() {
 		int size = 512;
-		switch (m_textureSizeIndex) {
-		case 0:
-			size = 64;
-			break;
-		case 1:
-			size = 128;
-			break;
-		case 2:
-			size = 256;
-			break;
-		case 3:
-			size = 512;
-			break;
-		case 4:
-			size = 1024;
-			break;
-		case 5:
-			size = 2048;
-			break;
+		if(m_textureSize.Length > m_textureSizeIndex)
+		{
+			size = m_textureSize[m_textureSizeIndex];
 		}
 		return size;
 	}
@@ -359,12 +339,12 @@ public class StreetViewRenderer : MonoBehaviour
 		LoadingScreen.SetLocationText(locationText);
 		// 현재 파노라마 위치에서 갈 수 있는 방향 및 파노라마 ID 정보를 파싱한다.
 		JsonData links = json["Links"];
-		int count = links.Count;
+		int linkCount = links.Count;
 		
-		Manager.Instance.nextIDs = new string[count];
-		Manager.Instance.nextDegrees = new string[count];
+		Manager.Instance.nextIDs = new string[linkCount];
+		Manager.Instance.nextDegrees = new string[linkCount];
 
-		for (int i=0; i<count; i++) {
+		for (int i=0; i<linkCount; i++) {
 			JsonData item = links[i];
 			string linkID = item["panoId"].ToString();
 			Manager.Instance.nextIDs[i] = linkID;
@@ -379,7 +359,7 @@ public class StreetViewRenderer : MonoBehaviour
 
 
 		// 타일과 더불어 통합된 파노라마 텍스쳐 이미지를 얻는다.
-		GetPanoramaImage(panoramaID, textureWidth, textureHeight);
+		StartCoroutine(GetPanoramaImage(panoramaID, textureWidth, textureHeight));
 
 		DrawArrows();
 	}
@@ -404,7 +384,7 @@ public class StreetViewRenderer : MonoBehaviour
 		}
 	}
 
-	void GetPanoramaImage(string pano_id, int width, int height)
+	IEnumerator GetPanoramaImage(string pano_id, int width, int height)
 	{
 		print ("Get Panorama Image - ID : " + pano_id + " width : " + width + " height : " + height);
 
@@ -413,7 +393,7 @@ public class StreetViewRenderer : MonoBehaviour
 		string output = "tile";
 		int x = 0;
 		int y = 0;
-		count = 0;
+		tileCount = 0;
 
 		rowTilesNum = height/tileHeight;
 		if((height % tileHeight) > 0)
@@ -434,6 +414,10 @@ public class StreetViewRenderer : MonoBehaviour
 				StartCoroutine(GoogleStreetViewTiled(output, panoramaID, zoom, x, y));
 			}
 		}
+
+		yield return null;
+
+		Debug.LogWarning("Panorama Success");
 	}
 
 	/* JSON Format
@@ -476,10 +460,12 @@ public class StreetViewRenderer : MonoBehaviour
 			panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
 		}
 
-		LoadingScreen.Show();
-		WWWHelper helper = WWWHelper.Instance;
-		helper.OnHttpRequest += OnHttpRequest;
-		helper.get (100, cbkURL + "output=json" + "&panoid=" + panoramaID);
+		OVRLoadingScreen screen = GameObject.Find ("LeapOVRPlayerController").GetComponent<OVRLoadingScreen>();
+		screen.ShowScreen();
+
+		WWWHelper metaRequest = WWWHelper.Instance;
+		metaRequest.OnHttpRequest += OnHttpRequest;
+		metaRequest.get (100, cbkURL + "output=json" + "&panoid=" + panoramaID);
 	}
 
 	// Use this for initialization

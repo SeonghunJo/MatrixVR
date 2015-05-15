@@ -184,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &40850600
 Transform:
   m_ObjectHideFlags: 0
@@ -202,26 +202,21 @@ Transform:
 --- !u!114 &40850601
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400004, guid: b0edd368743e75e4caab57f4779ddd5b,
-    type: 2}
-  m_PrefabInternal: {fileID: 93853490}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 40850599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e437ffb7de5844b42b64f89763daf449, type: 3}
+  m_Script: {fileID: 11500000, guid: ffc28b38b6deb3f4296892ce1a6c8dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FadeInTime: 2
-  FadeInTexture: {fileID: 2800000, guid: a025c23fceb7d4966b603419f551ce99, type: 3}
-  FontReplace: {fileID: 0}
-  MenuKey: 32
+  FadeInTexture: {fileID: 2800000, guid: daa862b7c8b652747b677022fbd8c532, type: 3}
+  FontReplace: {fileID: 12800000, guid: 2eab921198154ec4e934bfe68d06d984, type: 3}
+  ToggleKey: 32
   QuitKey: 27
-  SceneNames:
-  - Hit 'return' to reset..
-  Scenes:
-  - VRDemo_Tuscany
-  PredictionIncrement: .00100000005
-  SpeedRotationIncrement: .0500000007
+  ScenesVisible: 0
+  GUIRenderTexture: {fileID: 0}
   LayerName: Default
   CrosshairImage: {fileID: 2800000, guid: 64ce76f827a71b44da62c30c0b506fd2, type: 3}
 --- !u!114 &40850602
@@ -405,9 +400,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: b0edd368743e75e4caab57f4779ddd5b, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11400006, guid: b0edd368743e75e4caab57f4779ddd5b, type: 2}
+      propertyPath: HmdRotatesY
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11400004, guid: b0edd368743e75e4caab57f4779ddd5b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b0edd368743e75e4caab57f4779ddd5b, type: 2}
   m_RootGameObject: {fileID: 40850599}
   m_IsPrefabParent: 0
@@ -1591,7 +1591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1851434557
 Transform:
   m_ObjectHideFlags: 0
@@ -1678,6 +1678,10 @@ Prefab:
     - target: {fileID: 400008, guid: 8a1cb436e43d14f46922037bbd312105, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 8a1cb436e43d14f46922037bbd312105, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a1cb436e43d14f46922037bbd312105, type: 2}

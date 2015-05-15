@@ -8,19 +8,14 @@ public class Position : MonoBehaviour {
 
 	public GameObject cursor;    // 손 포인터 끝 (커서)
 	public GameObject target;   // RayCast 충돌위치로  옮겨 표시하는 물체 
-	public GameObject leftCamera,rightCamera ;
+	public GameObject leftCamera, rightCamera;
 	public GameObject Earth;
 
 	public string swipestart= "none";
 
 	Vector de;
-	
-	
-	
-	
-	// Use this for initializatio
+
 	void Start () {
-		
 		Debug.Log ("started ");
 		
 		target.renderer.material.color = Color.black; 
