@@ -13,22 +13,21 @@ public class StreetviewPoint : MonoBehaviour
 
 	public Texture2D myThumbnailImg;
 	public string myThumbnailText;
+    OVRThumbnailUI thumbnailUI;
 
 	// Use this for initialization
     IEnumerator Start() {		
 		Debug.Log ("start : " + panoID);
+        thumbnailUI = GameObject.Find("LeapOVRCameraRig").GetComponent<OVRThumbnailUI>();
+
 
 		WWW www = new WWW(thumbnailURL);
 		yield return www;
 
-		myThumbnailImg = www.texture;
-
+        myThumbnailImg = www.texture;
 		Manager.Instance.thumbnailImg = myThumbnailImg;
 
-		WWWHelper helper = WWWHelper.Instance;
-		helper.OnHttpRequest += OnHttpRequest;
-		helper.get(100, metaURL + panoID);
-
+        StartCoroutine(GetLocationText(metaURL + panoID));
     }
 
     // Update is called once per frame
@@ -57,9 +56,14 @@ public class StreetviewPoint : MonoBehaviour
 
 	public void Pointed ()
 	{
+        Manager.Instance.thumbnailText = myThumbnailText;
+        Manager.Instance.thumbnailImg = myThumbnailImg;
 
+        print(myThumbnailText);
+        thumbnailUI.ShowScreen();
 	}
-	void OnMouseEnter()
+	
+    void OnMouseEnter()
 	{
 		Debug.Log("mouse enter : " + panoID);
 		/*
@@ -68,22 +72,20 @@ public class StreetviewPoint : MonoBehaviour
 
 		Debug.Log ("myThumbnailText : " + myThumbnailText);
 		Debug.Log ("myTumbnailImg : " + myThumbnailImg);
-*/
-		OVRThumbnailUI thumbnailImg = GameObject.Find ("LeapOVRCameraRig").GetComponent<OVRThumbnailUI>();
-		thumbnailImg.ShowScreen();
+        */
+        Pointed();
 	}
 
 	public void PointedOut()
 	{
+        Debug.Log("destroy : " + panoID);
 
+        thumbnailUI.HideScreen();
 	}
 
     void OnMouseExit()
     {
-        Debug.Log("destroy : " + panoID);
-
-		OVRThumbnailUI thumbnailImg = GameObject.Find ("LeapOVRCameraRig").GetComponent<OVRThumbnailUI>();
-		thumbnailImg.HideScreen();
+        PointedOut();
     }
 
     public void SetPosition()
@@ -101,16 +103,12 @@ public class StreetviewPoint : MonoBehaviour
 
     }
 
-	// For WWWHelper Class
-	void OnHttpRequest(int id, WWW www)
-	{
-		if (www.error != null)
-		{
-			Debug.Log("[Error] " + www.error);
-			return;
-		}
-		
-		string description;
+    IEnumerator GetLocationText(string url)
+    {
+        WWW www = new WWW(url);
+        yield return www;
+
+        string description;
 		string country;
 		string region;
 		
@@ -136,7 +134,5 @@ public class StreetviewPoint : MonoBehaviour
 			locationText += ", " + region;
 		}
 		myThumbnailText = locationText;
-
-		Manager.Instance.thumbnailText = myThumbnailText;
-	}
+    }
 }

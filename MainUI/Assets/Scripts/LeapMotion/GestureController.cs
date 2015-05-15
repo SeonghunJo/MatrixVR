@@ -25,14 +25,14 @@ public class GestureController : MonoBehaviour
     public float zoomScale = 0.7f;
 
     string swipestart = "none";
+    StreetviewPoint pointed = null;
 
     // Use this for initializatio
     void Start()
     {
         target.renderer.material.color = Color.blue;
-        controller = new Controller();        //립모션 컨트롤러 할당 
+        controller = new Controller();  //립모션 컨트롤러 할당 
 
-        // 스크린탭,키탭,스와이프 모션 제스쳐로 인식하게 설정
         if (enableScreenTap)
         { // https://developer.leapmotion.com/documentation/unity/api/Leap.ScreenTapGesture.html
             controller.EnableGesture(Gesture.GestureType.TYPE_SCREEN_TAP);
@@ -52,7 +52,7 @@ public class GestureController : MonoBehaviour
         if (enableSwipe)
         { // https://developer.leapmotion.com/documentation/unity/api/Leap.SwipeGesture.html
             controller.EnableGesture(Gesture.GestureType.TYPE_SWIPE);
-            controller.Config.SetFloat("Gesture.Swipe.MinLength", 50.0f); // SHJO Swipe 조건 바꿈 
+            controller.Config.SetFloat("Gesture.Swipe.MinLength", 80.0f); // SHJO Swipe 조건 바꿈 
             controller.Config.SetFloat("Gesture.Swipe.MinVelocity", 200.0f);
             controller.Config.Save();
         }
@@ -122,24 +122,33 @@ public class GestureController : MonoBehaviour
             Debug.DrawRay(r.origin, r.direction * 1000, Color.red);
 
             RaycastHit hit; //rayCast에서 부딛힌 객체 관리
-            StreetviewPoint pointed = null;
+            
             if (Physics.Raycast(r, out hit, Mathf.Infinity))
             {
-                if(hit.collider.gameObject != null)
+                if(hit.collider != null)
                 {
                     target.transform.position = hit.transform.position;
-                    if(hit.collider.gameObject.name == "StreetviewPoint")
+                    if(hit.collider.gameObject.tag == "StreetviewPoint")
                     {
                         pointed = hit.collider.gameObject.GetComponent<StreetviewPoint>();
                         if(pointed != null)
                         {
                             // TODO : Mouse Enter (SHJO)
-                        
+                            pointed.Pointed();
                         }
                     }
                 }
-
             }
+            else
+            {
+                // TODO : Mouse Exit (SHJO)
+                if(pointed != null)
+                {
+                    pointed.PointedOut();
+                    pointed = null;
+                }
+            }
+
             //립모션 제스쳐 감지 
             for (int i = 0; i < gestures.Count; i++)
             {
@@ -154,7 +163,7 @@ public class GestureController : MonoBehaviour
                     if(pointed != null)
                     {
                         // TODO : Click (SHJO)
-
+                        Application.LoadLevel("StreetViewer");
                     }
                 }
                 // Screen Tap
@@ -167,7 +176,7 @@ public class GestureController : MonoBehaviour
                     if(pointed != null)
                     {
                         // TODO : Click - Optional (SHJO)
-
+                        Application.LoadLevel("StreetViewer");
                     }
                 }
                 // Swipe

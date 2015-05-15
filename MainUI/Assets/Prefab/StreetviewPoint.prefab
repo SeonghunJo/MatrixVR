@@ -12,10 +12,9 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: StreetviewPoint
-  m_TagString: Untagged
+  m_TagString: StreetviewPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,22 +88,6 @@ MonoBehaviour:
   metaURL: http://maps.google.com/cbk?output=json&panoid=
   myThumbnailImg: {fileID: 0}
   myThumbnailText: 
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa7897f85452a14b9b40fc041631192, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  textobject: {fileID: 0}
-  text: 
-  thumbnailURL: http://maps.google.com/cbk?output=thumbnail&panoid=
-  metaURL: http://maps.google.com/cbk?output=json&panoid=
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

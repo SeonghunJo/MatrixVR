@@ -332,23 +332,35 @@ public class OVRLoadingScreen : MonoBehaviour
 	}
 
 	void GUIDrawLoadingScreen()
-	{
-		GUI.color = new Color(0, 0, 0);
-		GUI.DrawTexture( new Rect(0, 0, Screen.width, Screen.height ), FadeInTexture );
-
-		string loading = "LOADING...";
-
+	{   
 		int boxWidth = 300;
 		int boxHeight = 60;
+   
+		GUI.color = new Color(0, 0, 0);
+        if(FadeInTexture != null)
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
 
-		GuiHelper.StereoBox (resolutionX/2 - boxWidth/2, 200, 300, 50, ref loading, Color.yellow);
+        Texture matrixTexture = Resources.Load("MatrixBackground") as Texture;
+        GuiHelper.StereoDrawTexture(0, 0, 1024, 1024, ref matrixTexture, Color.grey);
 
-		Texture thumb = Resources.Load ("kyunghee") as Texture;
+        string Matrix = "M.A.T.R.I.X";
+        GuiHelper.StereoBox(0, 100, 1280, 50, ref Matrix, Color.green);
 
+		string loading = "Teleporting...";
+		GuiHelper.StereoBox (resolutionX/2 - boxWidth/2, 150, 300, 50, ref loading, Color.yellow);
+
+        string locationText = "Where is it?";
+        if (Manager.Instance.thumbnailText == null)
+            locationText = "Where is it?";
+        else
+            locationText = Manager.Instance.thumbnailText;
+        GuiHelper.StereoBox(0, 200, 1280, 50, ref locationText, Color.grey);
+
+        Texture thumb = Manager.Instance.thumbnailImg;
 		boxWidth = 416;
 		boxHeight = 208;
-	
-		GuiHelper.StereoDrawTexture (resolutionX/2 - boxWidth/2, 300, 416, 208, ref thumb, new Color(0.5f, 0.5f, 0.5f, 1f));
+        if(thumb != null)
+		    GuiHelper.StereoDrawTexture (resolutionX/2 - boxWidth/2, 250, 416, 208, ref thumb, new Color(0.5f, 0.5f, 0.5f, 1f));
 	}
 	#endregion SeonghunJo Added
 
