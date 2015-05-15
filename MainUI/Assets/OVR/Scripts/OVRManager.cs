@@ -480,8 +480,7 @@ public class OVRManager : MonoBehaviour
             cam.clearFlags = CameraClearFlags.SolidColor;
             cam.backgroundColor = new Color(0.0f, 0.0f, 0.0f);
 			cam.renderingPath = RenderingPath.Forward;
-			cam.orthographic = false;
-			cam.fieldOfView=75;
+			cam.orthographic = true;
 			cam.useOcclusionCulling = false;
 		}
 #endif

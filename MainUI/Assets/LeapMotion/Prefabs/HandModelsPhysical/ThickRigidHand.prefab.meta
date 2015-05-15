@@ -1,4 +1,8 @@
 fileFormatVersion: 2
-guid: 84cb6bd7a66400345a72450240915cda
+guid: d1ee2987e72174f659cdf5447ad5403c
+labels:
+- Rigid
+- Hand
+- Physics
 NativeFormatImporter:
   userData: 

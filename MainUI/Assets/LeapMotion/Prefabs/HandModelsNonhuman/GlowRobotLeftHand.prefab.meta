@@ -1,4 +1,7 @@
 fileFormatVersion: 2
-guid: a90ec72b49ccad443881a054db04b82b
+guid: 692c0a0bd7cda4829871ffbf694af029
+labels:
+- Robot
+- Hand
 NativeFormatImporter:
   userData: 

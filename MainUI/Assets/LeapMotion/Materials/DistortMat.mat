@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: DistortMat
-  m_Shader: {fileID: 4800000, guid: 490660e20feec8d46aed3d265de04793, type: 3}
+  m_Shader: {fileID: 4800000, guid: 64844d4041e06b744b3af0485509dadd, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:

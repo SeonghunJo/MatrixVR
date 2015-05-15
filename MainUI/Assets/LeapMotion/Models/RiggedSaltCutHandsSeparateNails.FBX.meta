@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b6cd149bd7e05c4db5a85010111bfb0
+guid: a263540df2704495e91da11beb21885a
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -35,11 +35,11 @@ ModelImporter:
     100058: Bip01 R Finger42
     100060: Bip01 R Hand
     100062: Bip01 R Hand001
-    100064: female_hand_right
-    100066: female_hand_right001
-    100068: female_nails_right
-    100070: female_nails_right001
-    100072: //RootNode
+    100064: //RootNode
+    100066: female_hand_right
+    100068: female_hand_right001
+    100070: female_nails_right
+    100072: female_nails_right001
     400000: Bip01 R Finger0
     400002: Bip01 R Finger01
     400004: Bip01 R Finger02
@@ -72,11 +72,11 @@ ModelImporter:
     400058: Bip01 R Finger42
     400060: Bip01 R Hand
     400062: Bip01 R Hand001
-    400064: female_hand_right
-    400066: female_hand_right001
-    400068: female_nails_right
-    400070: female_nails_right001
-    400072: //RootNode
+    400064: //RootNode
+    400066: female_hand_right
+    400068: female_hand_right001
+    400070: female_nails_right
+    400072: female_nails_right001
     4300000: female_nails_right001
     4300002: female_hand_right001
     4300004: female_nails_right
@@ -88,7 +88,7 @@ ModelImporter:
     13700004: female_nails_right
     13700006: female_nails_right001
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -124,7 +124,7 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []

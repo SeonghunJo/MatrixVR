@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f805bd87402a8904b851daa93a4cf8ea
+guid: 2fd862f812aa846649cab0657317a4ea
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -100,7 +100,7 @@ ModelImporter:
     13700000: hand_left
     13700002: hand_right
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -136,7 +136,7 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []

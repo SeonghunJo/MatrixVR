@@ -287,17 +287,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doUpdate: 1
+  rescaleController: 1
   imageIndex: 1
-  imageColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  imageColor: {r: 1, g: 1, b: 1, a: 1}
   gammaCorrection: 1.29999995
   overlayImage: 1
   undistortImage: 1
   blackIsTransparent: 0
-  rescaleController: 1
 --- !u!23 &111079299
 Renderer:
   m_ObjectHideFlags: 0
@@ -1525,17 +1521,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doUpdate: 1
+  rescaleController: 1
   imageIndex: 0
-  imageColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  imageColor: {r: 1, g: 1, b: 1, a: 1}
   gammaCorrection: 1.29999995
   overlayImage: 1
   undistortImage: 1
   blackIsTransparent: 0
-  rescaleController: 1
 --- !u!23 &1574896299
 Renderer:
   m_ObjectHideFlags: 0

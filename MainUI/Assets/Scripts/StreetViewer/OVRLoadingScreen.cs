@@ -12,44 +12,23 @@ using UnityEngine.UI;
 
 public class OVRLoadingScreen : MonoBehaviour
 {
-	/// <summary>
-	/// The amount of time in seconds that it takes for the menu to fade in.
-	/// </summary>
 	public float 	FadeInTime    	= 2.0f;
-	
-	/// <summary>
-	/// An optional texture that appears before the menu fades in.
-	/// </summary>
 	public UnityEngine.Texture 	FadeInTexture 	= null;
-	
-	/// <summary>
-	/// An optional font that replaces Unity's default Arial.
-	/// </summary>
 	public Font 	FontReplace		= null;
-
-	/// <summary>
-	/// The key that toggles the menu.
-	/// </summary>
 	public KeyCode ToggleKey		= KeyCode.Space;
-	
-	/// <summary>
-	/// The key that quits the application.
-	/// </summary>
 	public KeyCode	QuitKey			= KeyCode.Escape;
 
 	public bool ScenesVisible   	= false;
 	
-	// Spacing for scenes menu
-	private int    	StartX			= 490;
-	private int    	StartY			= 250;
-	private int    	WidthX			= 300;
-	private int    	WidthY			= 23;
+	// Spacing for scenes menu // 1280.0f, 800.0f
+	private int resolutionX = 1280;
+	private int resolutionY = 800;
 
-	private int    	StepY			= 45;
-	
+	private int screenCenterX = 640;
+	private int screenCenterY = 400;
+
 	// Handle to OVRCameraRig
 	private OVRCameraRig CameraController = null;
-	
 	// Handle to OVRPlayerController
 	private OVRPlayerController PlayerController = null;
 	
@@ -62,36 +41,14 @@ public class OVRLoadingScreen : MonoBehaviour
 	private OVRGUI  		GuiHelper 		 = new OVRGUI();
 	private GameObject      GUIRenderObject  = null;
 	public RenderTexture	GUIRenderTexture = null;
-	
-	// We want to use new Unity GUI built in 4.6 for OVRMainMenu GUI
-	// Enable the UsingNewGUI option in the editor, 
-	// if you want to use new GUI and Unity version is higher than 4.6    
-	#if USE_NEW_GUI
+
 	private GameObject NewGUIObject                 = null;
 	private GameObject RiftPresentGUIObject         = null;
-	#endif
-	
-	/// <summary>
-	/// We can set the layer to be anything we want to, this allows
-	/// a specific camera to render it.
-	/// </summary>
-	public string 			LayerName 		 = "Default";
-	
-	/// <summary>
-	/// Crosshair rendered onto 3D plane.
-	/// </summary>
+
+	public string 			LayerName 		 = "Default"; // We can set the layer to be anything we want to, this allows specific camera to render it.
+
 	public UnityEngine.Texture  CrosshairImage 			= null;
 	private OVRCrosshair Crosshair        	= new OVRCrosshair();
-	
-	// Resolution Eye Texture
-	private string strResolutionEyeTexture = "Resolution: 0 x 0";
-	
-	// Latency values
-	private string strLatencies = "Ren: 0.0f TWrp: 0.0f PostPresent: 0.0f";
-	
-	// Vision mode on/off
-	private bool VisionMode = true;
-	
 	// We want to hold onto GridCube, for potential sharing
 	// of the menu RenderTarget
 	OVRGridCube GridCube = null;
@@ -112,9 +69,7 @@ public class OVRLoadingScreen : MonoBehaviour
 			Debug.LogWarning("OVRMainMenu: More then 1 OVRCameraRig attached.");
 		else{
 			CameraController = CameraControllers[0];
-			#if USE_NEW_GUI
 			OVRUGUI.CameraController = CameraController;
-			#endif
 		}
 		
 		// Find player controller
@@ -127,12 +82,9 @@ public class OVRLoadingScreen : MonoBehaviour
 			Debug.LogWarning("OVRMainMenu: More then 1 OVRPlayerController attached.");
 		else{
 			PlayerController = PlayerControllers[0];
-			#if USE_NEW_GUI
 			OVRUGUI.PlayerController = PlayerController;
-			#endif
 		}
-		
-		#if USE_NEW_GUI
+
 		// Create canvas for using new GUI
 		NewGUIObject = new GameObject();
 		NewGUIObject.name = "OVRGUIMain";
@@ -146,7 +98,6 @@ public class OVRLoadingScreen : MonoBehaviour
 		Canvas c = NewGUIObject.AddComponent<Canvas>();
 		c.renderMode = RenderMode.WorldSpace;
 		c.pixelPerfect = false;
-		#endif
 	}
 	
 	/// <summary>
@@ -249,8 +200,7 @@ public class OVRLoadingScreen : MonoBehaviour
 		
 		// Crosshair functionality
 		Crosshair.UpdateCrosshair();
-		
-		#if USE_NEW_GUI
+
 		if (ScenesVisible)
 		{
 			NewGUIObject.SetActive(true);
@@ -259,7 +209,6 @@ public class OVRLoadingScreen : MonoBehaviour
 		{
 			NewGUIObject.SetActive(false);
 		}
-		#endif
 		
 		// Toggle Fullscreen
 		if(Input.GetKeyDown(KeyCode.F11))
@@ -318,7 +267,6 @@ public class OVRLoadingScreen : MonoBehaviour
 		// is removed from GUI)
 		GuiHelper.SetFontReplace(FontReplace);
 
-
 		DrawScreen();
 		
 		// The cross-hair may need to go away at some point, unless someone finds it 
@@ -373,7 +321,6 @@ public class OVRLoadingScreen : MonoBehaviour
 	// 모든 UI Draw 작업은 이 함수에 추가
 	void DrawScreen()
 	{
-		print ("DrawScreen");
 		if(ScenesVisible) // 화면이 보이면
 		{
 			GUIDrawLoadingScreen();
@@ -388,21 +335,25 @@ public class OVRLoadingScreen : MonoBehaviour
 	{
 		GUI.color = new Color(0, 0, 0);
 		GUI.DrawTexture( new Rect(0, 0, Screen.width, Screen.height ), FadeInTexture );
-		//GUI.color = Color.white;
-		
-		string loading = "LOADING...";
-		GuiHelper.StereoBox (StartX, StartY, WidthX, WidthY + 30, ref loading, Color.yellow);
 
+		string loading = "LOADING...";
+
+		int boxWidth = 300;
+		int boxHeight = 60;
+
+		GuiHelper.StereoBox (resolutionX/2 - boxWidth/2, 200, 300, 50, ref loading, Color.yellow);
+
+		Texture thumb = Resources.Load ("kyunghee") as Texture;
+
+		boxWidth = 416;
+		boxHeight = 208;
+	
+		GuiHelper.StereoDrawTexture (resolutionX/2 - boxWidth/2, 300, 416, 208, ref thumb, new Color(0.5f, 0.5f, 0.5f, 1f));
 	}
 	#endregion SeonghunJo Added
-	
-	/// <summary>
-	/// Initialize OVRUGUI on OnDestroy
-	/// </summary>
-	void OnDestroy()
+
+	void OnDestroy() // Initialize OVRUGUI on OnDestroy
 	{
-		#if USE_NEW_GUI
 		OVRUGUI.InitUIComponent = false;
-		#endif
 	}
 }

@@ -3010,6 +3010,7 @@ MonoBehaviour:
   firstSegment: {fileID: 6500004}
   lastSegment: {fileID: 6500024}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3039,6 +3040,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3073,6 +3075,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -3108,6 +3111,7 @@ MonoBehaviour:
   firstSegment: {fileID: 6500016}
   lastSegment: {fileID: 6500020}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3137,6 +3141,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3171,6 +3176,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -3206,6 +3212,7 @@ MonoBehaviour:
   firstSegment: {fileID: 6500006}
   lastSegment: {fileID: 6500022}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3235,6 +3242,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3269,6 +3277,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -3304,6 +3313,7 @@ MonoBehaviour:
   firstSegment: {fileID: 6500036}
   lastSegment: {fileID: 6500030}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: .311597228
       value: .0311003551
@@ -3328,10 +3338,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -3409,10 +3421,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400042}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3425,6 +3438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -3471,6 +3485,7 @@ MonoBehaviour:
   firstSegment: {fileID: 6500012}
   lastSegment: {fileID: 6500026}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3500,6 +3515,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3534,6 +3550,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -3591,10 +3608,11 @@ MonoBehaviour:
   useAxisAlignment: 0
   rightHandAxis: {x: 0, y: 0, z: 0}
   objectAxis: {x: 0, y: 0, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400002}
   breakForce: .400000006
   breakTorque: .400000006
-  rotateQuickly: 1
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3659,10 +3677,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400004}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3727,10 +3746,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400006}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3751,6 +3771,7 @@ MonoBehaviour:
   - {fileID: 13500010}
   sides: 8
   stemCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 7.14696944e-05
       value: .156083718
@@ -3780,10 +3801,11 @@ MonoBehaviour:
   useAxisAlignment: 0
   rightHandAxis: {x: 0, y: 0, z: 0}
   objectAxis: {x: 0, y: 0, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400008}
   breakForce: 1.5
   breakTorque: 1.5
-  rotateQuickly: 1
 --- !u!114 &11400044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3831,6 +3853,7 @@ MonoBehaviour:
   firstSegment: {fileID: 6500010}
   lastSegment: {fileID: 6500028}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3860,6 +3883,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -3894,6 +3918,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -3976,10 +4001,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400026}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4044,10 +4070,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400012}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4062,10 +4089,11 @@ MonoBehaviour:
   useAxisAlignment: 0
   rightHandAxis: {x: 0, y: 0, z: 0}
   objectAxis: {x: 0, y: 0, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400014}
   breakForce: 6
   breakTorque: 6
-  rotateQuickly: 1
 --- !u!114 &11400068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4162,10 +4190,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400016}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4228,10 +4257,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400044}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4246,10 +4276,11 @@ MonoBehaviour:
   useAxisAlignment: 0
   rightHandAxis: {x: 0, y: 0, z: 0}
   objectAxis: {x: 0, y: 0, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400020}
   breakForce: 2
   breakTorque: 2
-  rotateQuickly: 1
 --- !u!114 &11400090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4296,10 +4327,11 @@ MonoBehaviour:
   useAxisAlignment: 0
   rightHandAxis: {x: 0, y: 0, z: 0}
   objectAxis: {x: 0, y: 0, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400022}
   breakForce: .5
   breakTorque: .5
-  rotateQuickly: 1
 --- !u!114 &11400096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4396,10 +4428,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400024}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4464,10 +4497,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400026}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4530,10 +4564,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400024}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4596,10 +4631,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400006}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4615,6 +4651,7 @@ MonoBehaviour:
   firstSegment: {fileID: 6500032}
   lastSegment: {fileID: 6500000}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: .311597228
       value: .0623769835
@@ -4639,10 +4676,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -4720,10 +4759,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400004}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4786,10 +4826,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400016}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4852,10 +4893,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400012}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4918,10 +4960,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400048}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4949,10 +4992,11 @@ MonoBehaviour:
   useAxisAlignment: 0
   rightHandAxis: {x: 0, y: 0, z: 0}
   objectAxis: {x: 0, y: 0, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400040}
   breakForce: 16
   breakTorque: 16
-  rotateQuickly: 1
 --- !u!114 &11400170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5022,10 +5066,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400042}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5041,6 +5086,7 @@ MonoBehaviour:
   firstSegment: {fileID: 6500018}
   lastSegment: {fileID: 6500008}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -5070,6 +5116,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -5104,6 +5151,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -5188,10 +5236,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400044}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!114 &11400188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5207,6 +5256,7 @@ MonoBehaviour:
   firstSegment: {fileID: 6500034}
   lastSegment: {fileID: 6500014}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -5236,6 +5286,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -5270,6 +5321,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -5354,10 +5406,11 @@ MonoBehaviour:
   useAxisAlignment: 0
   rightHandAxis: {x: 0, y: 0, z: 0}
   objectAxis: {x: 0, y: 0, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400046}
   breakForce: .200000003
   breakTorque: .200000003
-  rotateQuickly: 1
 --- !u!114 &11400196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5440,10 +5493,11 @@ MonoBehaviour:
   useAxisAlignment: 1
   rightHandAxis: {x: .300000012, y: 0, z: 1}
   objectAxis: {x: 0, y: 1, z: 0}
+  rotateQuickly: 1
+  centerGrabbedObject: 0
   breakableJoint: {fileID: 5400048}
   breakForce: .0399999991
   breakTorque: .0399999991
-  rotateQuickly: 1
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

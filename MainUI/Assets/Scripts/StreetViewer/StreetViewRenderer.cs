@@ -61,6 +61,8 @@ public class StreetViewRenderer : MonoBehaviour
 	public Texture2D cubeTextureUp     = null;
 	public Texture2D cubeTextureDown   = null;
 
+	OVRLoadingScreen screen = null;
+
 	// For Generate Buttons
 	void OnGUI()
 	{
@@ -148,6 +150,7 @@ public class StreetViewRenderer : MonoBehaviour
 		RenderSettings.skybox = SkyboxRenderer.CreateSkyboxMaterial(cubeTextureFront, cubeTextureBack, cubeTextureLeft, cubeTextureRight, cubeTextureUp, cubeTextureDown);
 		
 		LoadingScreen.Hide();
+		screen.HideScreen();
 	}
 
 	private Texture2D m_CreateCubemapTexture(int texSize, int faceIndex, string fileName = null) {
@@ -460,11 +463,13 @@ public class StreetViewRenderer : MonoBehaviour
 			panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
 		}
 
-		OVRLoadingScreen screen = GameObject.Find ("LeapOVRPlayerController").GetComponent<OVRLoadingScreen>();
+		LoadingScreen.Show();
+		screen = GameObject.Find ("LeapOVRCameraRig").GetComponent<OVRLoadingScreen>();
 		screen.ShowScreen();
 
 		WWWHelper metaRequest = WWWHelper.Instance;
 		metaRequest.OnHttpRequest += OnHttpRequest;
+        Debug.Log("ID -> META DATA");
 		metaRequest.get (100, cbkURL + "output=json" + "&panoid=" + panoramaID);
 	}
 

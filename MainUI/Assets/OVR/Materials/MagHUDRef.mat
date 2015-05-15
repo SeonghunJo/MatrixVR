@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: MagHUDRef
-  m_Shader: {fileID: 4800000, guid: 6c8a8b1da1d88ea4faedcf86bc33bedb, type: 3}
+  m_Shader: {fileID: 4800000, guid: f1fdc2840422b4d46b52860f838dc54b, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:

@@ -285,7 +285,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5527cebec3d021f4f86df476a6047684, type: 2}
+  - {fileID: 2100000, guid: 05f94f2c3868b4469b61a71f45b3e1a7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -305,7 +305,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5527cebec3d021f4f86df476a6047684, type: 2}
+  - {fileID: 2100000, guid: 05f94f2c3868b4469b61a71f45b3e1a7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -342,14 +342,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709f931151b4f9a42a58b4584a572415, type: 3}
+  m_Script: {fileID: 11500000, guid: fd815635398474cbbba564563a209f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   doUpdate: 1
   rescaleController: 1
-  imageIndex: 0
+  imageIndex: 1
   imageColor: {r: 1, g: 1, b: 1, a: 1}
-  gammaCorrection: 1
+  gammaCorrection: 1.29999995
   overlayImage: 0
   undistortImage: 1
   blackIsTransparent: 1
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99e9c3a37242d147afb81fee5fc38a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b288114cecb140179322b3c29a9d3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11400004
@@ -372,14 +372,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709f931151b4f9a42a58b4584a572415, type: 3}
+  m_Script: {fileID: 11500000, guid: fd815635398474cbbba564563a209f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   doUpdate: 1
   rescaleController: 1
   imageIndex: 0
   imageColor: {r: 1, g: 1, b: 1, a: 1}
-  gammaCorrection: 1
+  gammaCorrection: 1.29999995
   overlayImage: 0
   undistortImage: 1
   blackIsTransparent: 1
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99e9c3a37242d147afb81fee5fc38a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b288114cecb140179322b3c29a9d3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11400008
@@ -433,16 +433,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 100010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7606261698b1a4596837bc3f2f2463, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c4e0350c46ae405b8db39262c18b8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  separateLeftRight: 0
-  leftGraphicsModel: {fileID: 0}
-  leftPhysicsModel: {fileID: 0}
-  rightGraphicsModel: {fileID: 0}
-  rightPhysicsModel: {fileID: 0}
+  separateLeftRight: 1
+  leftGraphicsModel: {fileID: 11400000, guid: 9ae8a8acf486840e19397b18a914d915, type: 2}
+  leftPhysicsModel: {fileID: 11400008, guid: 4b359b2f0d7d14ef0a97b45ec153a3ef, type: 2}
+  rightGraphicsModel: {fileID: 11400010, guid: 0c6c9cacc3ef1487daa06cb206b2f421, type: 2}
+  rightPhysicsModel: {fileID: 11400008, guid: 4b359b2f0d7d14ef0a97b45ec153a3ef, type: 2}
   toolModel: {fileID: 0}
-  isHeadMounted: 0
+  isHeadMounted: 1
   mirrorZAxis: 0
   destroyHands: 1
   handMovementScale: {x: 1, y: 1, z: 1}

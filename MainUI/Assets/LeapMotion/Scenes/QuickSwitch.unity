@@ -86,7 +86,6 @@ GameObject:
   - 23: {fileID: 73973603}
   - 114: {fileID: 73973602}
   - 114: {fileID: 73973601}
-  - 114: {fileID: 73973600}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -106,22 +105,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 660819145}
   m_RootOrder: 0
---- !u!114 &73973600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400022, guid: 3396c6816a092d647a68cbaade7c78bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1056933968}
-  m_GameObject: {fileID: 73973598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4769a67f0cea405c9f091e8e97489c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_enabled: 1
-  m_minProgressToStartTransition: .100000001
-  m_percentageToLockTransition: .699999988
-  m_wipeOutPosition: {x: 0, y: .0350000001, z: 0}
 --- !u!114 &73973601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,12 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd815635398474cbbba564563a209f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doUpdate: 1
+  rescaleController: 1
   imageIndex: 0
-  imageColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  imageColor: {r: 1, g: 1, b: 1, a: 1}
   gammaCorrection: 1.29999995
   overlayImage: 1
   undistortImage: 1
@@ -447,7 +428,6 @@ GameObject:
   - 114: {fileID: 885200092}
   - 114: {fileID: 885200091}
   - 114: {fileID: 885200090}
-  - 114: {fileID: 885200089}
   m_Layer: 0
   m_Name: LeapOVRPlayerController
   m_TagString: Untagged
@@ -469,18 +449,6 @@ Transform:
   - {fileID: 159062924}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &885200089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400024, guid: 3396c6816a092d647a68cbaade7c78bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1056933968}
-  m_GameObject: {fileID: 885200087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7021f0c60209f44a0848c4d528d02771, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &885200090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,7 +728,6 @@ GameObject:
   - 23: {fileID: 2044172137}
   - 114: {fileID: 2044172136}
   - 114: {fileID: 2044172135}
-  - 114: {fileID: 2044172134}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -780,22 +747,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1883879500}
   m_RootOrder: 0
---- !u!114 &2044172134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400020, guid: 3396c6816a092d647a68cbaade7c78bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1056933968}
-  m_GameObject: {fileID: 2044172132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4769a67f0cea405c9f091e8e97489c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_enabled: 1
-  m_minProgressToStartTransition: .100000001
-  m_percentageToLockTransition: .699999988
-  m_wipeOutPosition: {x: 0, y: .0350000001, z: 0}
 --- !u!114 &2044172135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,12 +771,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd815635398474cbbba564563a209f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doUpdate: 1
+  rescaleController: 1
   imageIndex: 1
-  imageColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  imageColor: {r: 1, g: 1, b: 1, a: 1}
   gammaCorrection: 1.29999995
   overlayImage: 1
   undistortImage: 1

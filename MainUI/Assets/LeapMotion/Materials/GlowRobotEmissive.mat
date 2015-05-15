@@ -50,9 +50,9 @@ Material:
         second: {r: .0356833749, g: .680855453, b: .808823526, a: 1}
       data:
         first:
-          name: _SpecColor
-        second: {r: .867647052, g: .989046633, b: 1, a: 1}
-      data:
-        first:
           name: _Emission
         second: {r: .882352948, g: .882352948, b: .882352948, a: 0}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .867647052, g: .989046633, b: 1, a: 1}

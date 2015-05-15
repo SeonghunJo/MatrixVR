@@ -143,6 +143,7 @@ MonoBehaviour:
   firstSegment: {fileID: 650743173}
   lastSegment: {fileID: 1520875218}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -172,6 +173,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -206,6 +208,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -282,6 +285,7 @@ MonoBehaviour:
   firstSegment: {fileID: 1373243933}
   lastSegment: {fileID: 1422196485}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -311,6 +315,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -345,6 +350,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -1037,6 +1043,7 @@ MonoBehaviour:
   firstSegment: {fileID: 734082120}
   lastSegment: {fileID: 1455973281}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -1066,6 +1073,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -1100,6 +1108,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -1265,6 +1274,7 @@ MonoBehaviour:
   firstSegment: {fileID: 2080364439}
   lastSegment: {fileID: 1696233471}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: .311597228
       value: .0311003551
@@ -1289,10 +1299,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -2590,6 +2602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -2690,6 +2703,7 @@ MonoBehaviour:
   firstSegment: {fileID: 1064550345}
   lastSegment: {fileID: 1556397790}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -2719,6 +2733,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -2753,6 +2768,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -3763,6 +3779,7 @@ MonoBehaviour:
   fadeInTime: 1
   fadeOutTime: 1
   fade:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -3779,11 +3796,7 @@ MonoBehaviour:
   waitFrames: 10
   embeddedReplacementImage: {fileID: 2800000, guid: ebc61a8ce70eb495494d1209ae9dbf43,
     type: 3}
-  onColor:
-    r: .544117689
-    g: .544117689
-    b: .544117689
-    a: 1
+  onColor: {r: .544117689, g: .544117689, b: .544117689, a: 1}
 --- !u!131 &764447444
 GUITexture:
   m_ObjectHideFlags: 0
@@ -3904,6 +3917,7 @@ MonoBehaviour:
   - {fileID: 2038108565}
   sides: 8
   stemCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 7.14696944e-05
       value: .156083718
@@ -4193,6 +4207,7 @@ MonoBehaviour:
   firstSegment: {fileID: 984986875}
   lastSegment: {fileID: 1633080650}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -4222,6 +4237,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -4256,6 +4272,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -10922,6 +10939,7 @@ MonoBehaviour:
   firstSegment: {fileID: 1740391655}
   lastSegment: {fileID: 369370555}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: .311597228
       value: .0623769835
@@ -10946,10 +10964,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -14946,12 +14966,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feefc2f01ecd948f9bd88d185b4fc0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableLayers: {}
+  grabbableLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   grabTriggerDistance: .800000012
   releaseTriggerDistance: 1
   grabObjectDistance: .699999988
   releaseBreakDistance: .300000012
   releaseStrengthCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.00134408602
       value: .995133698
@@ -16593,6 +16616,7 @@ MonoBehaviour:
   firstSegment: {fileID: 1414706385}
   lastSegment: {fileID: 854576879}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -16622,6 +16646,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -16656,6 +16681,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -16899,6 +16925,7 @@ MonoBehaviour:
   firstSegment: {fileID: 1792511784}
   lastSegment: {fileID: 1082175347}
   flowerCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -16928,6 +16955,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   morphCurve:
+    serializedVersion: 2
     m_Curve:
     - time: -.0167011023
       value: -.00164276361
@@ -16962,6 +16990,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
   growthDelayCurve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0

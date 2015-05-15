@@ -1,4 +1,7 @@
 fileFormatVersion: 2
-guid: ea24ccb8cba86b24ba8bc84b857573f4
+guid: 368ede197811445f9b84f8ade38f75cd
+labels:
+- Hand
+- Poly
 NativeFormatImporter:
   userData: 

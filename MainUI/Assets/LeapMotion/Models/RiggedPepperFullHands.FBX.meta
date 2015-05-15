@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7659b5ac1f8755c42930b81df67c2c2e
+guid: 1140de03f648349c6976a0ad6bce907c
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -57,9 +57,9 @@ ModelImporter:
     100102: Bip01 R ForeTwist4
     100104: Bip01 R Hand
     100106: Bip01 R Hand001
-    100108: male_arm_left
-    100110: male_arm_right
-    100112: //RootNode
+    100108: //RootNode
+    100110: male_arm_left
+    100112: male_arm_right
     400000: Bip01 R Finger0
     400002: Bip01 R Finger01
     400004: Bip01 R Finger02
@@ -114,9 +114,9 @@ ModelImporter:
     400102: Bip01 R ForeTwist4
     400104: Bip01 R Hand
     400106: Bip01 R Hand001
-    400108: male_arm_left
-    400110: male_arm_right
-    400112: //RootNode
+    400108: //RootNode
+    400110: male_arm_left
+    400112: male_arm_right
     4300000: male_arm_left
     4300002: male_arm_right
     7400000: Take 001
@@ -124,7 +124,7 @@ ModelImporter:
     13700000: male_arm_left
     13700002: male_arm_right
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -160,7 +160,7 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []

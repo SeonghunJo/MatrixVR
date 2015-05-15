@@ -55,6 +55,7 @@ MonoBehaviour:
   fadeInTime: 1
   fadeOutTime: 1
   fade:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -71,11 +72,7 @@ MonoBehaviour:
   waitFrames: 10
   embeddedReplacementImage: {fileID: 2800000, guid: ebc61a8ce70eb495494d1209ae9dbf43,
     type: 3}
-  onColor:
-    r: .544117689
-    g: .544117689
-    b: .544117689
-    a: 1
+  onColor: {r: .544117689, g: .544117689, b: .544117689, a: 1}
 --- !u!131 &13100000
 GUITexture:
   m_ObjectHideFlags: 1

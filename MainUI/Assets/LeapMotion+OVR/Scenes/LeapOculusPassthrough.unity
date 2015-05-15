@@ -1159,7 +1159,7 @@ MonoBehaviour:
   RotationAmount: 1.5
   RotationRatchet: 45
   HmdRotatesY: 1
-  GravityModifier: .379000008
+  GravityModifier: 0
   useProfileHeight: 1
 --- !u!114 &131122770
 MonoBehaviour:
@@ -4771,13 +4771,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd815635398474cbbba564563a209f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doUpdate: 1
+  rescaleController: 1
   imageIndex: 1
-  imageColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  imageColor: {r: 1, g: 1, b: 1, a: 1}
   gammaCorrection: 1.29999995
+  overlayImage: 0
   undistortImage: 1
   blackIsTransparent: 1
 --- !u!23 &836120932
@@ -11386,7 +11385,7 @@ MonoBehaviour:
   rightGraphicsModel: {fileID: 11400010, guid: fb2d6e2c3c6ef431caaff3cf8beb3b75, type: 2}
   rightPhysicsModel: {fileID: 11400008, guid: 4b359b2f0d7d14ef0a97b45ec153a3ef, type: 2}
   toolModel: {fileID: 0}
-  isHeadMounted: 0
+  isHeadMounted: 1
   mirrorZAxis: 0
   destroyHands: 1
   handMovementScale: {x: 1, y: 1, z: 1}
@@ -13566,13 +13565,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd815635398474cbbba564563a209f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doUpdate: 1
+  rescaleController: 1
   imageIndex: 0
-  imageColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  imageColor: {r: 1, g: 1, b: 1, a: 1}
   gammaCorrection: 1.29999995
+  overlayImage: 0
   undistortImage: 1
   blackIsTransparent: 1
 --- !u!23 &2119044225
