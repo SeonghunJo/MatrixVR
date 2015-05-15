@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: StreetviewPoint
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -81,12 +82,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e991f3ca252cc7409bbccbec48e1620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: 100004, guid: 0799afae208bf8e4294c5deaade6f479, type: 2}
-  earth: {fileID: 0}
-  child: {fileID: 0}
   Lat: 0
   Lng: 0
-  ID: 
+  panoID: 
+  thumbnailURL: http://maps.google.com/cbk?output=thumbnail&panoid=
+  metaURL: http://maps.google.com/cbk?output=json&panoid=
+  myThumbnailImg: {fileID: 0}
+  myThumbnailText: 
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa7897f85452a14b9b40fc041631192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 0}
+  textobject: {fileID: 0}
+  text: 
+  thumbnailURL: http://maps.google.com/cbk?output=thumbnail&panoid=
+  metaURL: http://maps.google.com/cbk?output=json&panoid=
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

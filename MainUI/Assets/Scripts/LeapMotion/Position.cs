@@ -126,7 +126,7 @@ public class Position : MonoBehaviour {
 			{
 				if(Manager.Instance.thumbnailID == null)
 				{
-					Manager.Instance.thumbnailID = pointed.ID;
+					Manager.Instance.thumbnailID = pointed.panoID;
 					pointed.Pointed();
 				}
 			}
