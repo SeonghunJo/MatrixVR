@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: My3DFont
-  m_Shader: {fileID: 4800000, guid: 68289793194bf484f9df6fae86be635d, type: 3}
+  m_Shader: {fileID: 4800000, guid: 0c6551653109de348a78a754936cf378, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
