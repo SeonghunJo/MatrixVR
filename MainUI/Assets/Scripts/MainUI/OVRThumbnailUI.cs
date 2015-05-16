@@ -12,29 +12,10 @@ using UnityEngine.UI;
 
 public class OVRThumbnailUI : MonoBehaviour
 {
-	/// <summary>
-	/// The amount of time in seconds that it takes for the menu to fade in.
-	/// </summary>
 	public float 	FadeInTime    	= 2.0f;
-	
-	/// <summary>
-	/// An optional texture that appears before the menu fades in.
-	/// </summary>
 	public UnityEngine.Texture 	FadeInTexture 	= null;
-	
-	/// <summary>
-	/// An optional font that replaces Unity's default Arial.
-	/// </summary>
 	public Font 	FontReplace		= null;
-	
-	/// <summary>
-	/// The key that toggles the menu.
-	/// </summary>
 	public KeyCode ToggleKey		= KeyCode.Space;
-	
-	/// <summary>
-	/// The key that quits the application.
-	/// </summary>
 	public KeyCode	QuitKey			= KeyCode.Escape;
 	
 	public bool ScenesVisible   	= false;
@@ -42,8 +23,6 @@ public class OVRThumbnailUI : MonoBehaviour
 	// Spacing for scenes menu
 	private int    	resolutionX			= 1280;
 	private int    	resolutionY			= 800;
-
-	private int    	StepY			= 45;
 	
 	// Handle to OVRCameraRig
 	private OVRCameraRig CameraController = null;
@@ -61,34 +40,16 @@ public class OVRThumbnailUI : MonoBehaviour
 	private GameObject      GUIRenderObject  = null;
 	public RenderTexture	GUIRenderTexture = null;
 	
-	// We want to use new Unity GUI built in 4.6 for OVRMainMenu GUI
-	// Enable the UsingNewGUI option in the editor, 
-	// if you want to use new GUI and Unity version is higher than 4.6    
-	#if USE_NEW_GUI
 	private GameObject NewGUIObject                 = null;
 	private GameObject RiftPresentGUIObject         = null;
-	#endif
 	
-	/// <summary>
+
 	/// We can set the layer to be anything we want to, this allows
 	/// a specific camera to render it.
-	/// </summary>
 	public string 			LayerName 		 = "Default";
 	
-	/// <summary>
-	/// Crosshair rendered onto 3D plane.
-	/// </summary>
 	public UnityEngine.Texture  CrosshairImage 			= null;
 	private OVRCrosshair Crosshair        	= new OVRCrosshair();
-	
-	// Resolution Eye Texture
-	private string strResolutionEyeTexture = "Resolution: 0 x 0";
-	
-	// Latency values
-	private string strLatencies = "Ren: 0.0f TWrp: 0.0f PostPresent: 0.0f";
-	
-	// Vision mode on/off
-	private bool VisionMode = true;
 	
 	// We want to hold onto GridCube, for potential sharing
 	// of the menu RenderTarget
@@ -359,7 +320,7 @@ public class OVRThumbnailUI : MonoBehaviour
 		
 		if (startPressed)
 		{
-			//print("Toggle");
+			print("Toggle");
 			ScenesVisible = !ScenesVisible;
 		}
 		
@@ -370,7 +331,6 @@ public class OVRThumbnailUI : MonoBehaviour
 	// 모든 UI Draw 작업은 이 함수에 추가
 	void DrawScreen()
 	{
-		//print (ScenesVisible + "DrawScreen");
 
 		if(ScenesVisible) // 화면이 보이면
 		{
@@ -381,19 +341,18 @@ public class OVRThumbnailUI : MonoBehaviour
 			
 		}
 	}
-	
 	void DrawThumbnailImg()
-	{	
+	{
 		int width = 160;
 		int height = 80;
-		Texture image = Manager.Instance.thumbnailImg as Texture;
-		GuiHelper.StereoDrawTexture(resolutionX/2 - width/2, resolutionY-450, width, height, ref image, new Color(0.5f, 0.5f, 0.5f, 1f));
+		Texture image = Manager.Instance.thumbnailImg;
+		GuiHelper.StereoDrawTexture(resolutionX/2 - width/2, resolutionY-500, width, height, ref image, new Color(0.5f, 0.5f, 0.5f, 1f));
 
 		int textWidth = 400;
 		int textHeight = 30;
 		string locationName = Manager.Instance.thumbnailText;
-		GuiHelper.StereoBox (resolutionX/2 - textWidth/2, resolutionY-350, textWidth, textHeight, ref locationName, Color.white);
 
+		GuiHelper.StereoBox (resolutionX/2 - textWidth/2, resolutionY-400, textWidth, textHeight, ref locationName, Color.white);
 	}
 	#endregion Jin Added
 	

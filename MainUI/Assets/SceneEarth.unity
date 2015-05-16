@@ -1362,7 +1362,7 @@ MonoBehaviour:
   eyeTextureFormat: 7
   eyeTextureDepth: 24
   timeWarp: 0
-  freezeTimeWarp: 1
+  freezeTimeWarp: 0
   resetTrackerOnLoad: 1
   monoscopic: 0
 --- !u!114 &2117130066
@@ -1374,7 +1374,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2117130064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8495ef48fbb11384d95c47f158b0fe56, type: 3}
+  m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2117130067
@@ -1384,7 +1384,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2117130064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 30, z: -80}
+  m_LocalPosition: {x: 0, y: 20, z: -80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1415859931}

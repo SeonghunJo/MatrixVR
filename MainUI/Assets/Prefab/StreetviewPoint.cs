@@ -4,13 +4,16 @@ using LitJson;
 
 public class StreetviewPoint : MonoBehaviour
 {
+    //해당 point의 위도, 경도, 파노라마 ID를 저장
     public float Lat;
     public float Lng;
     public string panoID;
 
+    //Thumbnail image URL & Streetview name URL
 	public string thumbnailURL = "http://maps.google.com/cbk?output=thumbnail&panoid=";
 	public string metaURL = "http://maps.google.com/cbk?output=json&panoid=";
 
+    //Thumbnail image, name, ID 
 	public Texture2D myThumbnailImg;
 	public string myThumbnailText;
     OVRThumbnailUI thumbnailUI;
@@ -19,7 +22,6 @@ public class StreetviewPoint : MonoBehaviour
     IEnumerator Start() {		
 		Debug.Log ("start : " + panoID);
         thumbnailUI = GameObject.Find("LeapOVRCameraRig").GetComponent<OVRThumbnailUI>();
-
 
 		WWW www = new WWW(thumbnailURL);
 		yield return www;
@@ -48,31 +50,19 @@ public class StreetviewPoint : MonoBehaviour
 		CameraFade.FadeOutMain();
 	}
 
-    void OnMouseDown()
-    {
-        CameraFade.setFadeOutEndEvent(FadeOutEnd);
-        CameraFade.FadeOutMain(); 
-    }
-
 	public void Pointed ()
 	{
         Manager.Instance.thumbnailText = myThumbnailText;
         Manager.Instance.thumbnailImg = myThumbnailImg;
+        Manager.Instance.panoramaID = panoID;
 
-        print(myThumbnailText);
         thumbnailUI.ShowScreen();
 	}
 	
     void OnMouseEnter()
 	{
 		Debug.Log("mouse enter : " + panoID);
-		/*
-		Manager.Instance.thumbnailText = myThumbnailText;
-		Manager.Instance.thumbnailImg = myThumbnailImg;
 
-		Debug.Log ("myThumbnailText : " + myThumbnailText);
-		Debug.Log ("myTumbnailImg : " + myThumbnailImg);
-        */
         Pointed();
 	}
 

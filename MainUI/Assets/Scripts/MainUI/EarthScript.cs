@@ -9,7 +9,7 @@ public class EarthScript : MonoBehaviour
 
     public void Start()
     {
-        Screen.showCursor = true;
+        //Screen.showCursor = true;
         Speed = 10;
     }
 
