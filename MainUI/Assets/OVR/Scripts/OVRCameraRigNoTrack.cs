@@ -30,7 +30,7 @@ using UnityEngine;
 /// A head-tracked stereoscopic virtual reality camera rig.
 /// </summary>
 [ExecuteInEditMode]
-public class OVRCameraRigOri : MonoBehaviour
+public class OVRCameraRigNoTrack : MonoBehaviour
 {
 	/// <summary>
 	/// The left eye camera.
@@ -65,6 +65,8 @@ public class OVRCameraRigOri : MonoBehaviour
 			return;
 
 		needsCameraConfigure = true;
+
+
 	}
 
 	private void Start()
@@ -74,8 +76,12 @@ public class OVRCameraRigOri : MonoBehaviour
 		if (!Application.isPlaying)
 			return;
 
-		UpdateCameras();
-		UpdateAnchors();
+		//UpdateCameras();
+		//UpdateAnchors();
+		leftEyeAnchor.camera.orthographic = false;
+		leftEyeAnchor.camera.fieldOfView = 75;
+		rightEyeAnchor.camera.orthographic = false;
+		rightEyeAnchor.camera.fieldOfView = 75;
 	}
 
 #if !UNITY_ANDROID || UNITY_EDITOR
@@ -100,13 +106,13 @@ public class OVRCameraRigOri : MonoBehaviour
 		OVRPose leftEye = OVRManager.display.GetEyePose(OVREye.Left);
 		OVRPose rightEye = OVRManager.display.GetEyePose(OVREye.Right);
 
-		leftEyeAnchor.localRotation = leftEye.orientation;
-		centerEyeAnchor.localRotation = leftEye.orientation; // using left eye for now
-		rightEyeAnchor.localRotation = rightEye.orientation;
+		//leftEyeAnchor.localRotation = leftEye.orientation;
+		//centerEyeAnchor.localRotation = leftEye.orientation; // using left eye for now
+		//rightEyeAnchor.localRotation = rightEye.orientation;
 
-		leftEyeAnchor.localPosition = leftEye.position;
-		centerEyeAnchor.localPosition = 0.5f * (leftEye.position + rightEye.position);
-		rightEyeAnchor.localPosition = rightEye.position;
+		//leftEyeAnchor.localPosition = leftEye.position;
+		//centerEyeAnchor.localPosition = 0.5f * (leftEye.position + rightEye.position);
+		//rightEyeAnchor.localPosition = rightEye.position;
 	}
 
 	private void UpdateCameras()
@@ -186,7 +192,8 @@ public class OVRCameraRigOri : MonoBehaviour
 
 		OVRDisplay.EyeRenderDesc eyeDesc = OVRManager.display.GetEyeRenderDesc(eye);
 
-		cam.fieldOfView = eyeDesc.fov.y;
+		//cam.fieldOfView = eyeDesc.fov.y;
+		cam.fieldOfView = 110;
 		cam.aspect = eyeDesc.resolution.x / eyeDesc.resolution.y;
 		cam.rect = new Rect(0f, 0f, OVRManager.instance.virtualTextureScale, OVRManager.instance.virtualTextureScale);
 		cam.targetTexture = OVRManager.display.GetEyeTexture(eye);
