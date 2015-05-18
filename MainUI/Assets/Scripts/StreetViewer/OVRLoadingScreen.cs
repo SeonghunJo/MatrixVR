@@ -17,8 +17,6 @@ public class OVRLoadingScreen : MonoBehaviour
 	public Font 	FontReplace		= null;
 	public KeyCode ToggleKey		= KeyCode.Space;
 	public KeyCode	QuitKey			= KeyCode.Escape;
-	public GameObject panelObj = null;		// 로딩패널 객체 edited by joon
-
 
 	public bool ScenesVisible   	= false;
 	
@@ -335,9 +333,6 @@ public class OVRLoadingScreen : MonoBehaviour
 
 	void GUIDrawLoadingScreen()
 	{   
-		panelObj = GameObject.Find ("OVRGuiObjectMain(Clone)") as GameObject;   //GUI메인 scale조절 하여 해상도 일치  by hongjoon
-		panelObj.transform.localScale = new Vector3(0.2f,0.15f,0.25f);
-
 		int boxWidth = 300;
 		int boxHeight = 60;
    
@@ -345,30 +340,40 @@ public class OVRLoadingScreen : MonoBehaviour
         if(FadeInTexture != null)
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
 
+<<<<<<< HEAD
 
 
 		//Texture matrixTexture = Resources.Load("Earth-1280") as Texture;
         //GuiHelper.StereoDrawTexture(0, 0, 1024, 1024, ref matrixTexture, Color.grey);   //매트릭스 배경 조건
 		//GuiHelper.StereoDrawTexture(0, 0, 1280, 900, ref matrixTexture, Color.white);    //Earth-1280 조건 
+=======
+        Texture matrixTexture = Resources.Load("MatrixBackground") as Texture;
+        GuiHelper.StereoDrawTexture(0, 0, 1024, 1024, ref matrixTexture, Color.grey);
+>>>>>>> dd7ce4c9268566f5dd23ba63139fef75fc5fe019
 
         string Matrix = "M.A.T.R.I.X";
-        GuiHelper.StereoBox(0, 120, 1280, 50, ref Matrix, Color.green);
+        GuiHelper.StereoBox(0, 100, 1280, 50, ref Matrix, Color.green);
 
+<<<<<<< HEAD
 		string loading = "LOADING...";
 		GuiHelper.StereoBox (resolutionX/2 - boxWidth/2, 170, 300, 50, ref loading, Color.yellow);
+=======
+		string loading = "Teleporting...";
+		GuiHelper.StereoBox (resolutionX/2 - boxWidth/2, 150, 300, 50, ref loading, Color.yellow);
+>>>>>>> dd7ce4c9268566f5dd23ba63139fef75fc5fe019
 
         string locationText = "Where is it?";
         if (Manager.Instance.thumbnailText == null)
             locationText = "Where is it?";
         else
             locationText = Manager.Instance.thumbnailText;
-        GuiHelper.StereoBox(0, 220, 1280, 50, ref locationText, Color.white);
+        GuiHelper.StereoBox(0, 200, 1280, 50, ref locationText, Color.grey);
 
         Texture thumb = Manager.Instance.thumbnailImg;
 		boxWidth = 416;
 		boxHeight = 208;
         if(thumb != null)
-		    GuiHelper.StereoDrawTexture (resolutionX/2 - boxWidth/2, 270, 416, 208, ref thumb, new Color(0.5f, 0.5f, 0.5f, 1f));
+		    GuiHelper.StereoDrawTexture (resolutionX/2 - boxWidth/2, 250, 416, 208, ref thumb, new Color(0.5f, 0.5f, 0.5f, 1f));
 	}
 	#endregion SeonghunJo Added
 

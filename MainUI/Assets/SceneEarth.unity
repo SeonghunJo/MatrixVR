@@ -1471,7 +1471,6 @@ MonoBehaviour:
   leftCamera: {fileID: 1415859930}
   rightCamera: {fileID: 1018342632}
   Earth: {fileID: 370142936}
-  clickParticle: {fileID: 100000, guid: 4f2b448ece6bb4940be1ce4a87b8e110, type: 2}
   enableScreenTap: 1
   enableKeyTap: 1
   enableSwipe: 1
