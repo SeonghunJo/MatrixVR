@@ -340,27 +340,14 @@ public class OVRLoadingScreen : MonoBehaviour
         if(FadeInTexture != null)
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
 
-<<<<<<< HEAD
-
-
-		//Texture matrixTexture = Resources.Load("Earth-1280") as Texture;
+        //Texture matrixTexture = Resources.Load("Earth-1280") as Texture;
         //GuiHelper.StereoDrawTexture(0, 0, 1024, 1024, ref matrixTexture, Color.grey);   //매트릭스 배경 조건
 		//GuiHelper.StereoDrawTexture(0, 0, 1280, 900, ref matrixTexture, Color.white);    //Earth-1280 조건 
-=======
-        Texture matrixTexture = Resources.Load("MatrixBackground") as Texture;
-        GuiHelper.StereoDrawTexture(0, 0, 1024, 1024, ref matrixTexture, Color.grey);
->>>>>>> dd7ce4c9268566f5dd23ba63139fef75fc5fe019
-
         string Matrix = "M.A.T.R.I.X";
         GuiHelper.StereoBox(0, 100, 1280, 50, ref Matrix, Color.green);
 
-<<<<<<< HEAD
 		string loading = "LOADING...";
 		GuiHelper.StereoBox (resolutionX/2 - boxWidth/2, 170, 300, 50, ref loading, Color.yellow);
-=======
-		string loading = "Teleporting...";
-		GuiHelper.StereoBox (resolutionX/2 - boxWidth/2, 150, 300, 50, ref loading, Color.yellow);
->>>>>>> dd7ce4c9268566f5dd23ba63139fef75fc5fe019
 
         string locationText = "Where is it?";
         if (Manager.Instance.thumbnailText == null)
