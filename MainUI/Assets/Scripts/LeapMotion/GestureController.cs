@@ -13,7 +13,6 @@ public class GestureController : MonoBehaviour
     public GameObject target;   // RayCast 충돌위치로  옮겨 표시하는 물체 
     public GameObject leftCamera, rightCamera;
     public GameObject Earth;
-	public GameObject clickParticle =null; //클릭 파티클 이펙트
 
     public bool enableScreenTap = true;
     public bool enableKeyTap = true;
@@ -53,8 +52,8 @@ public class GestureController : MonoBehaviour
         if (enableSwipe)
         { // https://developer.leapmotion.com/documentation/unity/api/Leap.SwipeGesture.html
             controller.EnableGesture(Gesture.GestureType.TYPE_SWIPE);
-            controller.Config.SetFloat("Gesture.Swipe.MinLength", 60.0f); // SHJO Swipe 조건 바꿈 
-            controller.Config.SetFloat("Gesture.Swipe.MinVelocity", 100.0f);
+            controller.Config.SetFloat("Gesture.Swipe.MinLength", 80.0f); // SHJO Swipe 조건 바꿈 
+            controller.Config.SetFloat("Gesture.Swipe.MinVelocity", 200.0f);
             controller.Config.Save();
         }
         if (enableCircle) 
@@ -160,14 +159,10 @@ public class GestureController : MonoBehaviour
                     KeyTapGesture keyTap = new KeyTapGesture(gesture);
                     Debug.Log("TYPE_KEY_TAP - Duration : " + keyTap.DurationSeconds.ToString());
                     cursorModel.renderer.material.color = Color.blue;
-
-					GameObject particleObj = Instantiate(clickParticle, Tipping () , Quaternion.identity) as GameObject;
-					
-					Destroy (particleObj,2f);
-					
+                       
                     if(pointed != null)
                     {
-                        // TODO : Click (SHJO)					
+                        // TODO : Click (SHJO)
                         Application.LoadLevel("StreetViewer");
                     }
                 }
