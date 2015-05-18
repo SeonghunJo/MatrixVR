@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 135: {fileID: 13500000}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4bafb850c1456e458e800a7c0d0386f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dc6f0a85e3701d4b8edfffa81117d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &13500000

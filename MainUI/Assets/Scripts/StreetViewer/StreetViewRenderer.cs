@@ -15,9 +15,9 @@ public class StreetViewRenderer : MonoBehaviour
     public string saveTextureFileName;
 	public Material skyboxMaterial;
 
-	// DRAW ARROWS
-	public GameObject arrowModel;
-	private GameObject[] arrowModelList;
+	// DRAW Buttons
+	public GameObject buttonModel;
+	private GameObject[] buttonModelList;
 	// SET BY GOOGLE
 	private string cbkURL = "http://maps.google.com/cbk?";
 	private int imageWidth = 0;
@@ -364,26 +364,26 @@ public class StreetViewRenderer : MonoBehaviour
 		// 타일과 더불어 통합된 파노라마 텍스쳐 이미지를 얻는다.
 		StartCoroutine(GetPanoramaImage(panoramaID, textureWidth, textureHeight));
 
-		DrawArrows();
+		DrawButtons();
 	}
 
-	void DrawArrows()
+	void DrawButtons()
 	{	
 		// 만약 기존의 화살표 프리팹이 있다면 정리해준다.
-		if(arrowModelList != null && arrowModelList.Length > 0)
+		if(buttonModelList != null && buttonModelList.Length > 0)
 		{
-			for(int i=0; i<arrowModelList.Length; i++)
+			for(int i=0; i<buttonModelList.Length; i++)
 			{
-				Destroy(arrowModelList[i]);
+				Destroy(buttonModelList[i]);
 			}
 		}
 
-		arrowModelList = new GameObject[Manager.Instance.nextDegrees.Length];
+		buttonModelList = new GameObject[Manager.Instance.nextDegrees.Length];
 		for(int i=0; i<Manager.Instance.nextDegrees.Length; i++)
 		{
-			arrowModelList[i] = Instantiate(arrowModel, transform.position, Quaternion.identity) as GameObject;
-			arrowModelList[i].GetComponent<Arrow>().SetDegree(Convert.ToSingle(Manager.Instance.nextDegrees[i]));
-			arrowModelList[i].GetComponent<Arrow>().SetPanoramaID(Manager.Instance.nextIDs[i]);
+			buttonModelList[i] = Instantiate(buttonModel, transform.position, Quaternion.identity) as GameObject;
+			buttonModelList[i].GetComponent<Button>().SetDegree(Convert.ToSingle(Manager.Instance.nextDegrees[i]));
+			buttonModelList[i].GetComponent<Button>().SetPanoramaID(Manager.Instance.nextIDs[i]);
 		}
 	}
 
@@ -465,7 +465,9 @@ public class StreetViewRenderer : MonoBehaviour
 
 		LoadingScreen.Show();
 		screen = GameObject.Find ("LeapOVRCameraRig").GetComponent<OVRLoadingScreen>();
-		screen.ShowScreen();
+
+        if (screen != null)
+            screen.ShowScreen();
 
 		WWWHelper metaRequest = WWWHelper.Instance;
 		metaRequest.OnHttpRequest += OnHttpRequest;

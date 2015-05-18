@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using Leap;
 
-public class GesturControllerStreetView : MonoBehaviour
+public class GestureControllerStreetView : MonoBehaviour
 {
     Controller controller;       //립모션 컨트롤러
     GameObject cursorPointer;
@@ -25,7 +25,7 @@ public class GesturControllerStreetView : MonoBehaviour
     public float zoomScale = 0.7f;
 
     string swipestart = "none";
-    StreetviewPoint pointed = null;
+    Button pointed = null;
 
     // Use this for initializatio
     void Start()
@@ -128,13 +128,13 @@ public class GesturControllerStreetView : MonoBehaviour
                 if(hit.collider != null)
                 {
                     target.transform.position = hit.transform.position;
-                    if(hit.collider.gameObject.tag == "StreetviewPoint")
+                    if(hit.collider.gameObject.tag == "Arrow")
                     {
-                        pointed = hit.collider.gameObject.GetComponent<StreetviewPoint>();
+                        pointed = hit.collider.gameObject.GetComponent<Button>();
                         if(pointed != null)
                         {
                             // TODO : Mouse Enter (SHJO)
-                            pointed.Pointed();
+                            
                         }
                     }
                 }
@@ -144,7 +144,6 @@ public class GesturControllerStreetView : MonoBehaviour
                 // TODO : Mouse Exit (SHJO)
                 if(pointed != null)
                 {
-                    pointed.PointedOut();
                     pointed = null;
                 }
             }
@@ -163,7 +162,7 @@ public class GesturControllerStreetView : MonoBehaviour
                     if(pointed != null)
                     {
                         // TODO : Click (SHJO)
-                        Application.LoadLevel("StreetViewer");
+                        pointed.Touch();
                     }
                 }
                 // Screen Tap
@@ -176,7 +175,7 @@ public class GesturControllerStreetView : MonoBehaviour
                     if(pointed != null)
                     {
                         // TODO : Click - Optional (SHJO)
-                        Application.LoadLevel("StreetViewer");
+                        pointed.Touch();
                     }
                 }
                 // Swipe

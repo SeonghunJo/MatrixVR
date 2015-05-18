@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Arrow : MonoBehaviour {
+public class Button : MonoBehaviour {
 
 	private string panoramaID;
 
@@ -27,10 +27,15 @@ public class Arrow : MonoBehaviour {
 	
 	}
 
+    public void Touch()
+    {
+        Manager.Instance.panoramaID = panoramaID;
+        GameObject streetViewManager = GameObject.Find("StreetViewManager");
+        streetViewManager.GetComponent<StreetViewRenderer>().RenderStreetView();
+    }
+
 	void OnMouseDown()
 	{
-		Manager.Instance.panoramaID = panoramaID;
-		GameObject streetViewManager = GameObject.Find("StreetViewManager");
-		streetViewManager.GetComponent<StreetViewRenderer>().RenderStreetView();
+        Touch();
 	}
 }

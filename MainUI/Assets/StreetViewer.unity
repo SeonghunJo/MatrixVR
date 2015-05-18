@@ -154,9 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FadeInTime: 2
   FadeInTexture: {fileID: 0}
-  FontReplace: {fileID: 12800000, guid: 7593bfee3a73d8a45a6872032ab4e086, type: 3}
+  FontReplace: {fileID: 12800000, guid: 2eab921198154ec4e934bfe68d06d984, type: 3}
   ToggleKey: 32
   QuitKey: 27
+  panelObj: {fileID: 0}
   ScenesVisible: 0
   GUIRenderTexture: {fileID: 0}
   LayerName: Default
@@ -169,7 +170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 30103676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36f4146d491ebd649b285ca959696bbd, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fed93e73bc871e479f37decbba925ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursorModel: {fileID: 1928253852}
@@ -276,6 +277,75 @@ AudioListener:
   m_PrefabInternal: {fileID: 1296959283}
   m_GameObject: {fileID: 103467109}
   m_Enabled: 1
+--- !u!1 &386721570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 386721571}
+  - 33: {fileID: 386721574}
+  - 135: {fileID: 386721573}
+  - 23: {fileID: 386721572}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &386721571
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386721570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1908982972}
+  m_RootOrder: 0
+--- !u!23 &386721572
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386721570}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!135 &386721573
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386721570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &386721574
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386721570}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &434477919
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +955,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11400010, guid: d0cfc6e3159544c63b90900f49044b35,
         type: 2}
+    - target: {fileID: 100008, guid: dd3831a83e889bb46908cc2d4d0338ac, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd3831a83e889bb46908cc2d4d0338ac, type: 2}
   m_RootGameObject: {fileID: 30103676}
@@ -1061,7 +1135,7 @@ MonoBehaviour:
   panoramaTexture: {fileID: 0}
   saveTextureFileName: Jinwoo
   skyboxMaterial: {fileID: 0}
-  arrowModel: {fileID: 100000, guid: 9b0404e0c23ad3c41aeacb5aed9c09bb, type: 2}
+  buttonModel: {fileID: 100000, guid: 9b0404e0c23ad3c41aeacb5aed9c09bb, type: 2}
   cubeTextureFront: {fileID: 0}
   cubeTextureBack: {fileID: 0}
   cubeTextureLeft: {fileID: 0}
@@ -1209,7 +1283,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .5, y: .5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 386721571}
   m_Father: {fileID: 1341978685}
   m_RootOrder: 1
 --- !u!1 &1928253852
