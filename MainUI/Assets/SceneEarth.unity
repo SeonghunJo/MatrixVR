@@ -98,7 +98,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 94473156}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -1574,14 +1574,15 @@ MonoBehaviour:
   leftCamera: {fileID: 1415859930}
   rightCamera: {fileID: 1018342632}
   Earth: {fileID: 370142936}
+  clickParticle: {fileID: 100000, guid: 4f2b448ece6bb4940be1ce4a87b8e110, type: 2}
   enableScreenTap: 1
   enableKeyTap: 1
   enableSwipe: 1
   enableCircle: 0
-  swipeSpeed: 100
+  swipeSpeed: 50
   maxFov: 130
   minFov: 80
-  zoomScale: .699999988
+  zoomScale: .5
 --- !u!114 &2117130069
 MonoBehaviour:
   m_ObjectHideFlags: 0
