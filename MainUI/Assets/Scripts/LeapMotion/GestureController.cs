@@ -28,11 +28,18 @@ public class GestureController : MonoBehaviour
 	
 	string swipestart = "none";
 	StreetviewPoint StreetView_Pointed = null;
+
+	bool FadeTrigger = true;
 	
 	
 	// Use this for initializatio
 	void Start()
 	{
+		FadeTrigger = true;
+
+		leftCamera.camera.fieldOfView = 180;
+		rightCamera.camera.fieldOfView = 180;
+		
 		target.renderer.material.color = Color.blue;
 		controller = new Controller();  //립모션 컨트롤러 할당 
 		
@@ -75,7 +82,19 @@ public class GestureController : MonoBehaviour
 		GestureList gestures = frame.Gestures(); //frame 안의 gesture 인식
 		HandList hands = frame.Hands;    //frame 안의 hands 인식
 		int num_hands = hands.Count;    //hand의 수
-		
+
+		if (FadeTrigger == true)
+		{
+			//gameObject.transform.localScale -= new Vector3(Time.deltaTime*35F,Time.deltaTime*30F,0);
+			leftCamera.camera.fieldOfView -=Time.deltaTime*15;
+			rightCamera.camera.fieldOfView-=Time.deltaTime*15f;
+			                                        
+		}
+		if (leftCamera.camera.fieldOfView < 106) 
+		{
+			FadeTrigger=false;
+		}
+
 		if (num_hands < 1) // 인식된 손이 없다면
 		{
 			return;

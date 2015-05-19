@@ -1,0 +1,343 @@
+Initialize engine version: 4.6.0f3 (30840d631a27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 960M   (ID=0x139b)
+    Vendor:   NVIDIA
+    VRAM:     1976 MB
+Default GameObject Tag: Button already registered
+ 
+(Filename:  Line: 66)
+
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
+Loading C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
+Platform assembly: C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\LitJson.dll (this message is harmless)
+Loading C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\LitJson.dll into Unity Child Domain
+- Completed reload, in  0.048 seconds
+<RI> Initializing input.
+XInput1_3.dll not found.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+Platform assembly: C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\joon\Documents\GitHub\Matrix\MainUI\moon1_Data\Managed\System.dll (this message is harmless)
+OVRMainMenu: No OVRPlayerController attached.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+50.05914 -122.9584 Zzl28rqGJgaL2IdkUleP8A
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+21.44192 -157.8082 UPGaj__Xj9yHswn5Ul0yKg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+36.0651 -112.1371 Fa-wHCWazJG6bn7ZjISQCA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+37.17221 -93.32254 ayOK2SvpqYzlk4rm1Q4KPQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+38.90788 -77.07237 r_4YsN868xJX25PKfCjXZQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+-3.825792 -32.39642 rfgb-QoM16gAAAQY_-2qjg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+-0.39652 -90.29202 QY2gQ6TM6M3DECEX7Ie3xQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+-3.852043 -32.44234 -dqeDyeJ_jVbfMxRF6jUJw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+-23.54523 -46.47427 JUyCJZzn1kQ6iX9ClR4HYg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+68.509 27.48185 GtnAyp0MCbYAAAQZLDcQIA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+66.54334 25.8485 hEuDBjnLcagAAAQZA4Rr0g
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+53.56912 -3.097381 PnH9mSC1eHs5U0jFoeuGRA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+42.54534 1.473427 me3DnHB6RmyGW8HEqAb5SQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+44.31598 9.174589 p85y89ZBexcxofkwZpkHBQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+46.16237 10.94582 rUnaHHrABT2HTKastUtiDQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+45.4328 12.34058 CgDdLMNL25XX9atw3dEZog
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+47.50717 19.04173 Pon_HbPw8a3TeuFFwfrYFA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+40.04981 26.21903 k4YxYzGcIOz0lKFkaOjBBw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+30.85155 29.66416 v5y4cLV08mWD7mA-BFkjoA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+29.97526 31.13873 M9XnT_J1KWLORH4M-_v6sA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+-33.79907 18.37499 cDSroLocAKL-Bgz_yvD4PQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+-20.25051 44.41899 88qwsWCYsJ8xXo2W1kjIXw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+25.19523 55.27643 eznax7JvTOXrAztKUfqj-A
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+23.1486 53.73596 ZGBLHEQEe8-bc5E4tO8ekg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+18.92232 72.83429 1uYAeoWlY4Pqoa6PZBDyZA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+25.30776 83.01083 PPZA0Nt_GDMAAAQfCWO9Tw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+27.93111 86.80466 TLc2AM_nU88AAAQpjCtyxw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+27.79025 86.71832 oL7LeZ1xLB-Xq9Qom5CWBQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+13.44182 103.8581 LLLgCrnde_oJztsG3uzDcQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+37.5712 126.9685 zMrHSTO0GCYAAAQINlCkXg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+33.45952 126.9398 IUmXlW6pRu1w9QnUdQk4vw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+34.3951 132.4535 0yx9g39tmnbtTUT1bZfyiw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+-33.57929 151.3093 HrHYIKEBk4Gqden0lMxJqA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : Zzl28rqGJgaL2IdkUleP8A
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : UPGaj__Xj9yHswn5Ul0yKg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : Fa-wHCWazJG6bn7ZjISQCA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : ayOK2SvpqYzlk4rm1Q4KPQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : r_4YsN868xJX25PKfCjXZQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : rfgb-QoM16gAAAQY_-2qjg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : QY2gQ6TM6M3DECEX7Ie3xQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : -dqeDyeJ_jVbfMxRF6jUJw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : JUyCJZzn1kQ6iX9ClR4HYg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : GtnAyp0MCbYAAAQZLDcQIA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : hEuDBjnLcagAAAQZA4Rr0g
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : PnH9mSC1eHs5U0jFoeuGRA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : me3DnHB6RmyGW8HEqAb5SQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : p85y89ZBexcxofkwZpkHBQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : rUnaHHrABT2HTKastUtiDQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : CgDdLMNL25XX9atw3dEZog
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : Pon_HbPw8a3TeuFFwfrYFA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : k4YxYzGcIOz0lKFkaOjBBw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : v5y4cLV08mWD7mA-BFkjoA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : M9XnT_J1KWLORH4M-_v6sA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : cDSroLocAKL-Bgz_yvD4PQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : 88qwsWCYsJ8xXo2W1kjIXw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : eznax7JvTOXrAztKUfqj-A
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : ZGBLHEQEe8-bc5E4tO8ekg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : 1uYAeoWlY4Pqoa6PZBDyZA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : PPZA0Nt_GDMAAAQfCWO9Tw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : TLc2AM_nU88AAAQpjCtyxw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : oL7LeZ1xLB-Xq9Qom5CWBQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : LLLgCrnde_oJztsG3uzDcQ
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : zMrHSTO0GCYAAAQINlCkXg
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : IUmXlW6pRu1w9QnUdQk4vw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : 0yx9g39tmnbtTUT1bZfyiw
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+start : HrHYIKEBk4Gqden0lMxJqA
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Can't find any images. Make sure you enabled 'Allow Images' in the Leap Motion Settings, you are on tracking version 2.1+ and your Leap Motion device is plugged in.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Can't find any images. Make sure you enabled 'Allow Images' in the Leap Motion Settings, you are on tracking version 2.1+ and your Leap Motion device is plugged in.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Toggle
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+RigidHand is null
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+TYPE_KEY_TAP - Duration : 0.226409
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+TYPE_KEY_TAP - Duration : 0.226409
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+TYPE_SCREEN_TAP
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+TYPE_KEY_TAP - Duration : 0.244352
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+TYPE_KEY_TAP - Duration : 0.216207
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+TYPE_SCREEN_TAP
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+RigidHand is null
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
