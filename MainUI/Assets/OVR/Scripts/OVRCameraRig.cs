@@ -29,7 +29,8 @@ using UnityEngine;
 /// <summary>
 /// A head-tracked stereoscopic virtual reality camera rig.
 /// </summary>
-[ExecuteInEditMode]
+
+//[ExecuteInEditMode] SHJO MODIFIED
 public class OVRCameraRig : MonoBehaviour
 {
 	/// <summary>
@@ -55,6 +56,8 @@ public class OVRCameraRig : MonoBehaviour
 	public Transform rightEyeAnchor { get; private set; }
 
 	private bool needsCameraConfigure;
+
+	public bool StopUpdateAnchors = false;
 
 #region Unity Messages
 	private void Awake()
@@ -90,6 +93,8 @@ public class OVRCameraRig : MonoBehaviour
 			return;
 
 		UpdateCameras();
+		if(StopUpdateAnchors == true)
+			return;
 		UpdateAnchors();
 	}
 
