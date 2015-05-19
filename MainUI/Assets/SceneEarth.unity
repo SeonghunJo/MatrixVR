@@ -19,7 +19,7 @@ RenderSettings:
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 38957043495915444959e110060f8e51, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b9be0c15efe8ad9489fdeead114d8ec5, type: 2}
   m_HaloStrength: .5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1104,7 +1104,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 5
+  m_RootOrder: 2
 --- !u!1 &1153460599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1320,7 @@ Transform:
   m_Children:
   - {fileID: 1705092096}
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 2
+  m_RootOrder: 5
 --- !u!20 &1415859932
 Camera:
   m_ObjectHideFlags: 0
@@ -1665,11 +1665,10 @@ Transform:
   m_Children:
   - {fileID: 428870682}
   - {fileID: 370142942}
-  - {fileID: 1415859931}
+  - {fileID: 1085813184}
   - {fileID: 448457619}
   - {fileID: 1018342633}
-  - {fileID: 1085813184}
-  - {fileID: 1294165453}
+  - {fileID: 1415859931}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!114 &2117130068
@@ -1723,7 +1722,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2117130064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b51bccdccc64f134a9802edce2b0bc04, type: 3}
   m_Name: 
