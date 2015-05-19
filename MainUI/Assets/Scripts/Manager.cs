@@ -23,5 +23,7 @@ public class Manager {
 
 	public string thumbnailText;
 	public Texture2D thumbnailImg;
+
+    public int processCount;
 	// FOR MainUI.scene VARIABLES AND FUNCTIONS
 }

@@ -35,7 +35,9 @@ public class StreetviewPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Input.GetKey(KeyCode.UpArrow)) {
+            Application.LoadLevel("StreetViewer");
+        }
     }
     void FadeOutEnd()
     {

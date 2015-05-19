@@ -142,7 +142,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &160358223
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +470,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 370142936}
   m_LocalRotation: {x: 0, y: .812083542, z: 0, w: .583541214}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -20, z: 80}
   m_LocalScale: {x: 75, y: 75, z: 75}
   m_Children:
   - {fileID: 186740853}
@@ -479,7 +479,7 @@ Transform:
   - {fileID: 160358224}
   - {fileID: 678431555}
   - {fileID: 1154689650}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1415859931}
   m_RootOrder: 1
 --- !u!1 &424663487
 GameObject:
@@ -943,7 +943,7 @@ Transform:
   m_LocalScale: {x: 1, y: .99999994, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1153460599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,7 +1130,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1415859930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1705092096}
+  - {fileID: 370142942}
   m_Father: {fileID: 2117130067}
   m_RootOrder: 0
 --- !u!20 &1415859932
@@ -1369,7 +1370,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1810283455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,7 +1455,7 @@ Transform:
   - {fileID: 448457619}
   - {fileID: 1018342633}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!114 &2117130068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,7 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeInTime: 2
-  FadeInTexture: {fileID: 0}
+  FadeInTexture: {fileID: 2800000, guid: daa862b7c8b652747b677022fbd8c532, type: 3}
   FontReplace: {fileID: 12800000, guid: 7593bfee3a73d8a45a6872032ab4e086, type: 3}
   ToggleKey: 32
   QuitKey: 27

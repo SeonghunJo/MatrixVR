@@ -128,7 +128,7 @@ public class GestureControllerStreetView : MonoBehaviour
                 if(hit.collider != null)
                 {
                     target.transform.position = hit.transform.position;
-                    if(hit.collider.gameObject.tag == "Arrow")
+                    if(hit.collider.gameObject.tag == "Button")
                     {
                         pointed = hit.collider.gameObject.GetComponent<Button>();
                         if(pointed != null)

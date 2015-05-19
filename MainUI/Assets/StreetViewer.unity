@@ -153,12 +153,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeInTime: 2
-  FadeInTexture: {fileID: 0}
+  FadeInTexture: {fileID: 2800000, guid: daa862b7c8b652747b677022fbd8c532, type: 3}
   FontReplace: {fileID: 12800000, guid: 2eab921198154ec4e934bfe68d06d984, type: 3}
   ToggleKey: 32
   QuitKey: 27
-  panelObj: {fileID: 0}
   ScenesVisible: 0
+  loadingImg1: {fileID: 2800000, guid: 9d708c7baaedd5d4eab5aef8b9ec4513, type: 3}
+  loadingImg2: {fileID: 2800000, guid: ccc2296ae3fc97f489afa35f218c6aa0, type: 3}
+  loadingset: 0
   GUIRenderTexture: {fileID: 0}
   LayerName: Default
   CrosshairImage: {fileID: 0}

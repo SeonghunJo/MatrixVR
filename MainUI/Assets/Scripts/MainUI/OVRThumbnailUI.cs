@@ -23,7 +23,9 @@ public class OVRThumbnailUI : MonoBehaviour
 	// Spacing for scenes menu
 	private int    	resolutionX			= 1280;
 	private int    	resolutionY			= 800;
-	
+
+    private int screenCenterX = 640;
+    private int screenCenterY = 400;
 	// Handle to OVRCameraRig
 	private OVRCameraRig CameraController = null;
 	
@@ -346,13 +348,18 @@ public class OVRThumbnailUI : MonoBehaviour
 		int width = 160;
 		int height = 80;
 		Texture image = Manager.Instance.thumbnailImg;
-		GuiHelper.StereoDrawTexture(resolutionX/2 - width/2, resolutionY-500, width, height, ref image, new Color(0.5f, 0.5f, 0.5f, 1f));
+        GuiHelper.StereoDrawTexture(screenCenterX - width / 2, 400, width, height, ref image, new Color(0.5f, 0.5f, 0.5f, 1f));
 
 		int textWidth = 400;
 		int textHeight = 30;
-		string locationName = Manager.Instance.thumbnailText;
 
-		GuiHelper.StereoBox (resolutionX/2 - textWidth/2, resolutionY-400, textWidth, textHeight, ref locationName, Color.white);
+        //GUI.color = new Color(0, 0, 0);
+        //GUI.DrawTexture(new Rect(screenCenterX - textWidth / 2, 500, textWidth, textHeight), FadeInTexture);
+
+		string locationName = Manager.Instance.thumbnailText;
+        if (locationName == null)
+            locationName = "no name";
+        GuiHelper.StereoBox(screenCenterX - textWidth / 2, 500, textWidth, textHeight, ref locationName, Color.white);
 	}
 	#endregion Jin Added
 	

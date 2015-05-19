@@ -27,6 +27,12 @@ public class OVRLoadingScreen : MonoBehaviour
 	private int screenCenterX = 640;
 	private int screenCenterY = 400;
 
+    private int processBarLocation = 0;
+    
+    public Texture loadingImg1;
+    public Texture loadingImg2;
+    public int loadingset = 0;
+
 	// Handle to OVRCameraRig
 	private OVRCameraRig CameraController = null;
 	// Handle to OVRPlayerController
@@ -98,6 +104,7 @@ public class OVRLoadingScreen : MonoBehaviour
 		Canvas c = NewGUIObject.AddComponent<Canvas>();
 		c.renderMode = RenderMode.WorldSpace;
 		c.pixelPerfect = false;
+
 	}
 	
 	/// <summary>
@@ -185,6 +192,9 @@ public class OVRLoadingScreen : MonoBehaviour
 		Crosshair.SetCrosshairTexture(ref CrosshairImage);
 		Crosshair.SetOVRCameraController (ref CameraController);
 		Crosshair.SetOVRPlayerController(ref PlayerController);
+
+        print("start function : " + ScenesVisible);
+        StartCoroutine(DrawWalker(true));
 	} 
 	
 	/// <summary>
@@ -302,6 +312,7 @@ public class OVRLoadingScreen : MonoBehaviour
 	public void HideScreen()
 	{
 		ScenesVisible = false;
+        loadingset = 0;
 	}
 	
 	public bool ToggleScreenByKey(KeyCode keyCode)
@@ -331,36 +342,38 @@ public class OVRLoadingScreen : MonoBehaviour
 		}
 	}
 
+    IEnumerator DrawWalker(bool forceStart)
+    {
+        while(ScenesVisible || forceStart)
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            loadingset++;           
+        }        
+    }
+
 	void GUIDrawLoadingScreen()
 	{   
 		int boxWidth = 300;
-		int boxHeight = 60;
+		int boxHeight = 50;
    
 		GUI.color = new Color(0, 0, 0);
-        if(FadeInTexture != null)
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
-
-        //Texture matrixTexture = Resources.Load("Earth-1280") as Texture;
-        //GuiHelper.StereoDrawTexture(0, 0, 1024, 1024, ref matrixTexture, Color.grey);   //매트릭스 배경 조건
-		//GuiHelper.StereoDrawTexture(0, 0, 1280, 900, ref matrixTexture, Color.white);    //Earth-1280 조건 
-        string Matrix = "M.A.T.R.I.X";
-        GuiHelper.StereoBox(0, 100, 1280, 50, ref Matrix, Color.green);
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
 
 		string loading = "LOADING...";
-		GuiHelper.StereoBox (resolutionX/2 - boxWidth/2, 170, 300, 50, ref loading, Color.yellow);
+        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 400, boxWidth, boxHeight + 5, ref loading, Color.white);
 
-        string locationText = "Where is it?";
-        if (Manager.Instance.thumbnailText == null)
-            locationText = "Where is it?";
+        if(loadingset % 2 ==0)
+           GuiHelper.StereoDrawTexture(screenCenterX - 50, 500, 100, 100, ref loadingImg1, new Color(0.5f, 0.5f, 0.5f, 1f));                                                                                   
         else
-            locationText = Manager.Instance.thumbnailText;
-        GuiHelper.StereoBox(0, 200, 1280, 50, ref locationText, Color.grey);
+            GuiHelper.StereoDrawTexture(screenCenterX - 50, 500, 100, 100, ref loadingImg2, new Color(0.5f, 0.5f, 0.5f, 1f));
 
-        Texture thumb = Manager.Instance.thumbnailImg;
-		boxWidth = 416;
-		boxHeight = 208;
-        if(thumb != null)
-		    GuiHelper.StereoDrawTexture (resolutionX/2 - boxWidth/2, 250, 416, 208, ref thumb, new Color(0.5f, 0.5f, 0.5f, 1f));
+        int process = Manager.Instance.processCount;
+        string locationText = process.ToString();
+
+        GuiHelper.StereoBox(screenCenterX - 550 , 370, 1100, boxHeight, ref locationText, Color.white);
+
+       // processBarLocation += 5;
 	}
 	#endregion SeonghunJo Added
 

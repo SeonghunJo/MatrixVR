@@ -3,7 +3,7 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - StreetviewPoint
+  - Button
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
