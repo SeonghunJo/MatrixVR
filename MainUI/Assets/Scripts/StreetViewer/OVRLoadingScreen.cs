@@ -31,6 +31,10 @@ public class OVRLoadingScreen : MonoBehaviour
     
     public Texture loadingImg1;
     public Texture loadingImg2;
+    public Texture bar;
+    public Texture foot1;
+    public Texture foot2;
+
     public int loadingset = 0;
 
 	// Handle to OVRCameraRig
@@ -360,20 +364,34 @@ public class OVRLoadingScreen : MonoBehaviour
 		GUI.color = new Color(0, 0, 0);
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
 
+        //Draw Loading text
 		string loading = "LOADING...";
-        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 400, boxWidth, boxHeight + 5, ref loading, Color.white);
+        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 330, boxWidth, boxHeight + 5, ref loading, Color.white);
 
+        //Draw People
         if(loadingset % 2 ==0)
-           GuiHelper.StereoDrawTexture(screenCenterX - 50, 500, 100, 100, ref loadingImg1, new Color(0.5f, 0.5f, 0.5f, 1f));                                                                                   
+            GuiHelper.StereoDrawTexture(screenCenterX - 40, 400, 80, 80, ref loadingImg1, new Color(0.5f, 0.5f, 0.5f, 1f));                                                                                   
         else
-            GuiHelper.StereoDrawTexture(screenCenterX - 50, 500, 100, 100, ref loadingImg2, new Color(0.5f, 0.5f, 0.5f, 1f));
+            GuiHelper.StereoDrawTexture(screenCenterX - 40, 400, 80, 80, ref loadingImg2, new Color(0.5f, 0.5f, 0.5f, 1f));
+        
+        //Draw Process count
+        int process = Manager.Instance.processCount * 3;
+        if (process > 100)
+            process = 100;
+        string locationText = process.ToString() + " %";
+        GuiHelper.StereoBox(screenCenterX - 40, 480, 80, boxHeight, ref locationText, Color.white);
 
-        int process = Manager.Instance.processCount;
-        string locationText = process.ToString();
+        //Draw Process bar
+        processBarLocation = process * 3;
+        GuiHelper.StereoDrawTexture(screenCenterX - 150, 550, processBarLocation, boxHeight, ref bar, new Color(0.5f, 0.5f, 0.5f, 1f));
 
-        GuiHelper.StereoBox(screenCenterX - 550 , 370, 1100, boxHeight, ref locationText, Color.white);
 
-       // processBarLocation += 5;
+        //if(processBarLocation%2==0)
+        //    GuiHelper.StereoDrawTexture(screenCenterX - 150, 490, 20, 10, ref foot1, new Color(0.5f, 0.5f, 0.5f, 1f));
+        //else
+        //    GuiHelper.StereoDrawTexture(screenCenterX - 150, 490, 20, 10, ref foot2, new Color(0.5f, 0.5f, 0.5f, 1f));
+
+
 	}
 	#endregion SeonghunJo Added
 
