@@ -82,16 +82,16 @@ public class StreetviewPoint : MonoBehaviour
 
     public void SetPosition()
     {
-        Lat = CreatePoint._rotation.x;
-        Lng = -(CreatePoint._rotation.y);
-        panoID = CreatePoint.panoID;
+        Lat = CreateTarget._rotation.x;
+        Lng = -(CreateTarget._rotation.y);
+        panoID = CreateTarget.panoID;
 
 		thumbnailURL = thumbnailURL + panoID;
 
 		Debug.Log(Lat + " " + Lng + " " + panoID );
 
-        transform.Rotate(CreatePoint._rotation);
-        transform.Translate(CreatePoint._translate);
+        transform.Rotate(CreateTarget._rotation);
+        transform.Translate(CreateTarget._translate);
 
     }
 

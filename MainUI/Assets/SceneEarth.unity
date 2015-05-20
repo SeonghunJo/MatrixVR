@@ -1669,7 +1669,6 @@ Transform:
   - {fileID: 1415859931}
   - {fileID: 448457619}
   - {fileID: 1018342633}
-  - {fileID: 1415859931}
   - {fileID: 1294165453}
   m_Father: {fileID: 0}
   m_RootOrder: 3
