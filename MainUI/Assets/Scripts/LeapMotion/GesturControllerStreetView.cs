@@ -183,7 +183,8 @@ public class GesturControllerStreetView : MonoBehaviour
                     {
                         // TODO : Click (SHJO)
 						if(hit.collider.gameObject.tag=="Button")
-						{	Debug.Log ("Button Touch");
+						{	
+                            Debug.Log ("Button Touch");
 							pointed.Touch ();
 						}
 						else if(hit.collider.gameObject.tag=="MainMenu")

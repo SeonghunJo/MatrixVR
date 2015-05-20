@@ -24,8 +24,7 @@ public class Button : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.UpArrow))
-            Touch();
+
 	}
 
     public void Touch()

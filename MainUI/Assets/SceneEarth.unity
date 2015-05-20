@@ -679,7 +679,7 @@ Transform:
   m_Children:
   - {fileID: 1153460600}
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!81 &448457620
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1008,7 +1008,7 @@ Transform:
   m_Children:
   - {fileID: 424663488}
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!20 &1018342634
 Camera:
   m_ObjectHideFlags: 0
@@ -1146,9 +1146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   separateLeftRight: 1
-  leftGraphicsModel: {fileID: 11400000, guid: 9ae8a8acf486840e19397b18a914d915, type: 2}
+  leftGraphicsModel: {fileID: 11400010, guid: 803e5afd6582b44ae90ede39c52c3554, type: 2}
   leftPhysicsModel: {fileID: 11400008, guid: 4b359b2f0d7d14ef0a97b45ec153a3ef, type: 2}
-  rightGraphicsModel: {fileID: 11400010, guid: 0c6c9cacc3ef1487daa06cb206b2f421, type: 2}
+  rightGraphicsModel: {fileID: 11400010, guid: d0cfc6e3159544c63b90900f49044b35, type: 2}
   rightPhysicsModel: {fileID: 11400008, guid: 4b359b2f0d7d14ef0a97b45ec153a3ef, type: 2}
   toolModel: {fileID: 0}
   isHeadMounted: 1
@@ -1320,7 +1320,7 @@ Transform:
   m_Children:
   - {fileID: 1705092096}
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 5
+  m_RootOrder: 3
 --- !u!20 &1415859932
 Camera:
   m_ObjectHideFlags: 0
@@ -1666,9 +1666,10 @@ Transform:
   - {fileID: 428870682}
   - {fileID: 370142942}
   - {fileID: 1085813184}
+  - {fileID: 1415859931}
   - {fileID: 448457619}
   - {fileID: 1018342633}
-  - {fileID: 1415859931}
+  - {fileID: 1294165453}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!114 &2117130068

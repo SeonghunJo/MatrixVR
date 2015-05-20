@@ -366,7 +366,7 @@ public class OVRLoadingScreen : MonoBehaviour
 
         //Draw Loading text
 		string loading = "LOADING...";
-        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 330, boxWidth, boxHeight + 5, ref loading, Color.white);
+        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight + 5, ref loading, Color.white);
 
         //Draw People
         if(loadingset % 2 ==0)
@@ -383,7 +383,7 @@ public class OVRLoadingScreen : MonoBehaviour
 
         //Draw Process bar
         processBarLocation = process * 3;
-        GuiHelper.StereoDrawTexture(screenCenterX - 150, 550, processBarLocation, boxHeight, ref bar, new Color(0.5f, 0.5f, 0.5f, 1f));
+        GuiHelper.StereoDrawTexture(screenCenterX - 150, 540, processBarLocation, boxHeight, ref bar, new Color(0.5f, 0.5f, 0.5f, 1f));
 
 
         //if(processBarLocation%2==0)

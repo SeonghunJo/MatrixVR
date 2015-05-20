@@ -351,7 +351,7 @@ public class OVRThumbnailUI : MonoBehaviour
         GuiHelper.StereoDrawTexture(screenCenterX - width / 2, 400, width, height, ref image, new Color(0.5f, 0.5f, 0.5f, 1f));
 
 		int textWidth = 400;
-		int textHeight = 30;
+		int textHeight = 40;
 
         //GUI.color = new Color(0, 0, 0);
         //GUI.DrawTexture(new Rect(screenCenterX - textWidth / 2, 500, textWidth, textHeight), FadeInTexture);
