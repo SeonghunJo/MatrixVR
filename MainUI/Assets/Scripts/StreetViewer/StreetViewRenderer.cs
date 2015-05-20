@@ -5,6 +5,13 @@ using System.IO; // For File Class
 using System;
 using LitJson; // http://lbv.github.io/litjson/
 
+
+// SHJO TODO : TEXTURE CACHING LOGIC
+// 0. 메타 데이터 정보는 캐싱 여부와 상관없이 확인할 필요가 있음
+// 1. 다운로드된 파노라마 및 큐브맵 이미지 확인
+// 2-1. 기존 파노라마가 없으면 기존 방식대로 다운로드
+// 2-2. 기존 파노라마가 있으면 큐브맵을 기존 텍스쳐를 로딩하는 방식으로 대체한다.
+
 public class StreetViewRenderer : MonoBehaviour
 {
     public string panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
@@ -36,11 +43,18 @@ public class StreetViewRenderer : MonoBehaviour
     private int rowTilesNum = 0;
     private int colTilesNum = 0;
     private int totalTilesNum; // rowTileNums * colTileNums;
+    
+    private float pivotYaw = 0.0f; // Panorama Pivot Yaw Degree ; Set by GetMetaData
 
     // SET BY DEVELOPER
-    private int zoom = 3;
-    Texture2D[,] tiles;
-    int tileCount;
+    private int zoom = 3; // Default Panorama Zoom Size
+    private Texture2D[,] tiles;
+    private int tileCount;
+
+    // NEED TO INITIATE VALUE BEFORE START RENDER
+    private bool bGetMetaData = false;
+    private bool bGetPanoramaImage = false;
+    private int retryCounter = 0;
 
     // Panorama To Cubemap
     public const int FACE_FRONT = 0;
@@ -54,6 +68,8 @@ public class StreetViewRenderer : MonoBehaviour
     private int[] m_textureSize = { 64, 128, 256, 512, 1024, 2048 };
     private int m_textureSizeIndex = 4;
 
+    public bool enableSaveTexture = false;
+
     public Texture2D cubeTextureFront = null;
     public Texture2D cubeTextureBack = null;
     public Texture2D cubeTextureLeft = null;
@@ -62,6 +78,13 @@ public class StreetViewRenderer : MonoBehaviour
     public Texture2D cubeTextureDown = null;
 
     OVRLoadingScreen screen = null;
+
+
+    // Use this for initialization
+    void Start()
+    {
+        StartRenderStreetView();
+    }
 
     // For Generate Buttons
     void OnGUI()
@@ -81,6 +104,181 @@ public class StreetViewRenderer : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void StartRenderStreetView()
+    {
+        /* 스트리트뷰 정보 확인 */
+        print("StreetViewer Start");
+        StartCoroutine(RenderStreetView());
+        print("StreetViewer Start End");
+    }
+
+    // Step 1
+    IEnumerator RenderStreetView() // INIT VARIABLES AND DOWNLOAD START
+    {
+        /* 파노라마 렌더링 시작 */
+        // 파노라마 아이디를 통해 파노라마 이미지에 대한 부가 정보를 받는다.
+
+        // INIT
+        Manager.Instance.processCount = 0;
+        panoramaID = Manager.Instance.panoramaID;
+        print("Panorama ID : " + Manager.Instance.panoramaID);
+        if (panoramaID == null)
+            panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
+        saveTextureFileName = panoramaID;
+
+        bGetMetaData = false;
+        bGetPanoramaImage = false;
+        retryCounter = 0;
+
+        // INIT END
+
+        LoadingScreen.Show();
+
+        // FIND OVR CAMERA
+        screen = GameObject.Find("LeapOVRCameraRig").GetComponent<OVRLoadingScreen>();
+        if (screen != null)
+            screen.ShowScreen();
+
+        Debug.Log("ID -> META DATA");
+        do
+        {
+            yield return StartCoroutine(GetMetaData());
+            retryCounter++;
+        } while (bGetMetaData == false && retryCounter < 5);
+        Debug.Log("GetMetaData End : Retry Count is " + retryCounter.ToString());
+        
+        if(retryCounter == 5)
+        {
+            Debug.LogError("Get Meta Data Failed");
+            retryCounter = 0;
+        }
+
+        yield return StartCoroutine(GetPanoramaImage(panoramaID, textureWidth, textureHeight));
+        Debug.Log("GetPanoramaImage End");
+
+        if (screen != null)
+            screen.HideScreen();
+
+        LoadingScreen.Hide();
+    }
+
+    // Step 2
+    IEnumerator GetMetaData()
+    {
+        string metaURL = cbkURL + "output=json" + "&panoid=" + panoramaID;
+        WWW www = new WWW(metaURL);
+        yield return www;
+
+        if (!string.IsNullOrEmpty(www.error))
+        {
+            Debug.Log("WWW Error [Meta Data] : " + www.error);
+            bGetMetaData = false;
+            yield break;
+        }
+        else
+        {
+            bGetMetaData = true;
+        }
+
+        JsonData json = JsonMapper.ToObject(www.text);
+        JsonData data = json["Data"];
+
+        imageWidth = Convert.ToInt32(data["image_width"].ToString());
+        imageHeight = Convert.ToInt32(data["image_height"].ToString());
+        tileWidth = Convert.ToInt32(data["tile_width"].ToString());
+        tileHeight = Convert.ToInt32(data["tile_height"].ToString());
+
+        print("image width : " + imageWidth + " image height : " + imageHeight);
+        print("tile width : " + tileWidth + " tile height : " + tileHeight);
+
+        JsonData projection = json["Projection"];
+        pivotYaw = Convert.ToSingle(projection["pano_yaw_deg"].ToString());
+
+        JsonData location = json["Location"];
+        zoomLevels = Convert.ToInt32(location["zoomLevels"].ToString());
+
+        string locationText = "";
+        if (location.Keys.Contains("description"))
+        {
+            description = location["description"].ToString();
+            locationText += description;
+        }
+        if (location.Keys.Contains("country"))
+        {
+            country = location["country"].ToString();
+            locationText += ", " + country;
+        }
+        if (location.Keys.Contains("region"))
+        {
+            region = location["region"].ToString();
+            locationText += ", " + region;
+        }
+
+        LoadingScreen.SetLocationText(locationText);
+        // 현재 파노라마 위치에서 갈 수 있는 방향 및 파노라마 ID 정보를 파싱한다.
+        JsonData links = json["Links"];
+        int linkCount = links.Count;
+
+        Manager.Instance.nextIDs = new string[linkCount];
+        Manager.Instance.nextDegrees = new string[linkCount];
+
+        for (int i = 0; i < linkCount; i++)
+        {
+            JsonData item = links[i];
+            string linkID = item["panoId"].ToString();
+            Manager.Instance.nextIDs[i] = linkID;
+            string yawDeg = item["yawDeg"].ToString();
+            Manager.Instance.nextDegrees[i] = yawDeg;
+
+            print("Link ID : " + linkID + " yawDeg : " + yawDeg);
+        }
+
+        textureWidth = imageWidth / ((zoomLevels - zoom) * 2);
+        textureHeight = imageHeight / ((zoomLevels - zoom) * 2);
+    }
+
+    // Step 3
+    IEnumerator GetPanoramaImage(string pano_id, int width, int height)
+    {
+        print("Get Panorama Image - ID : " + pano_id + " width : " + width + " height : " + height);
+
+        panoramaTexture = new Texture2D(width, height);
+
+        string output = "tile";
+        int x = 0;
+        int y = 0;
+        tileCount = 0;
+
+        rowTilesNum = height / tileHeight;
+        if ((height % tileHeight) > 0)
+            rowTilesNum += 1;
+
+        colTilesNum = width / tileWidth;
+        if ((width % tileHeight) > 0)
+            colTilesNum += 1;
+
+        totalTilesNum = rowTilesNum * colTilesNum;
+
+        tiles = new Texture2D[rowTilesNum, colTilesNum];
+
+        for (y = 0; y < rowTilesNum; y++)
+        {
+            for (x = 0; x < colTilesNum; x++)
+            {
+                yield return StartCoroutine(GoogleStreetViewTiled(output, panoramaID, zoom, x, y));
+            }
+        }
+
+        if (tileCount == totalTilesNum)
+            Debug.Log("All tiles downloaded!");
+        else
+            Debug.LogWarning("Tiles downloaed loss");
+
+        tileCount = 0;
+        yield return StartCoroutine(MergeTiles());
+        DrawButtons();
     }
 
     // 전체 파노라마 타일중 x, y 좌표에 위치한 타일 하나를 받아오는 함수 
@@ -106,33 +304,66 @@ public class StreetViewRenderer : MonoBehaviour
         tileCount++;
         Manager.Instance.processCount++;
 
-        if (saveTextureFileName != "")
-        {
-            string realSavePath = Application.persistentDataPath + "/" + saveTextureFileName + "_" + y + "_" + x + ".png";
-
-            byte[] png = tiles[y, x].EncodeToPNG();
-            File.WriteAllBytes(realSavePath, png);
-        }
+        SaveTexture(tiles[y, x], saveTextureFileName + "_" + y + "_" + x + ".png");
     }
 
 
-    void SetSkybox(Material material)
+
+    IEnumerator MergeTiles()
     {
-        GameObject camera = Camera.main.gameObject;
-        Skybox skybox = camera.GetComponent<Skybox>();
-        if (skybox == null)
-            skybox = camera.AddComponent<Skybox>();
-        skybox.material = material;
+        int penPosX;
+        int penPosY;
+
+        for (int i = 0; i < rowTilesNum; i++)
+        {
+            for (int j = 0; j < colTilesNum; j++)
+            {
+                Texture2D cp = tiles[i, j];
+                if (cp == null)
+                {
+                    print("cp is null " + i + "," + j);
+                    continue;
+                }
+
+                for (int y = 0; y < cp.height; y++)
+                {
+                    for (int x = 0; x < cp.width; x++)
+                    {
+                        penPosX = (tileWidth * j) + x;
+                        penPosY = textureHeight - (tileHeight * (i + 1)) + y;
+                        if (penPosX < textureWidth && penPosY > 0)
+                            panoramaTexture.SetPixel(penPosX, penPosY, cp.GetPixel(x, y));
+                    }
+                }
+            }
+        }
+        panoramaTexture.Apply();
+
+        SaveTexture(panoramaTexture, panoramaID + "png");
+
+        Manager.Instance.processCount++;
+
+        yield return StartCoroutine(ConvertPanoramaToCubemap());
     }
 
-    private int m_GetCubemapTextureSize()
+    void DrawButtons()
     {
-        int size = 512;
-        if (m_textureSize.Length > m_textureSizeIndex)
+        // 만약 기존의 화살표 프리팹이 있다면 정리해준다.
+        if (buttonModelList != null && buttonModelList.Length > 0)
         {
-            size = m_textureSize[m_textureSizeIndex];
+            for (int i = 0; i < buttonModelList.Length; i++)
+            {
+                Destroy(buttonModelList[i]);
+            }
         }
-        return size;
+
+        buttonModelList = new GameObject[Manager.Instance.nextDegrees.Length];
+        for (int i = 0; i < Manager.Instance.nextDegrees.Length; i++)
+        {
+            buttonModelList[i] = Instantiate(buttonModel, transform.position, Quaternion.identity) as GameObject;
+            buttonModelList[i].GetComponent<Button>().SetDegree(Convert.ToSingle(Manager.Instance.nextDegrees[i]) - pivotYaw);
+            buttonModelList[i].GetComponent<Button>().SetPanoramaID(Manager.Instance.nextIDs[i]);
+        }
     }
 
     private IEnumerator ConvertPanoramaToCubemap()
@@ -158,14 +389,28 @@ public class StreetViewRenderer : MonoBehaviour
         yield return StartCoroutine(m_CreateCubemapTexture(texSize, StreetViewRenderer.FACE_DOWN, panoramaID + "_down.png"));
         Manager.Instance.processCount++;
         print(Manager.Instance.processCount);
-        RenderSettings.skybox = SkyboxRenderer.CreateSkyboxMaterial(cubeTextureFront, cubeTextureBack, cubeTextureLeft, cubeTextureRight, cubeTextureUp, cubeTextureDown);
-
+        
+        skyboxMaterial = SkyboxRenderer.CreateSkyboxMaterial(cubeTextureFront, cubeTextureBack, cubeTextureLeft, cubeTextureRight, cubeTextureUp, cubeTextureDown);
+        RenderSettings.skybox = skyboxMaterial;
     }
+
+    private int m_GetCubemapTextureSize()
+    {
+        int size = 512;
+        if (m_textureSize.Length > m_textureSizeIndex)
+        {
+            size = m_textureSize[m_textureSizeIndex];
+        }
+        return size;
+    }
+
 
     private IEnumerator m_CreateCubemapTexture(int texSize, int faceIndex, string fileName = null)
     {
         Texture2D tex = new Texture2D(texSize, texSize, TextureFormat.RGB24, false);
 
+        // SHJO TODO : 만약 로컬에 해당하는 Panorama ID의 텍스쳐가 있다면 해당 리소스의 텍스쳐를 사용한다.
+        print("Create Cubemap texture");
         Vector3[] vDirA = new Vector3[4];
         if (faceIndex == StreetViewRenderer.FACE_FRONT)
         {
@@ -235,12 +480,7 @@ public class StreetViewRenderer : MonoBehaviour
         tex.wrapMode = TextureWrapMode.Clamp;
         tex.Apply();
 
-        if (saveTextureFileName != "")
-        {
-            string realSavePath = Application.persistentDataPath + "/" + fileName;
-            byte[] png = tex.EncodeToPNG();
-            File.WriteAllBytes(realSavePath, png);
-        }
+        SaveTexture(tex, fileName);
 
         switch (faceIndex)
         {
@@ -264,7 +504,8 @@ public class StreetViewRenderer : MonoBehaviour
                 break;
         }
 
-        yield return tex;
+        print("Create Cubemap Texture" + fileName);
+        yield return null;
     }
 
 
@@ -292,223 +533,45 @@ public class StreetViewRenderer : MonoBehaviour
         return col;
     }
 
-
-    IEnumerator MergeTiles()
+    private IEnumerator m_CalcProjectionSpherical(Vector3 vDir, Color col)
     {
-        int penPosX;
-        int penPosY;
+        print("m_calc");
+        float theta = Mathf.Atan2(vDir.z, vDir.x);		// -π ～ +π.
+        float phi = Mathf.Acos(vDir.y);				//  0  ～ +π
 
-        for (int i = 0; i < rowTilesNum; i++)
+        theta += m_direction * Mathf.PI / 180.0f;
+        while (theta < -Mathf.PI) theta += Mathf.PI + Mathf.PI;
+        while (theta > Mathf.PI) theta -= Mathf.PI + Mathf.PI;
+
+        float dx = theta / Mathf.PI;		// -1.0 ～ +1.0.
+        float dy = phi / Mathf.PI;			//  0.0 ～ +1.0.
+
+        dx = dx * 0.5f + 0.5f;
+        int px = (int)(dx * (float)panoramaTexture.width);
+        if (px < 0) px = 0;
+        if (px >= panoramaTexture.width) px = panoramaTexture.width - 1;
+        int py = (int)(dy * (float)panoramaTexture.height);
+        if (py < 0) py = 0;
+        if (py >= panoramaTexture.height) py = panoramaTexture.height - 1;
+
+        col = panoramaTexture.GetPixel(px, panoramaTexture.height - py - 1);
+
+        yield return null;
+    }
+
+    public bool SaveTexture(Texture2D tex, string saveFileName)
+    {
+        if (enableSaveTexture == true)
         {
-            for (int j = 0; j < colTilesNum; j++)
-            {
-                Texture2D cp = tiles[i, j];
-                if (cp == null)
-                {
-                    print("cp is null " + i + "," + j);
-                    continue;
-                }
-
-                for (int y = 0; y < cp.height; y++)
-                {
-                    for (int x = 0; x < cp.width; x++)
-                    {
-                        penPosX = (tileWidth * j) + x;
-                        penPosY = textureHeight - (tileHeight * (i + 1)) + y;
-                        if (penPosX < textureWidth && penPosY > 0)
-                            panoramaTexture.SetPixel(penPosX, penPosY, cp.GetPixel(x, y));
-                    }
-                }
-            }
-        }
-        panoramaTexture.Apply();
-
-        if (saveTextureFileName != "")
-        {
-            string realSavePath = Application.persistentDataPath + "/" + saveTextureFileName + ".png";
-            byte[] png = panoramaTexture.EncodeToPNG();
+            string realSavePath = Application.persistentDataPath + "/" + saveFileName;
+            byte[] png = tex.EncodeToPNG();
             File.WriteAllBytes(realSavePath, png);
+
+            return true;
         }
-
-        Manager.Instance.processCount++;
-
-        yield return StartCoroutine(ConvertPanoramaToCubemap());
+        return false;
     }
 
-    IEnumerator GetMetaData()
-    {
-        string metaURL = cbkURL + "output=json" + "&panoid=" + panoramaID;
-        WWW www = new WWW(metaURL);
-        yield return www;
-
-        if (www.error != null)
-        {
-            Debug.Log("[Error] " + www.error);
-        }
-
-        JsonData json = JsonMapper.ToObject(www.text);
-        JsonData data = json["Data"];
-
-        imageWidth = Convert.ToInt32(data["image_width"].ToString());
-        imageHeight = Convert.ToInt32(data["image_height"].ToString());
-        tileWidth = Convert.ToInt32(data["tile_width"].ToString());
-        tileHeight = Convert.ToInt32(data["tile_height"].ToString());
-
-        print("image width : " + imageWidth + " image height : " + imageHeight);
-        print("tile width : " + tileWidth + " tile height : " + tileHeight);
-
-
-        JsonData location = json["Location"];
-        zoomLevels = Convert.ToInt32(location["zoomLevels"].ToString());
-
-        string locationText = "";
-        if (location.Keys.Contains("description"))
-        {
-            description = location["description"].ToString();
-            locationText += description;
-        }
-        if (location.Keys.Contains("country"))
-        {
-            country = location["country"].ToString();
-            locationText += ", " + country;
-        }
-        if (location.Keys.Contains("region"))
-        {
-            region = location["region"].ToString();
-            locationText += ", " + region;
-        }
-
-        LoadingScreen.SetLocationText(locationText);
-        // 현재 파노라마 위치에서 갈 수 있는 방향 및 파노라마 ID 정보를 파싱한다.
-        JsonData links = json["Links"];
-        int linkCount = links.Count;
-
-        Manager.Instance.nextIDs = new string[linkCount];
-        Manager.Instance.nextDegrees = new string[linkCount];
-
-        for (int i = 0; i < linkCount; i++)
-        {
-            JsonData item = links[i];
-            string linkID = item["panoId"].ToString();
-            Manager.Instance.nextIDs[i] = linkID;
-            string yawDeg = item["yawDeg"].ToString();
-            Manager.Instance.nextDegrees[i] = yawDeg;
-
-            print("Link ID : " + linkID + " yawDeg : " + yawDeg);
-        }
-
-        textureWidth = imageWidth / ((zoomLevels - zoom) * 2);
-        textureHeight = imageHeight / ((zoomLevels - zoom) * 2);
-    }
-
-    void DrawButtons()
-    {
-        // 만약 기존의 화살표 프리팹이 있다면 정리해준다.
-        if (buttonModelList != null && buttonModelList.Length > 0)
-        {
-            for (int i = 0; i < buttonModelList.Length; i++)
-            {
-                Destroy(buttonModelList[i]);
-            }
-        }
-
-        buttonModelList = new GameObject[Manager.Instance.nextDegrees.Length];
-        for (int i = 0; i < Manager.Instance.nextDegrees.Length; i++)
-        {
-            buttonModelList[i] = Instantiate(buttonModel, transform.position, Quaternion.identity) as GameObject;
-            buttonModelList[i].GetComponent<Button>().SetDegree(Convert.ToSingle(Manager.Instance.nextDegrees[i]));
-            buttonModelList[i].GetComponent<Button>().SetPanoramaID(Manager.Instance.nextIDs[i]);
-        }
-    }
-
-    IEnumerator GetPanoramaImage(string pano_id, int width, int height)
-    {
-        print("Get Panorama Image - ID : " + pano_id + " width : " + width + " height : " + height);
-
-        panoramaTexture = new Texture2D(width, height);
-
-        string output = "tile";
-        int x = 0;
-        int y = 0;
-        tileCount = 0;
-
-        rowTilesNum = height / tileHeight;
-        if ((height % tileHeight) > 0)
-            rowTilesNum += 1;
-
-        colTilesNum = width / tileWidth;
-        if ((width % tileHeight) > 0)
-            colTilesNum += 1;
-
-        totalTilesNum = rowTilesNum * colTilesNum;
-
-        tiles = new Texture2D[rowTilesNum, colTilesNum];
-
-        for (y = 0; y < rowTilesNum; y++)
-        {
-            for (x = 0; x < colTilesNum; x++)
-            {
-                yield return StartCoroutine(GoogleStreetViewTiled(output, panoramaID, zoom, x, y));
-            }
-        }
-
-        if (tileCount == totalTilesNum)
-            Debug.Log("All tiles downloaded!");
-        else
-            Debug.LogWarning("Tiles downloaed loss");
-
-        tileCount = 0;
-        yield return StartCoroutine(MergeTiles());
-        DrawButtons();
-    }
-
-    IEnumerator RenderStreetView()
-    {
-        /* 파노라마 렌더링 시작 */
-        // 파노라마 아이디를 통해 파노라마 이미지에 대한 부가 정보를 받는다.
-        Manager.Instance.processCount = 0;
-        panoramaID = Manager.Instance.panoramaID;
-        print("Panorama ID : " + Manager.Instance.panoramaID);
-        if (panoramaID == null)
-        {
-            panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
-        }
-
-        LoadingScreen.Show();
-        screen = GameObject.Find("LeapOVRCameraRig").GetComponent<OVRLoadingScreen>();
-
-        if (screen != null)
-            screen.ShowScreen();
-
-        Debug.Log("ID -> META DATA");
-        yield return StartCoroutine(GetMetaData());
-        Debug.Log("GetMetaData End");
-        yield return StartCoroutine(GetPanoramaImage(panoramaID, textureWidth, textureHeight));
-        Debug.Log("GetPanoramaImage End");
-
-        LoadingScreen.Hide();
-        screen.HideScreen();
-    }
-
-    public void StartRenderStreetView()
-    {
-        /* 스트리트뷰 정보 확인 */
-        print("StreetViewer Start");
-        StartCoroutine(RenderStreetView());
-        print("StreetViewer Start End");
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        StartRenderStreetView();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
 
 /* JSON Format
