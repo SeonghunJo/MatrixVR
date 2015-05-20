@@ -76,7 +76,7 @@ public class StreetViewRenderer : MonoBehaviour
                     {
                         print("Direction ID : " + Manager.Instance.nextIDs[i]);
                         Manager.Instance.panoramaID = Manager.Instance.nextIDs[i];
-                        RenderStreetView();
+                        StartRenderStreetView();
                     }
                 }
             }
