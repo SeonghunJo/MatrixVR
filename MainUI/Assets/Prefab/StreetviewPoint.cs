@@ -59,6 +59,7 @@ public class StreetviewPoint : MonoBehaviour
         Manager.Instance.panoramaID = panoID;
 
         thumbnailUI.ShowScreen();
+		//this.renderer.material.color = Color.blue;
 	}
 	
     void OnMouseEnter()
@@ -73,6 +74,7 @@ public class StreetviewPoint : MonoBehaviour
         Debug.Log("destroy : " + panoID);
 
         thumbnailUI.HideScreen();
+		//this.renderer.material.color = Color.red;
 	}
 
     void OnMouseExit()

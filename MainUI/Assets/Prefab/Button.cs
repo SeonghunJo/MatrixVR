@@ -36,6 +36,17 @@ public class Button : MonoBehaviour {
         streetViewManager.GetComponent<StreetViewRenderer>().StartRenderStreetView();
     }
 
+	public void Pointed()  
+	{
+		//포인트 효과 Add By Hjoon
+		this.renderer.material.color = Color.blue;
+	}
+	public void PointedOut()
+	{	
+		//포인트 벗어나는 효과 Add By Hjoon
+		this.renderer.material.color = Color.red;
+	}
+
 	void OnMouseDown()
 	{
         Touch();

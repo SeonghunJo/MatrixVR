@@ -137,7 +137,7 @@ public class GesturControllerStreetView : MonoBehaviour
 						pointed = hit.collider.gameObject.GetComponent<Button>();
 						if(pointed != null)
                         {
-
+							pointed.Pointed();
                         }
                     }
 					else if(hit.collider.gameObject.tag == "MainMenu")
@@ -156,7 +156,9 @@ public class GesturControllerStreetView : MonoBehaviour
 				// TODO : Mouse Exit (SHJO)
 				if(pointed != null)
                 {
-
+					//hit.collider.gameObject.renderer.material.color=Color.red;
+					pointed.PointedOut();
+					pointed=null;
                 }
 				else if(MainMenu_pointed !=null)
 				{
