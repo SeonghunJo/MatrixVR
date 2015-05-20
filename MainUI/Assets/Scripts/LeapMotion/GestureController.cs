@@ -29,16 +29,16 @@ public class GestureController : MonoBehaviour
 	string swipestart = "none";
 	StreetviewPoint StreetView_Pointed = null;
 
-	bool FadeTrigger = true;
-	
+	bool SceneZoomIn = true;  // 신전환시 ZoomIn효과 트리거.
+	bool SceneZoomOut =false; // 신전환시 ZoomOut효과 트리거.
 	
 	// Use this for initializatio
 	void Start()
 	{
-		FadeTrigger = true;
-
-		leftCamera.camera.fieldOfView = 180;
-		rightCamera.camera.fieldOfView = 180;
+		SceneZoomIn = true;
+		SceneZoomOut = false;
+		leftCamera.camera.fieldOfView = 190;
+		rightCamera.camera.fieldOfView = 190;
 		
 		target.renderer.material.color = Color.blue;
 		controller = new Controller();  //립모션 컨트롤러 할당 
@@ -83,17 +83,11 @@ public class GestureController : MonoBehaviour
 		HandList hands = frame.Hands;    //frame 안의 hands 인식
 		int num_hands = hands.Count;    //hand의 수
 
-		if (FadeTrigger == true)
+		if (SceneZoomIn == true)	//f
 		{
-			//gameObject.transform.localScale -= new Vector3(Time.deltaTime*35F,Time.deltaTime*30F,0);
-			leftCamera.camera.fieldOfView -=Time.deltaTime*15;
-			rightCamera.camera.fieldOfView-=Time.deltaTime*15f;
-			                                        
+			SceneChangeZoom(SceneZoomIn,SceneZoomOut);			
 		}
-		if (leftCamera.camera.fieldOfView < 106) 
-		{
-			FadeTrigger=false;
-		}
+
 
 		if (num_hands < 1) // 인식된 손이 없다면
 		{
@@ -193,7 +187,10 @@ public class GestureController : MonoBehaviour
 						
 						if(StreetView_Pointed != null)
 						{
-							// TODO : Click (SHJO)					
+							// TODO : Click (SHJO)	
+							if(SceneZoomOut==true)
+								SceneChangeZoom(SceneZoomIn,SceneZoomOut);
+
 							Application.LoadLevel("StreetViewer");
 						}
 					}
@@ -207,6 +204,9 @@ public class GestureController : MonoBehaviour
 						if(StreetView_Pointed != null)
 						{
 							// TODO : Click - Optional (SHJO)
+							if(SceneZoomOut==true)
+								SceneChangeZoom(SceneZoomIn,SceneZoomOut);
+
 							Application.LoadLevel("StreetViewer");
 						}
 					}
@@ -318,6 +318,34 @@ public class GestureController : MonoBehaviour
 		}
 		
 	}
+
+	public void SceneChangeZoom(bool zoomIn,bool zoomOut)
+	{
+		if (zoomIn == true && zoomOut == false)	//f
+		{
+			//gameObject.transform.localScale -= new Vector3(Time.deltaTime*35F,Time.deltaTime*30F,0);
+			leftCamera.camera.fieldOfView -=Time.deltaTime*15;
+			rightCamera.camera.fieldOfView-=Time.deltaTime*15f;
+		
+			if (leftCamera.camera.fieldOfView < 106) 
+			{
+				SceneZoomIn=false;	
+				SceneZoomOut=true;
+			}
+		}
+		else if(zoomIn==false && zoomOut==true)
+		{
+			leftCamera.camera.fieldOfView +=Time.deltaTime*15;
+			rightCamera.camera.fieldOfView +=Time.deltaTime*15f;
+
+			if (leftCamera.camera.fieldOfView > 190) 
+			{
+				SceneZoomOut=false;
+				SceneZoomIn=true;
+			}
+		}
+	}	
+
 }
 
 
