@@ -1309,6 +1309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panoramaID: LbmCZ1nt-bgAAAQINlMIVQ
+  defaultID: LbmCZ1nt-bgAAAQINlMIVQ
   panoramaTexture: {fileID: 0}
   saveTextureFileName: 
   skyboxMaterial: {fileID: 0}

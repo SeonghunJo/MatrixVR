@@ -14,7 +14,8 @@ using LitJson; // http://lbv.github.io/litjson/
 
 public class StreetViewRenderer : MonoBehaviour
 {
-    public string panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
+    public string panoramaID = "";
+    public string defaultID = "LbmCZ1nt-bgAAAQINlMIVQ";
     // zMrHSTO0GCYAAAQINlCkXg
     // 2C2MIWjhrZUAAAQfCVLQkw
 
@@ -125,7 +126,7 @@ public class StreetViewRenderer : MonoBehaviour
         panoramaID = Manager.Instance.panoramaID;
         print("Panorama ID : " + Manager.Instance.panoramaID);
         if (panoramaID == null)
-            panoramaID = "zMrHSTO0GCYAAAQINlCkXg";
+            panoramaID = defaultID;
         saveTextureFileName = panoramaID;
 
         bGetMetaData = false;
