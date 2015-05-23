@@ -51,7 +51,7 @@ public class StreetViewRenderer : MonoBehaviour
     // SET BY DEVELOPER
     private int zoom = 3; // Default Panorama Zoom Size
     private Texture2D[,] tiles;
-    private int tileCount;
+    private int downloadedTilesCount;
 
     // NEED TO INITIATE VALUE BEFORE START RENDER
     private bool retrieveMetaData = false;
@@ -70,7 +70,10 @@ public class StreetViewRenderer : MonoBehaviour
     private int[] m_textureSize = { 64, 128, 256, 512, 1024, 2048 };
     private int m_textureSizeIndex = 4;
 
-    public bool enableSaveTexture = false;
+    public bool enableCache = true;
+    public bool enableCacheDebugging = false; // true 일 경우 캐시된 곳의 Panorama ID 버튼이 노란색으로 표시된다.
+
+    private string cacheFolderPath = null;
 
     public Texture2D cubeTextureFront = null;
     public Texture2D cubeTextureBack = null;
@@ -97,7 +100,19 @@ public class StreetViewRenderer : MonoBehaviour
             {
                 for (int i = 0; i < Manager.Instance.nextIDs.Length; i++)
                 {
-                    if (GUI.Button(new Rect(0, i * 30, 100, 20), Manager.Instance.nextIDs[i]))
+                    if (enableCacheDebugging)
+                    {
+                        if (FindCachedImageFromID(Manager.Instance.nextIDs[i]))
+                        {
+                            GUI.color = Color.yellow;
+                        }
+                        else
+                        {
+                            GUI.color = Color.white;
+                        }
+                    }
+
+                    if (GUI.Button(new Rect(0, i * 30, 150, 20), Manager.Instance.nextIDs[i]))
                     {
                         print("Direction ID : " + Manager.Instance.nextIDs[i]);
                         Manager.Instance.panoramaID = Manager.Instance.nextIDs[i];
@@ -115,27 +130,53 @@ public class StreetViewRenderer : MonoBehaviour
         StartCoroutine(RenderStreetView());
         print("StreetViewer Start End");
     }
-
-    // Step 1
-    IEnumerator RenderStreetView() // INIT VARIABLES AND DOWNLOAD START
+    
+    private bool FindCachedImageFromID(string id)
     {
-        /* 파노라마 렌더링 시작 */
-        // 파노라마 아이디를 통해 파노라마 이미지에 대한 부가 정보를 받는다.
+        if( File.Exists(cacheFolderPath + "/" + id + "_front.png")
+            && File.Exists(cacheFolderPath + "/" + id + "_back.png")
+            && File.Exists(cacheFolderPath + "/" + id + "_left.png")
+            && File.Exists(cacheFolderPath + "/" + id + "_right.png")
+            && File.Exists(cacheFolderPath + "/" + id + "_up.png")
+            && File.Exists(cacheFolderPath + "/" + id + "_down.png"))
+        {
+            return true;
+        }
+        return false;
+    }
 
-        // INIT
-        Manager.Instance.processCount = 0;
-        panoramaID = Manager.Instance.panoramaID;
+    private void GetCachedImageFromID(string id)
+    {
+        cubeTextureFront = GetTexture(cacheFolderPath + "/" + id + "_front.png");
+        cubeTextureBack = GetTexture(cacheFolderPath + "/" + id + "_back.png");
+        cubeTextureLeft = GetTexture(cacheFolderPath + "/" + id + "_left.png");
+        cubeTextureRight = GetTexture(cacheFolderPath + "/" + id + "_right.png");
+        cubeTextureUp = GetTexture(cacheFolderPath + "/" + id + "_up.png");
+        cubeTextureDown = GetTexture(cacheFolderPath + "/" + id + "_down.png");
+    }
+
+    void Initialize()
+    {
+        cacheFolderPath = Application.persistentDataPath; // 기본 캐시 폴더 설정
+        Manager.Instance.processCount = 0; // 진행률 초기화
+        panoramaID = Manager.Instance.panoramaID; // 파노라마 아이디 설정
         print("Panorama ID : " + Manager.Instance.panoramaID);
+
         if (panoramaID == null)
             panoramaID = defaultID;
         saveTextureFileName = panoramaID;
 
         retrieveMetaData = false;
         retrievePanoramaImage = false;
-        retryCounter = 0;
-
-        // INIT END
-
+        retryCounter = 0; // 메타데이터 재시도 횟수
+        downloadedTilesCount = 0;
+    }
+    // Step 1
+    IEnumerator RenderStreetView() // INIT VARIABLES AND DOWNLOAD START
+    {
+        /* 파노라마 렌더링 시작 */
+        // 파노라마 아이디를 통해 파노라마 이미지에 대한 부가 정보를 받는다.
+        Initialize();
         LoadingScreen.Show();
 
         // FIND OVR CAMERA
@@ -148,7 +189,7 @@ public class StreetViewRenderer : MonoBehaviour
         {
             yield return StartCoroutine(GetMetaData());
             retryCounter++;
-        } while (retrieveMetaData == false && retryCounter < 5);
+        } while (retrieveMetaData == false && retryCounter < 10);
         Debug.Log("GetMetaData End : Retry Count is " + retryCounter.ToString());
         
         if(retryCounter == 5)
@@ -157,8 +198,30 @@ public class StreetViewRenderer : MonoBehaviour
             retryCounter = 0;
         }
 
-        yield return StartCoroutine(GetPanoramaImage(panoramaID, textureWidth, textureHeight));
-        Debug.Log("GetPanoramaImage End");
+        if(enableCache && FindCachedImageFromID(panoramaID)) // 캐시를 사용하고 해당 데이터가 캐시폴더에 있을 경우
+        {
+            Debug.Log("Image data is exist");
+            // 6방향 이미지를 모두 로드하고
+            GetCachedImageFromID(panoramaID);
+            yield return new WaitForSeconds(1.0f); // 1초간 대기
+            Manager.Instance.processCount = 50;
+            yield return new WaitForSeconds(2.0f); // 1초간 대기
+            Manager.Instance.processCount = 100;
+        }
+        else
+        {
+            yield return StartCoroutine(GetPanoramaImage(panoramaID, textureWidth, textureHeight));
+            yield return StartCoroutine(MergeTiles());
+            yield return StartCoroutine(ConvertPanoramaToCubemap());
+        }
+
+        // 메타데이터 받고
+        // 기존에 다운로드 받은 큐브맵이 있는지 확인한다.
+        // 있다면 바로 스카이박스에 적용시키고 끝낸다.
+
+
+        SetSkybox();
+        DrawButtons();
 
         if (screen != null)
             screen.HideScreen();
@@ -251,7 +314,7 @@ public class StreetViewRenderer : MonoBehaviour
         string output = "tile";
         int x = 0;
         int y = 0;
-        tileCount = 0;
+        downloadedTilesCount = 0;
 
         rowTilesNum = height / tileHeight;
         if ((height % tileHeight) > 0)
@@ -273,14 +336,10 @@ public class StreetViewRenderer : MonoBehaviour
             }
         }
 
-        if (tileCount == totalTilesNum)
+        if (downloadedTilesCount == totalTilesNum)
             Debug.Log("All tiles downloaded!");
         else
             Debug.LogWarning("Tiles downloaed loss");
-
-        tileCount = 0;
-        yield return StartCoroutine(MergeTiles());
-        DrawButtons();
     }
 
     // 전체 파노라마 타일중 x, y 좌표에 위치한 타일 하나를 받아오는 함수 
@@ -300,16 +359,12 @@ public class StreetViewRenderer : MonoBehaviour
         if (!string.IsNullOrEmpty(www.error))
             Debug.LogError("Panorama Download Error : " + www.error);
         else
-            Debug.Log("Panorama Download : " + tileCount);
+            Debug.Log("Panorama Download : " + downloadedTilesCount);
 
         tiles[y, x] = www.texture;
-        tileCount++;
+        downloadedTilesCount++;
         Manager.Instance.processCount++;
-
-        SaveTexture(tiles[y, x], saveTextureFileName + "_" + y + "_" + x + ".png");
     }
-
-
 
     IEnumerator MergeTiles()
     {
@@ -341,11 +396,12 @@ public class StreetViewRenderer : MonoBehaviour
         }
         panoramaTexture.Apply();
 
-        SaveTexture(panoramaTexture, panoramaID + "png");
+     
+        //SaveTexture(panoramaTexture, panoramaID + ".png");
 
         Manager.Instance.processCount++;
 
-        yield return StartCoroutine(ConvertPanoramaToCubemap());
+        yield return null;
     }
 
     void DrawButtons()
@@ -370,7 +426,6 @@ public class StreetViewRenderer : MonoBehaviour
 
     private IEnumerator ConvertPanoramaToCubemap()
     {
-
         int texSize = m_GetCubemapTextureSize();
 
         yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_FRONT, panoramaID + "_front.png"));
@@ -391,7 +446,10 @@ public class StreetViewRenderer : MonoBehaviour
         yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_DOWN, panoramaID + "_down.png"));
         Manager.Instance.processCount++;
         print(Manager.Instance.processCount);
-        
+    }
+
+    private void SetSkybox()
+    {
         skyboxMaterial = SkyboxRenderer.CreateSkyboxMaterial(cubeTextureFront, cubeTextureBack, cubeTextureLeft, cubeTextureRight, cubeTextureUp, cubeTextureDown);
         RenderSettings.skybox = skyboxMaterial;
     }
@@ -482,7 +540,8 @@ public class StreetViewRenderer : MonoBehaviour
         tex.wrapMode = TextureWrapMode.Clamp;
         tex.Apply();
 
-        SaveTexture(tex, fileName);
+        if (totalTilesNum == downloadedTilesCount) // ** 다운로드 받은 타일수와 전체 타일수가 같을 경우만 큐브맵을 저장한다.
+            SaveTexture(tex, fileName);
 
         switch (faceIndex)
         {
@@ -563,15 +622,28 @@ public class StreetViewRenderer : MonoBehaviour
 
     public bool SaveTexture(Texture2D tex, string saveFileName)
     {
-        if (enableSaveTexture == true)
+        byte[] png = tex.EncodeToPNG();
+        if (enableCache == true)
         {
             string realSavePath = Application.persistentDataPath + "/" + saveFileName;
-            byte[] png = tex.EncodeToPNG();
             File.WriteAllBytes(realSavePath, png);
 
             return true;
         }
         return false;
+    }
+
+    public Texture2D GetTexture(string filePath)
+    {
+        if (System.IO.File.Exists(filePath))
+        {
+            byte[] bytes = System.IO.File.ReadAllBytes(filePath);
+            Texture2D tex = new Texture2D(1, 1);
+            tex.LoadImage(bytes);
+
+            return tex;
+        }
+        return null;
     }
 
 }
