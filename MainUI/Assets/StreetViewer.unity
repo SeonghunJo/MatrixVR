@@ -1308,8 +1308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747f1acef5b806f4fa20ed565e008501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panoramaID: LbmCZ1nt-bgAAAQINlMIVQ
-  defaultID: LbmCZ1nt-bgAAAQINlMIVQ
+  panoramaID: IUmXlW6pRu1w9QnUdQk4vw
+  defaultID: IUmXlW6pRu1w9QnUdQk4vw
   panoramaTexture: {fileID: 0}
   saveTextureFileName: 
   skyboxMaterial: {fileID: 0}

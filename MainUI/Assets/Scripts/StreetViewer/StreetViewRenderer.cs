@@ -15,8 +15,9 @@ using LitJson; // http://lbv.github.io/litjson/
 public class StreetViewRenderer : MonoBehaviour
 {
     public string panoramaID = "";
-    public string defaultID = "LbmCZ1nt-bgAAAQINlMIVQ";
-    // zMrHSTO0GCYAAAQINlCkXg
+    public string defaultID = "IUmXlW6pRu1w9QnUdQk4vw"; // 성산일출봉
+    // "LbmCZ1nt-bgAAAQINlMIVQ"; // 경희궁
+    // "zMrHSTO0GCYAAAQINlCkXg"; // 경희궁
     // 2C2MIWjhrZUAAAQfCVLQkw
 
     public Texture2D panoramaTexture; // for merged street view
@@ -53,8 +54,8 @@ public class StreetViewRenderer : MonoBehaviour
     private int tileCount;
 
     // NEED TO INITIATE VALUE BEFORE START RENDER
-    private bool bGetMetaData = false;
-    private bool bGetPanoramaImage = false;
+    private bool retrieveMetaData = false;
+    private bool retrievePanoramaImage = false;
     private int retryCounter = 0;
 
     // Panorama To Cubemap
@@ -129,8 +130,8 @@ public class StreetViewRenderer : MonoBehaviour
             panoramaID = defaultID;
         saveTextureFileName = panoramaID;
 
-        bGetMetaData = false;
-        bGetPanoramaImage = false;
+        retrieveMetaData = false;
+        retrievePanoramaImage = false;
         retryCounter = 0;
 
         // INIT END
@@ -147,7 +148,7 @@ public class StreetViewRenderer : MonoBehaviour
         {
             yield return StartCoroutine(GetMetaData());
             retryCounter++;
-        } while (bGetMetaData == false && retryCounter < 5);
+        } while (retrieveMetaData == false && retryCounter < 5);
         Debug.Log("GetMetaData End : Retry Count is " + retryCounter.ToString());
         
         if(retryCounter == 5)
@@ -175,12 +176,12 @@ public class StreetViewRenderer : MonoBehaviour
         if (!string.IsNullOrEmpty(www.error))
         {
             Debug.Log("WWW Error [Meta Data] : " + www.error);
-            bGetMetaData = false;
+            retrieveMetaData = false;
             yield break;
         }
         else
         {
-            bGetMetaData = true;
+            retrieveMetaData = true;
         }
 
         JsonData json = JsonMapper.ToObject(www.text);
@@ -372,22 +373,22 @@ public class StreetViewRenderer : MonoBehaviour
 
         int texSize = m_GetCubemapTextureSize();
 
-        yield return StartCoroutine(m_CreateCubemapTexture(texSize, StreetViewRenderer.FACE_FRONT, panoramaID + "_front.png"));
+        yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_FRONT, panoramaID + "_front.png"));
         Manager.Instance.processCount++;
         print(Manager.Instance.processCount);
-        yield return StartCoroutine(m_CreateCubemapTexture(texSize, StreetViewRenderer.FACE_BACK, panoramaID + "_back.png"));
+        yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_BACK, panoramaID + "_back.png"));
         Manager.Instance.processCount++;
         print(Manager.Instance.processCount);
-        yield return StartCoroutine(m_CreateCubemapTexture(texSize, StreetViewRenderer.FACE_LEFT, panoramaID + "_left.png"));
+        yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_LEFT, panoramaID + "_left.png"));
         Manager.Instance.processCount++;
         print(Manager.Instance.processCount);
-        yield return StartCoroutine(m_CreateCubemapTexture(texSize, StreetViewRenderer.FACE_RIGHT, panoramaID + "_right.png"));
+        yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_RIGHT, panoramaID + "_right.png"));
         Manager.Instance.processCount++;
         print(Manager.Instance.processCount);
-        yield return StartCoroutine(m_CreateCubemapTexture(texSize, StreetViewRenderer.FACE_UP, panoramaID + "_up.png"));
+        yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_UP, panoramaID + "_up.png"));
         Manager.Instance.processCount++;
         print(Manager.Instance.processCount);
-        yield return StartCoroutine(m_CreateCubemapTexture(texSize, StreetViewRenderer.FACE_DOWN, panoramaID + "_down.png"));
+        yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_DOWN, panoramaID + "_down.png"));
         Manager.Instance.processCount++;
         print(Manager.Instance.processCount);
         
@@ -406,7 +407,7 @@ public class StreetViewRenderer : MonoBehaviour
     }
 
 
-    private IEnumerator m_CreateCubemapTexture(int texSize, int faceIndex, string fileName = null)
+    private IEnumerator CreateCubemapTexture(int texSize, int faceIndex, string fileName = null)
     {
         Texture2D tex = new Texture2D(texSize, texSize, TextureFormat.RGB24, false);
 
@@ -471,7 +472,7 @@ public class StreetViewRenderer : MonoBehaviour
             {
                 Vector3 v = ((xv2 - xv1) * fy) + xv1;
                 v.Normalize();
-                cols[x] = m_CalcProjectionSpherical(v);
+                cols[x] = CalcProjectionSpherical(v);
                 xv1 += rotDX1;
                 xv2 += rotDX2;
             }
@@ -510,7 +511,7 @@ public class StreetViewRenderer : MonoBehaviour
     }
 
 
-    private Color m_CalcProjectionSpherical(Vector3 vDir)
+    private Color CalcProjectionSpherical(Vector3 vDir)
     {
         float theta = Mathf.Atan2(vDir.z, vDir.x);		// -π ～ +π.
         float phi = Mathf.Acos(vDir.y);				//  0  ～ +π
@@ -534,7 +535,7 @@ public class StreetViewRenderer : MonoBehaviour
         return col;
     }
 
-    private IEnumerator m_CalcProjectionSpherical(Vector3 vDir, Color col)
+    private IEnumerator CalcProjectionSpherical(Vector3 vDir, Color col)
     {
         print("m_calc");
         float theta = Mathf.Atan2(vDir.z, vDir.x);		// -π ～ +π.
