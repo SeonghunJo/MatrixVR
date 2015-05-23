@@ -2,6 +2,7 @@
 using System.Collections;
 using LitJson;
 
+using System;
 using System.Text.RegularExpressions;
 
 public class StreetviewPoint : MonoBehaviour
@@ -17,8 +18,9 @@ public class StreetviewPoint : MonoBehaviour
 
     // SHJO ADDED
     public static string wikiURL = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exsentences=1&exlimit=1&exintro=1&explaintext=1&exsectionformat=plain&titles=";
-
-    //Thumbnail image, name, ID 
+    public static string wikiSearchURL = "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srprop=snippet&srsearch=";
+    
+        //Thumbnail image, name, ID 
 	public Texture2D myThumbnailImg;
 	public string myThumbnailText;
     OVRThumbnailUI thumbnailUI;
@@ -30,6 +32,7 @@ public class StreetviewPoint : MonoBehaviour
     public string region = null;
     public string country = null;
     public string description = null;
+
 
 	// Use this for initialization
     IEnumerator Start() {		
@@ -44,6 +47,7 @@ public class StreetviewPoint : MonoBehaviour
         }
         print("Description Text Download Complete");
 
+        yield return StartCoroutine(GetWikiKeyword(wikiSearchURL + searchKeyword));
         yield return StartCoroutine(GetWikiData(wikiURL + searchKeyword));
     }
 
@@ -176,7 +180,7 @@ public class StreetviewPoint : MonoBehaviour
             searchKeyword = country; // 해당 국가를 키워드로 설정
         }
 
-        searchKeyword = searchKeyword.Replace(' ', '_'); // 위키피디아 검색을 위해 공백을  '_' 로 치환
+        searchKeyword = searchKeyword.Replace(" ", "%20"); // 위키피디아 검색을 위해 공백을  '_' 로 치환
 		myThumbnailText = locationText;
     }
 
@@ -205,6 +209,34 @@ public class StreetviewPoint : MonoBehaviour
                 result += match.Value;
         }
         return result;
+    }
+
+    IEnumerator GetWikiKeyword(string url)
+    {
+        WWW www = new WWW(url);
+        yield return www;
+
+        if (!string.IsNullOrEmpty(www.error))
+        {
+            Debug.Log("WWW Error [GetWikiData] : " + www.error);
+            yield break;
+        }
+
+        JsonData json = JsonMapper.ToObject(www.text);
+        JsonData data = json["query"];
+        
+        int hits = Convert.ToInt32(data["searchinfo"]["totalhits"].ToString());
+        Debug.Log("Hits " + searchKeyword + " : " + hits.ToString());
+        
+        if(hits > 0)
+        {
+            Debug.Log("Origin Search Keyword : " + searchKeyword);
+            JsonData search = data["search"];
+            searchKeyword = search[0]["title"].ToString();
+
+            searchKeyword = searchKeyword.Replace(' ', '_');
+            Debug.Log("New Search Keyword : " + searchKeyword);
+        }  
     }
 
     IEnumerator GetWikiData(string url)
