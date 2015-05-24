@@ -11,6 +11,7 @@ public class StreetviewPoint : MonoBehaviour
     public float Lat;
     public float Lng;
     public string panoID;
+	public bool impo;
 
     //Thumbnail image URL & Streetview name URL
 	public string thumbnailURL = "http://maps.google.com/cbk?output=thumbnail&panoid=";
@@ -101,11 +102,13 @@ public class StreetviewPoint : MonoBehaviour
         PointedOut();
     }
 
-    public void SetPosition()
+    public void SetPosition(bool impo)
     {
         Lat = CreateTarget._rotation.x;
         Lng = -(CreateTarget._rotation.y);
         panoID = CreateTarget.panoID;
+		this.impo = impo;
+
 
 		thumbnailURL = thumbnailURL + panoID;
 
@@ -113,6 +116,13 @@ public class StreetviewPoint : MonoBehaviour
 
         transform.Rotate(CreateTarget._rotation);
         transform.Translate(CreateTarget._translate);
+
+		if (this.impo == true) 
+		{
+			//주요지점 TO do:  Added By hjoon
+			this.gameObject.renderer.material.color=Color.red;
+		}
+
 
     }
 

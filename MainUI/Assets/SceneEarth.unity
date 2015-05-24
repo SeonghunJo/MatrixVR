@@ -425,6 +425,7 @@ MonoBehaviour:
   earth: {fileID: 370142936}
   Lat: 0
   Lng: 0
+  impo: 0
 --- !u!23 &370142939
 Renderer:
   m_ObjectHideFlags: 0
