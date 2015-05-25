@@ -483,7 +483,7 @@ Transform:
   - {fileID: 1154689650}
   - {fileID: 530775571}
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &370142943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,8 +617,8 @@ Transform:
   m_LocalScale: {x: 130, y: 120, z: 1}
   m_Children:
   - {fileID: 1719546799}
-  m_Father: {fileID: 2117130067}
-  m_RootOrder: 0
+  m_Father: {fileID: 1415859931}
+  m_RootOrder: 1
 --- !u!114 &428870683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +681,7 @@ Transform:
   m_Children:
   - {fileID: 1153460600}
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!81 &448457620
 AudioListener:
   m_ObjectHideFlags: 0
@@ -702,6 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 370142936}
+  beforeRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &530775570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +1024,7 @@ Transform:
   m_Children:
   - {fileID: 424663488}
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!20 &1018342634
 Camera:
   m_ObjectHideFlags: 0
@@ -1069,6 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 370142936}
+  beforeRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1085813182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,7 +1133,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1153460599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,7 +1320,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1415859930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,8 +1349,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1705092096}
+  - {fileID: 428870682}
   m_Father: {fileID: 2117130067}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!20 &1415859932
 Camera:
   m_ObjectHideFlags: 0
@@ -1394,6 +1397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 370142936}
+  beforeRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1705092095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,7 +1707,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 20, z: -80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 428870682}
   - {fileID: 370142942}
   - {fileID: 1085813184}
   - {fileID: 1415859931}

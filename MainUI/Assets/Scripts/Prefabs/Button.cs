@@ -15,7 +15,7 @@ public class Button : MonoBehaviour {
         */
         transform.Rotate(Vector3.right, 90.0f);
         transform.Rotate(Vector3.forward, degree);
-        transform.Translate(0, 4, 3, Space.Self);
+        transform.Translate(0, 6, 3, Space.Self);
 	}
 
 	public void SetPanoramaID(string id)

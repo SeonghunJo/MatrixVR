@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour {
 		Color temp = this.renderer.material.color;
 		temp.a = 1f;
 		this.renderer.material.color = temp;
-		this.transform.localScale = new Vector3 (1.2f, 1.2f, 1.2f);
+		this.transform.localScale = new Vector3 (3f, 3f, 3f);
 
 
 	}
@@ -40,6 +40,6 @@ public class MainMenu : MonoBehaviour {
 		temp.a = 0.3f;
 		this.renderer.material.color = temp;
 		//this.transform.localScale = scale;
-		this.transform.localScale = new Vector3 (0.8f, 0.8f, 0.8f);
+		this.transform.localScale = new Vector3 (2.5f, 2.5f, 2.5f);
 	}
 }
