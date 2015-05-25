@@ -12,6 +12,7 @@ public class StreetviewPoint : MonoBehaviour
     public float Lng;
     public string panoID;
 	public bool impo;
+	public Color myColor=Color.black;
 
     //Thumbnail image URL & Streetview name URL
 	public string thumbnailURL = "http://maps.google.com/cbk?output=thumbnail&panoid=";
@@ -77,9 +78,10 @@ public class StreetviewPoint : MonoBehaviour
         Manager.Instance.thumbnailText = myThumbnailText;
         Manager.Instance.thumbnailImg = myThumbnailImg;
         Manager.Instance.panoramaID = panoID;
-
+		Debug.Log("mouse enter qwe: " + this.gameObject.renderer.material.color);
+		this.gameObject.renderer.material.color = Color.blue;
         thumbnailUI.ShowScreen();
-		//this.renderer.material.color = Color.blue;
+
 	}
 	
     void OnMouseEnter()
@@ -91,10 +93,10 @@ public class StreetviewPoint : MonoBehaviour
 
 	public void PointedOut()
 	{
-        Debug.Log("destroy : " + panoID);
-
+		Debug.Log("destroy qwe: " + this.gameObject.renderer.material.color);
+		this.gameObject.renderer.material.color = myColor;
         thumbnailUI.HideScreen();
-		//this.renderer.material.color = Color.red;
+
 	}
 
     void OnMouseExit()
@@ -120,6 +122,7 @@ public class StreetviewPoint : MonoBehaviour
 		if (this.impo == true) 
 		{
 			//주요지점 TO do:  Added By hjoon
+			myColor=Color.red;
 			this.gameObject.renderer.material.color=Color.red;
 		}
 
