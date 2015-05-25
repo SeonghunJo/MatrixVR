@@ -7,9 +7,15 @@ public class Button : MonoBehaviour {
 
 	public void SetDegree(float degree)
 	{
+        // Mesh Heart
+        /*
 		transform.Rotate(new Vector3(280.0f, 180.0f, degree));
 		transform.Translate(new Vector3(0.0f, 0.0f, -2.5f));
 		transform.Translate(new Vector3(0.0f, -6.5f, 0.0f));
+        */
+        transform.Rotate(Vector3.right, 90.0f);
+        transform.Rotate(Vector3.forward, degree);
+        transform.Translate(0, 4, 3, Space.Self);
 	}
 
 	public void SetPanoramaID(string id)
@@ -24,7 +30,15 @@ public class Button : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            Pointed();
+        }
+        
+        if(Input.GetKeyUp(KeyCode.C))
+        {
+            PointedOut();
+        }
 	}
 
     public void Touch()
@@ -38,13 +52,15 @@ public class Button : MonoBehaviour {
 
 	public void Pointed()  
 	{
-		//포인트 효과 Add By Hjoon
-		this.renderer.material.color = Color.blue;
+        Color color = this.renderer.material.color;
+        color.a = 1.0f;
+        this.renderer.material.color = color;
 	}
 	public void PointedOut()
-	{	
-		//포인트 벗어나는 효과 Add By Hjoon
-		this.renderer.material.color = Color.red;
+	{
+        Color color = this.renderer.material.color;
+        color.a = 0.3f;
+        this.renderer.material.color = color;
 	}
 
 	void OnMouseDown()
