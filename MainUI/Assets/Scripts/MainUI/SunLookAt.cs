@@ -5,12 +5,13 @@ public class SunLookAt : MonoBehaviour {
 	public GameObject Earth;
 	// Use this for initialization
 	void Start () {
-	
+	    if(Earth == null)
+            Debug.LogWarning("SunLookAt.cs : No Earth Attached");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.rotation.SetLookRotation(Earth.transform.position);
-
+        if(Earth != null)
+            transform.rotation.SetLookRotation(Earth.transform.position);
 	}
 }

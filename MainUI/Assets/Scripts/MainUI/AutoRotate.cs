@@ -11,7 +11,8 @@ public class AutoRotate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(rollAroundParent == true) {
-			parentTransform = transform.parent;
+            if(transform.parent != null)
+			    parentTransform = transform.parent;
 		}
 	}
 	
@@ -20,7 +21,8 @@ public class AutoRotate : MonoBehaviour {
 		transform.Rotate(speed * Time.deltaTime);
 
 		if (rollAroundParent) {
-			transform.RotateAround(parentTransform.transform.position, speed, 30*Time.deltaTime); 
+            if (transform.parent != null)
+			    transform.RotateAround(parentTransform.transform.position, speed, 30*Time.deltaTime); 
 		}
 	}
 }
