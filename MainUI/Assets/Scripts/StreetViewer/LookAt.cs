@@ -21,22 +21,26 @@ public class LookAt : MonoBehaviour {
 		
 		if(Input.GetKey(KeyCode.U))
 		{
-			transform.position = new Vector3(transform.position.x - 1f, transform.position.y + 1.0f, transform.position.z);
+			//transform.position = new Vector3(transform.position.x - 1f, transform.position.y + 1.0f, transform.position.z);
+			transform.RotateAround(target.transform.position, Vector3.left, 1f);
 		}
 		if(Input.GetKey(KeyCode.J))
 		{
-			transform.position = new Vector3(transform.position.x + 1f, transform.position.y - 1.0f, transform.position.z);
+			//transform.position = new Vector3(transform.position.x + 1f, transform.position.y - 1.0f, transform.position.z);
+			transform.RotateAround(target.transform.position, Vector3.right, 1f);
 		}
 		
 		float angle = Manager.Instance.CameraRotation.x;
 		
 		if(30 < angle && angle < 90)
 		{
-			transform.position = new Vector3(transform.position.x + 1f, transform.position.y + 1.0f, transform.position.z);
+			//transform.position = new Vector3(transform.position.x + 1f, transform.position.y + 1.0f, transform.position.z);
+			transform.RotateAround(target.transform.position, Vector3.left, 1f);
 		}
 		else if(270 < angle && angle < 330)
 		{
-			transform.position = new Vector3(transform.position.x - 1f, transform.position.y - 1.0f, transform.position.z);
+			//transform.position = new Vector3(transform.position.x - 1f, transform.position.y - 1.0f, transform.position.z);
+			transform.RotateAround(target.transform.position, Vector3.right, 1f);
 		}
 		else
 		{
