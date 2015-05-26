@@ -21,7 +21,7 @@ public class StreetviewPoint : MonoBehaviour
     public static string wikiURL = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exsentences=1&exlimit=1&exintro=1&explaintext=1&exsectionformat=plain&titles=";
     public static string wikiSearchURL = "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srprop=snippet&srsearch=";
     
-        //Thumbnail image, name, ID 
+    //Thumbnail image, name, ID 
 	public Texture2D myThumbnailImg;
 	public string myThumbnailText;
     OVRThumbnailUI thumbnailUI;
@@ -63,13 +63,12 @@ public class StreetviewPoint : MonoBehaviour
     {
         //panoID에 따라 Scene 전환(street view)
         Application.LoadLevel("StreetViewer");
-
     }
 
 	public void Clicked()
 	{
-		CameraFade.setFadeOutEndEvent(FadeOutEnd);
-		CameraFade.FadeOutMain();
+        //CameraFade.setFadeOutEndEvent(FadeOutEnd);
+        //CameraFade.FadeOutMain();
 	}
 
 	public void Pointed ()
@@ -77,6 +76,13 @@ public class StreetviewPoint : MonoBehaviour
         Manager.Instance.thumbnailText = myThumbnailText;
         Manager.Instance.thumbnailImg = myThumbnailImg;
         Manager.Instance.panoramaID = panoID;
+
+        print(wikiText);
+
+        if (wikiText != null)
+            Manager.Instance.wikiText = wikiText;
+        else
+            Manager.Instance.wikiText = "NULL";
 
         thumbnailUI.ShowScreen();
 		//this.renderer.material.color = Color.blue;
@@ -274,5 +280,6 @@ public class StreetviewPoint : MonoBehaviour
                 wikiText = WikiDataNormalizeBySplit(page["extract"].ToString());
             }
         }
+       
     }
 }

@@ -27,6 +27,7 @@ public class GestureControllerStreetView : MonoBehaviour
     string swipestart = "none";
 	Button pointed = null;
 	MainMenu MainMenu_pointed = null;
+    Information Information_pointed = null;
 
 
     // Use this for initializatio
@@ -149,6 +150,14 @@ public class GestureControllerStreetView : MonoBehaviour
 							MainMenu_pointed.Pointed();
 						}
 					}
+                    else if (hit.collider.gameObject.tag == "Information")                              //Information 버튼 구현(add Jin)
+                    {
+                        Information_pointed = hit.collider.gameObject.GetComponent<Information>();
+                        if (Information_pointed != null)
+                        {
+                            Information_pointed.Pointed();
+                        }
+                    }
 				}
 			}
 			else
@@ -165,6 +174,11 @@ public class GestureControllerStreetView : MonoBehaviour
 					MainMenu_pointed.PointedOut();
 					MainMenu_pointed = null;
 				}
+                else if (Information_pointed != null)      //add Jin
+                {
+                    Information_pointed.PointedOut();
+                    Information_pointed = null;
+                }
             }
 
             //립모션 제스쳐 감지 
@@ -193,6 +207,10 @@ public class GestureControllerStreetView : MonoBehaviour
 						{
 							MainMenu_pointed.Clicked();
 						}
+                        else if (hit.collider.gameObject.tag == "Information")      //add Jin
+                        {
+                            Information_pointed.Clicked();
+                        }
                     }
                 }
                 // Screen Tap

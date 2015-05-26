@@ -29,6 +29,7 @@ public class Manager {
 	public string thumbnailID;
 	public string thumbnailText;
 	public Texture2D thumbnailImg;
+    public string wikiText;
 	
 	// FOR CAMERA RIG
 	public Vector3 CameraRotation;

@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 # endif
 
-public class OVRLoadingScreen : MonoBehaviour
+public class OVRInformation : MonoBehaviour
 {
 	public float 	FadeInTime    	= 2.0f;
 	public UnityEngine.Texture 	FadeInTexture 	= null;
@@ -19,7 +19,6 @@ public class OVRLoadingScreen : MonoBehaviour
 	public KeyCode	QuitKey			= KeyCode.Escape;
 
 	public bool ScenesVisible   	= false;
-    public bool ScenesVisibleInf    = false;
 	
 	// Spacing for scenes menu // 1280.0f, 800.0f
 	private int resolutionX = 1280;
@@ -27,16 +26,6 @@ public class OVRLoadingScreen : MonoBehaviour
 
 	private int screenCenterX = 640;
 	private int screenCenterY = 400;
-
-    private int processBarLocation = 0;
-    
-    public Texture loadingImg1;
-    public Texture loadingImg2;
-    public Texture bar;
-    public Texture foot1;
-    public Texture foot2;
-
-    public int loadingset = 0;
 
 	// Handle to OVRCameraRig
 	private OVRCameraRig CameraController = null;
@@ -199,7 +188,6 @@ public class OVRLoadingScreen : MonoBehaviour
 		Crosshair.SetOVRPlayerController(ref PlayerController);
 
         print("start function : " + ScenesVisible);
-        StartCoroutine(DrawWalker(true));
 	} 
 	
 	/// <summary>
@@ -308,88 +296,55 @@ public class OVRLoadingScreen : MonoBehaviour
 		}
 	}
 
-	#region SeonghunJo Added
-	public void ShowScreen()
-	{
-		ScenesVisible = true;
-	}
-
-	public void HideScreen()
-	{
-		ScenesVisible = false;
-        loadingset = 0;
-	}
-	
-	public bool ToggleScreenByKey(KeyCode keyCode)
-	{
-		bool startPressed = Input.GetKeyDown(keyCode);
-		
-		if (startPressed)
-		{
-			print("Toggle");
-			ScenesVisible = !ScenesVisible;
-		}
-		
-		return ScenesVisible;
-	}
-	
-
-	// 모든 UI Draw 작업은 이 함수에 추가
-	void DrawScreen()
-	{
-		if(ScenesVisible) // 화면이 보이면
-		{
-			GUIDrawLoadingScreen();
-		}
-		else
-		{
-
-		}
-	}
-
-    IEnumerator DrawWalker(bool forceStart)
+    #region Jin Added
+    public void ShowScreen()
     {
-        while(ScenesVisible || forceStart)
-        {
-            yield return new WaitForSeconds(0.5f);
-
-            loadingset++;           
-        }        
+        ScenesVisible = true;
     }
 
-    //애니메이션 효과 추가, process bar,% 추가 
-	void GUIDrawLoadingScreen()
-	{   
-		int boxWidth = 300;
-		int boxHeight = 50;
-   
-		GUI.color = new Color(0, 0, 0);
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
+    public void HideScreen()
+    {
+        ScenesVisible = false;
+    }
 
-        //Draw Loading text
-		string loading = "LOADING...";
-        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight + 5, ref loading, Color.white);
+    public bool ToggleScreenByKey(KeyCode keyCode)
+    {
+        bool startPressed = Input.GetKeyDown(keyCode);
 
-        //Draw People
-        if(loadingset % 2 ==0)
-            GuiHelper.StereoDrawTexture(screenCenterX - 40, 400, 80, 80, ref loadingImg1, new Color(0.5f, 0.5f, 0.5f, 1f));                                                                                   
+        if (startPressed)
+        {
+            print("Toggle");
+            ScenesVisible = !ScenesVisible;
+        }
+
+        return ScenesVisible;
+    }
+
+    // 모든 UI Draw 작업은 이 함수에 추가
+    void DrawScreen()
+    {
+        if (ScenesVisible) // 화면이 보이면
+        {
+            ShowInformation();
+        }
         else
-            GuiHelper.StereoDrawTexture(screenCenterX - 40, 400, 80, 80, ref loadingImg2, new Color(0.5f, 0.5f, 0.5f, 1f));
-        
-        //Draw Process count
-        int process = Manager.Instance.processCount * 3;
-        if (process > 100)
-            process = 100;
-        string locationText = process.ToString() + " %";
-        GuiHelper.StereoBox(screenCenterX - 40, 480, 80, boxHeight, ref locationText, Color.white);
+        {
 
-        //Draw Process bar
-        processBarLocation = process * 3;
-        GuiHelper.StereoDrawTexture(screenCenterX - 150, 540, processBarLocation, boxHeight, ref bar, new Color(0.5f, 0.5f, 0.5f, 1f));
+        }
+    }
+
+    void ShowInformation()
+    {
+        int boxWidth = 300;
+        int boxHeight = 100;
+
+        //Draw Information text
+        string text = Manager.Instance.wikiText;
+        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight, ref text, Color.white);
 
 
-	}
-	#endregion SeonghunJo Added
+    }
+    #endregion Jin Added
 
 
 	void OnDestroy() // Initialize OVRUGUI on OnDestroy
