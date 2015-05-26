@@ -421,7 +421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb3acd953a6cc4eb5b620a4e01e2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 100000, guid: bcf9ed3d840e19242b2693f489aff0ff, type: 2}
+  impoObj: {fileID: 100000, guid: 59083ee76e41ee34f8c75af787206a05, type: 2}
+  nonImpobj: {fileID: 100000, guid: bcf9ed3d840e19242b2693f489aff0ff, type: 2}
   earth: {fileID: 370142936}
   Lat: 0
   Lng: 0
@@ -1742,7 +1743,7 @@ MonoBehaviour:
   target: {fileID: 94473156}
   leftCamera: {fileID: 1415859930}
   rightCamera: {fileID: 1018342632}
-  earth: {fileID: 0}
+  earth: {fileID: 370142936}
   clickParticle: {fileID: 100000, guid: 4f2b448ece6bb4940be1ce4a87b8e110, type: 2}
   enableScreenTap: 1
   enableKeyTap: 1

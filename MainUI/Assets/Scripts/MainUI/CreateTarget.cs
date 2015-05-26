@@ -21,7 +21,8 @@ public class PanoramaInfo
 
 public class CreateTarget : MonoBehaviour
 {
-    public GameObject obj;
+    public GameObject impoObj;
+	public GameObject nonImpobj;
     public GameObject earth;
 
     public List<PanoramaInfo> panoramas = new List<PanoramaInfo>();
@@ -267,10 +268,18 @@ public class CreateTarget : MonoBehaviour
             _rotation = new Vector3(Lat, -Lng, 0.0f);
             _translate = new Vector3(0, 0, -37.5f);
 
-            GameObject child = Instantiate(obj, transform.position, Quaternion.identity) as GameObject;
-
+			if(impo==true)
+			{
+			GameObject child = Instantiate(impoObj, transform.position, Quaternion.identity) as GameObject;
             child.transform.parent = earth.transform;
             child.GetComponent<StreetviewPoint>().SetPosition(impo);
+			}
+			else
+			{
+				GameObject child2 = Instantiate( nonImpobj, transform.position, Quaternion.identity) as GameObject;
+				child2.transform.parent = earth.transform;
+				child2.GetComponent<StreetviewPoint>().SetPosition(impo);
+			}
             
         }
     }

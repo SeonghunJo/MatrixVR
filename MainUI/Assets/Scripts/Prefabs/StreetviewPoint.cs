@@ -124,11 +124,11 @@ public class StreetviewPoint : MonoBehaviour
         transform.Rotate(CreateTarget._rotation);
         transform.Translate(CreateTarget._translate);
 
-		if (this.impo == true) 
+		/*if (this.impo == true) 
 		{
 			//주요지점 TO do:  Added By hjoon
 			this.gameObject.renderer.material.color=Color.red;
-		}
+		}*/
 
 
     }
