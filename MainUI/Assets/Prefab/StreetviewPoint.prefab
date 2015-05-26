@@ -57,7 +57,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: e3ee8b35b8b95464a87dc0259e5aa55c, type: 3}
+  m_Mesh: {fileID: 4300000, guid: b918216e2dd2fcc41bc824a72a0673a0, type: 3}
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -84,10 +84,17 @@ MonoBehaviour:
   Lat: 0
   Lng: 0
   panoID: 
+  impo: 0
   thumbnailURL: http://maps.google.com/cbk?output=thumbnail&panoid=
   metaURL: http://maps.google.com/cbk?output=json&panoid=
   myThumbnailImg: {fileID: 0}
   myThumbnailText: 
+  searchKeyword: 
+  wikiText: 
+  retrieveMetaData: 0
+  region: 
+  country: 
+  description: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

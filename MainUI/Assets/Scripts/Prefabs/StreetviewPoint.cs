@@ -144,7 +144,7 @@ public class StreetviewPoint : MonoBehaviour
 
         if (!string.IsNullOrEmpty(www.error))
         {
-            Debug.Log("WWW Error [Meta Data] : " + www.error);
+            Debug.Log("PanoID : " + panoID + " WWW Error [Meta Data] : " + www.error);
             retrieveMetaData = false;
             yield break;
         }
