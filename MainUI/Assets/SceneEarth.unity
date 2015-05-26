@@ -421,8 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb3acd953a6cc4eb5b620a4e01e2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NonImpObj: {fileID: 100000, guid: bcf9ed3d840e19242b2693f489aff0ff, type: 2}
-  ImpObj: {fileID: 100000, guid: 476b093e2a3eb1141bd5ec17e0fdaa7a, type: 2}
+  obj: {fileID: 100000, guid: bcf9ed3d840e19242b2693f489aff0ff, type: 2}
   earth: {fileID: 370142936}
   Lat: 0
   Lng: 0
