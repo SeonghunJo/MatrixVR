@@ -55,7 +55,8 @@ public class StreetviewPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.UpArrow)) {
+        if (Input.GetKey(KeyCode.KeypadEnter))
+        {
             Application.LoadLevel("StreetViewer");
         }
     }
@@ -136,6 +137,12 @@ public class StreetviewPoint : MonoBehaviour
     {
         WWW www = new WWW(url);
         yield return www;
+
+        if (!string.IsNullOrEmpty(www.error))
+        {
+            Debug.Log("Thumbnail Download Failed. " + www.error);
+            yield break;
+        }
 
         // 다운로드 받은 썸네일 이미지 
         myThumbnailImg = www.texture;
@@ -239,20 +246,24 @@ public class StreetviewPoint : MonoBehaviour
         }
 
         JsonData json = JsonMapper.ToObject(www.text);
-        JsonData data = json["query"];
-        
-        int hits = Convert.ToInt32(data["searchinfo"]["totalhits"].ToString());
-        Debug.Log("Hits " + searchKeyword + " : " + hits.ToString());
-        
-        if(hits > 0)
-        {
-            Debug.Log("Origin Search Keyword : " + searchKeyword);
-            JsonData search = data["search"];
-            searchKeyword = search[0]["title"].ToString();
 
-            searchKeyword = searchKeyword.Replace(' ', '_');
-            Debug.Log("New Search Keyword : " + searchKeyword);
-        }  
+        if(json.Keys.Contains("query"))
+        {
+            JsonData data = json["query"];
+
+            int hits = Convert.ToInt32(data["searchinfo"]["totalhits"].ToString());
+            Debug.Log("Hits " + searchKeyword + " : " + hits.ToString());
+
+            if (hits > 0)
+            {
+                Debug.Log("Origin Search Keyword : " + searchKeyword);
+                JsonData search = data["search"];
+                searchKeyword = search[0]["title"].ToString();
+
+                searchKeyword = searchKeyword.Replace(' ', '_');
+                Debug.Log("New Search Keyword : " + searchKeyword);
+            }  
+        }
     }
 
     IEnumerator GetWikiData(string url)
@@ -267,19 +278,22 @@ public class StreetviewPoint : MonoBehaviour
         }
 
         JsonData json = JsonMapper.ToObject(www.text);
-        JsonData data = json["query"];
-
-        JsonData pages = data["pages"];
-
-        if(pages.Count > 0)
+        if(json.Keys.Contains("query"))
         {
-            JsonData page = pages[0];
+            JsonData data = json["query"];
 
-            if (page.Keys.Contains("extract"))
+            JsonData pages = data["pages"];
+
+            if (pages.Count > 0)
             {
-                wikiText = WikiDataNormalizeBySplit(page["extract"].ToString());
+                JsonData page = pages[0];
+
+                if (page.Keys.Contains("extract"))
+                {
+                    wikiText = WikiDataNormalizeBySplit(page["extract"].ToString());
+                }
             }
         }
-       
+
     }
 }
