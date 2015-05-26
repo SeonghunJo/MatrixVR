@@ -157,11 +157,8 @@ public class GestureController : MonoBehaviour
 					}
 					else
 					{
-						if(StreetView_Pointed != null)
-						{
-							StreetView_Pointed.PointedOut();
-							StreetView_Pointed = null;
-						}
+						StreetView_Pointed.PointedOut();
+						StreetView_Pointed = null;
 					}
 				}
 			}
@@ -267,10 +264,8 @@ public class GestureController : MonoBehaviour
 						Vector swipeDirection = Swipe.Direction;
 						if (swipeDirection.x < 0)
 						{
-							if (leftCamera.camera.fieldOfView< maxFov)
+							if (leftCamera.camera.fieldOfView < maxFov)
 							{
-								//Earth.gameObject.transform.localScale=new Vector3 (Earth.gameObject.transform.localScale.x+zoomScale,Earth.gameObject.transform.localScale.y+zoomScale,Earth.gameObject.transform.localScale.z+zoomScale);
-
 								leftCamera.camera.fieldOfView += zoomScale;
 								rightCamera.camera.fieldOfView += zoomScale;
 							}
@@ -280,7 +275,6 @@ public class GestureController : MonoBehaviour
 						{
 							if (leftCamera.camera.fieldOfView > minFov)
 							{
-								//Earth.gameObject.transform.localScale=new Vector3 (Earth.gameObject.transform.localScale.x-zoomScale,Earth.gameObject.transform.localScale.y-zoomScale,Earth.gameObject.transform.localScale.z-zoomScale);
 								leftCamera.camera.fieldOfView -= zoomScale;
 								rightCamera.camera.fieldOfView -= zoomScale;
 							}
@@ -296,8 +290,6 @@ public class GestureController : MonoBehaviour
 						{
 							if (leftCamera.camera.fieldOfView < maxFov)
 							{
-								//Earth.gameObject.transform.localScale=new Vector3 (Earth.gameObject.transform.localScale.x+zoomScale,Earth.gameObject.transform.localScale.y+zoomScale,Earth.gameObject.transform.localScale.z+zoomScale);
-
 								leftCamera.camera.fieldOfView += zoomScale;
 								rightCamera.camera.fieldOfView += zoomScale;
 							}
@@ -306,7 +298,6 @@ public class GestureController : MonoBehaviour
 						{
 							if (leftCamera.camera.fieldOfView > minFov)
 							{
-								//Earth.gameObject.transform.localScale=new Vector3 (Earth.gameObject.transform.localScale.x-zoomScale,Earth.gameObject.transform.localScale.y-zoomScale,Earth.gameObject.transform.localScale.z-zoomScale);
 								leftCamera.camera.fieldOfView -= zoomScale;
 								rightCamera.camera.fieldOfView -= zoomScale;
 							}

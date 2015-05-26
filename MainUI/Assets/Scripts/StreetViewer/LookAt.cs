@@ -30,11 +30,11 @@ public class LookAt : MonoBehaviour {
 		
 		float angle = Manager.Instance.CameraRotation.x;
 		
-		if(40 < angle && angle < 90)
+		if(30 < angle && angle < 90)
 		{
 			transform.position = new Vector3(transform.position.x + 1f, transform.position.y + 1.0f, transform.position.z);
 		}
-		else if(270 < angle && angle < 340)
+		else if(270 < angle && angle < 330)
 		{
 			transform.position = new Vector3(transform.position.x - 1f, transform.position.y - 1.0f, transform.position.z);
 		}
