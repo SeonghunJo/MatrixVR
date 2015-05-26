@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using Leap;
 
-public class GesturControllerStreetView : MonoBehaviour
+public class GestureControllerStreetView : MonoBehaviour
 {
     Controller controller;       //립모션 컨트롤러
     GameObject cursorPointer;

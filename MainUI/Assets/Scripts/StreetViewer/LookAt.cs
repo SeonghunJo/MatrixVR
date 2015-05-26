@@ -18,17 +18,17 @@ public class LookAt : MonoBehaviour {
 		{
 			transform.LookAt(target.transform.position);
 		}
-		
-		if(Input.GetKey(KeyCode.U))
-		{
-			//transform.position = new Vector3(transform.position.x - 1f, transform.position.y + 1.0f, transform.position.z);
-			transform.RotateAround(target.transform.position, Vector3.left, 1f);
-		}
-		if(Input.GetKey(KeyCode.J))
-		{
-			//transform.position = new Vector3(transform.position.x + 1f, transform.position.y - 1.0f, transform.position.z);
-			transform.RotateAround(target.transform.position, Vector3.right, 1f);
-		}
+
+        if (Input.GetKey(KeyCode.U))
+        {
+            if (270 < transform.rotation.eulerAngles.x || transform.rotation.eulerAngles.x + 10.0f < 90)
+                transform.RotateAround(target.collider.bounds.center, new Vector3(1.0f, 0, 0.0f), 5.0f);
+        }
+        if (Input.GetKey(KeyCode.J))
+        {
+            if (270 < transform.rotation.eulerAngles.x - 10.0f || transform.rotation.eulerAngles.x < 90)
+                transform.RotateAround(target.collider.bounds.center, new Vector3(-1.0f, 0, 0.0f), 5.0f);
+        }
 		
 		float angle = Manager.Instance.CameraRotation.x;
 		
