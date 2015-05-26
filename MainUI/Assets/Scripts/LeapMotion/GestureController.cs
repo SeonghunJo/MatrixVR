@@ -13,7 +13,7 @@ public class GestureController : MonoBehaviour
 	public GameObject cursorModel;    // 손 포인터 끝 (커서)
 	public GameObject target;   // RayCast 충돌위치로  옮겨 표시하는 물체 
 	public GameObject leftCamera, rightCamera;
-	public GameObject Earth;
+	public GameObject earth;
 	public GameObject clickParticle =null; //클릭 파티클 이펙트
 	
 	public bool enableScreenTap = true;
@@ -29,14 +29,14 @@ public class GestureController : MonoBehaviour
 	string swipestart = "none";
 	StreetviewPoint StreetView_Pointed = null;
 
-	bool SceneZoomIn = true;  // 신전환시 ZoomIn효과 트리거.
-	bool SceneZoomOut =false; // 신전환시 ZoomOut효과 트리거.
+	bool sceneZoomIn = true;  // 신전환시 ZoomIn효과 트리거.
+	bool sceneZoomOut = false; // 신전환시 ZoomOut효과 트리거.
 	
 	// Use this for initializatio
 	void Start()
 	{
-		SceneZoomIn = true;
-		SceneZoomOut = false;
+		sceneZoomIn = true;
+		sceneZoomOut = false;
 		leftCamera.camera.fieldOfView = 190;
 		rightCamera.camera.fieldOfView = 190;
 		
@@ -83,9 +83,9 @@ public class GestureController : MonoBehaviour
 		HandList hands = frame.Hands;    //frame 안의 hands 인식
 		int num_hands = hands.Count;    //hand의 수
 
-		if (SceneZoomIn == true)	//f
+		if (sceneZoomIn == true)	//f
 		{
-			SceneChangeZoom(SceneZoomIn,SceneZoomOut);			
+			SceneChangeZoom(sceneZoomIn,sceneZoomOut);			
 		}
 
 
@@ -122,7 +122,7 @@ public class GestureController : MonoBehaviour
 				cols[i].enabled = false;
 			}
 			
-			GameObject handController = GameObject.Find("HandController");  //HandCOnroller 오브젝트 접근
+			
 			//팁핑 포지션으로 커서를 이동
 			if (rigid != null)
 			{
@@ -132,7 +132,6 @@ public class GestureController : MonoBehaviour
 			}
 			
 			//손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
-			//Vector2 screenPoint=leftCamera.camera.WorldToScreenPoint (handController.transform.TransformPoint(left.PalmPosition.ToUnityScaled()));
 			Vector2 screenPoint = leftCamera.camera.WorldToScreenPoint(cursorPointer.transform.position);
 			Ray r = leftCamera.camera.ScreenPointToRay(screenPoint);      // ScreentPoint로부터 Ray를 쏜다
 			Debug.DrawRay(r.origin, r.direction * 1000, Color.red);
@@ -188,8 +187,8 @@ public class GestureController : MonoBehaviour
 						if(StreetView_Pointed != null)
 						{
 							// TODO : Click (SHJO)	
-							if(SceneZoomOut==true)
-								SceneChangeZoom(SceneZoomIn,SceneZoomOut);
+							if(sceneZoomOut==true)
+								SceneChangeZoom(sceneZoomIn,sceneZoomOut);
 
 							Application.LoadLevel("StreetViewer");
 						}
@@ -198,14 +197,15 @@ public class GestureController : MonoBehaviour
 					else if (gesture.Type == Gesture.GestureType.TYPE_SCREEN_TAP) 
 					{
 						ScreenTapGesture screenTap = new ScreenTapGesture(gesture);
-						Debug.Log("TYPE_SCREEN_TAP");
+                        print("Screen Tap " + screenTap.Duration.ToString());
+
 						cursorModel.renderer.material.color = Color.red;
 						
 						if(StreetView_Pointed != null)
 						{
 							// TODO : Click - Optional (SHJO)
-							if(SceneZoomOut==true)
-								SceneChangeZoom(SceneZoomIn,SceneZoomOut);
+							if(sceneZoomOut==true)
+								SceneChangeZoom(sceneZoomIn,sceneZoomOut);
 
 							Application.LoadLevel("StreetViewer");
 						}
@@ -221,11 +221,11 @@ public class GestureController : MonoBehaviour
 						// TODO : Swipe (SHJO)
 						if(swipe.StartPosition.x > swipe.Position.x) // swipe.direction을 써도됨
 						{
-							Earth.transform.Rotate(new Vector3(0, -Time.deltaTime * swipeSpeed, 0));
+							earth.transform.Rotate(new Vector3(0, -Time.deltaTime * swipeSpeed, 0));
 						}
 						else
 						{
-							Earth.transform.Rotate(new Vector3(0, Time.deltaTime * swipeSpeed, 0));
+							earth.transform.Rotate(new Vector3(0, Time.deltaTime * swipeSpeed, 0));
 						}
 						
 					}
@@ -238,11 +238,11 @@ public class GestureController : MonoBehaviour
 						// TODO : Circle (SHJO)
 						if (circleGesture.Pointable.Direction.AngleTo(circleGesture.Normal) <= Math.PI / 2) // Clockwise
 						{
-							Earth.transform.Rotate(new Vector3(0, -Time.deltaTime * swipeSpeed, 0));
+							earth.transform.Rotate(new Vector3(0, -Time.deltaTime * swipeSpeed, 0));
 						}
 						else                                                                                // Counterclockwise
 						{
-							Earth.transform.Rotate(new Vector3(0, Time.deltaTime * swipeSpeed, 0)); 
+							earth.transform.Rotate(new Vector3(0, Time.deltaTime * swipeSpeed, 0)); 
 						}
 						
 					}
@@ -329,8 +329,8 @@ public class GestureController : MonoBehaviour
 		
 			if (leftCamera.camera.fieldOfView < 106) 
 			{
-				SceneZoomIn=false;	
-				SceneZoomOut=true;
+				sceneZoomIn=false;	
+				sceneZoomOut=true;
 			}
 		}
 		else if(zoomIn==false && zoomOut==true)
@@ -340,8 +340,8 @@ public class GestureController : MonoBehaviour
 
 			if (leftCamera.camera.fieldOfView > 190) 
 			{
-				SceneZoomOut=false;
-				SceneZoomIn=true;
+				sceneZoomOut=false;
+				sceneZoomIn=true;
 			}
 		}
 	}	

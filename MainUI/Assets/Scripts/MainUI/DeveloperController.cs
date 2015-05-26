@@ -3,7 +3,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class PlayerController : MonoBehaviour
+public class DeveloperController : MonoBehaviour
 {
 
     /// <summary>

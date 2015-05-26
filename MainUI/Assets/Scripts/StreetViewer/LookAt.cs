@@ -19,28 +19,28 @@ public class LookAt : MonoBehaviour {
 			transform.LookAt(target.transform.position);
 		}
 
-        if (Input.GetKey(KeyCode.U))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             if (270 < transform.rotation.eulerAngles.x || transform.rotation.eulerAngles.x + 10.0f < 90)
-                transform.RotateAround(target.collider.bounds.center, new Vector3(1.0f, 0, 0.0f), 5.0f);
+                transform.RotateAround(target.collider.bounds.center, new Vector3(1.0f, 0, 0.0f), 1.0f);
         }
-        if (Input.GetKey(KeyCode.J))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             if (270 < transform.rotation.eulerAngles.x - 10.0f || transform.rotation.eulerAngles.x < 90)
-                transform.RotateAround(target.collider.bounds.center, new Vector3(-1.0f, 0, 0.0f), 5.0f);
+                transform.RotateAround(target.collider.bounds.center, new Vector3(-1.0f, 0, 0.0f), 1.0f);
         }
 		
 		float angle = Manager.Instance.CameraRotation.x;
 		
 		if(30 < angle && angle < 90)
 		{
-			//transform.position = new Vector3(transform.position.x + 1f, transform.position.y + 1.0f, transform.position.z);
-			transform.RotateAround(target.transform.position, Vector3.left, 1f);
+            if (270 < transform.rotation.eulerAngles.x || transform.rotation.eulerAngles.x + 10.0f < 90)
+                transform.RotateAround(target.collider.bounds.center, new Vector3(1.0f, 0, 0.0f), 1.0f);
 		}
 		else if(270 < angle && angle < 330)
 		{
-			//transform.position = new Vector3(transform.position.x - 1f, transform.position.y - 1.0f, transform.position.z);
-			transform.RotateAround(target.transform.position, Vector3.right, 1f);
+            if (270 < transform.rotation.eulerAngles.x - 10.0f || transform.rotation.eulerAngles.x < 90)
+                transform.RotateAround(target.collider.bounds.center, new Vector3(-1.0f, 0, 0.0f), 1.0f);
 		}
 		else
 		{

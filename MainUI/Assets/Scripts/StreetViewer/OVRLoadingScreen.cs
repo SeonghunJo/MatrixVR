@@ -42,10 +42,6 @@ public class OVRLoadingScreen : MonoBehaviour
 	// Handle to OVRPlayerController
 	private OVRPlayerController PlayerController = null;
 	
-	// Rift detection
-	private bool   HMDPresent           = false;
-	private string strRiftPresent		= "";
-	
 	// Replace the GUI with our own texture and 3D plane that
 	// is attached to the rendder camera for true 3D placement
 	private OVRGUI  		GuiHelper 		 = new OVRGUI();

@@ -30,11 +30,7 @@ public class OVRThumbnailUI : MonoBehaviour
 	private OVRCameraRig CameraController = null;
 	
 	// Handle to OVRPlayerController
-	private OVRPlayerController PlayerController = null;
-	
-	// Rift detection
-	private bool   HMDPresent           = false;
-	private string strRiftPresent		= "";
+    private OVRPlayerController PlayerController = null;
 	
 	// Replace the GUI with our own texture and 3D plane that
 	// is attached to the rendder camera for true 3D placement

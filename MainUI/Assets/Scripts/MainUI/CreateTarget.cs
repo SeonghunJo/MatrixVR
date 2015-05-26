@@ -25,7 +25,6 @@ public class CreateTarget : MonoBehaviour
     public GameObject earth;
 
     public List<PanoramaInfo> panoramas = new List<PanoramaInfo>();
-    //public PanoramaInfo[] panoramas = new PanoramaInfo[33];
 
     //생성되는 객체에서 객체를 translate할 때 사용
     public static Vector3 _rotation;    //회전 vector
@@ -179,27 +178,6 @@ public class CreateTarget : MonoBehaviour
    
         panoramas.Add ( new PanoramaInfo(45.813453f, 10.793751f, "GCV_ShhIYj0yp5QTFSnaPQ", false)); //Limone del Garda
 
-
-        //panoramas.Add ( new PanoramaInfo(45.704014f, 9.662832f, "n9aCTxR7Jr_fv_bEbpGuLg", false)); //Bergamo, Piazza Duomo
-        //panoramas.Add ( new PanoramaInfo(43.773372f, 11.255210f, "ioUYqKxbMWJN1lISj9KeAw", false)); //Piazza S. Giovanni
-        //panoramas.Add ( new PanoramaInfo(43.761145f, 11.245873f, "W5Ok4jyYaNExJENEqXeNAQ", false)); //보볼리 정원
-        //panoramas.Add ( new PanoramaInfo(45.069088f, 7.685052f, "WQjMInatpKgv5zpSZIFxRQ", false)); //Palzzo Carignano
-        //panoramas.Add ( new PanoramaInfo(38.009058f, 12.329152f, "lCa2y5_6xXbnCKbfH8f_Rg", false)); //Beaches of Levanzo
-        //panoramas.Add ( new PanoramaInfo(37.922971f, 12.283752f, "LqHIDwupkayHNW1llPd4Pw", false)); //Beaches of Favignana
-        //panoramas.Add(new PanoramaInfo(46.153988f, 10.899672f, "1Zw4Ngm7xyVm-7orbJEGZQ", true)); //Dolomiti UNESCO
-        //panoramas.Add(new PanoramaInfo(46.162368f, 10.917272f, "5_AWZhbCGuqMd0AGfOlOUw", true)); //Dolomiti UNESCO2
-        //panoramas.Add ( new PanoramaInfo(46.616730f, 11.938461f, "ygDRTBjjVGqkDjkiqRPvhQ", true)); //Dolomiti UNESCO3
-        //panoramas.Add ( new PanoramaInfo(46.650418f, 12.184432f, "uOJCgToPnUIqSKtxqSve_w", true)); //Dolomiti UNESCO4
-        //panoramas.Add ( new PanoramaInfo(46.469498f, 12.099685f, "bxH-3FySUJJDxJuMKAjzDw", true)); //Dolomiti UNESCO5
-        //panoramas.Add ( new PanoramaInfo(46.487448f, 12.105410f, "Qc_L-FGE0kogf0uLL-ffEw", true)); //Dolomiti UNESCO6
-        //panoramas.Add ( new PanoramaInfo(46.383844f, 12.484926f, "1rkysmDNFGc8cQdatZW6kw", true)); //Dolomiti UNESCO7
-        //panoramas.Add ( new PanoramaInfo(46.280554f, 11.812249f, "uE9kdskapFzZo06BefILfQ", true)); //Dolomiti UNESCO8
-        //panoramas.Add ( new PanoramaInfo(45.624089f, 10.564648f, "WqMNGqP9fIlVWmwnwk7gHw", false)); //Vittoriale degli Italiani
-        //panoramas.Add ( new PanoramaInfo(45.606710f, 10.527010f, "S6vn6ZTiexkIv-oZaU6bZw", false)); //Salo
-        //panoramas.Add ( new PanoramaInfo(45.425851f, 10.602801f, "hXibr930x7SnwDx65wRYfg", false)); //San Martino della Battaglia
-        //panoramas.Add ( new PanoramaInfo(45.472723f, 10.748823f, "7scKHXfK0Is69gQXDza4fw", false)); //Parco termale villa
-        //panoramas.Add ( new PanoramaInfo(45.292127f, 11.727542f, "RjjJr4lYyEFuC_DXDjSH6g", false)); //Giardino di Balsanzibio
-
         // 인도
         panoramas.Add ( new PanoramaInfo(18.922323f, 72.834289f, "1uYAeoWlY4Pqoa6PZBDyZA", false)); //Gateway Of India Mumbai
         panoramas.Add ( new PanoramaInfo(12.305133f, 76.656141f, "ZjGqKKJpM8ofsZrw_CpAbA", false)); //Mysore Palace
@@ -255,11 +233,11 @@ public class CreateTarget : MonoBehaviour
         panoramas.Add ( new PanoramaInfo(41.137596f, -8.609771f, "thVBWkKMGg08eXF_uTYbQg", false)); //도우루강
 
         // 프랑스
-        panoramas.Add ( new PanoramaInfo(48.805015f, 2.119393f, "1GWafSZa22C6hW0j1L7a8A", false)); //베르사이유 궁전
-        panoramas.Add ( new PanoramaInfo(48.856306f, 2.297560f, "PRDbHicwARPmhyIq9uKeCA", true)); //에펠탑
-        panoramas.Add ( new PanoramaInfo(48.853663f, 2.347951f, "pQDLtpAbzF9KG4biw7zW4w", false)); //노트르담 대성당
-        panoramas.Add ( new PanoramaInfo(48.873502f, 2.295779f, "Ixp4bKuPoKGyOBtKBUHVdg", true)); //개선문
-        panoramas.Add ( new PanoramaInfo(48.861489f, 2.333644f, "cMMNd74PdSBvjw3vf9PByA", false)); //루브르 박물관
+        panoramas.Add(new PanoramaInfo(49.805015f, 4.119393f, "1GWafSZa22C6hW0j1L7a8A", false)); //베르사이유 궁전 ORIGIN : 48.805015f, 2.119393f
+        panoramas.Add(new PanoramaInfo(49.856306f, 0.297560f, "PRDbHicwARPmhyIq9uKeCA", true)); //에펠탑 ORIGIN : 48.856306f, 2.297560f
+        panoramas.Add(new PanoramaInfo(47.853663f, 2.347951f, "pQDLtpAbzF9KG4biw7zW4w", false)); //노트르담 대성당 ORIGIN : 48.853663f, 2.347951f
+        panoramas.Add(new PanoramaInfo(45.873502f, 4.295779f, "Ixp4bKuPoKGyOBtKBUHVdg", true)); //개선문 ORIGIN : 48.873502f, 2.295779f
+        panoramas.Add(new PanoramaInfo(45.861489f, 0.333644f, "cMMNd74PdSBvjw3vf9PByA", false)); //루브르 박물관 ORIGIN : 48.861489f, 2.333644f
 
         // 핀란드
         panoramas.Add ( new PanoramaInfo(68.509006f, 27.481845f, "GtnAyp0MCbYAAAQZLDcQIA", true)); //Northern Lights
@@ -279,12 +257,12 @@ public class CreateTarget : MonoBehaviour
         panoramas.Add ( new PanoramaInfo(-23.303391f, 151.914955f, "TNE1NPAnEUNYhGk9kFWyJw", true)); //Wilson Island underwater
         panoramas.Add ( new PanoramaInfo(-23.442896f, 151.906584f, "CWskcsTEZBNXaD8gG-zATA", true)); //Heron Island
 
-        for(int i=0 ; i<panoramas.Capacity; i++) 
+        for(int i=0 ; i<panoramas.Count; i++) 
         {
             Lat = panoramas[i].lat;
             Lng = panoramas[i].lng;
             panoID = panoramas[i].panoid;
-			impo=panoramas[i].impo;
+			impo = panoramas[i].impo;
 
             _rotation = new Vector3(Lat, -Lng, 0.0f);
             _translate = new Vector3(0, 0, -37.5f);
