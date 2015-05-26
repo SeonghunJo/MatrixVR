@@ -153,12 +153,6 @@ public class GestureController : MonoBehaviour
 							StreetView_Pointed.Pointed() ;
 							
 						}
-
-					}
-					else
-					{
-						StreetView_Pointed.PointedOut();
-						StreetView_Pointed = null;
 					}
 				}
 			}
