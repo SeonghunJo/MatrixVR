@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 public class PanoramaInfo
 {
-    public float lat;
-    public float lng;
-    public string panoid;
-	public bool impo;
+    public float lat;       //위도
+    public float lng;       //경도
+    public string panoid;   //파노라마 ID
+	public bool impo;       //추천 지역(T/F)
 
     public PanoramaInfo(float lat, float lng, string panoid, bool impo = true)
     {
@@ -268,12 +268,13 @@ public class CreateTarget : MonoBehaviour
             _rotation = new Vector3(Lat, -Lng, 0.0f);
             _translate = new Vector3(0, 0, -37.5f);
 
-			if(impo==true)
-			{
-			GameObject child = Instantiate(impoObj, transform.position, Quaternion.identity) as GameObject;
-            child.transform.parent = earth.transform;
-            child.GetComponent<StreetviewPoint>().SetPosition(impo);
-			}
+            //추천지역은 타겟의 모양을 다르게 함
+            if (impo == true)
+            {
+                GameObject child = Instantiate(impoObj, transform.position, Quaternion.identity) as GameObject;
+                child.transform.parent = earth.transform;
+                child.GetComponent<StreetviewPoint>().SetPosition(impo);
+            }
 			else
 			{
 				GameObject child2 = Instantiate( nonImpobj, transform.position, Quaternion.identity) as GameObject;

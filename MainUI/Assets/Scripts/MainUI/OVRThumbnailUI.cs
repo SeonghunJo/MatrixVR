@@ -26,6 +26,7 @@ public class OVRThumbnailUI : MonoBehaviour
 
     private int screenCenterX = 640;
     private int screenCenterY = 400;
+
 	// Handle to OVRCameraRig
 	private OVRCameraRig CameraController = null;
 	
@@ -343,15 +344,15 @@ public class OVRThumbnailUI : MonoBehaviour
 	{
 		int width = 160;
 		int height = 80;
+
+        //여행지의 대표이미지
 		Texture image = Manager.Instance.thumbnailImg;
         GuiHelper.StereoDrawTexture(screenCenterX - width / 2, 400, width, height, ref image, new Color(0.5f, 0.5f, 0.5f, 1f));
 
 		int textWidth = 400;
 		int textHeight = 40;
 
-        //GUI.color = new Color(0, 0, 0);
-        //GUI.DrawTexture(new Rect(screenCenterX - textWidth / 2, 500, textWidth, textHeight), FadeInTexture);
-
+        //여행지 이름, 나라 이름
 		string locationName = Manager.Instance.thumbnailText;
         if (locationName == null)
             locationName = "no name";

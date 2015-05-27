@@ -3,13 +3,13 @@ using System.Collections;
 
 [RequireComponent(typeof(BoxCollider))]
 
+//Mouse test
 public class EarthScript : MonoBehaviour
 {
     public int Speed;		//rotate speed
 
     public void Start()
     {
-        //Screen.showCursor = true;
         Speed = 10;
     }
 

@@ -68,8 +68,7 @@ public class StreetviewPoint : MonoBehaviour
 
 	public void Clicked()
 	{
-        //CameraFade.setFadeOutEndEvent(FadeOutEnd);
-        //CameraFade.FadeOutMain();
+
 	}
 
 	public void Pointed ()
@@ -86,22 +85,16 @@ public class StreetviewPoint : MonoBehaviour
             Manager.Instance.wikiText = "NULL";
 
         thumbnailUI.ShowScreen();
-		//this.renderer.material.color = Color.blue;
 	}
 	
     void OnMouseEnter()
 	{
-		Debug.Log("mouse enter : " + panoID);
-
         Pointed();
 	}
 
 	public void PointedOut()
 	{
-        Debug.Log("destroy : " + panoID);
-
         thumbnailUI.HideScreen();
-		//this.renderer.material.color = Color.red;
 	}
 
     void OnMouseExit()
@@ -123,14 +116,6 @@ public class StreetviewPoint : MonoBehaviour
 
         transform.Rotate(CreateTarget._rotation);
         transform.Translate(CreateTarget._translate);
-
-		/*if (this.impo == true) 
-		{
-			//주요지점 TO do:  Added By hjoon
-			this.gameObject.renderer.material.color=Color.red;
-		}*/
-
-
     }
 
     IEnumerator GetThumbnailImage(string url)

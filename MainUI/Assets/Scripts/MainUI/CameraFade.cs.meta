@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: aef57ae0206beb54ca59ba4c66b7c682
-MonoImporter:
-  serializedVersion: 2
-  defaultReferences:
-  - fadeTexture: {fileID: 2800000, guid: daa862b7c8b652747b677022fbd8c532, type: 3}
-  executionOrder: 0
-  icon: {instanceID: 0}
-  userData: 
