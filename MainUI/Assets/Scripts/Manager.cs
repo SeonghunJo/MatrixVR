@@ -43,7 +43,7 @@ public class Manager {
 	public string[] nextDegrees;
     
     public Stack<string> panoramaStack;
-    public bool enableAutoGathering = true;
+    public bool enableAutoGathering = false; // if true, auto gathering
     private static string cacheFolderPath;
 
 	public int processCount;
