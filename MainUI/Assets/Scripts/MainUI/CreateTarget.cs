@@ -15,7 +15,7 @@ public class PanoramaInfo
         this.lat = lat;
         this.lng = lng;
         this.panoid = panoid;
-        this.impo = true; //  impo;
+        this.impo = impo; //  impo;
     }
 }
 
