@@ -339,7 +339,7 @@ public class OVRInformation : MonoBehaviour
         int boxHeight = 100;
 
         //Draw Information text
-		string text = Manager.Instance.thumbnailText;
+        string text = Manager.Instance.wikiText;
         GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight, ref text, Color.white);
 
 
