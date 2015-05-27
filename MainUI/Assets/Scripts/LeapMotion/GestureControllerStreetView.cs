@@ -13,6 +13,7 @@ public class GestureControllerStreetView : MonoBehaviour
     public GameObject target;   // RayCast 충돌위치로  옮겨 표시하는 물체 
     public GameObject leftCamera, rightCamera;
     public GameObject Earth;
+	public GameObject clickParticle =null; //클릭 파티클 이펙트
 
     public bool enableScreenTap = true;
     public bool enableKeyTap = true;
@@ -185,15 +186,23 @@ public class GestureControllerStreetView : MonoBehaviour
             for (int i = 0; i < gestures.Count; i++)
             {
                 Gesture gesture = gestures[i];
+
+				HandList handsForGesture = gesture.Hands;
+				if (num_hands == 1)                                 
+				{
+
                 // Key Tap
                 if (gesture.Type == Gesture.GestureType.TYPE_KEY_TAP)
                 {
                     KeyTapGesture keyTap = new KeyTapGesture(gesture);
 					Debug.Log ("TYPE_KEY_TAP");
-					//Debug.Log("TYPE_KEY_TAP - ObjName : " + hit.collider.name + 
-					         // ", Flag - " +hit.collider.gameObject.tag + ", Duration : " + keyTap.DurationSeconds.ToString());
-                    
-					cursorModel.renderer.material.color = Color.blue;                       
+					cursorModel.renderer.material.color = Color.blue;  
+
+						
+					GameObject particleObj = Instantiate(clickParticle, Tipping () , Quaternion.identity) as GameObject;
+						
+					Destroy (particleObj,2f);
+
                     //if(pointed != null)
 					if(hit.collider.gameObject.tag != null)
                     {
@@ -236,55 +245,56 @@ public class GestureControllerStreetView : MonoBehaviour
                 {                   
 
                 }
-
+				}
                 // ZOOM IN OUT Motion
                 if (num_hands == 2)                                 
                 {
-                    if (hands[0].IsLeft && gesture.Type == Gesture.GestureType.TYPESWIPE)
-                    {
-                        Debug.Log("left zoom");
-                        SwipeGesture Swipe = new SwipeGesture(gesture);
-                        Vector swipeDirection = Swipe.Direction;
-                        if (swipeDirection.x < 0)
-                        {
-                            if (leftCamera.camera.fieldOfView < maxFov)
-                            {
-                                leftCamera.camera.fieldOfView += zoomScale;
-                                rightCamera.camera.fieldOfView += zoomScale;
-                            }
-
-                        }
-                        else if (swipeDirection.x > 0)
-                        {
-                            if (leftCamera.camera.fieldOfView > minFov)
-                            {
-                                leftCamera.camera.fieldOfView -= zoomScale;
-                                rightCamera.camera.fieldOfView -= zoomScale;
-                            }
-                        }
-                    }
-                    else if ((!hands[0].IsLeft) && gesture.Type == Gesture.GestureType.TYPESWIPE)
-                    {
-                        Debug.Log("right zoom");
-                        SwipeGesture Swipe = new SwipeGesture(gesture);
-                        Vector swipeDirection = Swipe.Direction;
-                        if (swipeDirection.x > 0)
-                        {
-                            if (leftCamera.camera.fieldOfView < maxFov)
-                            {
-                                leftCamera.camera.fieldOfView += zoomScale;
-                                rightCamera.camera.fieldOfView += zoomScale;
-                            }
-                        }
-                        else if (swipeDirection.x < 0)
-                        {
-                            if (leftCamera.camera.fieldOfView > minFov)
-                            {
-                                leftCamera.camera.fieldOfView -= zoomScale;
-                                rightCamera.camera.fieldOfView -= zoomScale;
-                            }
-                        }
-                    }
+					if (handsForGesture[0].IsLeft && gesture.Type == Gesture.GestureType.TYPESWIPE)
+					{
+						Debug.Log("left zoom");
+						SwipeGesture Swipe = new SwipeGesture(gesture);
+						Vector swipeDirection = Swipe.Direction;
+						if (swipeDirection.x < 0)
+						{
+							if (leftCamera.camera.fieldOfView < maxFov)
+							{
+								leftCamera.camera.fieldOfView += zoomScale;
+								rightCamera.camera.fieldOfView += zoomScale;
+							}
+							
+						}
+						else if (swipeDirection.x > 0)
+						{
+							if (leftCamera.camera.fieldOfView > minFov)
+							{
+								leftCamera.camera.fieldOfView -= zoomScale;
+								rightCamera.camera.fieldOfView -= zoomScale;
+							}
+						}
+					}
+					
+					else if ((!handsForGesture[0].IsLeft) && gesture.Type == Gesture.GestureType.TYPESWIPE)
+					{
+						Debug.Log("right zoom");
+						SwipeGesture Swipe = new SwipeGesture(gesture);
+						Vector swipeDirection = Swipe.Direction;
+						if (swipeDirection.x > 0)
+						{
+							if (leftCamera.camera.fieldOfView < maxFov)
+							{
+								leftCamera.camera.fieldOfView += zoomScale;
+								rightCamera.camera.fieldOfView += zoomScale;
+							}
+						}
+						else if (swipeDirection.x < 0)
+						{
+							if (leftCamera.camera.fieldOfView > minFov)
+							{
+								leftCamera.camera.fieldOfView -= zoomScale;
+								rightCamera.camera.fieldOfView -= zoomScale;
+							}
+						}
+					}
                 } // END OF ZOOM IN GESTURE
             } // END OF GESTURE RECOGNITION LOOP
         

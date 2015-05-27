@@ -32,15 +32,15 @@ public class LookAt : MonoBehaviour {
 		
 		float angle = Manager.Instance.CameraRotation.x;
 		
-		if(30 < angle && angle < 90)
+		if(25 < angle && angle < 90)
 		{
             if (270 < transform.rotation.eulerAngles.x || transform.rotation.eulerAngles.x + 10.0f < 90)
-                transform.RotateAround(target.collider.bounds.center, new Vector3(1.0f, 0, 0.0f), 1.0f);
+                transform.RotateAround(target.collider.bounds.center, new Vector3(1.0f, 0, 0.0f), 0.8f);
 		}
-		else if(270 < angle && angle < 330)
+		else if(270 < angle && angle < 335)
 		{
             if (270 < transform.rotation.eulerAngles.x - 10.0f || transform.rotation.eulerAngles.x < 90)
-                transform.RotateAround(target.collider.bounds.center, new Vector3(-1.0f, 0, 0.0f), 1.0f);
+                transform.RotateAround(target.collider.bounds.center, new Vector3(-1.0f, 0, 0.0f), 0.8f);
 		}
 		else
 		{
