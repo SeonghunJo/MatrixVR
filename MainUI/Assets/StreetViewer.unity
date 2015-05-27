@@ -1865,14 +1865,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747f1acef5b806f4fa20ed565e008501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panoramaID: IUmXlW6pRu1w9QnUdQk4vw
-  defaultID: IUmXlW6pRu1w9QnUdQk4vw
+  panoramaID: hEuDBjnLcagAAAQZA4Rr0g
+  defaultID: hEuDBjnLcagAAAQZA4Rr0g
   panoramaTexture: {fileID: 0}
   saveTextureFileName: 
   skyboxMaterial: {fileID: 0}
   buttonModel: {fileID: 100000, guid: 9b0404e0c23ad3c41aeacb5aed9c09bb, type: 2}
   enableCache: 1
-  enableCacheDebugging: 0
+  enableCacheDebugging: 1
   cubeTextureFront: {fileID: 0}
   cubeTextureBack: {fileID: 0}
   cubeTextureLeft: {fileID: 0}
