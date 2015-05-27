@@ -104,7 +104,7 @@ public class CreateTarget : MonoBehaviour
         panoramas.Add ( new PanoramaInfo(21.306635f, -157.859008f, "C5J9QXgPhZo-LnZvZ7FWCg", false)); //Iolani Palace
         panoramas.Add ( new PanoramaInfo(20.634702f, -156.497456f, "FUMjYMh38n_EitPWdt70RA", false)); //Maui, Hawaii, Molokini Crater
         panoramas.Add ( new PanoramaInfo(20.311091f, -87.036529f, "691D23S_viUAAAQJKigqjA", false)); //Columbia Deep
-        panoramas.Add ( new PanoramaInfo(21.479702f, -86.632599f, "xq5H2tvkw_AAAAQJLmg-7A", true)); //Whale Sharks
+        
         panoramas.Add ( new PanoramaInfo(19.419751f, -155.288205f, "NsXMzG6eODgN7UjSs9G2nA", false)); //Hawaii Volcanoes National Park
         panoramas.Add ( new PanoramaInfo(19.927064f, -155.886999f, "XTcMO38szyVGzYIDvpyIzQ", false)); //Hilton Waikoloa Village
         panoramas.Add ( new PanoramaInfo(47.620012f, -122.349345f, "TlSB0Ge9RrEPPI-oln365A", false)); //Space Needle
@@ -258,6 +258,8 @@ public class CreateTarget : MonoBehaviour
         panoramas.Add ( new PanoramaInfo(-23.303391f, 151.914955f, "TNE1NPAnEUNYhGk9kFWyJw", true)); //Wilson Island underwater
         panoramas.Add ( new PanoramaInfo(-23.442896f, 151.906584f, "CWskcsTEZBNXaD8gG-zATA", true)); //Heron Island
 
+        panoramas.Add(new PanoramaInfo(21.479702f, -86.632599f, "xq5H2tvkw_AAAAQJLmg-7A", true)); //Whale Sharks
+
         for(int i=0 ; i<panoramas.Count; i++) 
         {
             Lat = panoramas[i].lat;
@@ -281,6 +283,26 @@ public class CreateTarget : MonoBehaviour
 				child2.transform.parent = earth.transform;
 				child2.GetComponent<StreetviewPoint>().SetPosition(impo);
 			}
+
+
+            if(Manager.Instance.enableAutoGathering)
+            {
+                if (!Manager.Instance.FindCachedImageFromID(panoID))
+                {
+                    if (impo)
+                    {
+                        Manager.Instance.important = impo;
+                        Manager.Instance.panoramaID = panoID;
+                        Application.LoadLevel("StreetViewer");
+                    }
+                    else
+                    {
+                        //Manager.Instance.important = impo;
+                        //Manager.Instance.panoramaID = panoID;
+                        //Application.LoadLevel("StreetViewer");
+                    }
+                }
+            }
             
         }
     }

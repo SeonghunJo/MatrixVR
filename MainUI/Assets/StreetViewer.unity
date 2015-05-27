@@ -1560,7 +1560,7 @@ MonoBehaviour:
   skyboxMaterial: {fileID: 0}
   buttonModel: {fileID: 100000, guid: 9b0404e0c23ad3c41aeacb5aed9c09bb, type: 2}
   enableCache: 1
-  enableCacheDebugging: 0
+  enableCacheDebugging: 1
   cubeTextureFront: {fileID: 0}
   cubeTextureBack: {fileID: 0}
   cubeTextureLeft: {fileID: 0}
