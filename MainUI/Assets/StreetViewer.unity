@@ -1548,6 +1548,10 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: dd3831a83e889bb46908cc2d4d0338ac, type: 2}
+      propertyPath: m_RenderingPath
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd3831a83e889bb46908cc2d4d0338ac, type: 2}
   m_RootGameObject: {fileID: 30103676}
@@ -1787,7 +1791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1633697637
 Transform:
   m_ObjectHideFlags: 0
@@ -1874,14 +1878,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747f1acef5b806f4fa20ed565e008501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panoramaID: hEuDBjnLcagAAAQZA4Rr0g
-  defaultID: hEuDBjnLcagAAAQZA4Rr0g
+  panoramaID: IUmXlW6pRu1w9QnUdQk4vw
+  defaultID: IUmXlW6pRu1w9QnUdQk4vw
   panoramaTexture: {fileID: 0}
   saveTextureFileName: 
   skyboxMaterial: {fileID: 0}
   buttonModel: {fileID: 100000, guid: 9b0404e0c23ad3c41aeacb5aed9c09bb, type: 2}
   enableCache: 1
-  enableCacheDebugging: 1
+  enableCacheDebugging: 0
   cubeTextureFront: {fileID: 0}
   cubeTextureBack: {fileID: 0}
   cubeTextureLeft: {fileID: 0}

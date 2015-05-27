@@ -37,8 +37,8 @@ public class GestureController : MonoBehaviour
 	{
 		sceneZoomIn = true;
 		sceneZoomOut = false;
-		leftCamera.camera.fieldOfView = 178;
-		rightCamera.camera.fieldOfView = 178;
+		leftCamera.camera.fieldOfView = 160;
+		rightCamera.camera.fieldOfView = 160;
 		
 		target.renderer.material.color = Color.blue;
 		controller = new Controller();  //립모션 컨트롤러 할당 

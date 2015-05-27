@@ -84,10 +84,6 @@ public class StreetViewRenderer : MonoBehaviour
     public Texture2D cubeTextureDown = null;
 
     OVRLoadingScreen screen = null;
-
-    // CACHE
-    Queue<string> queue;
-
     // Use this for initialization
     void Start()
     {
@@ -100,20 +96,6 @@ public class StreetViewRenderer : MonoBehaviour
         else
         {
             Manager.Instance.panoramaStack = new Stack<string>();
-        }
-
-        if (Manager.Instance.enableAutoGathering)
-        {
-            if(queue == null)
-            {
-                queue = new Queue<string>();
-            }
-            else
-            {
-                queue.Clear();
-            }
-
-            queue.Enqueue(Manager.Instance.panoramaID);
         }
 
         StartRenderStreetView(true);
@@ -204,15 +186,7 @@ public class StreetViewRenderer : MonoBehaviour
         /* 스트리트뷰 정보 확인 */
         
         print("StreetViewer Start");
-        if( Manager.Instance.enableAutoGathering )
-        {
-            StartCoroutine(Gathering());
-        }
-        else 
-        {   
-            StartCoroutine(RenderStreetView(stackPush));
-        }
-
+        StartCoroutine(RenderStreetView(stackPush));
         print("StreetViewer Start End");
     }
     
@@ -267,17 +241,6 @@ public class StreetViewRenderer : MonoBehaviour
         if(stackPush)
         {
             Manager.Instance.panoramaStack.Push(panoramaID);
-        }
-
-        if(Manager.Instance.enableAutoGathering)
-        {
-            if (queue.Count == 0)
-            {
-                print("queue empty");
-                yield break;
-            }
-            print("dequeue : " + panoramaID);
-            panoramaID = queue.Dequeue();
         }
 
         string[] stackList = Manager.Instance.panoramaStack.ToArray();
@@ -339,123 +302,6 @@ public class StreetViewRenderer : MonoBehaviour
             screen.HideScreen();
 
         LoadingScreen.Hide();
-
-        if (Manager.Instance.enableAutoGathering)
-        {
-            for (int i = 0; i < Manager.Instance.nextIDs.Length; i++)
-            {
-                if (!FindCachedImageFromID(Manager.Instance.nextIDs[i]))
-                {
-                    print("enque : " + Manager.Instance.nextIDs[i]);
-                    queue.Enqueue(Manager.Instance.nextIDs[i]);
-                }
-            }
-        }
-    }
-
-    IEnumerator RenderStreetViewGather(bool stackPush = false) // INIT VARIABLES AND DOWNLOAD START
-    {
-        Initialize();
-        LoadingScreen.Show();
-
-        if (stackPush)
-        {
-            Manager.Instance.panoramaStack.Push(panoramaID);
-        }
-
-        if (Manager.Instance.enableAutoGathering)
-        {
-            if (queue.Count == 0)
-            {
-                print("queue empty");
-                yield break;
-            }
-            print("dequeue : " + panoramaID);
-            panoramaID = queue.Dequeue();
-        }
-
-        string[] stackList = Manager.Instance.panoramaStack.ToArray();
-        for (int i = 0; i < stackList.Length; i++)
-        {
-            Debug.LogWarning("stack " + i.ToString() + " : " + stackList[i]);
-        }
-
-        // FIND OVR CAMERA
-        GameObject OVRCameraRig = GameObject.Find("LeapOVRCameraRig");
-        if (OVRCameraRig != null)
-            screen = OVRCameraRig.GetComponent<OVRLoadingScreen>();
-
-        if (screen != null)
-            screen.ShowScreen();
-
-        Debug.Log("ID -> META DATA");
-        do
-        {
-            yield return StartCoroutine(GetMetaData());
-            retryCounter++;
-        } while (retrieveMetaData == false && retryCounter < 10);
-        Debug.Log("GetMetaData End : Retry Count is " + retryCounter.ToString());
-
-        if (retryCounter == 5)
-        {
-            Debug.LogError("Get Meta Data Failed");
-            retryCounter = 0;
-        }
-
-        if (enableCache && FindCachedImageFromID(panoramaID)) // 캐시를 사용하고 해당 데이터가 캐시폴더에 있을 경우
-        {
-            Debug.Log("Image data is exist");
-            // 6방향 이미지를 모두 로드하고
-            GetCachedImageFromID(panoramaID);
-            if (!enableCacheDebugging)
-                yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.processCount = 50;
-            if (!enableCacheDebugging)
-                yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.processCount = 100;
-        }
-        else
-        {
-            yield return StartCoroutine(GetPanoramaImage(panoramaID, textureWidth, textureHeight));
-            yield return StartCoroutine(MergeTiles());
-            yield return StartCoroutine(ConvertPanoramaToCubemap());
-        }
-
-        // 메타데이터 받고
-        // 기존에 다운로드 받은 큐브맵이 있는지 확인한다.
-        // 있다면 바로 스카이박스에 적용시키고 끝낸다.
-
-
-        SetSkybox();
-        DrawButtons();
-
-        if (screen != null)
-            screen.HideScreen();
-
-        LoadingScreen.Hide();
-
-        if (Manager.Instance.enableAutoGathering)
-        {
-            for (int i = 0; i < Manager.Instance.nextIDs.Length; i++)
-            {
-                if (!FindCachedImageFromID(Manager.Instance.nextIDs[i]))
-                {
-                    print("enque : " + Manager.Instance.nextIDs[i]);
-                    queue.Enqueue(Manager.Instance.nextIDs[i]);
-                }
-            }
-        }
-
-        yield return new WaitForSeconds(1);
-    }
-
-    IEnumerator Gathering()
-    {
-        while(queue.Count != 0)
-        {
-            yield return StartCoroutine(RenderStreetViewGather());
-        }
-        Application.LoadLevel("SceneEarth");
     }
 
     // Step 2
@@ -538,14 +384,6 @@ public class StreetViewRenderer : MonoBehaviour
     {
         print("Get Panorama Image - ID : " + pano_id + " width : " + width + " height : " + height);
 
-        if(panoramaTexture != null)
-        {
-            DestroyImmediate(panoramaTexture);
-            panoramaTexture = null;
-            
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-        }
         panoramaTexture = new Texture2D(width, height);
 
         string output = "tile";
@@ -629,13 +467,8 @@ public class StreetViewRenderer : MonoBehaviour
                             panoramaTexture.SetPixel(penPosX, penPosY, cp.GetPixel(x, y));
                     }
                 }
-
-                DestroyImmediate(cp);
             }
         }
-
-        
-
         panoramaTexture.Apply();
 
      
