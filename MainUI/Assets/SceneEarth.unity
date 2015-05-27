@@ -1171,7 +1171,7 @@ Camera:
     height: 1
   near clip plane: .00999999978
   far clip plane: 1000
-  field of view: 0
+  field of view: 179
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1818,10 +1818,10 @@ MonoBehaviour:
   enableKeyTap: 1
   enableSwipe: 1
   enableCircle: 0
-  swipeSpeed: 40
+  swipeSpeed: 45
   maxFov: 130
   minFov: 60
-  zoomScale: .5
+  zoomScale: .400000006
 --- !u!114 &2117130069
 MonoBehaviour:
   m_ObjectHideFlags: 0
