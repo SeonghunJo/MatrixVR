@@ -37,8 +37,8 @@ public class GestureController : MonoBehaviour
 	{
 		sceneZoomIn = true;
 		sceneZoomOut = false;
-		leftCamera.camera.fieldOfView = 190;
-		rightCamera.camera.fieldOfView = 190;
+		leftCamera.camera.fieldOfView = 178;
+		rightCamera.camera.fieldOfView = 178;
 		
 		target.renderer.material.color = Color.blue;
 		controller = new Controller();  //립모션 컨트롤러 할당 
@@ -205,7 +205,7 @@ public class GestureController : MonoBehaviour
 						{
 							// TODO : Click - Optional (SHJO)
 							if(sceneZoomOut==true)
-								SceneChangeZoom(sceneZoomIn,sceneZoomOut);
+								//SceneChangeZoom(sceneZoomIn,sceneZoomOut);
 
 							Application.LoadLevel("StreetViewer");
 						}
@@ -324,8 +324,8 @@ public class GestureController : MonoBehaviour
 		if (zoomIn == true && zoomOut == false)	//f
 		{
 			//gameObject.transform.localScale -= new Vector3(Time.deltaTime*35F,Time.deltaTime*30F,0);
-			leftCamera.camera.fieldOfView -=Time.deltaTime*15;
-			rightCamera.camera.fieldOfView-=Time.deltaTime*15f;
+			leftCamera.camera.fieldOfView -=Time.deltaTime*9F;
+			rightCamera.camera.fieldOfView-=Time.deltaTime*9f;
 		
 			if (leftCamera.camera.fieldOfView < 106) 
 			{
@@ -335,10 +335,10 @@ public class GestureController : MonoBehaviour
 		}
 		else if(zoomIn==false && zoomOut==true)
 		{
-			leftCamera.camera.fieldOfView +=Time.deltaTime*15;
-			rightCamera.camera.fieldOfView +=Time.deltaTime*15f;
+			leftCamera.camera.fieldOfView +=Time.deltaTime*9F;
+			rightCamera.camera.fieldOfView +=Time.deltaTime*9f;
 
-			if (leftCamera.camera.fieldOfView > 190) 
+			if (leftCamera.camera.fieldOfView > 177) 
 			{
 				sceneZoomOut=false;
 				sceneZoomIn=true;
