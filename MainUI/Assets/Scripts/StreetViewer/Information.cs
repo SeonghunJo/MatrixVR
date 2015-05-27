@@ -7,9 +7,21 @@ public class Information : MonoBehaviour
     public bool makeText = false;
 
     OVRInformation inforText;
+	void awake()
+	{
+		Color temp = this.renderer.material.color;
+		temp.a = 0.4f;
+		this.renderer.material.color = temp;
+		this.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 
+
+	}
     void start()
     {
+		Color temp = this.renderer.material.color;
+		temp.a = 0.4f;
+		this.renderer.material.color = temp;
+		this.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 
     }
 
@@ -34,9 +46,9 @@ public class Information : MonoBehaviour
         inforText.ShowScreen();
 
         Color temp = this.renderer.material.color;
-        temp.a = 1f;
+        temp.a = 0.2f;
         this.renderer.material.color = temp;
-        this.transform.localScale = new Vector3(3f, 3f, 3f);
+		this.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
 
 
     }
@@ -44,8 +56,8 @@ public class Information : MonoBehaviour
     {
         inforText.HideScreen();
         Color temp = this.renderer.material.color;
-        temp.a = 0.3f;
+        temp.a = 0.4f;
         this.renderer.material.color = temp;
-        this.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+		this.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
     }
 }
