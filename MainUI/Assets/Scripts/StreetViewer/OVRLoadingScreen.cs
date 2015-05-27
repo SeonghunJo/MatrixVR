@@ -383,6 +383,12 @@ public class OVRLoadingScreen : MonoBehaviour
         processBarLocation = process * 3;
         GuiHelper.StereoDrawTexture(screenCenterX - 150, 540, processBarLocation, boxHeight, ref bar, new Color(0.5f, 0.5f, 0.5f, 1f));
 
+        string text = Manager.Instance.wikiText;
+        if (text == null)
+            text = "no name";
+        GuiHelper.StereoBox(screenCenterX - 200, 300, 400 , 40, ref text, Color.white);
+        
+
 
 	}
 	#endregion SeonghunJo Added
