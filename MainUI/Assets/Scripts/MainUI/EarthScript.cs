@@ -23,6 +23,8 @@ public class EarthScript : MonoBehaviour
         {
             transform.Rotate(Vector3.down, Speed * Time.deltaTime * 5, Space.Self);
         }
+
+        /*
         if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.Rotate(Vector3.left, Speed * Time.deltaTime * 5, Space.Self);
@@ -31,7 +33,7 @@ public class EarthScript : MonoBehaviour
         {
             transform.Rotate(Vector3.right, Speed * Time.deltaTime * 5, Space.Self);
         }
-  
+        */
         
     }
 

@@ -47,7 +47,7 @@ public class StreetViewRenderer : MonoBehaviour
     private int colTilesNum = 0;
     private int totalTilesNum; // rowTileNums * colTileNums;
     
-    private float pivotYaw = 0.0f; // Panorama Pivot Yaw Degree ; Set by GetMetaData
+    public float pivotYaw = 0.0f; // Panorama Pivot Yaw Degree ; Set by GetMetaData
 
     // SET BY DEVELOPER
     private int zoom = 3; // Default Panorama Zoom Size
