@@ -116,6 +116,12 @@ public class LoadingScreen : MonoBehaviour {
 		_instance.locationText.guiText.text = text;
 	}
 
+    public static void SetLoadingText(string text)
+    {
+        if (NoInstance()) return;
+        _instance.text.guiText.text = text;
+    }
+
 	public static void Show()
 	{
 		if(NoInstance()) return;
@@ -147,6 +153,6 @@ public class LoadingScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        SetLoadingText("LOADING - " + Manager.Instance.processCount.ToString() + " %");
 	}
 }

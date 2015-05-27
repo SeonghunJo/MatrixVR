@@ -38,7 +38,11 @@ public class StreetviewPoint : MonoBehaviour
 	// Use this for initialization
     IEnumerator Start() {		
 		Debug.Log ("start : " + panoID);
-        thumbnailUI = GameObject.Find("LeapOVRCameraRig").GetComponent<OVRThumbnailUI>();
+        GameObject OVRCameraRig = GameObject.Find("LeapOVRCameraRig");
+        if(OVRCameraRig != null)
+        {
+            thumbnailUI = OVRCameraRig.GetComponent<OVRThumbnailUI>();
+        }
 
         yield return StartCoroutine(GetThumbnailImage(thumbnailURL));
 
@@ -55,7 +59,7 @@ public class StreetviewPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.KeypadEnter))
+        if (Input.GetKey(KeyCode.S))
         {
             Application.LoadLevel("StreetViewer");
         }
@@ -84,7 +88,8 @@ public class StreetviewPoint : MonoBehaviour
         else
             Manager.Instance.wikiText = "NULL";
 
-        thumbnailUI.ShowScreen();
+        if(thumbnailUI != null)
+            thumbnailUI.ShowScreen();
 	}
 	
     void OnMouseEnter()
@@ -94,7 +99,8 @@ public class StreetviewPoint : MonoBehaviour
 
 	public void PointedOut()
 	{
-        thumbnailUI.HideScreen();
+        if(thumbnailUI != null)
+            thumbnailUI.HideScreen();
 	}
 
     void OnMouseExit()

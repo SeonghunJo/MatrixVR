@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 using System.IO; // For File Class
 using System;
@@ -83,12 +84,26 @@ public class StreetViewRenderer : MonoBehaviour
     public Texture2D cubeTextureDown = null;
 
     OVRLoadingScreen screen = null;
-
-
     // Use this for initialization
     void Start()
     {
-        StartRenderStreetView();
+        Debug.LogWarning("StreetView Start");
+
+        if(Manager.Instance.panoramaStack != null)
+        {
+            Manager.Instance.panoramaStack.Clear();
+        }
+        else
+        {
+            Manager.Instance.panoramaStack = new Stack<string>();
+        }
+
+        StartRenderStreetView(true);
+    }
+
+    void Awake()
+    {
+        Debug.LogWarning("StreetView Awake");
     }
 
     // For Generate Buttons
@@ -112,22 +127,64 @@ public class StreetViewRenderer : MonoBehaviour
                         }
                     }
 
-                    if (GUI.Button(new Rect(0, i * 30, 150, 20), Manager.Instance.nextIDs[i]))
+                    if (GUI.Button(new Rect(0, i * 30, 250, 20), Manager.Instance.nextIDs[i]))
                     {
                         print("Direction ID : " + Manager.Instance.nextIDs[i]);
                         Manager.Instance.panoramaID = Manager.Instance.nextIDs[i];
-                        StartRenderStreetView();
+                        StartRenderStreetView(true);
                     }
                 }
             }
         }
+
+        
+        if (Manager.Instance.panoramaStack != null)
+        {
+            string backID = "Earth";
+
+            string[] stackList = Manager.Instance.panoramaStack.ToArray();
+
+            if (Manager.Instance.panoramaStack.Count > 1 )
+            {
+                backID = stackList[1];
+                if (enableCacheDebugging)
+                {
+                    if (FindCachedImageFromID(backID))
+                    {
+                        GUI.color = Color.yellow;
+                    }
+                    else
+                    {
+                        GUI.color = Color.white;
+                    }
+                }
+            }
+
+            if (GUI.Button(new Rect(400, 0, 250, 20), backID))
+            {
+                print("Direction ID : " + backID);
+                backID = Manager.Instance.panoramaStack.Pop();
+                Manager.Instance.panoramaID = backID;
+                StartRenderStreetView(false);
+            }
+        }
+        
     }
 
-    public void StartRenderStreetView()
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Application.LoadLevel("SceneEarth");
+        }
+    }
+
+    public void StartRenderStreetView(bool stackPush = false)
     {
         /* 스트리트뷰 정보 확인 */
+        
         print("StreetViewer Start");
-        StartCoroutine(RenderStreetView());
+        StartCoroutine(RenderStreetView(stackPush));
         print("StreetViewer Start End");
     }
     
@@ -172,15 +229,29 @@ public class StreetViewRenderer : MonoBehaviour
         downloadedTilesCount = 0;
     }
     // Step 1
-    IEnumerator RenderStreetView() // INIT VARIABLES AND DOWNLOAD START
+    IEnumerator RenderStreetView(bool stackPush = false) // INIT VARIABLES AND DOWNLOAD START
     {
         /* 파노라마 렌더링 시작 */
         // 파노라마 아이디를 통해 파노라마 이미지에 대한 부가 정보를 받는다.
         Initialize();
         LoadingScreen.Show();
 
+        if(stackPush)
+        {
+            Manager.Instance.panoramaStack.Push(panoramaID);
+        }
+
+        string[] stackList = Manager.Instance.panoramaStack.ToArray();
+        for(int i=0; i<stackList.Length; i++)
+        {
+            Debug.LogWarning("stack " + i.ToString() + " : " + stackList[i]);
+        }
+
         // FIND OVR CAMERA
-        screen = GameObject.Find("LeapOVRCameraRig").GetComponent<OVRLoadingScreen>();
+        GameObject OVRCameraRig = GameObject.Find("LeapOVRCameraRig");
+        if(OVRCameraRig != null)
+            screen = OVRCameraRig.GetComponent<OVRLoadingScreen>();
+        
         if (screen != null)
             screen.ShowScreen();
 
@@ -203,9 +274,11 @@ public class StreetViewRenderer : MonoBehaviour
             Debug.Log("Image data is exist");
             // 6방향 이미지를 모두 로드하고
             GetCachedImageFromID(panoramaID);
-            yield return new WaitForSeconds(1.0f); // 1초간 대기
+            if(!enableCacheDebugging)
+                yield return new WaitForSeconds(1.0f); // 1초간 대기
             Manager.Instance.processCount = 50;
-            yield return new WaitForSeconds(2.0f); // 1초간 대기
+            if (!enableCacheDebugging)
+                yield return new WaitForSeconds(1.0f); // 1초간 대기
             Manager.Instance.processCount = 100;
         }
         else

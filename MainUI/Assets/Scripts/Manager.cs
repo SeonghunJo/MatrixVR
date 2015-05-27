@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 // SINGLETON MANAGER CLASS FOR ALL SCENES AND SCRIPT 
 
@@ -21,6 +22,7 @@ public class Manager {
 	public string panoramaID;
 	public string[] nextIDs;
 	public string[] nextDegrees;
+    public Stack<string> panoramaStack;
 	
 	public int processCount;
 	

@@ -35,7 +35,8 @@ public class MouseController : MonoBehaviour {
 				}
 				else
 				{
-					StreetView_Pointed.gameObject.renderer.material.color=Color.red;
+                    if(StreetView_Pointed != null)
+					    StreetView_Pointed.gameObject.renderer.material.color=Color.red;
 					StreetView_Pointed = null;
 				}
 			}
