@@ -163,8 +163,10 @@ public class StreetViewRenderer : MonoBehaviour
             if (GUI.Button(new Rect(400, 0, 250, 20), backID))
             {
                 print("Direction ID : " + backID);
-                backID = Manager.Instance.panoramaStack.Pop();
+
                 Manager.Instance.panoramaID = backID;
+                Manager.Instance.panoramaStack.Pop();
+
                 StartRenderStreetView(false);
             }
         }

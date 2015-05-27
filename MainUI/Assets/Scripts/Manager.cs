@@ -23,7 +23,9 @@ public class Manager {
 	public string[] nextIDs;
 	public string[] nextDegrees;
     public Stack<string> panoramaStack;
-	
+
+    public bool enableAutoGathering = true;
+
 	public int processCount;
 	
 	// FOR MainUI.scene VARIABLES AND FUNCTIONS
