@@ -46,9 +46,9 @@ public class GestureController : MonoBehaviour
 		if (enableScreenTap)
 		{ // https://developer.leapmotion.com/documentation/unity/api/Leap.ScreenTapGesture.html
 			controller.EnableGesture(Gesture.GestureType.TYPE_SCREEN_TAP);
-			controller.Config.SetFloat("Gesture.ScreenTap.MinForwardVelocity", 20.0f); //ScreenTap 조건 
+			controller.Config.SetFloat("Gesture.ScreenTap.MinForwardVelocity", 30.0f); //ScreenTap 조건 30초로 바꿈
 			controller.Config.SetFloat("Gesture.ScreenTap.HistorySeconds", 0.4f); // SHJO 판정시간 0.5초로 바꿈
-			controller.Config.SetFloat("Gesture.ScreenTap.MinDistance", 1.0f); // SHJO 최소거리 5에서 1로 바꿈
+			controller.Config.SetFloat("Gesture.ScreenTap.MinDistance", 1.0f); // SHJO 최소거리 5에서 3로 바꿈
 			controller.Config.Save();
 		}
 		if (enableKeyTap)

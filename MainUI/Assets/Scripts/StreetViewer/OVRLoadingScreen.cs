@@ -15,6 +15,7 @@ public class OVRLoadingScreen : MonoBehaviour
 	public float 	FadeInTime    	= 2.0f;
 	public UnityEngine.Texture 	FadeInTexture 	= null;
 	public Font 	FontReplace		= null;
+    public Font     FontTitle       = null;
 	public KeyCode ToggleKey		= KeyCode.Space;
 	public KeyCode	QuitKey			= KeyCode.Escape;
 
@@ -362,8 +363,10 @@ public class OVRLoadingScreen : MonoBehaviour
 		GUI.color = new Color(0, 0, 0);
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
 
+        GuiHelper.SetFontReplace(FontTitle);
+
         //Draw Loading text
-		string loading = "LOADING...";
+		string loading = "L O A D I N G ...";
         GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight + 5, ref loading, Color.white);
 
         //Draw People
@@ -383,9 +386,12 @@ public class OVRLoadingScreen : MonoBehaviour
         processBarLocation = process * 3;
         GuiHelper.StereoDrawTexture(screenCenterX - 150, 540, processBarLocation, boxHeight, ref bar, new Color(0.5f, 0.5f, 0.5f, 1f));
 
-        string text = Manager.Instance.wikiText;
+
+        string text = Manager.Instance.thumbnailText;
         if (text == null)
-            text = "no name";
+            text = "M A T R I X";
+
+        //text = "만장굴, South Korea, 제주시, 제주특별자치도";
         GuiHelper.StereoBox(screenCenterX - 200, 300, 400 , 40, ref text, Color.white);
         
 
