@@ -70,9 +70,6 @@ public class CreateTarget : MonoBehaviour
         panoramas.Add(new PanoramaInfo(56.309959f, 38.129472f, "GrFw-S4a5A6xdQWs9FhEhw", true)); //The Holy Trinity-St.Sergius Lavra
         panoramas.Add(new PanoramaInfo(43.354961f, 42.439195f, "A5oCY2VD27HtxwTgBfI7Jw", false)); //West Summit
 
-        // 루마니아
-        panoramas.Add(new PanoramaInfo(45.713056f, 24.151476f, "G7adRdSGuIm7K-MFvKLCUw", false)); //시스나디에 요새 교회
-
         // 마다가스카르
         panoramas.Add(new PanoramaInfo(-20.250515f, 44.418992f, "88qwsWCYsJ8xXo2W1kjIXw", false)); //Baobab-Andronomea
         panoramas.Add(new PanoramaInfo(-23.541324f, 43.779575f, "6R4EPTccvk941C4fobch5g", false)); //St. Augustin
@@ -122,7 +119,6 @@ public class CreateTarget : MonoBehaviour
 
         // 브라질
         panoramas.Add(new PanoramaInfo(-3.137761f, -60.493355f, "1ci-8iBT_UuG1dlrUy1vzg", true)); //Rio Negro 아마존
-        panoramas.Add(new PanoramaInfo(-3.078972f, -60.038147f, "NMd4iWDeabMAAAQXH9ow_g", false)); //Rua3
 
         // 스페인
         panoramas.Add(new PanoramaInfo(41.404212f, 2.174820f, "lXSocJr_ApZrMdq_CrfUNg", false)); //사그라다 파밀리아
@@ -171,6 +167,7 @@ public class CreateTarget : MonoBehaviour
 
         panoramas.Add(new PanoramaInfo(45.813453f, 10.793751f, "GCV_ShhIYj0yp5QTFSnaPQ", false)); //Limone del Garda
         panoramas.Add(new PanoramaInfo(46.162368f, 10.917272f, "5_AWZhbCGuqMd0AGfOlOUw", true)); // Dolomiti UNESCO2
+
         // 인도
         panoramas.Add(new PanoramaInfo(18.922323f, 72.834289f, "1uYAeoWlY4Pqoa6PZBDyZA", false)); //Gateway Of India Mumbai
         panoramas.Add(new PanoramaInfo(12.305133f, 76.656141f, "ZjGqKKJpM8ofsZrw_CpAbA", false)); //Mysore Palace

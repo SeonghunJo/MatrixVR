@@ -314,11 +314,11 @@ public class StreetViewRenderer : MonoBehaviour
             // 6방향 이미지를 모두 로드하고
             GetCachedImageFromID(panoramaID);
             if(!enableCacheDebugging)
-                yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.processCount = 50;
+                yield return new WaitForSeconds(2.0f); // 1초간 대기
+            Manager.Instance.processCount = 20;
             if (!enableCacheDebugging)
-                yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.processCount = 100;
+                yield return new WaitForSeconds(2.0f); // 1초간 대기
+            Manager.Instance.processCount = 40;
         }
         else
         {
@@ -408,11 +408,11 @@ public class StreetViewRenderer : MonoBehaviour
             // 6방향 이미지를 모두 로드하고
             GetCachedImageFromID(panoramaID);
             if (!enableCacheDebugging)
-                yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.processCount = 50;
+                yield return new WaitForSeconds(2.0f); // 1초간 대기
+            Manager.Instance.processCount = 20;
             if (!enableCacheDebugging)
-                yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.processCount = 100;
+                yield return new WaitForSeconds(2.0f); // 1초간 대기
+            Manager.Instance.processCount = 40;
         }
         else
         {
