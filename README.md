@@ -10,7 +10,7 @@
 
 ### Description
 1. The Summary of project
-> Our software provides a user with immersing virtual reality views through Oculus Rift device. 
+> Our software provides immersive virtual reality views through Oculus Rift device. 
 The initial screen of software starts at 3D based earth-image. 
 It allows a user to select their favorite regions using Leap Motion of Oculus Rift using hand motions and gestures.
 When certain site is selected, it shows its unique screen images as if one stands there. 
