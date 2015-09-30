@@ -263,13 +263,13 @@ public class CreateTarget : MonoBehaviour
             {
                 GameObject child = Instantiate(impoObj, transform.position, Quaternion.identity) as GameObject;
                 child.transform.parent = earth.transform;
-                child.GetComponent<StreetviewPoint>().SetPosition(impo);
+                child.GetComponent<StreetViewPoint>().SetPosition(impo);
             }
 			else
 			{
 				GameObject child2 = Instantiate( nonImpobj, transform.position, Quaternion.identity) as GameObject;
 				child2.transform.parent = earth.transform;
-				child2.GetComponent<StreetviewPoint>().SetPosition(impo);
+				child2.GetComponent<StreetViewPoint>().SetPosition(impo);
 			}
 
 

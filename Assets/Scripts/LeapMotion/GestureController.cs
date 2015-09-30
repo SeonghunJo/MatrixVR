@@ -27,7 +27,7 @@ public class GestureController : MonoBehaviour
 	public float zoomScale = 0.7f;
 	
 	string swipestart = "none";
-	StreetviewPoint StreetView_Pointed = null;
+	StreetViewPoint StreetView_Pointed = null;
 
 	bool sceneZoomIn = true;  // 신전환시 ZoomIn효과 트리거.
 	bool sceneZoomOut = false; // 신전환시 ZoomOut효과 트리거.
@@ -145,7 +145,7 @@ public class GestureController : MonoBehaviour
 					target.transform.position = hit.transform.position;
 					if(hit.collider.gameObject.tag == "StreetviewPoint")
 					{
-						StreetView_Pointed = hit.collider.gameObject.GetComponent<StreetviewPoint>();
+						StreetView_Pointed = hit.collider.gameObject.GetComponent<StreetViewPoint>();
 						if(StreetView_Pointed != null)
 						{
 							// TODO : Mouse Enter (SHJO)

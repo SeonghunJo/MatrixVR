@@ -6,9 +6,7 @@ using System.IO; // For File Class
 using System;
 using LitJson; // http://lbv.github.io/litjson/
 
-
-// SHJO TODO : TEXTURE CACHING LOGIC
-// 0. 메타 데이터 정보는 캐싱 여부와 상관없이 확인할 필요가 있음
+// 0. 지역의 메타 데이터 정보는 캐싱 여부와 상관없이 확인할 필요가 있음
 // 1. 다운로드된 파노라마 및 큐브맵 이미지 확인
 // 2-1. 기존 파노라마가 없으면 기존 방식대로 다운로드
 // 2-2. 기존 파노라마가 있으면 큐브맵을 기존 텍스쳐를 로딩하는 방식으로 대체한다.
@@ -28,6 +26,7 @@ public class StreetViewRenderer : MonoBehaviour
     // DRAW Buttons
     public GameObject buttonModel;
     private GameObject[] buttonModelList;
+
     // SET BY GOOGLE
     private string cbkURL = "http://maps.google.com/cbk?";
     private int imageWidth = 0;

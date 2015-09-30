@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MouseController : MonoBehaviour {
-	StreetviewPoint StreetView_Pointed = null;
+	StreetViewPoint StreetView_Pointed = null;
 	// Use this for initialization
 	void Start () {
 	
@@ -24,7 +24,7 @@ public class MouseController : MonoBehaviour {
 			{
 				if(hit.collider.gameObject.tag == "StreetviewPoint")
 				{
-					StreetView_Pointed = hit.collider.gameObject.GetComponent<StreetviewPoint>();
+					StreetView_Pointed = hit.collider.gameObject.GetComponent<StreetViewPoint>();
 					if(StreetView_Pointed != null)
 					{
 						// TODO : Mouse Enter (SHJO)
