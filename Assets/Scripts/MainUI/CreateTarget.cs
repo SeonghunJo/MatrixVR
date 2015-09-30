@@ -25,14 +25,9 @@ public class CreateTarget : MonoBehaviour
     public GameObject nonImpobj;
     public GameObject earth;
 
-    public List<PanoramaInfo> panoramas = new List<PanoramaInfo>();
-
-    //생성되는 객체에서 객체를 translate할 때 사용
-    public static Vector3 _rotation;    //회전 vector
-    public static Vector3 _translate;   //이동 vector
+    public List<PanoramaInfo> panoramas = new List<PanoramaInfo>();  
 
     //입력된 값을 float로 저장할 변수
-
     // Use this for initialization
     void Start()
     {
@@ -247,10 +242,7 @@ public class CreateTarget : MonoBehaviour
         for (int i = 0; i < panoramas.Count; i++)
         {           
             
-			PanoramaInfo info = panoramas[i];
-
-			_rotation = new Vector3(panoramas[i].lat, -panoramas[i].lng, 0.0f);
-            _translate = new Vector3(0, 0, -37.5f);
+			PanoramaInfo info = panoramas[i];	
 
 			//추천지역은 타겟의 모양을 다르게 			
 			GameObject child = Instantiate( info.impo ? impoObj : nonImpobj , transform.position, Quaternion.identity) as GameObject;

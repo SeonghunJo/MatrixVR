@@ -110,8 +110,11 @@ public class StreetViewPoint : MonoBehaviour
 
 	public void SetPosition(PanoramaInfo panoInfo)
     {
-        Lat = CreateTarget._rotation.x;
-        Lng = -(CreateTarget._rotation.y);
+		Vector3 _rotation=new Vector3(panoInfo.lat, -panoInfo.lng, 0.0f);
+		Vector3 _translate = new Vector3(0, 0, -37.5f);
+
+        Lat = _rotation.x;
+        Lng = -(_rotation.y);
 		panoID = panoInfo.panoid;
 		this.impo = panoInfo.impo;
 
@@ -120,8 +123,8 @@ public class StreetViewPoint : MonoBehaviour
 
 		Debug.Log(Lat + " " + Lng + " " + panoID );
 
-        transform.Rotate(CreateTarget._rotation);
-        transform.Translate(CreateTarget._translate);
+        transform.Rotate(_rotation);
+        transform.Translate(_translate);
     }
 
     IEnumerator GetThumbnailImage(string url)

@@ -3,19 +3,13 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour {
 
-	//private Vector3 scale;
-
 	void start()
 	{
-		//scale = this.transform.localScale;
-		//this.renderer.enabled = false;
-
 	}
 	public void Clicked()
 	{
 		Application.LoadLevel ("SceneEarth");
-		//this.renderer.material.color.a = 1f;
-	
+		//this.renderer.material.color.a = 1f;	
 	}
 	public void Pointed()
 	{
@@ -24,22 +18,17 @@ public class MainMenu : MonoBehaviour {
 		//tempscale.x = scale.x * 2;
 		//tempscale.y = scale.y * 2;
 		//tempscale.z = scale.z * 2;
-
 		Color temp = this.renderer.material.color;
 		temp.a = 1f;
 		this.renderer.material.color = temp;
 		this.transform.localScale = new Vector3 (3f, 3f, 3f);
-
-
 	}
 	public void PointedOut()
 	{
 		//this.renderer.enabled = false;
-
 		Color temp = this.renderer.material.color;
 		temp.a = 0.3f;
 		this.renderer.material.color = temp;
-		//this.transform.localScale = scale;
 		this.transform.localScale = new Vector3 (2.5f, 2.5f, 2.5f);
 	}
 }
