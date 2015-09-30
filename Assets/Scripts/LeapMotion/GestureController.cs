@@ -339,6 +339,7 @@ public class GestureController : MonoBehaviour
 			controller.Config.SetFloat("Gesture.Circle.MinRadius", 10.0f);
 			controller.Config.SetFloat("Gesture.Circle.MinArc", 1.0f);
 			controller.Config.Save();
+			//하하하 
 		}
 	}
 	
