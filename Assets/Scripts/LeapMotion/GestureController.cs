@@ -65,8 +65,7 @@ public class GestureController : MonoBehaviour
 		}
 		else
 		{
-			Hand left = hands.Leftmost;     //왼쪽손 			
-			FingerList fingerList = left.Fingers;  //왼쪽 손의 손가락들!
+			FingerList fingerList = hands.Leftmost.Fingers;   //왼쪽 손의 손가락들!
 			Finger leftFinger = fingerList.Frontmost;  //왼손에서 제일 앞에 있는 손가락
 			
 			rigid = GameObject.Find("RigidHand(Clone)");
@@ -132,9 +131,9 @@ public class GestureController : MonoBehaviour
 			{
 				Gesture gesture = gestures[i];
 				HandList handsForGesture = gesture.Hands;
-				if (num_hands == 1)                                 
+				switch (num_hands)                                 
 				{
-					
+				case 1:
 					// Key Tap
 					if (gesture.Type == Gesture.GestureType.TYPE_KEY_TAP)
 						KeyTap(gesture);
@@ -147,14 +146,14 @@ public class GestureController : MonoBehaviour
 					// Circle
 					else if (gesture.Type == Gesture.GestureType.TYPE_CIRCLE)
 						Circle (gesture);
-				}
-				
-				// ZOOM IN OUT Motion
-				if (num_hands == 2)                                 
-				{
+					break;
+				case 2:
 					ZoomInOut(gesture,handsForGesture);
-					
-				} // END OF ZOOM IN GESTURE
+					break;
+
+				}				
+				// ZOOM IN OUT Motion
+			
 			} // END OF GESTURE RECOGNITION LOOP
 			
 		} // END OF IF
@@ -280,53 +279,33 @@ public class GestureController : MonoBehaviour
 	//Gesture Even ZoomInOut
 	void ZoomInOut(Gesture gesture,HandList handsForGesture)
 	{	
-		if (handsForGesture[0].IsLeft && gesture.Type == Gesture.GestureType.TYPESWIPE)
-		{
-			Debug.Log("left zoom");
-			SwipeGesture Swipe = new SwipeGesture(gesture);
-			Vector swipeDirection = Swipe.Direction;
-			if (swipeDirection.x < 0)
-			{
-				if (leftCamera.camera.fieldOfView < maxFov)
-				{
-					leftCamera.camera.fieldOfView += zoomScale;
-					rightCamera.camera.fieldOfView += zoomScale;
-				}
-				
-			}
-			else if (swipeDirection.x > 0)
-			{
-				if (leftCamera.camera.fieldOfView > minFov)
-				{
-					leftCamera.camera.fieldOfView -= zoomScale;
-					rightCamera.camera.fieldOfView -= zoomScale;
-				}
-			}
-		}
 		
-		else if ((!handsForGesture[0].IsLeft) && gesture.Type == Gesture.GestureType.TYPESWIPE)
+		Debug.Log("left zoom");
+		SwipeGesture Swipe = new SwipeGesture(gesture);
+		Vector swipeDirection = Swipe.Direction;
+		float temp = 0;
+		if (swipeDirection.x < 0 && handsForGesture[0].IsLeft
+		    || swipeDirection.x > 0 && handsForGesture[0].IsRight)
 		{
-			Debug.Log("right zoom");
-			SwipeGesture Swipe = new SwipeGesture(gesture);
-			Vector swipeDirection = Swipe.Direction;
-			if (swipeDirection.x > 0 )
-			{
-				if (leftCamera.camera.fieldOfView < maxFov)
-				{
-					leftCamera.camera.fieldOfView += zoomScale;
-					rightCamera.camera.fieldOfView += zoomScale;
-				}
+			
+			if (leftCamera.camera.fieldOfView < maxFov) 
+			{				
+				temp = zoomScale;				
 			}
-			else if (swipeDirection.x < 0)
-			{
-				if (leftCamera.camera.fieldOfView > minFov)
-				{
-					leftCamera.camera.fieldOfView -= zoomScale;
-					rightCamera.camera.fieldOfView -= zoomScale;
-				}
-			}
+			
 		}
-		
+		else if (swipeDirection.x > 0 && handsForGesture[0].IsLeft
+		         || swipeDirection.x < 0 && handsForGesture[0].IsRight)
+		{
+			if (leftCamera.camera.fieldOfView > minFov) 
+			{
+				temp = zoomScale * -1; ;				
+			}			
+		}		
+
+		leftCamera.camera.fieldOfView += temp;
+		rightCamera.camera.fieldOfView += temp;	
+
 	}
 	//Enable LeapMotion Gesture
 	void SetGesture(Controller controller)
