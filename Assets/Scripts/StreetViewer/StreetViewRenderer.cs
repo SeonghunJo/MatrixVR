@@ -49,7 +49,7 @@ public class StreetViewRenderer : MonoBehaviour
     public float pivotYaw = 0.0f; // Panorama Pivot Yaw Degree ; Set by GetMetaData
 
     // SET BY DEVELOPER
-    private int zoom = 3; // Default Panorama Zoom Size
+    private const int zoom = 3; // Default Panorama Zoom Size
     private Texture2D[,] tiles;
     private int downloadedTilesCount;
 
@@ -71,7 +71,7 @@ public class StreetViewRenderer : MonoBehaviour
     private int m_textureSizeIndex = 4;
 
     public bool enableCache = true;
-    public bool enableCacheDebugging = false; // true 일 경우 캐시된 곳의 Panorama ID 버튼이 노란색으로 표시된다.
+    public bool enableCacheDebugging = true; // true 일 경우 캐시된 곳의 Panorama ID 버튼이 노란색으로 표시된다.
 
     private string cacheFolderPath = null;
 
@@ -84,14 +84,15 @@ public class StreetViewRenderer : MonoBehaviour
 
     OVRLoadingScreen screen = null;
 
-    // CACHE
+	// CACHE
     Queue<string> queue;
+
 
     // Use this for initialization
     void Start()
     {
         Debug.LogWarning("StreetView Start");
-
+#if DEBUG
         if(Manager.Instance.panoramaStack != null)
         {
             Manager.Instance.panoramaStack.Clear();
@@ -114,7 +115,7 @@ public class StreetViewRenderer : MonoBehaviour
 
             queue.Enqueue(Manager.Instance.panoramaID);
         }
-
+#endif
         StartRenderStreetView(true);
     }
 
@@ -126,6 +127,7 @@ public class StreetViewRenderer : MonoBehaviour
     // For Generate Buttons
     void OnGUI()
     {
+#if DEBUG
         if (Manager.Instance.nextIDs != null)
         {
             if (Manager.Instance.nextIDs.Length > 0)
@@ -134,7 +136,7 @@ public class StreetViewRenderer : MonoBehaviour
                 {
                     if (enableCacheDebugging)
                     {
-                        if (FindCachedImageFromID(Manager.Instance.nextIDs[i]))
+                        if (Utility.FindCachedImageFromID(Manager.Instance.nextIDs[i]))
                         {
                             GUI.color = Color.yellow;
                         }
@@ -166,7 +168,7 @@ public class StreetViewRenderer : MonoBehaviour
                 backID = stackList[1];
                 if (enableCacheDebugging)
                 {
-                    if (FindCachedImageFromID(backID))
+                    if (Utility.FindCachedImageFromID(backID))
                     {
                         GUI.color = Color.yellow;
                     }
@@ -187,7 +189,7 @@ public class StreetViewRenderer : MonoBehaviour
                 StartRenderStreetView(false);
             }
         }
-        
+#endif
     }
 
     void Update()
@@ -202,8 +204,8 @@ public class StreetViewRenderer : MonoBehaviour
     public void StartRenderStreetView(bool stackPush = false)
     {
         /* 스트리트뷰 정보 확인 */
-        
         print("StreetViewer Start");
+#if DEBUG
         if( Manager.Instance.enableAutoGathering )
         {
             StartCoroutine(Gathering());
@@ -212,37 +214,24 @@ public class StreetViewRenderer : MonoBehaviour
         {   
             StartCoroutine(RenderStreetView(stackPush));
         }
+#endif
+		StartCoroutine(RenderStreetView(stackPush));
 
         print("StreetViewer Start End");
-    }
-    
-    private bool FindCachedImageFromID(string id)
-    {
-        if( File.Exists(cacheFolderPath + "/" + id + "_front.png")
-            && File.Exists(cacheFolderPath + "/" + id + "_back.png")
-            && File.Exists(cacheFolderPath + "/" + id + "_left.png")
-            && File.Exists(cacheFolderPath + "/" + id + "_right.png")
-            && File.Exists(cacheFolderPath + "/" + id + "_up.png")
-            && File.Exists(cacheFolderPath + "/" + id + "_down.png"))
-        {
-            return true;
-        }
-        return false;
     }
 
     private void GetCachedImageFromID(string id)
     {
-        cubeTextureFront = GetTexture(cacheFolderPath + "/" + id + "_front.png");
-        cubeTextureBack = GetTexture(cacheFolderPath + "/" + id + "_back.png");
-        cubeTextureLeft = GetTexture(cacheFolderPath + "/" + id + "_left.png");
-        cubeTextureRight = GetTexture(cacheFolderPath + "/" + id + "_right.png");
-        cubeTextureUp = GetTexture(cacheFolderPath + "/" + id + "_up.png");
-        cubeTextureDown = GetTexture(cacheFolderPath + "/" + id + "_down.png");
+        cubeTextureFront = GetTexture(Utility.cacheFolderPath + "/" + id + "_front.png");
+		cubeTextureBack = GetTexture(Utility.cacheFolderPath + "/" + id + "_back.png");
+		cubeTextureLeft = GetTexture(Utility.cacheFolderPath + "/" + id + "_left.png");
+		cubeTextureRight = GetTexture(Utility.cacheFolderPath + "/" + id + "_right.png");
+		cubeTextureUp = GetTexture(Utility.cacheFolderPath + "/" + id + "_up.png");
+		cubeTextureDown = GetTexture(Utility.cacheFolderPath + "/" + id + "_down.png");
     }
 
     void Initialize()
     {
-        cacheFolderPath = Application.persistentDataPath; // 기본 캐시 폴더 설정
         Manager.Instance.processCount = 0; // 진행률 초기화
         panoramaID = Manager.Instance.panoramaID; // 파노라마 아이디 설정
         print("Panorama ID : " + Manager.Instance.panoramaID);
@@ -256,6 +245,7 @@ public class StreetViewRenderer : MonoBehaviour
         retryCounter = 0; // 메타데이터 재시도 횟수
         downloadedTilesCount = 0;
     }
+
     // Step 1
     IEnumerator RenderStreetView(bool stackPush = false) // INIT VARIABLES AND DOWNLOAD START
     {
@@ -308,7 +298,7 @@ public class StreetViewRenderer : MonoBehaviour
             retryCounter = 0;
         }
 
-        if(enableCache && FindCachedImageFromID(panoramaID)) // 캐시를 사용하고 해당 데이터가 캐시폴더에 있을 경우
+        if(enableCache && Utility.FindCachedImageFromID(panoramaID)) // 캐시를 사용하고 해당 데이터가 캐시폴더에 있을 경우
         {
             Debug.Log("Image data is exist");
             // 6방향 이미지를 모두 로드하고
@@ -331,7 +321,6 @@ public class StreetViewRenderer : MonoBehaviour
         // 기존에 다운로드 받은 큐브맵이 있는지 확인한다.
         // 있다면 바로 스카이박스에 적용시키고 끝낸다.
 
-
         SetSkybox();
         DrawButtons();
 
@@ -344,7 +333,7 @@ public class StreetViewRenderer : MonoBehaviour
         {
             for (int i = 0; i < Manager.Instance.nextIDs.Length; i++)
             {
-                if (!FindCachedImageFromID(Manager.Instance.nextIDs[i]))
+                if (!Utility.FindCachedImageFromID(Manager.Instance.nextIDs[i]))
                 {
                     print("enque : " + Manager.Instance.nextIDs[i]);
                     queue.Enqueue(Manager.Instance.nextIDs[i]);
@@ -402,16 +391,16 @@ public class StreetViewRenderer : MonoBehaviour
             retryCounter = 0;
         }
 
-        if (enableCache && FindCachedImageFromID(panoramaID)) // 캐시를 사용하고 해당 데이터가 캐시폴더에 있을 경우
+        if (enableCache && Utility.FindCachedImageFromID(panoramaID)) // 캐시를 사용하고 해당 데이터가 캐시폴더에 있을 경우
         {
             Debug.Log("Image data is exist");
             // 6방향 이미지를 모두 로드하고
             GetCachedImageFromID(panoramaID);
             if (!enableCacheDebugging)
-                yield return new WaitForSeconds(2.0f); // 1초간 대기
+                yield return new WaitForSeconds(1.0f); // 1초간 대기
             Manager.Instance.processCount = 20;
             if (!enableCacheDebugging)
-                yield return new WaitForSeconds(2.0f); // 1초간 대기
+                yield return new WaitForSeconds(1.0f); // 1초간 대기
             Manager.Instance.processCount = 40;
         }
         else
@@ -438,7 +427,7 @@ public class StreetViewRenderer : MonoBehaviour
         {
             for (int i = 0; i < Manager.Instance.nextIDs.Length; i++)
             {
-                if (!FindCachedImageFromID(Manager.Instance.nextIDs[i]))
+                if (!Utility.FindCachedImageFromID(Manager.Instance.nextIDs[i]))
                 {
                     print("enque : " + Manager.Instance.nextIDs[i]);
                     queue.Enqueue(Manager.Instance.nextIDs[i]);
@@ -634,11 +623,8 @@ public class StreetViewRenderer : MonoBehaviour
             }
         }
 
-        
-
         panoramaTexture.Apply();
-
-     
+		
         //SaveTexture(panoramaTexture, panoramaID + ".png");
 
         Manager.Instance.processCount++;
@@ -668,7 +654,7 @@ public class StreetViewRenderer : MonoBehaviour
 
     private IEnumerator ConvertPanoramaToCubemap()
     {
-        int texSize = m_GetCubemapTextureSize();
+        int texSize = GetCubemapTextureSize();
 
         yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_FRONT, panoramaID + "_front.png"));
         Manager.Instance.processCount++;
@@ -696,7 +682,7 @@ public class StreetViewRenderer : MonoBehaviour
         RenderSettings.skybox = skyboxMaterial;
     }
 
-    private int m_GetCubemapTextureSize()
+    private int GetCubemapTextureSize()
     {
         int size = 512;
         if (m_textureSize.Length > m_textureSizeIndex)
@@ -814,15 +800,15 @@ public class StreetViewRenderer : MonoBehaviour
 
     private Color CalcProjectionSpherical(Vector3 vDir)
     {
-        float theta = Mathf.Atan2(vDir.z, vDir.x);		// -π ～ +π.
-        float phi = Mathf.Acos(vDir.y);				//  0  ～ +π
+        float theta = Mathf.Atan2(vDir.z, vDir.x);		// -π ~ +π.
+        float phi = Mathf.Acos(vDir.y);				//  0 ~ +π
 
         theta += m_direction * Mathf.PI / 180.0f;
         while (theta < -Mathf.PI) theta += Mathf.PI + Mathf.PI;
         while (theta > Mathf.PI) theta -= Mathf.PI + Mathf.PI;
 
-        float dx = theta / Mathf.PI;		// -1.0 ～ +1.0.
-        float dy = phi / Mathf.PI;			//  0.0 ～ +1.0.
+        float dx = theta / Mathf.PI;		// -1.0 ~ +1.0.
+        float dy = phi / Mathf.PI;			//  0.0 ~ +1.0.
 
         dx = dx * 0.5f + 0.5f;
         int px = (int)(dx * (float)panoramaTexture.width);
@@ -834,32 +820,6 @@ public class StreetViewRenderer : MonoBehaviour
 
         Color col = panoramaTexture.GetPixel(px, panoramaTexture.height - py - 1);
         return col;
-    }
-
-    private IEnumerator CalcProjectionSpherical(Vector3 vDir, Color col)
-    {
-        print("m_calc");
-        float theta = Mathf.Atan2(vDir.z, vDir.x);		// -π ～ +π.
-        float phi = Mathf.Acos(vDir.y);				//  0  ～ +π
-
-        theta += m_direction * Mathf.PI / 180.0f;
-        while (theta < -Mathf.PI) theta += Mathf.PI + Mathf.PI;
-        while (theta > Mathf.PI) theta -= Mathf.PI + Mathf.PI;
-
-        float dx = theta / Mathf.PI;		// -1.0 ～ +1.0.
-        float dy = phi / Mathf.PI;			//  0.0 ～ +1.0.
-
-        dx = dx * 0.5f + 0.5f;
-        int px = (int)(dx * (float)panoramaTexture.width);
-        if (px < 0) px = 0;
-        if (px >= panoramaTexture.width) px = panoramaTexture.width - 1;
-        int py = (int)(dy * (float)panoramaTexture.height);
-        if (py < 0) py = 0;
-        if (py >= panoramaTexture.height) py = panoramaTexture.height - 1;
-
-        col = panoramaTexture.GetPixel(px, panoramaTexture.height - py - 1);
-
-        yield return null;
     }
 
     public bool SaveTexture(Texture2D tex, string saveFileName)
