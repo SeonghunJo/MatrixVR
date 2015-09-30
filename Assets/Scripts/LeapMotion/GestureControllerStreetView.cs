@@ -37,36 +37,7 @@ public class GestureControllerStreetView : MonoBehaviour
         target.renderer.material.color = Color.blue;
         controller = new Controller();  //립모션 컨트롤러 할당 
 
-        if (enableScreenTap)
-        { // https://developer.leapmotion.com/documentation/unity/api/Leap.ScreenTapGesture.html
-            controller.EnableGesture(Gesture.GestureType.TYPE_SCREEN_TAP);
-            controller.Config.SetFloat("Gesture.ScreenTap.MinForwardVelocity", 20.0f); //ScreenTap 조건 
-            controller.Config.SetFloat("Gesture.ScreenTap.HistorySeconds", 0.4f); // SHJO 판정시간 0.5초로 바꿈
-            controller.Config.SetFloat("Gesture.ScreenTap.MinDistance", 1.0f); // SHJO 최소거리 5에서 1로 바꿈
-            controller.Config.Save();
-        }
-        if (enableKeyTap)
-        { // https://developer.leapmotion.com/documentation/unity/api/Leap.KeyTapGesture.html?proglang=unity
-            controller.EnableGesture(Gesture.GestureType.TYPE_KEY_TAP);
-            controller.Config.SetFloat("Gesture.KeyTap.MinDownVelocity", 20.0f); // SHJO 최소 속도 50에서 30으로 바꿈
-            controller.Config.SetFloat("Gesture.KeyTap.HistorySeconds", 0.4f); // SHJO 판정시간  0.1에서 0.3초로 바꿈
-            controller.Config.SetFloat("Gesture.KeyTap.MinDistance", 1.0f); // SHJO 최소거리 3에서 1로 바꿈
-            controller.Config.Save();
-        }
-        if (enableSwipe)
-        { // https://developer.leapmotion.com/documentation/unity/api/Leap.SwipeGesture.html
-            controller.EnableGesture(Gesture.GestureType.TYPE_SWIPE);
-            controller.Config.SetFloat("Gesture.Swipe.MinLength", 80.0f); // SHJO Swipe 조건 바꿈 
-            controller.Config.SetFloat("Gesture.Swipe.MinVelocity", 200.0f);
-            controller.Config.Save();
-        }
-        if (enableCircle) 
-        { // https://developer.leapmotion.com/documentation/unity/api/Leap.CircleGesture.html#id3
-            controller.EnableGesture(Gesture.GestureType.TYPE_CIRCLE);
-            controller.Config.SetFloat("Gesture.Circle.MinRadius", 10.0f);
-            controller.Config.SetFloat("Gesture.Circle.MinArc", 1.0f);
-            controller.Config.Save();
-        }
+		SetGesture (controller);
     }
 
     // Update is called once per frame
@@ -84,17 +55,18 @@ public class GestureControllerStreetView : MonoBehaviour
         else
         {
             Hand left = hands.Leftmost;     //왼쪽손 
-            Hand right = hands.Rightmost;   //오른쪽 손
-
-            FingerList fingerList = left.Fingers;  //왼쪽 손의 손가락들!
+			FingerList fingerList = left.Fingers;  //왼쪽 손의 손가락들!
             Finger leftFinger = fingerList.Frontmost;  //왼손에서 제일 앞에 있는 손가락
 
             rigid = GameObject.Find("RigidHand(Clone)");
-            if (rigid == null)
-            {
-                Debug.LogWarning("RigidHand is null");
-                return;
-            }
+			if (rigid == null)
+			{
+				//Debug.Log ("Rigid finded");
+				//Vector3 temp = GetTippingPos();  //팁핑 포지션으로 커서를 이동
+				//cursorModel.transform.position = temp;
+				Debug.LogWarning("RigidHand is null");
+				return;
+			}
 
             cursorPointer = GameObject.Find("RigidHand(Clone)/index/bone3");
             if (cursorPointer == null)
@@ -110,15 +82,8 @@ public class GestureControllerStreetView : MonoBehaviour
                 cols[i].enabled = false;
             }
 
-            GameObject handController = GameObject.Find("HandController");  //HandCOnroller 오브젝트 접근
-            //팁핑 포지션으로 커서를 이동
-            if (rigid != null)
-            {
-                //Debug.Log ("Rigid finded");
-                Vector3 temp = Tipping();
-                cursorModel.transform.position = temp;
-            }
 
+            //GameObject handController = GameObject.Find("HandController");  //HandCOnroller 오브젝트 접근
             //손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
             //Vector2 screenPoint=leftCamera.camera.WorldToScreenPoint (handController.transform.TransformPoint(left.PalmPosition.ToUnityScaled()));
             Vector2 screenPoint = leftCamera.camera.WorldToScreenPoint(cursorPointer.transform.position);
@@ -191,117 +156,30 @@ public class GestureControllerStreetView : MonoBehaviour
 				if (num_hands == 1)                                 
 				{
 
-                // Key Tap
-                if (gesture.Type == Gesture.GestureType.TYPE_KEY_TAP)
-                {
-                    KeyTapGesture keyTap = new KeyTapGesture(gesture);
-					Debug.Log ("TYPE_KEY_TAP");
-					cursorModel.renderer.material.color = Color.blue;  
-
-						
-					GameObject particleObj = Instantiate(clickParticle, Tipping () , Quaternion.identity) as GameObject;
-						
-					Destroy (particleObj,2f);
-
-                    //if(pointed != null)
-					if(hit.collider.gameObject.tag != null)
-                    {
-                        // TODO : Click (SHJO)
-						if(hit.collider.gameObject.tag=="Button")
-						{	
-                            Debug.Log ("Button Touch");
-							pointed.Touch ();
-						}
-						else if(hit.collider.gameObject.tag=="MainMenu")
-						{
-							MainMenu_pointed.Clicked();
-						}
-                        else if (hit.collider.gameObject.tag == "Information")      //add Jin
-                        {
-                            Information_pointed.Clicked();
-                        }
-                    }
-                }
-                // Screen Tap
-                else if (gesture.Type == Gesture.GestureType.TYPE_SCREEN_TAP) 
-                {
-                    ScreenTapGesture screenTap = new ScreenTapGesture(gesture);
-                    Debug.Log("TYPE_SCREEN_TAP");
-                    cursorModel.renderer.material.color = Color.red;
-
-					if(hit.collider.gameObject.tag=="Button")
-					{
-						pointed.Touch ();
-					}
-                }
-                // Swipe
-                else if (gesture.Type == Gesture.GestureType.TYPE_SWIPE) 
-                {
-                  
-
-                }
-                // Circle
-                else if (gesture.Type == Gesture.GestureType.TYPE_CIRCLE)
-                {                   
-
-                }
+               		// Key Tap
+                	if (gesture.Type == Gesture.GestureType.TYPE_KEY_TAP)
+						KeyTap(gesture,hit);
+                	// Screen Tap
+                	else if (gesture.Type == Gesture.GestureType.TYPE_SCREEN_TAP) 
+						ScreenTap(gesture,hit);
+                	// Swipe
+                	else if (gesture.Type == Gesture.GestureType.TYPE_SWIPE) 
+						Swipe (gesture);
+                	// Circle
+                	else if (gesture.Type == Gesture.GestureType.TYPE_CIRCLE)
+						Circle(gesture);
 				}
                 // ZOOM IN OUT Motion
                 if (num_hands == 2)                                 
                 {
-					if (handsForGesture[0].IsLeft && gesture.Type == Gesture.GestureType.TYPESWIPE)
-					{
-						Debug.Log("left zoom");
-						SwipeGesture Swipe = new SwipeGesture(gesture);
-						Vector swipeDirection = Swipe.Direction;
-						if (swipeDirection.x < 0)
-						{
-							if (leftCamera.camera.fieldOfView < maxFov)
-							{
-								leftCamera.camera.fieldOfView += zoomScale;
-								rightCamera.camera.fieldOfView += zoomScale;
-							}
-							
-						}
-						else if (swipeDirection.x > 0)
-						{
-							if (leftCamera.camera.fieldOfView > minFov)
-							{
-								leftCamera.camera.fieldOfView -= zoomScale;
-								rightCamera.camera.fieldOfView -= zoomScale;
-							}
-						}
-					}
-					
-					else if ((!handsForGesture[0].IsLeft) && gesture.Type == Gesture.GestureType.TYPESWIPE)
-					{
-						Debug.Log("right zoom");
-						SwipeGesture Swipe = new SwipeGesture(gesture);
-						Vector swipeDirection = Swipe.Direction;
-						if (swipeDirection.x > 0)
-						{
-							if (leftCamera.camera.fieldOfView < maxFov)
-							{
-								leftCamera.camera.fieldOfView += zoomScale;
-								rightCamera.camera.fieldOfView += zoomScale;
-							}
-						}
-						else if (swipeDirection.x < 0)
-						{
-							if (leftCamera.camera.fieldOfView > minFov)
-							{
-								leftCamera.camera.fieldOfView -= zoomScale;
-								rightCamera.camera.fieldOfView -= zoomScale;
-							}
-						}
-					}
-                } // END OF ZOOM IN GESTURE
-            } // END OF GESTURE RECOGNITION LOOP
+					ZoomInOut(gesture,handsForGesture);
+            	} // END OF GESTURE RECOGNITION LOOP
         
-        } // END OF IF
-    }
+        	} // END OF IF
+    	}
+	}
 
-    Vector3 Tipping() // 현재 포인터 끝이 되는 오브젝트의 
+    Vector3 GetTippingPos() // 현재 포인터 끝이 되는 오브젝트의 
     {
         cursorPointer = GameObject.Find("RigidHand(Clone)/index/bone3");       //생선돈 손 모양 객체의 손바닥 오브젝트를 찾는다
         if (cursorPointer != null)
@@ -315,7 +193,150 @@ public class GestureControllerStreetView : MonoBehaviour
         }
 
     }
+	//Gesture Event for Keytap 
+	void KeyTap(Gesture gesture,RaycastHit hit)
+	{
+		KeyTapGesture keyTap = new KeyTapGesture(gesture);
+		Debug.Log ("TYPE_KEY_TAP");
+		cursorModel.renderer.material.color = Color.blue;  
+		
+		
+		GameObject particleObj = Instantiate(clickParticle, GetTippingPos () , Quaternion.identity) as GameObject;
+		
+		Destroy (particleObj,2f);
+		
+		//if(pointed != null)
+		if(hit.collider.gameObject.tag != null)
+		{
+			// TODO : Click (SHJO)
+			if(hit.collider.gameObject.tag=="Button")
+			{	
+				Debug.Log ("Button Touch");
+				pointed.Touch ();
+			}
+			else if(hit.collider.gameObject.tag=="MainMenu")
+			{
+				MainMenu_pointed.Clicked();
+			}
+			else if (hit.collider.gameObject.tag == "Information")      //add Jin
+			{
+				Information_pointed.Clicked();
+			}
+		}
+	}
+	
+	//Gesture Event for ScreenTap
+	void ScreenTap(Gesture gesture,RaycastHit hit)
+	{
+		ScreenTapGesture screenTap = new ScreenTapGesture(gesture);
+		Debug.Log("TYPE_SCREEN_TAP");
+		cursorModel.renderer.material.color = Color.red;
+		
+		if(hit.collider.gameObject.tag=="Button")
+		{
+			pointed.Touch ();
+		}
+	}
+	
+	//Gesture Event for Swipe
+	void Swipe(Gesture gesture)
+	{
+	}
+	
+	//Gesture Event for Circle
+	void Circle(Gesture gesture)
+	{
+	}
+	
+	//Gesture Even ZoomInOut
+	void ZoomInOut(Gesture gesture,HandList handsForGesture)
+	{	
+		if (handsForGesture[0].IsLeft && gesture.Type == Gesture.GestureType.TYPESWIPE)
+		{
+			Debug.Log("left zoom");
+			SwipeGesture Swipe = new SwipeGesture(gesture);
+			Vector swipeDirection = Swipe.Direction;
+			if (swipeDirection.x < 0)
+			{
+				if (leftCamera.camera.fieldOfView < maxFov)
+				{
+					leftCamera.camera.fieldOfView += zoomScale;
+					rightCamera.camera.fieldOfView += zoomScale;
+				}
+				
+			}
+			else if (swipeDirection.x > 0)
+			{
+				if (leftCamera.camera.fieldOfView > minFov)
+				{
+					leftCamera.camera.fieldOfView -= zoomScale;
+					rightCamera.camera.fieldOfView -= zoomScale;
+				}
+			}
+		}
+		
+		else if ((!handsForGesture[0].IsLeft) && gesture.Type == Gesture.GestureType.TYPESWIPE)
+		{
+			Debug.Log("right zoom");
+			SwipeGesture Swipe = new SwipeGesture(gesture);
+			Vector swipeDirection = Swipe.Direction;
+			if (swipeDirection.x > 0 )
+			{
+				if (leftCamera.camera.fieldOfView < maxFov)
+				{
+					leftCamera.camera.fieldOfView += zoomScale;
+					rightCamera.camera.fieldOfView += zoomScale;
+				}
+			}
+			else if (swipeDirection.x < 0)
+			{
+				if (leftCamera.camera.fieldOfView > minFov)
+				{
+					leftCamera.camera.fieldOfView -= zoomScale;
+					rightCamera.camera.fieldOfView -= zoomScale;
+				}
+			}
+		}
+		
+	}
+	//Enable LeapMotion Gesture
+	
+	void SetGesture(Controller controller)
+	{
+		if (enableScreenTap)
+		{ // https://developer.leapmotion.com/documentation/unity/api/Leap.ScreenTapGesture.html
+			controller.EnableGesture(Gesture.GestureType.TYPE_SCREEN_TAP);
+			controller.Config.SetFloat("Gesture.ScreenTap.MinForwardVelocity", 20.0f); //ScreenTap 조건 
+			controller.Config.SetFloat("Gesture.ScreenTap.HistorySeconds", 0.4f); // SHJO 판정시간 0.5초로 바꿈
+			controller.Config.SetFloat("Gesture.ScreenTap.MinDistance", 1.0f); // SHJO 최소거리 5에서 1로 바꿈
+			controller.Config.Save();
+		}
+		if (enableKeyTap)
+		{ // https://developer.leapmotion.com/documentation/unity/api/Leap.KeyTapGesture.html?proglang=unity
+			controller.EnableGesture(Gesture.GestureType.TYPE_KEY_TAP);
+			controller.Config.SetFloat("Gesture.KeyTap.MinDownVelocity", 20.0f); // SHJO 최소 속도 50에서 30으로 바꿈
+			controller.Config.SetFloat("Gesture.KeyTap.HistorySeconds", 0.4f); // SHJO 판정시간  0.1에서 0.3초로 바꿈
+			controller.Config.SetFloat("Gesture.KeyTap.MinDistance", 1.0f); // SHJO 최소거리 3에서 1로 바꿈
+			controller.Config.Save();
+		}
+		if (enableSwipe)
+		{ // https://developer.leapmotion.com/documentation/unity/api/Leap.SwipeGesture.html
+			controller.EnableGesture(Gesture.GestureType.TYPE_SWIPE);
+			controller.Config.SetFloat("Gesture.Swipe.MinLength", 80.0f); // SHJO Swipe 조건 바꿈 
+			controller.Config.SetFloat("Gesture.Swipe.MinVelocity", 200.0f);
+			controller.Config.Save();
+		}
+		if (enableCircle) 
+		{ // https://developer.leapmotion.com/documentation/unity/api/Leap.CircleGesture.html#id3
+			controller.EnableGesture(Gesture.GestureType.TYPE_CIRCLE);
+			controller.Config.SetFloat("Gesture.Circle.MinRadius", 10.0f);
+			controller.Config.SetFloat("Gesture.Circle.MinArc", 1.0f);
+			controller.Config.Save();
+		}
+	}
 }
+
+
 
 
 
