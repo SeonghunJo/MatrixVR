@@ -54,7 +54,7 @@ public class StreetViewRenderer : MonoBehaviour
     private Texture2D[,] tiles;
     private int downloadedTilesCount;
 
-    // NEED TO INITIATE VALUE BEFORE START RENDER
+    // NEED TO INITIATE VALUE BEFORE START RENDERING
     private bool retrieveMetaData = false;
     private bool retrievePanoramaImage = false;
     private int retryCounter = 0;
@@ -193,6 +193,7 @@ public class StreetViewRenderer : MonoBehaviour
 
     void Update()
     {
+		// StreetView 도중 E키를 누르면 지구로 돌아간다
         if(Input.GetKeyDown(KeyCode.E))
         {
             Application.LoadLevel("SceneEarth");

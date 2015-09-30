@@ -275,7 +275,7 @@ public class CreateTarget : MonoBehaviour
 
             if(Manager.Instance.enableAutoGathering)
             {
-                if (!Manager.Instance.FindCachedImageFromID(panoID))
+                if (!Utility.FindCachedImageFromID(panoID))
                 {
                     if (impo)
                     {
