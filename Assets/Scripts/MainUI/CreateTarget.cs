@@ -32,10 +32,6 @@ public class CreateTarget : MonoBehaviour
     public static Vector3 _translate;   //이동 vector
 
     //입력된 값을 float로 저장할 변수
-    public float Lat;                   //위도 -90~90
-    public float Lng;                  //경도 0~360
-    public static string panoID;
-    public bool impo;
 
     // Use this for initialization
     void Start()
@@ -249,48 +245,27 @@ public class CreateTarget : MonoBehaviour
         panoramas.Add(new PanoramaInfo(21.479702f, -86.632599f, "xq5H2tvkw_AAAAQJLmg-7A", true)); //Whale Sharks
 
         for (int i = 0; i < panoramas.Count; i++)
-        {
-            Lat = panoramas[i].lat;
-            Lng = panoramas[i].lng;
-            panoID = panoramas[i].panoid;
-            impo = panoramas[i].impo;
+        {           
+            
+			PanoramaInfo info = panoramas[i];
 
-            _rotation = new Vector3(Lat, -Lng, 0.0f);
+			_rotation = new Vector3(panoramas[i].lat, -panoramas[i].lng, 0.0f);
             _translate = new Vector3(0, 0, -37.5f);
 
-            //추천지역은 타겟의 모양을 다르게 함
-            if (impo == true)
-            {
-                GameObject child = Instantiate(impoObj, transform.position, Quaternion.identity) as GameObject;
-                child.transform.parent = earth.transform;
-                child.GetComponent<StreetViewPoint>().SetPosition(impo);
-            }
-			else
-			{
-				GameObject child2 = Instantiate( nonImpobj, transform.position, Quaternion.identity) as GameObject;
-				child2.transform.parent = earth.transform;
-				child2.GetComponent<StreetViewPoint>().SetPosition(impo);
+			//추천지역은 타겟의 모양을 다르게 			
+			GameObject child = Instantiate( info.impo ? impoObj : nonImpobj , transform.position, Quaternion.identity) as GameObject;
+			child.transform.parent = earth.transform;
+			child.GetComponent<StreetViewPoint>().SetPosition(info); // 파라미터 2개 추가
+			
+			if ( Manager.Instance.enableAutoGathering
+			    && !Utility.FindCachedImageFromID(info.panoid)
+			    && info.impo ) {
+				
+				Manager.Instance.important = info.impo;
+				Manager.Instance.panoramaID = info.panoid;
+				Application.LoadLevel("StreetViewer");
 			}
 
-
-            if(Manager.Instance.enableAutoGathering)
-            {
-                if (!Utility.FindCachedImageFromID(panoID))
-                {
-                    if (impo)
-                    {
-                        Manager.Instance.important = impo;
-                        Manager.Instance.panoramaID = panoID;
-                        Application.LoadLevel("StreetViewer");
-                    }
-                    else
-                    {
-                        //Manager.Instance.important = impo;
-                        //Manager.Instance.panoramaID = panoID;
-                        //Application.LoadLevel("StreetViewer");
-                    }
-                }
-            }
         }
     }
 

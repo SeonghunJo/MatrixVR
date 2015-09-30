@@ -108,12 +108,12 @@ public class StreetViewPoint : MonoBehaviour
         PointedOut();
     }
 
-    public void SetPosition(bool impo)
+	public void SetPosition(PanoramaInfo panoInfo)
     {
         Lat = CreateTarget._rotation.x;
         Lng = -(CreateTarget._rotation.y);
-        panoID = CreateTarget.panoID;
-		this.impo = impo;
+		panoID = panoInfo.panoid;
+		this.impo = panoInfo.impo;
 
 
 		thumbnailURL = thumbnailURL + panoID;
