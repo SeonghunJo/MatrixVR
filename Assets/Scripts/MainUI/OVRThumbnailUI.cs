@@ -346,14 +346,14 @@ public class OVRThumbnailUI : MonoBehaviour
 		int height = 80;
 
         //여행지의 대표이미지
-		Texture image = Manager.Instance.thumbnailImg;
+        Texture image = EarthManager.Instance.thumbnailImg;
         GuiHelper.StereoDrawTexture(screenCenterX - width / 2, 400, width, height, ref image, new Color(0.5f, 0.5f, 0.5f, 1f));
 
 		int textWidth = 400;
 		int textHeight = 40;
 
         //여행지 이름, 나라 이름
-		string locationName = Manager.Instance.thumbnailText;
+		string locationName = EarthManager.Instance.thumbnailText;
         if (locationName == null)
             locationName = "no name";
         GuiHelper.StereoBox(screenCenterX - textWidth / 2, 500, textWidth, textHeight, ref locationName, Color.white);

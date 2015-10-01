@@ -375,19 +375,19 @@ public class OVRLoadingScreen : MonoBehaviour
         else
             GuiHelper.StereoDrawTexture(screenCenterX - 40, 400, 80, 80, ref loadingImg2, new Color(0.5f, 0.5f, 0.5f, 1f));
         
-        //Draw Process count
-        int process = Manager.Instance.processCount * 3;
+        //Draw Progress
+        int process = Manager.Instance.GetProgress() * 3;
         if (process > 100)
             process = 100;
         string locationText = process.ToString() + " %";
         GuiHelper.StereoBox(screenCenterX - 40, 480, 80, boxHeight, ref locationText, Color.white);
 
-        //Draw Process bar
+        //Draw Progress bar
         processBarLocation = process * 3;
         GuiHelper.StereoDrawTexture(screenCenterX - 150, 540, processBarLocation, boxHeight, ref bar, new Color(0.5f, 0.5f, 0.5f, 1f));
 
 
-        string text = Manager.Instance.thumbnailText;
+        string text = EarthManager.Instance.thumbnailText;
         if (text == null)
             text = "M A T R I X";
 

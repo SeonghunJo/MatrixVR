@@ -153,6 +153,6 @@ public class LoadingScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        SetLoadingText("LOADING - " + Manager.Instance.processCount.ToString() + " %");
+        SetLoadingText("LOADING - " + Manager.Instance.GetProgress().ToString() + " %");
 	}
 }

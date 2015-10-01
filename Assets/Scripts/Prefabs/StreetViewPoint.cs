@@ -77,16 +77,16 @@ public class StreetViewPoint : MonoBehaviour
 
 	public void Pointed ()
 	{
-        Manager.Instance.thumbnailText = myThumbnailText;
-        Manager.Instance.thumbnailImg = myThumbnailImg;
+        EarthManager.Instance.thumbnailText = myThumbnailText;
+        EarthManager.Instance.thumbnailImg = myThumbnailImg;
         Manager.Instance.panoramaID = panoID;
 
         print(wikiText);
 
         if (wikiText != null)
-            Manager.Instance.wikiText = wikiText;
+            EarthManager.Instance.wikiText = wikiText;
         else
-            Manager.Instance.wikiText = "NULL";
+            EarthManager.Instance.wikiText = "NULL";
 
         if(thumbnailUI != null)
             thumbnailUI.ShowScreen();
@@ -140,7 +140,7 @@ public class StreetViewPoint : MonoBehaviour
 
         // 다운로드 받은 썸네일 이미지 
         myThumbnailImg = www.texture;
-        Manager.Instance.thumbnailImg = myThumbnailImg;
+        EarthManager.Instance.thumbnailImg = myThumbnailImg;
     }
 
 

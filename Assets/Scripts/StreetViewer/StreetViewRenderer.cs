@@ -1,3 +1,5 @@
+#define ENABLE_CACHE
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -92,7 +94,7 @@ public class StreetViewRenderer : MonoBehaviour
     void Start()
     {
         Debug.LogWarning("StreetView Start");
-#if DEBUG
+#if ENABLE_CACHE
         if(Manager.Instance.panoramaStack != null)
         {
             Manager.Instance.panoramaStack.Clear();
@@ -127,7 +129,7 @@ public class StreetViewRenderer : MonoBehaviour
     // For Generate Buttons
     void OnGUI()
     {
-#if DEBUG
+#if ENABLE_CACHE
         if (Manager.Instance.nextIDs != null)
         {
             if (Manager.Instance.nextIDs.Length > 0)
@@ -205,7 +207,7 @@ public class StreetViewRenderer : MonoBehaviour
     {
         /* 스트리트뷰 정보 확인 */
         print("StreetViewer Start");
-#if DEBUG
+#if ENABLE_CACHE
         if( Manager.Instance.enableAutoGathering )
         {
             StartCoroutine(Gathering());
@@ -232,11 +234,11 @@ public class StreetViewRenderer : MonoBehaviour
 
     void Initialize()
     {
-        Manager.Instance.processCount = 0; // 진행률 초기화
+        Manager.Instance.SetProgress(0); // 진행률 초기화
+
         panoramaID = Manager.Instance.panoramaID; // 파노라마 아이디 설정
         print("Panorama ID : " + Manager.Instance.panoramaID);
-
-        if (panoramaID == null)
+		        if (panoramaID == null)
             panoramaID = defaultID;
         saveTextureFileName = panoramaID;
 
@@ -304,11 +306,11 @@ public class StreetViewRenderer : MonoBehaviour
             // 6방향 이미지를 모두 로드하고
             GetCachedImageFromID(panoramaID);
             if(!enableCacheDebugging)
-                yield return new WaitForSeconds(2.0f); // 1초간 대기
-            Manager.Instance.processCount = 20;
+                yield return new WaitForSeconds(1.0f); // 1초간 대기
+            Manager.Instance.SetProgress(20);
             if (!enableCacheDebugging)
-                yield return new WaitForSeconds(2.0f); // 1초간 대기
-            Manager.Instance.processCount = 40;
+                yield return new WaitForSeconds(1.0f); // 1초간 대기
+            Manager.Instance.SetProgress(40);
         }
         else
         {
@@ -328,7 +330,7 @@ public class StreetViewRenderer : MonoBehaviour
             screen.HideScreen();
 
         LoadingScreen.Hide();
-
+		
         if (Manager.Instance.enableAutoGathering)
         {
             for (int i = 0; i < Manager.Instance.nextIDs.Length; i++)
@@ -398,10 +400,10 @@ public class StreetViewRenderer : MonoBehaviour
             GetCachedImageFromID(panoramaID);
             if (!enableCacheDebugging)
                 yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.processCount = 20;
+            Manager.Instance.SetProgress(20);
             if (!enableCacheDebugging)
                 yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.processCount = 40;
+            Manager.Instance.SetProgress(40);
         }
         else
         {
@@ -526,7 +528,7 @@ public class StreetViewRenderer : MonoBehaviour
     IEnumerator GetPanoramaImage(string pano_id, int width, int height)
     {
         print("Get Panorama Image - ID : " + pano_id + " width : " + width + " height : " + height);
-
+		
         if(panoramaTexture != null)
         {
             DestroyImmediate(panoramaTexture);
@@ -589,7 +591,7 @@ public class StreetViewRenderer : MonoBehaviour
 
         tiles[y, x] = www.texture;
         downloadedTilesCount++;
-        Manager.Instance.processCount++;
+        Manager.Instance.IncreaseProgress();
     }
 
     IEnumerator MergeTiles()
@@ -624,10 +626,8 @@ public class StreetViewRenderer : MonoBehaviour
         }
 
         panoramaTexture.Apply();
-		
-        //SaveTexture(panoramaTexture, panoramaID + ".png");
 
-        Manager.Instance.processCount++;
+        Manager.Instance.IncreaseProgress();
 
         yield return null;
     }
@@ -657,23 +657,17 @@ public class StreetViewRenderer : MonoBehaviour
         int texSize = GetCubemapTextureSize();
 
         yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_FRONT, panoramaID + "_front.png"));
-        Manager.Instance.processCount++;
-        print(Manager.Instance.processCount);
+        Manager.Instance.IncreaseProgress();
         yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_BACK, panoramaID + "_back.png"));
-        Manager.Instance.processCount++;
-        print(Manager.Instance.processCount);
+        Manager.Instance.IncreaseProgress();
         yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_LEFT, panoramaID + "_left.png"));
-        Manager.Instance.processCount++;
-        print(Manager.Instance.processCount);
+        Manager.Instance.IncreaseProgress();
         yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_RIGHT, panoramaID + "_right.png"));
-        Manager.Instance.processCount++;
-        print(Manager.Instance.processCount);
+        Manager.Instance.IncreaseProgress();
         yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_UP, panoramaID + "_up.png"));
-        Manager.Instance.processCount++;
-        print(Manager.Instance.processCount);
+        Manager.Instance.IncreaseProgress();
         yield return StartCoroutine(CreateCubemapTexture(texSize, StreetViewRenderer.FACE_DOWN, panoramaID + "_down.png"));
-        Manager.Instance.processCount++;
-        print(Manager.Instance.processCount);
+        Manager.Instance.IncreaseProgress();
     }
 
     private void SetSkybox()
@@ -827,7 +821,7 @@ public class StreetViewRenderer : MonoBehaviour
         byte[] png = tex.EncodeToPNG();
         if (enableCache == true)
         {
-            string realSavePath = Application.persistentDataPath + "/" + saveFileName;
+            string realSavePath = Utility.cacheFolderPath + "/" + saveFileName;
             File.WriteAllBytes(realSavePath, png);
 
             return true;

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO; // For File Class
 
 // SINGLETON MANAGER CLASS FOR ALL SCENES AND SCRIPTS
-// 이름을 SceneManager로 변경하자. 변경후 이 코멘트 삭제
 public class Manager {
 	
 	private static Manager _instance;
@@ -31,17 +30,21 @@ public class Manager {
     public Stack<string> panoramaStack;
     public bool enableAutoGathering = false; // if true, auto gathering
     
-	public int processCount;
-	
-	// FOR MainUI.SCENE VARIABLES AND FUNCTIONS
-	
-	public string thumbnailID;
-	public string thumbnailText;
-	public Texture2D thumbnailImg;
-    public string wikiText;
-	
-	// FOR CAMERA RIG
-	public Vector3 CameraRotation;
-	public Quaternion CameraOrientation;
-	
+	private int progress;
+
+    // Public Method
+    public void IncreaseProgress()
+    {
+        progress++;
+    }
+
+    public void SetProgress(int val)
+    {
+        progress = val;
+    }
+
+    public int GetProgress()
+    {
+        return progress;
+    }
 }

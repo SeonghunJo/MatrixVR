@@ -104,8 +104,8 @@ public class OVRCameraRig : MonoBehaviour
 		OVRPose rightEye = OVRManager.display.GetEyePose(OVREye.Right);
 		
 		//Manager.Instance.CameraRotation = leftEye.orientation.eulerAngles;
-		Manager.Instance.CameraRotation = leftEye.orientation.eulerAngles;
-		Manager.Instance.CameraOrientation = leftEye.orientation;
+		EarthManager.Instance.CameraRotation = leftEye.orientation.eulerAngles;
+        EarthManager.Instance.CameraOrientation = leftEye.orientation;
 		
 		//Debug.Log (leftEye.orientation.eulerAngles);
 		//Debug.Log (Manager.Instance.CameraOrientation);

@@ -9,7 +9,7 @@ public class LookAt : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		beforeRotation = Manager.Instance.CameraRotation;
+        beforeRotation = EarthManager.Instance.CameraRotation;
 	}
 	
 	// Update is called once per frame
@@ -29,8 +29,8 @@ public class LookAt : MonoBehaviour {
             if (270 < transform.rotation.eulerAngles.x - 10.0f || transform.rotation.eulerAngles.x < 90)
                 transform.RotateAround(target.collider.bounds.center, new Vector3(-1.0f, 0, 0.0f), 1.0f);
         }
-		
-		float angle = Manager.Instance.CameraRotation.x;
+
+        float angle = EarthManager.Instance.CameraRotation.x;
 		
 		if(25 < angle && angle < 90)
 		{
