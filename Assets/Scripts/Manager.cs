@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO; // For File Class
 
 // SINGLETON MANAGER CLASS FOR ALL SCENES AND SCRIPTS
-// 이름을 SceneManager로 변경하자. 변경후 이 코멘트 삭제
 public class Manager {
 	
 	private static Manager _instance;
