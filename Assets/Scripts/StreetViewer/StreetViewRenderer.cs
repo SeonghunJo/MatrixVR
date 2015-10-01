@@ -1,4 +1,4 @@
-#define ENABLE_CACHE
+﻿#define ENABLE_CACHE
 
 using UnityEngine;
 using System.Collections;
@@ -94,6 +94,7 @@ public class StreetViewRenderer : MonoBehaviour
     void Start()
     {
         Debug.LogWarning("StreetView Start");
+
 #if ENABLE_CACHE
         if(Manager.Instance.panoramaStack != null)
         {
