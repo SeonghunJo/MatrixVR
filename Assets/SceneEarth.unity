@@ -487,9 +487,6 @@ MonoBehaviour:
   impoObj: {fileID: 100000, guid: 59083ee76e41ee34f8c75af787206a05, type: 2}
   nonImpobj: {fileID: 100000, guid: bcf9ed3d840e19242b2693f489aff0ff, type: 2}
   earth: {fileID: 370142936}
-  Lat: 0
-  Lng: 0
-  impo: 0
 --- !u!23 &370142939
 Renderer:
   m_ObjectHideFlags: 0
@@ -766,8 +763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67501249314f6143b85877e35a8bd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 370142936}
-  beforeRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &530775570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,8 +1192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67501249314f6143b85877e35a8bd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 370142936}
-  beforeRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1153460599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,8 +1391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67501249314f6143b85877e35a8bd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 370142936}
-  beforeRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1586549221
 GameObject:
   m_ObjectHideFlags: 0
