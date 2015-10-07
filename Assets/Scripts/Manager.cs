@@ -21,18 +21,36 @@ public class Manager {
 	}
 
 	// FOR STREETVIEWER.SCENE VARIABLES AND FUNCTIONS
-	public string panoramaID;
-    public bool important;
+	private string placeID;
+    private bool bHotPlace;
 
 	public string[] nextIDs;
 	public string[] nextDegrees;
-    
-    public Stack<string> panoramaStack;
-    public bool enableAutoGathering = false; // if true, auto gathering
-    
-	private int progress;
 
-    // Public Method
+    private int progress;
+
+    public bool enableAutoImageCache = false; // if true, auto image caching
+
+    public void SetHotPlace(bool isHotPlace)
+    {
+        bHotPlace = isHotPlace;
+    }
+
+    public bool IsHotPlace()
+    {
+        return bHotPlace;
+    }
+    
+    public void SetPlaceID(string panoid)
+    {
+        placeID = panoid;
+    }
+
+    public string GetPlaceID()
+    {
+        return placeID;
+    }
+
     public void IncreaseProgress()
     {
         progress++;

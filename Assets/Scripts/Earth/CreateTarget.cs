@@ -246,12 +246,12 @@ public class CreateTarget : MonoBehaviour
 			child.transform.parent = earth.transform;
 			child.GetComponent<StreetViewPoint>().SetPosition(info); // 파라미터 2개 추가
 			
-			if ( Manager.Instance.enableAutoGathering
-			    && !Utility.FindCachedImageFromID(info.panoid)
+			if ( Manager.Instance.enableAutoImageCache
+                && !Utility.FindCachedImageFromID(info.panoid)
 			    && info.impo ) {
-				
-				Manager.Instance.important = info.impo;
-				Manager.Instance.panoramaID = info.panoid;
+
+                Manager.Instance.SetHotPlace(info.impo); 
+				Manager.Instance.SetPlaceID(info.panoid);
 				Application.LoadLevel("StreetViewer");
 			}
 
