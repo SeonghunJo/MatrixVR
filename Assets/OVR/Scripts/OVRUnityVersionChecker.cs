@@ -28,6 +28,17 @@ public static class OVRUnityVersionChecker
 		}
 	}
 
+    /// <summary>
+    /// If true, Unity has built-in VR support and is incompatible with this legacy integration.
+    /// </summary>
+    public static bool hasBuiltInVR
+    {
+        get
+        {
+            return (version >= "5.1.0b1");
+        }
+    }
+
 	/// <summary>
 	/// If true, Unity can use OculusInitPlugin instead of _DirectToRift.exe.
 	/// </summary>
@@ -35,13 +46,7 @@ public static class OVRUnityVersionChecker
 	{
 		get
 		{
-			return false; // Disable pre-init support for all Unity versions.
-
-			// TODO: Enable when remaining pre-init Unity issues are resolved in a future Unity 4.x patch release.
-			//return (version.major == 4 && version >= "4.6.1p6");
-			// TODO: Enable when pre-init fixes are merged to Unity 5.x channel
-			// || (version.major == 5 && version >= "5.0.0b22")
-			// || (version.major > 5);
+			return (version.major == 4 && version >= "4.6.3p2");
 		}
 	}
 
@@ -75,6 +80,21 @@ public static class OVRUnityVersionChecker
 			return !isUnsupportedUnityVersion;
 		}
 	}
+	
+	/// <summary>
+	/// If true, Unity supports VR rendering in the editor.
+	/// </summary>
+	public static bool hasEditorVRSupport
+	{
+		get
+		{
+#if UNITY_STANDALONE_WIN
+			return version >= "4.6.7p4";
+#else
+			return true;
+#endif
+		}
+	}
 }
 
 /// <summary>
@@ -89,6 +109,7 @@ public struct OVRUnityVersion : IComparable<OVRUnityVersion>
 	public int release { get; private set; }
 
 	public OVRUnityVersion(string unityVersion)
+    : this()
 	{
 		// Split the version string at non-numbers.
 		string nonNumbers = "[^0-9]";
@@ -136,6 +157,7 @@ public struct OVRUnityVersion : IComparable<OVRUnityVersion>
 	}
 
 	public OVRUnityVersion(int major, int minor, int change, char type, int release)
+    : this()
 	{
 		this.major = major;
 		this.minor = minor;
