@@ -294,6 +294,8 @@ public class StreetViewRenderer : MonoBehaviour
         if (screen != null)
             screen.ShowScreen();
 
+
+        Manager.Instance.SetLoadingText("메타데이터 받는중");
         Debug.Log("ID -> META DATA");
         do
         {
@@ -308,22 +310,21 @@ public class StreetViewRenderer : MonoBehaviour
             retryCounter = 0;
         }
 
-        if(Utility.FindCachedImageFromID(panoramaID)) // 해당 데이터가 캐시폴더에 있을 경우
+        if(!Utility.FindCachedImageFromID(panoramaID)) // 해당 데이터가 캐시폴더에 있을 경우
         {
             Debug.Log("Image data is exist");
             // 6방향 이미지를 모두 로드하고
             GetCachedImageFromID(panoramaID);
-            if(!enableCacheDebugging)
                 yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.SetProgress(20);
-            if (!enableCacheDebugging)
-                yield return new WaitForSeconds(1.0f); // 1초간 대기
-            Manager.Instance.SetProgress(40);
+            Manager.Instance.SetProgress(100);
         }
         else
         {
+            Manager.Instance.SetLoadingText("이미지 타일 받는 중");
             yield return StartCoroutine(GetPanoramaImage(panoramaID, textureWidth, textureHeight));
+            Manager.Instance.SetLoadingText("이미지 합치는 중");
             yield return StartCoroutine(MergeTiles());
+            Manager.Instance.SetLoadingText("큐브맵 생성 중");
             yield return StartCoroutine(ConvertPanoramaToCubemap());
         }
 
@@ -500,7 +501,7 @@ public class StreetViewRenderer : MonoBehaviour
 
         tiles[y, x] = www.texture;
         downloadedTilesCount++;
-        Manager.Instance.IncreaseProgress();
+        Manager.Instance.IncreaseProgress(2);
     }
 
     IEnumerator MergeTiles()
@@ -534,7 +535,7 @@ public class StreetViewRenderer : MonoBehaviour
         }
 
         panoramaTexture.Apply();
-        Manager.Instance.IncreaseProgress();
+        Manager.Instance.IncreaseProgress(6);
         yield return null;
     }
 
@@ -563,17 +564,17 @@ public class StreetViewRenderer : MonoBehaviour
         int texSize = GetCubemapTextureSize();
 
         yield return StartCoroutine(CreateCubemapTexture(texSize, FACE_FRONT, panoramaID + "_front.png"));
-        Manager.Instance.IncreaseProgress();
+        Manager.Instance.IncreaseProgress(6);
         yield return StartCoroutine(CreateCubemapTexture(texSize, FACE_BACK, panoramaID + "_back.png"));
-        Manager.Instance.IncreaseProgress();
+        Manager.Instance.IncreaseProgress(6);
         yield return StartCoroutine(CreateCubemapTexture(texSize, FACE_LEFT, panoramaID + "_left.png"));
-        Manager.Instance.IncreaseProgress();
+        Manager.Instance.IncreaseProgress(6);
         yield return StartCoroutine(CreateCubemapTexture(texSize, FACE_RIGHT, panoramaID + "_right.png"));
-        Manager.Instance.IncreaseProgress();
+        Manager.Instance.IncreaseProgress(6);
         yield return StartCoroutine(CreateCubemapTexture(texSize, FACE_UP, panoramaID + "_up.png"));
-        Manager.Instance.IncreaseProgress();
+        Manager.Instance.IncreaseProgress(6);
         yield return StartCoroutine(CreateCubemapTexture(texSize, FACE_DOWN, panoramaID + "_down.png"));
-        Manager.Instance.IncreaseProgress();
+        Manager.Instance.IncreaseProgress(6);
     }
 
     private void SetSkybox()

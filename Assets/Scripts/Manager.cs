@@ -28,8 +28,19 @@ public class Manager {
 	public string[] nextDegrees;
 
     private int progress;
+    private string loadingText;
 
     public bool enableAutoImageCache = false; // if true, auto image caching
+
+    public void SetLoadingText(string text)
+    {
+        loadingText = text;
+    }
+
+    public string GetLoadingText()
+    {
+        return loadingText;
+    }
 
     public void SetHotPlace(bool isHotPlace)
     {
@@ -51,9 +62,9 @@ public class Manager {
         return placeID;
     }
 
-    public void IncreaseProgress()
+    public void IncreaseProgress(int val = 1)
     {
-        progress++;
+        progress += val;
     }
 
     public void SetProgress(int val)

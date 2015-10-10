@@ -172,7 +172,7 @@ public class GestureControllerStreetView : MonoBehaviour
                 // ZOOM IN OUT Motion
                 if (num_hands == 2)                                 
                 {
-					ZoomInOut(gesture,handsForGesture);
+					//ZoomInOut(gesture,handsForGesture);
             	} // END OF GESTURE RECOGNITION LOOP
         
         	} // END OF IF

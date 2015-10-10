@@ -182,15 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed71b82a83a8c643a19f3e68d97982a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeInTime: 2
-  FadeInTexture: {fileID: 0}
-  FontReplace: {fileID: 0}
-  ToggleKey: 47
-  QuitKey: 27
-  ScenesVisible: 0
-  GUIRenderTexture: {fileID: 0}
-  LayerName: Default
-  CrosshairImage: {fileID: 0}
 --- !u!114 &30103682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1882,7 +1873,6 @@ MonoBehaviour:
   skyboxMaterial: {fileID: 0}
   buttonModel: {fileID: 100000, guid: 9b0404e0c23ad3c41aeacb5aed9c09bb, type: 2}
   pivotYaw: 0
-  enableCache: 1
   enableCacheDebugging: 0
   cubeTextureFront: {fileID: 0}
   cubeTextureBack: {fileID: 0}
