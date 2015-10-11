@@ -310,7 +310,7 @@ public class StreetViewRenderer : MonoBehaviour
             retryCounter = 0;
         }
 
-        if(!Utility.FindCachedImageFromID(panoramaID)) // 해당 데이터가 캐시폴더에 있을 경우
+        if(Utility.FindCachedImageFromID(panoramaID)) // 해당 데이터가 캐시폴더에 있을 경우
         {
             Debug.Log("Image data is exist");
             // 6방향 이미지를 모두 로드하고
