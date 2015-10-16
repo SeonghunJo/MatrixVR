@@ -58,8 +58,8 @@ public class StreetViewRenderer : MonoBehaviour
     private int downloadedTilesCount;
 
     // NEED TO INITIATE VALUE BEFORE START RENDERING
-    private bool retrieveMetaData = false;
-    private int retryCounter = 0;
+    private bool metadataExists = false;
+    private int retryCount = 0;
 
     // Panorama To Cubemap
     private const int FACE_FRONT = 0;
@@ -251,8 +251,8 @@ public class StreetViewRenderer : MonoBehaviour
         cubeTextureUp = new Texture2D(512, 512);
         cubeTextureDown = new Texture2D(512, 512);
 
-        retrieveMetaData = false;
-        retryCounter = 0; // 메타데이터 재시도 횟수
+        metadataExists = false;
+        retryCount = 0; // 메타데이터 재시도 횟수
         downloadedTilesCount = 0;
     }
 
@@ -300,14 +300,14 @@ public class StreetViewRenderer : MonoBehaviour
         do
         {
             yield return StartCoroutine(GetMetaData());
-            retryCounter++;
-        } while (retrieveMetaData == false && retryCounter < MAX_RETRY);
-        Debug.Log("GetMetaData End : Retry Count is " + retryCounter.ToString());
+            retryCount++;
+        } while (metadataExists == false && retryCount < MAX_RETRY);
+        Debug.Log("GetMetaData End : Retry Count is " + retryCount.ToString());
         
-        if(retryCounter == MAX_RETRY)
+        if(retryCount == MAX_RETRY)
         {
             Debug.LogError("Get Meta Data Failed");
-            retryCounter = 0;
+            retryCount = 0;
         }
 
         if(Utility.FindCachedImageFromID(panoramaID)) // 해당 데이터가 캐시폴더에 있을 경우
@@ -372,12 +372,12 @@ public class StreetViewRenderer : MonoBehaviour
         if (!string.IsNullOrEmpty(www.error))
         {
             Debug.Log("WWW Error [Meta Data] : " + www.error);
-            retrieveMetaData = false;
+            metadataExists = false;
             yield break;
         }
         else
         {
-            retrieveMetaData = true;
+            metadataExists = true;
         }
 
         JsonData json = JsonMapper.ToObject(www.text);
@@ -450,8 +450,9 @@ public class StreetViewRenderer : MonoBehaviour
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
-        panoramaTexture = new Texture2D(width, height);
 
+        // 파노라마 이미지의 크기만큼 담을 수 있는 빈 텍스쳐 공간을 메모리에 할당한다.
+        panoramaTexture = new Texture2D(width, height);
         downloadedTilesCount = 0;
 
         rowTilesNum = height / tileHeight;
