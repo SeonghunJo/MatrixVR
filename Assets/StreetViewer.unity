@@ -86,7 +86,7 @@ GameObject:
   - 114: {fileID: 30103677}
   - 114: {fileID: 30103680}
   - 114: {fileID: 30103682}
-  - 114: {fileID: 30103681}
+  - 114: {fileID: 30103683}
   m_Layer: 0
   m_Name: LeapOVRCameraRig
   m_TagString: Untagged
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 30103676}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffc28b38b6deb3f4296892ce1a6c8dc0, type: 3}
   m_Name: 
@@ -158,7 +158,7 @@ MonoBehaviour:
   FadeInTexture: {fileID: 2800000, guid: daa862b7c8b652747b677022fbd8c532, type: 3}
   FontReplace: {fileID: 12800000, guid: 2eab921198154ec4e934bfe68d06d984, type: 3}
   FontTitle: {fileID: 12800000, guid: 715711fd1454bbc49bf599a016666b86, type: 3}
-  ToggleKey: 32
+  ToggleKey: 108
   QuitKey: 27
   ScenesVisible: 0
   ScenesVisibleInf: 0
@@ -171,17 +171,6 @@ MonoBehaviour:
   GUIRenderTexture: {fileID: 0}
   LayerName: Default
   CrosshairImage: {fileID: 0}
---- !u!114 &30103681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 30103676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aed71b82a83a8c643a19f3e68d97982a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &30103682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +196,35 @@ MonoBehaviour:
   maxFov: 130
   minFov: 70
   zoomScale: .400000006
+--- !u!114 &30103683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 30103676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b01deb439e6784f889676eda29400c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeInTime: 2
+  FadeInTexture: {fileID: 2800000, guid: d91ebe601c7eea546856181a0894b887, type: 3}
+  FontReplace: {fileID: 0}
+  FontTitle: {fileID: 0}
+  ToggleKey: 105
+  QuitKey: 27
+  ScenesVisible: 1
+  ScenesVisibleInf: 0
+  height: 800
+  loadingImg1: {fileID: 0}
+  loadingImg2: {fileID: 0}
+  bar: {fileID: 0}
+  foot1: {fileID: 0}
+  foot2: {fileID: 0}
+  loadingset: 0
+  GUIRenderTexture: {fileID: 0}
+  LayerName: Default
+  CrosshairImage: {fileID: 0}
 --- !u!1 &49734263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1102,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: a456a38b353c67140a4b6896ec4c5352, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a456a38b353c67140a4b6896ec4c5352, type: 2}
@@ -1637,7 +1655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1341978685
 Transform:
   m_ObjectHideFlags: 0

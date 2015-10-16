@@ -10,13 +10,15 @@ using UnityEngine;
 using UnityEngine.UI;
 # endif
 
-public class OVRLoadingScreen : MonoBehaviour
+//OVRMainMenu 형태로 Information을 띄워주는 화면
+public class JInformation : MonoBehaviour
 {
+
 	public float 	FadeInTime    	= 2.0f;
 	public UnityEngine.Texture 	FadeInTexture 	= null;
 	public Font 	FontReplace		= null;
     public Font     FontTitle       = null;
-	public KeyCode ToggleKey		= KeyCode.L;
+	public KeyCode ToggleKey		= KeyCode.I;
 	public KeyCode	QuitKey			= KeyCode.Escape;
 
 	public bool ScenesVisible   	= false;
@@ -25,6 +27,8 @@ public class OVRLoadingScreen : MonoBehaviour
 	// Spacing for scenes menu // 1280.0f, 800.0f
 	private int resolutionX = 1280;
 	private int resolutionY = 800;
+
+	public int height = 800;
 
 	private int screenCenterX = 640;
 	private int screenCenterY = 400;
@@ -77,7 +81,9 @@ public class OVRLoadingScreen : MonoBehaviour
 			Debug.LogWarning("OVRMainMenu: More then 1 OVRCameraRig attached.");
 		else{
 			CameraController = CameraControllers[0];
+
 			OVRUGUI.CameraController = CameraController;
+
 		}
 		
 		// Find player controller
@@ -91,9 +97,9 @@ public class OVRLoadingScreen : MonoBehaviour
 		else{
 			PlayerController = PlayerControllers[0];
 			OVRUGUI.PlayerController = PlayerController;
+
 		}
 
-		// Create canvas for using new GUI
 		NewGUIObject = new GameObject();
 		NewGUIObject.name = "OVRGUIMain";
 		NewGUIObject.transform.parent = GameObject.Find("LeftEyeAnchor").transform;
@@ -106,7 +112,6 @@ public class OVRLoadingScreen : MonoBehaviour
 		Canvas c = NewGUIObject.AddComponent<Canvas>();
 		c.renderMode = RenderMode.WorldSpace;
 		c.pixelPerfect = false;
-
 	}
 	
 	/// <summary>
@@ -135,9 +140,7 @@ public class OVRLoadingScreen : MonoBehaviour
 				// NOTE: All GUI elements are being written with pixel values based
 				// from DK1 (1280x800). These should change to normalized locations so 
 				// that we can scale more cleanly with varying resolutions
-
 				GuiHelper.SetDisplayResolution(1280.0f, 800.0f);
-				//GuiHelper.SetDisplayResolution(1920.0f, 1080.0f);
 			}
 		}
 		
@@ -187,6 +190,7 @@ public class OVRLoadingScreen : MonoBehaviour
 			// Add a GridCube component to this object
 			GridCube = gameObject.AddComponent<OVRGridCube>();
 			GridCube.SetOVRCameraController(ref CameraController);
+
 		}
 		
 		// Crosshair functionality
@@ -195,27 +199,29 @@ public class OVRLoadingScreen : MonoBehaviour
 		Crosshair.SetOVRCameraController (ref CameraController);
 		Crosshair.SetOVRPlayerController(ref PlayerController);
 
-        print("start function : " + ScenesVisible);
-        StartCoroutine(DrawWalker(true));
+		print("start function : " + ScenesVisible);
+		StartCoroutine(ShowInformation(true));
 	} 
 	
 	/// <summary>
 	/// Update this instance.
 	/// </summary>
 	void Update()
-	{
+	{		
 		// CameraController updates
 		if(CameraController != null)
 		{
 			UpdateRecenterPose();
+
 		}
-		
+
 		// Crosshair functionality
 		Crosshair.UpdateCrosshair();
-
+		
 		if (ScenesVisible)
 		{
 			NewGUIObject.SetActive(true);
+
 		}
 		else
 		{
@@ -228,7 +234,7 @@ public class OVRLoadingScreen : MonoBehaviour
 		
 		if (Input.GetKeyDown(KeyCode.M))
 			OVRManager.display.mirrorMode = !OVRManager.display.mirrorMode;
-
+		
 		ToggleScreenByKey(ToggleKey);
 
 		#if !UNITY_ANDROID || UNITY_EDITOR
@@ -236,19 +242,21 @@ public class OVRLoadingScreen : MonoBehaviour
 		if (Input.GetKeyDown(QuitKey))
 			Application.Quit();
 		#endif
-	}
 
+	}
+	
 	
 	void OnGUI()
 	{	
 		// Important to keep from skipping render events
 		if (Event.current.type != EventType.Repaint)
 			return;
-
+		
 		// We can turn on the render object so we can render the on-screen menu
 		if(GUIRenderObject != null)
 		{
-			if (ScenesVisible || Crosshair.IsCrosshairVisible())
+			if (ScenesVisible || 
+			    Crosshair.IsCrosshairVisible() )
 			{
 				GUIRenderObject.SetActive(true);
 			}
@@ -278,12 +286,16 @@ public class OVRLoadingScreen : MonoBehaviour
 		// Update OVRGUI functions (will be deprecated eventually when 2D renderingc
 		// is removed from GUI)
 		GuiHelper.SetFontReplace(FontReplace);
-
-		DrawScreen();
 		
+		DrawScreen();
+
 		// The cross-hair may need to go away at some point, unless someone finds it 
 		// useful
 		Crosshair.OnGUICrosshair();
+		
+		// Since we want to draw into the main GUI that is shared within the MainMenu,
+		// we call the OVRVisionGuide GUI function here
+		//VisionGuide.OnGUIVisionGuide();
 		
 		// Restore active render texture
 		if (GUIRenderObject.activeSelf)
@@ -296,7 +308,8 @@ public class OVRLoadingScreen : MonoBehaviour
 		GUI.matrix = svMat;
 	}
 	#endregion
-
+	
+	
 	void UpdateRecenterPose()
 	{
 		if(Input.GetKeyDown(KeyCode.R))
@@ -305,16 +318,17 @@ public class OVRLoadingScreen : MonoBehaviour
 		}
 	}
 
-	#region SeonghunJo Added
+	#region Information output
 	public void ShowScreen()
 	{
 		ScenesVisible = true;
-	}
 
+	}
+	
 	public void HideScreen()
 	{
 		ScenesVisible = false;
-        loadingset = 0;
+
 	}
 	
 	public bool ToggleScreenByKey(KeyCode keyCode)
@@ -325,12 +339,17 @@ public class OVRLoadingScreen : MonoBehaviour
 		{
 			print("Toggle");
 			ScenesVisible = !ScenesVisible;
+			if(!ScenesVisible)
+			{	
+				loadingset = 0;
+				height = 800;
+			}
 		}
 		
 		return ScenesVisible;
 	}
 	
-
+	
 	// 모든 UI Draw 작업은 이 함수에 추가
 	void DrawScreen()
 	{
@@ -340,67 +359,50 @@ public class OVRLoadingScreen : MonoBehaviour
 		}
 		else
 		{
-
+			
 		}
 	}
-
-    IEnumerator DrawWalker(bool forceStart)
-    {
-        while(ScenesVisible || forceStart)
-        {
-            yield return new WaitForSeconds(0.5f);
-
-            loadingset++;           
-        }        
-    }
-
-    //애니메이션 효과 추가, process bar,% 추가 
+	IEnumerator ShowInformation(bool forceStart)
+	{
+		while(ScenesVisible || forceStart)
+		{
+			yield return new WaitForSeconds(0.5f);
+			loadingset++;
+		}        
+	}
+	//텍스트
 	void GUIDrawLoadingScreen()
 	{   
-		int boxWidth = 300;
-		int boxHeight = 50;
-   
-		GUI.color = new Color(0, 0, 0);
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
+		//GUI.color = new Color(0, 0, 0);
+		//GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
+		//string emptyText = "";
+		//GuiHelper.StereoBox(screenCenterX-200, 200, 400 , 400, ref emptyText, Color.white);
+		int line = 1;
+		string text = "KOREA\n";
 
-        GuiHelper.SetFontReplace(FontTitle);
+		text = text + "\n" + "가나다라마바사아자차카타파하1";
+		line++;
+		text = text + "\n" + "가나다라마바사아자차카타파하2";
+		line++;
+		text = text + "\n" + "가나다라마바사아자차카타파하3";
+		line++;
+		text = text + "\n" + "가나다라마바사아자차카타파하4";
+		line++;
+		text = text + "\n" + "가나다라마바사아자차카타파하5";
+		line++;
 
-        //Draw Loading text
-		//string loading = "L O A D I N G ...";
-        //GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight + 5, ref loading, Color.white);
+		int totalLine = line * 30;
 
-        string loadingText = Manager.Instance.GetLoadingText();
-        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight + 5, ref loadingText, Color.white);
-        //Draw People
-        if(loadingset % 2 ==0)
-            GuiHelper.StereoDrawTexture(screenCenterX - 40, 400, 80, 80, ref loadingImg1, new Color(0.5f, 0.5f, 0.5f, 1f));                                                                                   
-        else
-            GuiHelper.StereoDrawTexture(screenCenterX - 40, 400, 80, 80, ref loadingImg2, new Color(0.5f, 0.5f, 0.5f, 1f));
-        
-        //Draw Progress
-        int process = Manager.Instance.GetProgress();
-        if (process > 100)
-            process = 100;
-        string locationText = process.ToString() + " %";
-        GuiHelper.StereoBox(screenCenterX - 40, 480, 80, boxHeight, ref locationText, Color.white);
+		if (height > 300 - (totalLine / 2))
+						height -= loadingset * 2;
 
-        //Draw Progress bar
-        processBarLocation = process * 3;
-        GuiHelper.StereoDrawTexture(screenCenterX - 150, 540, processBarLocation, boxHeight, ref bar, new Color(0.5f, 0.5f, 0.5f, 1f));
-
-
-        string text = EarthManager.Instance.thumbnailText;
-        if (text == null)
-            text = "M A T R I X";
-
-        //text = "만장굴, South Korea, 제주시, 제주특별자치도";
-        GuiHelper.StereoBox(screenCenterX - 200, 300, 400 , 40, ref text, Color.white);
-        
+		print (loadingset);
+		//GuiHelper.StereoBox(screenCenterX-200, 300-(totalLine/2), 400 , totalLine, ref text, Color.white);
+		GuiHelper.StereoBox(screenCenterX-200, height, 400 , totalLine, ref text, Color.white);
 
 
 	}
-	#endregion SeonghunJo Added
-
+	#endregion Information output
 
 	void OnDestroy() // Initialize OVRUGUI on OnDestroy
 	{
