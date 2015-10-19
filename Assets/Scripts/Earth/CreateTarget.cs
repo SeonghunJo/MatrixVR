@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 using System.Collections.Generic;
@@ -264,6 +264,8 @@ public class CreateTarget : MonoBehaviour
         {           
             
 			PanoramaInfo info = panoramas[i];	
+
+			EarthManager.Instance.viewIndex = i;
 
 			//추천지역은 타겟의 모양을 다르게 			
 			GameObject child = Instantiate( info.impo ? impoObj : nonImpobj , transform.position, Quaternion.identity) as GameObject;

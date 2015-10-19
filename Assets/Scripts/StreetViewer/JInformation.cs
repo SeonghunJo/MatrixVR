@@ -1,4 +1,4 @@
-﻿// Use the Unity new GUI with Unity 4.6 or above.
+// Use the Unity new GUI with Unity 4.6 or above.
 #if UNITY_4_6 || UNITY_5_0
 #define USE_NEW_GUI
 #endif
@@ -36,7 +36,6 @@ public class JInformation : MonoBehaviour
     private int processBarLocation = 0;
     
     public Texture flagImg;
-    public Texture loadingImg2;
     public Texture bar;
     public Texture foot1;
     public Texture foot2;
@@ -377,33 +376,38 @@ public class JInformation : MonoBehaviour
 	//텍스트
 	void GUIDrawLoadingScreen()
 	{   
+		int index = 0;// = EarthManager.Instance.viewIndex;
+
+		//배경 
 		GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
-		//GUI.color = new Color(0, 0, 0);
-		//GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
-		//string emptyText = "";
-		//GuiHelper.StereoBox(screenCenterX-200, 200, 400 , 400, ref emptyText, Color.white);
-		int line = 1;
-		string text = "KOREA\n";
 
-		text = text + "\n" + "성산 일출봉은 서귀포시 성산읍에 있는 산이다.";
-		line++;
-		text = text + "\n" + "분화구 높이는 182m 이며, 성산";
-		line++;
-		text = text + "\n" + "일출봉에서의 일출은 영주십경 중 하나이다.";
-		line++;
-		text = text + "\n" + "일출봉 분화구와 주변 1km 해역은 성산 일출봉 천연보호구역으로";
-		line++;
-		text = text + "\n" + "대한민국의 천연기념물로 지정되어 있다.";
-		line++;
+		//국기 이미지 (좌측상단)
+		GuiHelper.StereoDrawTexture(screenCenterX - 200, 200, 90, 60, ref flagImg, new Color(0.5f, 0.5f, 0.5f, 1f));  
 
-		int totalLine = line * 30;
+		//print (index);
+		//국가명, 지역명, 설명 불러옴.
+		string country = InformationList.placelist [0].country;
+		//string area = InformationList.placelist [index].area;
+		//string feature = InformationList.placelist [index].feature;
 
-		if (height > 300 - (totalLine / 2))
-						height -= loadingset * 4;
-		GuiHelper.StereoDrawTexture(screenCenterX - 200, 100, 90, 60, ref flagImg, new Color(0.5f, 0.5f, 0.5f, 1f));  
+		print (index + " / " + country);
+		//국가명 출력
+		//GuiHelper.StereoBox(screenCenterX+100, height, 400 , 30, ref country, Color.black);
+
+		//지역명 출력
+		//GuiHelper.StereoBox(screenCenterX+100, height, 400 , 30, ref area, Color.black);
+		
+		//설명 출력
+		//GuiHelper.StereoBox(screenCenterX-200, height, 400 , 30, ref feature, Color.black);
+
+
+		//int totalLine = line * 30;
+
+		//if (height > 300 - (totalLine / 2))
+		//				height -= loadingset * 4;
 
 		//GuiHelper.StereoBox(screenCenterX-200, 300-(totalLine/2), 400 , totalLine, ref text, Color.white);
-		GuiHelper.StereoBox(screenCenterX-200, height, 400 , totalLine, ref text, Color.black);
+		//GuiHelper.StereoBox(screenCenterX-200, height, 400 , totalLine, ref text, Color.black);
 
 
 	}

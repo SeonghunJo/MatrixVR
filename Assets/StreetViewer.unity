@@ -217,7 +217,6 @@ MonoBehaviour:
   ScenesVisibleInf: 0
   height: 800
   flagImg: {fileID: 2800000, guid: 33fe7304a0d5bda489b17c0c97b09f81, type: 3}
-  loadingImg2: {fileID: 0}
   bar: {fileID: 0}
   foot1: {fileID: 0}
   foot2: {fileID: 0}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EarthManager {
@@ -26,4 +26,5 @@ public class EarthManager {
     public Vector3 CameraRotation;
     public Quaternion CameraOrientation;
 
+	public int viewIndex;
 }
