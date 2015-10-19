@@ -4,12 +4,12 @@
 TagManager:
   tags:
   - Button
-  - InformationFrame
+  - InformationButton
   - Earth Clouds
   - Earth
   - MainMenu
   - Button
-  - 
+  - InformationCanvas
   - StreetviewPoint
   - Information
   - 

@@ -693,13 +693,14 @@ GameObject:
   - 114: {fileID: 388302345}
   - 114: {fileID: 388302344}
   - 65: {fileID: 388302347}
+  - 114: {fileID: 388302348}
   m_Layer: 5
   m_Name: InformationCanvas
-  m_TagString: Untagged
+  m_TagString: InformationCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &388302343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -791,6 +792,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.39999998, y: .699999988, z: .5}
   m_Center: {x: 0, y: 0, z: -.25}
+--- !u!114 &388302348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 388302342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660a3456e79c8d9418a8448123801566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InfoCanvas: {fileID: 388302342}
 --- !u!1 &434477919
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,7 +872,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &435014869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1075,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &572504573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1478,7 @@ Transform:
   - {fileID: 435014870}
   - {fileID: 1633697637}
   - {fileID: 388302343}
+  - {fileID: 1763750674}
   m_Father: {fileID: 30103679}
   m_RootOrder: 0
 --- !u!20 &949039253
@@ -1909,6 +1923,33 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2ef66d4a6d3e56a4ab933d70a4d6818d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &1177331833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1177331834}
+  m_Layer: 0
+  m_Name: trashObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1177331834
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1177331833}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.03500009, y: 0, z: 2.12599993}
+  m_LocalScale: {x: .905834019, y: 4.36066008, z: .905834019}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1 &1203416168
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,7 +2317,6 @@ MonoBehaviour:
   text: {fileID: 1220268202}
   progressBar: {fileID: 1203416168}
   locationText: {fileID: 1128640341}
-  backAnim: {fileID: 0}
 --- !u!1 &1496472024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,7 +2467,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
+      propertyPath: m_TagString
+      value: InformationCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
@@ -2670,6 +2714,67 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 1531362280}
   m_GameObject: {fileID: 1699149554}
+--- !u!1 &1763750673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1763750674}
+  - 33: {fileID: 1763750677}
+  - 65: {fileID: 1763750676}
+  - 114: {fileID: 1763750675}
+  m_Layer: 0
+  m_Name: InformationButton
+  m_TagString: InformationButton
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1763750674
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763750673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.03500009, y: 0, z: 2.12599993}
+  m_LocalScale: {x: .905834019, y: 4.36066008, z: .905834019}
+  m_Children: []
+  m_Father: {fileID: 949039252}
+  m_RootOrder: 9
+--- !u!114 &1763750675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763750673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de28f0a86150fa4fb08452571e0ec87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InformationCanvas: {fileID: 388302342}
+--- !u!65 &1763750676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763750673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1763750677
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763750673}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1790568384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,7 +2809,6 @@ MonoBehaviour:
   skyboxMaterial: {fileID: 0}
   buttonModel: {fileID: 100000, guid: 9b0404e0c23ad3c41aeacb5aed9c09bb, type: 2}
   pivotYaw: 0
-  enableCache: 1
   enableCacheDebugging: 0
   cubeTextureFront: {fileID: 0}
   cubeTextureBack: {fileID: 0}
@@ -2723,7 +2827,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
 --- !u!1 &1835634058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2807,7 +2911,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1908982970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,7 +3029,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &1985688940
 GameObject:
   m_ObjectHideFlags: 0

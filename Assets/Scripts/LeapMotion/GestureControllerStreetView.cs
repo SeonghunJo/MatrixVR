@@ -29,6 +29,9 @@ public class GestureControllerStreetView : MonoBehaviour
 	Button pointed = null;
 	MainMenu MainMenu_pointed = null;
 	Information Information_pointed = null;
+	InformationButton InformationButton_pointed = null;
+	InformationCanvas InfoCanvas_pointed = null;
+
 	
 	Ray r;
 	RaycastHit hit;
@@ -148,6 +151,10 @@ public class GestureControllerStreetView : MonoBehaviour
 			else if (hit.collider.gameObject.tag == "Information")      //add Jin
 			{
 				Information_pointed.Clicked();
+			}
+			else if (hit.collider.gameObject.tag == "InformationCanvas")      //add Jin
+			{
+				InfoCanvas_pointed.Clicked();
 			}
 		}
 	}
@@ -338,7 +345,7 @@ public class GestureControllerStreetView : MonoBehaviour
 					// TODO : Mouse Enter (HJOOn)
 					MainMenu_pointed.Pointed();
 				}
-			}
+			}		
 			else if (hit.collider.gameObject.tag == "Information")                              //Information 버튼 구현(add Jin)
 			{
 				Information_pointed = hit.collider.gameObject.GetComponent<Information>();
@@ -347,6 +354,23 @@ public class GestureControllerStreetView : MonoBehaviour
 					Information_pointed.Pointed();
 				}
 			}
+			else if (hit.collider.gameObject.tag == "InformationButton")                              //Information 버튼 구현(add Jin)
+			{
+				InformationButton_pointed = hit.collider.gameObject.GetComponent<InformationButton>();
+				if (InformationButton_pointed != null)
+				{
+					InformationButton_pointed.Pointed();
+				}
+			}
+			else if (hit.collider.gameObject.tag == "InformationCanvas")                              //Information 버튼 구현(add Jin)
+			{
+				InfoCanvas_pointed = hit.collider.gameObject.GetComponent<InformationCanvas>();
+				if (InfoCanvas_pointed != null)
+				{
+					InfoCanvas_pointed.Pointed();
+				}
+			}
+
 		}
 	}
 	
@@ -368,6 +392,16 @@ public class GestureControllerStreetView : MonoBehaviour
 		{
 			Information_pointed.PointedOut();
 			Information_pointed = null;
+		}
+		else if (InformationButton_pointed != null)      //add Jin
+		{
+			InformationButton_pointed.PointedOut();
+			InformationButton_pointed = null;
+		}
+		else if (InfoCanvas_pointed != null)      //add Jin
+		{
+			InfoCanvas_pointed.PointedOut();
+			InfoCanvas_pointed = null;
 		}
 	}
 
