@@ -15,6 +15,7 @@ public class Manager {
 			if(_instance == null)
 			{
 				_instance = new Manager();
+                Debug.LogWarning(Utility.cacheFolderPath);
 			}
 			return _instance;
 		}
