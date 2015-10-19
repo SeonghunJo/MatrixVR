@@ -31,6 +31,29 @@ public class CreateTarget : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		//여행지 정보가 추가된 엄선된 장소
+		panoramas.Add(new PanoramaInfo(27.718398f, 86.716000f, "kFuSB9hD_6yJy8oxmjr1RQ", false)); //Mudslide Bridge
+		panoramas.Add(new PanoramaInfo(25.036556f, 121.517962f, "uM-jW1fT93Y_eJ7CPTG6jA", false)); //장개석
+		panoramas.Add(new PanoramaInfo(37.571199f, 126.968461f, "zMrHSTO0GCYAAAQINlCkXg", false)); //Gyeonghui Palace
+		panoramas.Add(new PanoramaInfo(33.459519f, 126.939750f, "IUmXlW6pRu1w9QnUdQk4vw", false)); //성산일출봉
+		panoramas.Add(new PanoramaInfo(37.172210f, -93.322539f, "ayOK2SvpqYzlk4rm1Q4KPQ", false)); //Mizumoto Japanese Stroll Garden
+		panoramas.Add(new PanoramaInfo(-3.825792f, -32.396424f, "rfgb-QoM16gAAAQY_-2qjg", false)); //돌고래 Catlin Seaview Survey
+		panoramas.Add(new PanoramaInfo(40.688619f, -74.044125f, "cthAMoR7m9cmP-wUC8AIWA", false)); //Statue of Liberty National Monument
+		panoramas.Add(new PanoramaInfo(-14.865306f, 145.680527f, "nNw59vW3owAAAAQfCaaiYQ", false)); //Minke Whales
+		panoramas.Add(new PanoramaInfo(-3.137761f, -60.493355f, "1ci-8iBT_UuG1dlrUy1vzg", false)); //Rio Negro 아마존
+		panoramas.Add(new PanoramaInfo(25.195232f, 55.276428f, "eznax7JvTOXrAztKUfqj-A", false)); //Burj Khalifa
+		panoramas.Add(new PanoramaInfo(51.178946f, -1.826564f, "VxzhBNNu-VGQC8HtVIaY3A", false)); //스톤헨지
+		panoramas.Add(new PanoramaInfo(46.162368f, 10.917272f, "5_AWZhbCGuqMd0AGfOlOUw", false)); // Dolomiti UNESCO2
+		panoramas.Add(new PanoramaInfo(41.890072f, 12.492534f, "07gbqMWIg_HId5m7W94qHg", false)); //로마 콜로세움
+		panoramas.Add(new PanoramaInfo(15.949466f, 75.815568f, "oG_6nL1zn2L5SiHB7fEqBQ", false)); //Group of Mounments at Pattadakal
+		panoramas.Add(new PanoramaInfo(19.900922f, 75.320179f, "PxmiVxloPR5XpPOC3sDb3A", false)); //Bibi Ka Maqbara
+		panoramas.Add(new PanoramaInfo(-8.737039f, 119.412259f, "Ri71LYeNvGsAAAQW4U3bQQ", false)); //Komodo Island
+		panoramas.Add(new PanoramaInfo(34.557692f, 117.742510f, "rY5ZW6S3sFUAAAAGOzOdpg", false)); //Datamen Street
+		panoramas.Add(new PanoramaInfo(49.856306f, 0.297560f, "PRDbHicwARPmhyIq9uKeCA", false)); //에펠탑
+		panoramas.Add(new PanoramaInfo(68.509006f, 27.481845f, "GtnAyp0MCbYAAAQZLDcQIA", false)); //Northern Lights
+		panoramas.Add(new PanoramaInfo(21.479702f, -86.632599f, "xq5H2tvkw_AAAAQJLmg-7A", false)); //Whale Sharks
+
+		/*
 		// 남극
 		panoramas.Add(new PanoramaInfo(-62.596087f, -59.901655f, "ZzuMubmHCfCGGo3ePSlpCQ", true)); // 펭귄 서식지
 		
@@ -235,8 +258,9 @@ public class CreateTarget : MonoBehaviour
 		panoramas.Add(new PanoramaInfo(-23.303391f, 151.914955f, "TNE1NPAnEUNYhGk9kFWyJw", true)); //Wilson Island underwater
 		panoramas.Add(new PanoramaInfo(-23.442896f, 151.906584f, "CWskcsTEZBNXaD8gG-zATA", true)); //Heron Island
 		
-		panoramas.Add(new PanoramaInfo(21.479702f, -86.632599f, "xq5H2tvkw_AAAAQJLmg-7A", true)); //Whale Sharks
-        for (int i = 0; i < panoramas.Count; i++)
+		panoramas.Add(new PanoramaInfo(21.479702f, -86.632599f, "xq5H2tvkw_AAAAQJLmg-7A", true)); //Whale Sharks */
+
+		for (int i = 0; i < panoramas.Count; i++)
         {           
             
 			PanoramaInfo info = panoramas[i];	

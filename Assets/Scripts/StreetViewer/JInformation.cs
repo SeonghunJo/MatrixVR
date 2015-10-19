@@ -35,7 +35,7 @@ public class JInformation : MonoBehaviour
 
     private int processBarLocation = 0;
     
-    public Texture loadingImg1;
+    public Texture flagImg;
     public Texture loadingImg2;
     public Texture bar;
     public Texture foot1;
@@ -364,15 +364,20 @@ public class JInformation : MonoBehaviour
 	}
 	IEnumerator ShowInformation(bool forceStart)
 	{
-		while(ScenesVisible || forceStart)
+		while(forceStart)
 		{
-			yield return new WaitForSeconds(0.5f);
-			loadingset++;
+			if(ScenesVisible) {
+				yield return new WaitForSeconds(0.5f);
+				loadingset++;
+			}
+			else
+				yield return new WaitForSeconds(0.5f);
 		}        
 	}
 	//텍스트
 	void GUIDrawLoadingScreen()
 	{   
+		GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
 		//GUI.color = new Color(0, 0, 0);
 		//GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
 		//string emptyText = "";
@@ -380,25 +385,25 @@ public class JInformation : MonoBehaviour
 		int line = 1;
 		string text = "KOREA\n";
 
-		text = text + "\n" + "가나다라마바사아자차카타파하1";
+		text = text + "\n" + "성산 일출봉은 서귀포시 성산읍에 있는 산이다.";
 		line++;
-		text = text + "\n" + "가나다라마바사아자차카타파하2";
+		text = text + "\n" + "분화구 높이는 182m 이며, 성산";
 		line++;
-		text = text + "\n" + "가나다라마바사아자차카타파하3";
+		text = text + "\n" + "일출봉에서의 일출은 영주십경 중 하나이다.";
 		line++;
-		text = text + "\n" + "가나다라마바사아자차카타파하4";
+		text = text + "\n" + "일출봉 분화구와 주변 1km 해역은 성산 일출봉 천연보호구역으로";
 		line++;
-		text = text + "\n" + "가나다라마바사아자차카타파하5";
+		text = text + "\n" + "대한민국의 천연기념물로 지정되어 있다.";
 		line++;
 
 		int totalLine = line * 30;
 
 		if (height > 300 - (totalLine / 2))
-						height -= loadingset * 2;
+						height -= loadingset * 4;
+		GuiHelper.StereoDrawTexture(screenCenterX - 200, 100, 90, 60, ref flagImg, new Color(0.5f, 0.5f, 0.5f, 1f));  
 
-		print (loadingset);
 		//GuiHelper.StereoBox(screenCenterX-200, 300-(totalLine/2), 400 , totalLine, ref text, Color.white);
-		GuiHelper.StereoBox(screenCenterX-200, height, 400 , totalLine, ref text, Color.white);
+		GuiHelper.StereoBox(screenCenterX-200, height, 400 , totalLine, ref text, Color.black);
 
 
 	}

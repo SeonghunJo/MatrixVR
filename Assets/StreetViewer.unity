@@ -149,7 +149,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 30103676}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffc28b38b6deb3f4296892ce1a6c8dc0, type: 3}
   m_Name: 
@@ -208,15 +208,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeInTime: 2
-  FadeInTexture: {fileID: 2800000, guid: d91ebe601c7eea546856181a0894b887, type: 3}
-  FontReplace: {fileID: 0}
-  FontTitle: {fileID: 0}
+  FadeInTexture: {fileID: 2800000, guid: 2ef66d4a6d3e56a4ab933d70a4d6818d, type: 3}
+  FontReplace: {fileID: 12800000, guid: 9675e6abcbb39ba428fd051788716499, type: 3}
+  FontTitle: {fileID: 12800000, guid: 9675e6abcbb39ba428fd051788716499, type: 3}
   ToggleKey: 105
   QuitKey: 27
   ScenesVisible: 1
   ScenesVisibleInf: 0
   height: 800
-  loadingImg1: {fileID: 0}
+  flagImg: {fileID: 2800000, guid: 33fe7304a0d5bda489b17c0c97b09f81, type: 3}
   loadingImg2: {fileID: 0}
   bar: {fileID: 0}
   foot1: {fileID: 0}
