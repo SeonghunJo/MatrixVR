@@ -5,194 +5,121 @@ using Leap;
 
 public class GestureControllerStreetView : MonoBehaviour
 {
-    Controller controller;       //립모션 컨트롤러
-    GameObject cursorPointer;
-    GameObject rigid;
-
-    public GameObject cursorModel;    // 손 포인터 끝 (커서)
-    public GameObject target;   // RayCast 충돌위치로  옮겨 표시하는 물체 
-    public GameObject leftCamera, rightCamera;
-    public GameObject Earth;
+	Controller controller;       //립모션 컨트롤러
+	GameObject cursorPointer;
+	GameObject rigid;
+	
+	public GameObject cursorModel;    // 손 포인터 끝 (커서)
+	public GameObject target;   // RayCast 충돌위치로  옮겨 표시하는 물체 
+	public GameObject leftCamera, rightCamera;
+	public GameObject Earth;
 	public GameObject clickParticle =null; //클릭 파티클 이펙트
-
-    public bool enableScreenTap = true;
-    public bool enableKeyTap = true;
-    public bool enableSwipe = true;
-    public bool enableCircle = true;
-    public float swipeSpeed = 100.0f;
-
-    public float maxFov = 130.0f;
-    public float minFov = 80.0f;
-    public float zoomScale = 0.7f;
-
-    string swipestart = "none";
+	
+	public bool enableScreenTap = true;
+	public bool enableKeyTap = true;
+	public bool enableSwipe = true;
+	public bool enableCircle = true;
+	public float swipeSpeed = 100.0f;
+	
+	public float maxFov = 130.0f;
+	public float minFov = 80.0f;
+	public float zoomScale = 0.7f;
+	
+	string swipestart = "none";
 	Button pointed = null;
 	MainMenu MainMenu_pointed = null;
-    Information Information_pointed = null;
-
-
-    // Use this for initializatio
-    void Start()
-    {
-        target.renderer.material.color = Color.blue;
-        controller = new Controller();  //립모션 컨트롤러 할당 
-
+	Information Information_pointed = null;
+	
+	Ray r;
+	RaycastHit hit;
+	
+	
+	// Use this for initializatio
+	void Start()
+	{
+		target.renderer.material.color = Color.blue;
+		controller = new Controller();  //립모션 컨트롤러 할당 
+		
 		SetGesture (controller);
-    }
+	}
+	
+	// Update is called once per frame
+	void Update()
+	{
+		Frame frame = controller.Frame();    //frame 
+		GestureList gestures = frame.Gestures(); //frame 안의 gesture 인식
+		HandList hands = frame.Hands;    //frame 안의 hands 인식
+		int num_hands = hands.Count;    //hand의 수
 
-    // Update is called once per frame
-    void Update()
-    {
-        Frame frame = controller.Frame();    //frame 
-        GestureList gestures = frame.Gestures(); //frame 안의 gesture 인식
-        HandList hands = frame.Hands;    //frame 안의 hands 인식
-        int num_hands = hands.Count;    //hand의 수
 
-        if (num_hands < 1) // 인식된 손이 없다면
-        {
-            return;
-        }
-        else
-        {
-            Hand left = hands.Leftmost;     //왼쪽손 
-			FingerList fingerList = left.Fingers;  //왼쪽 손의 손가락들!
-            Finger leftFinger = fingerList.Frontmost;  //왼손에서 제일 앞에 있는 손가락
-
-            rigid = GameObject.Find("RigidHand(Clone)");
-			if (rigid == null)
+		if (num_hands < 1)
+		{
+			return;
+		}
+		else
+		{
+			//FingerList fingerList = hands.Leftmost.Fingers;   //왼쪽 손의 손가락들!
+			//Finger leftFinger = fingerList.Frontmost;  //왼손에서 제일 앞에 있는 손가락
+			
+			if(FindAndDisableRigidHand() == true)
 			{
-				//Debug.Log ("Rigid finded");
-				//Vector3 temp = GetTippingPos();  //팁핑 포지션으로 커서를 이동
-				//cursorModel.transform.position = temp;
-				Debug.LogWarning("RigidHand is null");
-				return;
-			}
-
-            cursorPointer = GameObject.Find("RigidHand(Clone)/index/bone3");
-            if (cursorPointer == null)
-            {
-                Debug.LogWarning("CursorPointer is null");
-                return;
-            }
-
-            //여기에서 립모션 손모양 오븥젝트의 Collision 을 해체하여 Raycast에 충돌 하지 않게 한다.
-            Collider[] cols = rigid.GetComponentsInChildren<Collider>();
-            for (int i = 0; i < cols.Length; i++)
-            {
-                cols[i].enabled = false;
-            }
-
-
-            //GameObject handController = GameObject.Find("HandController");  //HandCOnroller 오브젝트 접근
-            //손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
-            //Vector2 screenPoint=leftCamera.camera.WorldToScreenPoint (handController.transform.TransformPoint(left.PalmPosition.ToUnityScaled()));
-            Vector2 screenPoint = leftCamera.camera.WorldToScreenPoint(cursorPointer.transform.position);
-            Ray r = leftCamera.camera.ScreenPointToRay(screenPoint);      // ScreentPoint로부터 Ray를 쏜다
-            Debug.DrawRay(r.origin, r.direction * 1000, Color.red);
-
-            RaycastHit hit; //rayCast에서 부딛힌 객체 관리
-            
-            if (Physics.Raycast(r, out hit, Mathf.Infinity))
-            {
-				//Debug.Log("hit - ObjName : " + hit.collider.name + 
-				         // ", Flag - " +hit.collider.gameObject.tag );
-                if(hit.collider != null)
-                {
-                    target.transform.position = hit.transform.position;
-                    if(hit.collider.gameObject.tag == "Button")
-                    {
-						pointed = hit.collider.gameObject.GetComponent<Button>();
-						if(pointed != null)
-                        {
-							pointed.Pointed();
-                        }
-                    }
-					else if(hit.collider.gameObject.tag == "MainMenu")
-					{
-						MainMenu_pointed = hit.collider.gameObject.GetComponent<MainMenu>();
-						if(MainMenu_pointed != null)
-						{
-							// TODO : Mouse Enter (HJOOn)
-							MainMenu_pointed.Pointed();
-						}
-					}
-                    else if (hit.collider.gameObject.tag == "Information")                              //Information 버튼 구현(add Jin)
-                    {
-                        Information_pointed = hit.collider.gameObject.GetComponent<Information>();
-                        if (Information_pointed != null)
-                        {
-                            Information_pointed.Pointed();
-                        }
-                    }
-				}
-			}
-			else
-			{
-				// TODO : Mouse Exit (SHJO)
-				if(pointed != null)
-                {
-					//hit.collider.gameObject.renderer.material.color=Color.red;
-					pointed.PointedOut();
-					pointed=null;
-                }
-				else if(MainMenu_pointed !=null)
+				//손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
+				
+				if(RayFromCursor() ==true )
 				{
-					MainMenu_pointed.PointedOut();
-					MainMenu_pointed = null;
+					RayPoint (); // able  Pointed Object
 				}
-                else if (Information_pointed != null)      //add Jin
-                {
-                    Information_pointed.PointedOut();
-                    Information_pointed = null;
-                }
-            }
+				else
+				{
+					RayPointedOut(); // Disable Pointed Object
+				}
+			}		
 
-            //립모션 제스쳐 감지 
-            for (int i = 0; i < gestures.Count; i++)
-            {
-                Gesture gesture = gestures[i];
-
+			for (int i = 0; i < gestures.Count; i++)
+			{
+				Gesture gesture = gestures[i];
+				
 				HandList handsForGesture = gesture.Hands;
 				if (num_hands == 1)                                 
 				{
-
-               		// Key Tap
-                	if (gesture.Type == Gesture.GestureType.TYPE_KEY_TAP)
+					
+					// Key Tap
+					if (gesture.Type == Gesture.GestureType.TYPE_KEY_TAP)
 						KeyTap(gesture,hit);
-                	// Screen Tap
-                	else if (gesture.Type == Gesture.GestureType.TYPE_SCREEN_TAP) 
+					// Screen Tap
+					else if (gesture.Type == Gesture.GestureType.TYPE_SCREEN_TAP) 
 						ScreenTap(gesture,hit);
-                	// Swipe
-                	else if (gesture.Type == Gesture.GestureType.TYPE_SWIPE) 
+					// Swipe
+					else if (gesture.Type == Gesture.GestureType.TYPE_SWIPE) 
 						Swipe (gesture);
-                	// Circle
-                	else if (gesture.Type == Gesture.GestureType.TYPE_CIRCLE)
+					// Circle
+					else if (gesture.Type == Gesture.GestureType.TYPE_CIRCLE)
 						Circle(gesture);
 				}
-                // ZOOM IN OUT Motion
-                if (num_hands == 2)                                 
-                {
+				// ZOOM IN OUT Motion
+				if (num_hands == 2)                                 
+				{
 					//ZoomInOut(gesture,handsForGesture);
-            	} // END OF GESTURE RECOGNITION LOOP
-        
-        	} // END OF IF
-    	}
+				} // END OF GESTURE RECOGNITION LOOP
+				
+			} // END OF IF
+		}
 	}
-
-    Vector3 GetTippingPos() // 현재 포인터 끝이 되는 오브젝트의 
-    {
-        cursorPointer = GameObject.Find("RigidHand(Clone)/index/bone3");       //생선돈 손 모양 객체의 손바닥 오브젝트를 찾는다
-        if (cursorPointer != null)
-        {
-            return cursorPointer.transform.position;  //객체를 찾았다면 객체 위치를 반환
-        }
-        else
-        {
-            //Debug.Log ("Find middle finger fail");
-            return Vector3.zero;
-        }
-
-    }
+	
+	Vector3 GetTippingPos() // 현재 포인터 끝이 되는 오브젝트의 
+	{
+		cursorPointer = GameObject.Find("RigidHand(Clone)/index/bone3");       //생선돈 손 모양 객체의 손바닥 오브젝트를 찾는다
+		if (cursorPointer != null)
+		{
+			return cursorPointer.transform.position;  //객체를 찾았다면 객체 위치를 반환
+		}
+		else
+		{
+			//Debug.Log ("Find middle finger fail");
+			return Vector3.zero;
+		}
+		
+	}
 	//Gesture Event for Keytap 
 	void KeyTap(Gesture gesture,RaycastHit hit)
 	{
@@ -334,9 +261,118 @@ public class GestureControllerStreetView : MonoBehaviour
 			controller.Config.Save();
 		}
 	}
+
+	bool FindAndDisableRigidHand()
+	{
+		rigid = GameObject.Find("RigidHand(Clone)");
+		if (rigid == null)
+		{
+			//Debug.Log ("Rigid finded");
+			//Vector3 temp = Tipping();  //팁핑 포지션으로 커서를 이동
+			//cursorModel.transform.position = temp;
+			Debug.LogWarning("RigidHand is null");
+			return false;
+		}
+		
+		if (GetCursorPointer() == false) 
+		{
+			return false;
+		}		
+		//여기에서 립모션 손모양 오븥젝트의 Collision 을 해체하여 Raycast에 충돌 하지 않게 한다.
+		Collider[] cols = rigid.GetComponentsInChildren<Collider>();
+		for (int i = 0; i < cols.Length; i++)
+		{
+			cols[i].enabled = false;
+		}
+		
+		return true;
+	}
+	
+	bool GetCursorPointer()
+	{
+		cursorPointer = GameObject.Find("RigidHand(Clone)/index/bone3");
+		if (cursorPointer == null)
+		{
+			Debug.LogWarning("CursorPointer is null");
+			return false;
+		}
+		return true;
+	}
+	
+	bool RayFromCursor()
+	{
+		//손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
+		Vector2 screenPoint = leftCamera.camera.WorldToScreenPoint(cursorPointer.transform.position);
+		r = leftCamera.camera.ScreenPointToRay(screenPoint);      // ScreentPoint로부터 Ray를 쏜다
+		Debug.DrawRay(r.origin, r.direction * 1000, Color.red);
+		
+		//rayCast에서 부딛힌 객체 관리
+		if (Physics.Raycast (r, out hit, Mathf.Infinity) == true)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	void RayPoint()
+	{
+		if(hit.collider != null)
+		{
+			target.transform.position = hit.transform.position;
+			if(hit.collider.gameObject.tag == "Button")
+			{
+				pointed = hit.collider.gameObject.GetComponent<Button>();
+				if(pointed != null)
+				{
+					pointed.Pointed();
+				}
+			}
+			else if(hit.collider.gameObject.tag == "MainMenu")
+			{
+				MainMenu_pointed = hit.collider.gameObject.GetComponent<MainMenu>();
+				if(MainMenu_pointed != null)
+				{
+					// TODO : Mouse Enter (HJOOn)
+					MainMenu_pointed.Pointed();
+				}
+			}
+			else if (hit.collider.gameObject.tag == "Information")                              //Information 버튼 구현(add Jin)
+			{
+				Information_pointed = hit.collider.gameObject.GetComponent<Information>();
+				if (Information_pointed != null)
+				{
+					Information_pointed.Pointed();
+				}
+			}
+		}
+	}
+	
+	void RayPointedOut()
+	{
+		// TODO : Mouse Exit (SHJO)
+		if(pointed != null)
+		{
+			//hit.collider.gameObject.renderer.material.color=Color.red;
+			pointed.PointedOut();
+			pointed=null;
+		}
+		else if(MainMenu_pointed !=null)
+		{
+			MainMenu_pointed.PointedOut();
+			MainMenu_pointed = null;
+		}
+		else if (Information_pointed != null)      //add Jin
+		{
+			Information_pointed.PointedOut();
+			Information_pointed = null;
+		}
+	}
+
+
 }
-
-
 
 
 

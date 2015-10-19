@@ -34,8 +34,6 @@ public class GestureController : MonoBehaviour
 
 	Ray r;
 	RaycastHit hit;
-
-	
 	// Use this for initializatio
 	void Start()
 	{
