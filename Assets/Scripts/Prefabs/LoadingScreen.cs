@@ -58,8 +58,6 @@ public class LoadingScreen : MonoBehaviour {
 
 	static LoadingScreen _instance;
 
-	public GameObject backAnim;
-
 	void Awake()
 	{
 		if (_instance)
@@ -93,12 +91,6 @@ public class LoadingScreen : MonoBehaviour {
 		_instance.text.SetActive(false);
 		_instance.progressBar.SetActive(false);
 		_instance.locationText.SetActive(false);
-		anim += 1;
-	}
-
-	private void StartAnim()
-	{
-
 	}
 
 	public static void Load(int index)
@@ -158,12 +150,9 @@ public class LoadingScreen : MonoBehaviour {
 	void Start () {
 		
 	}
-	static int anim = 0;
-
+	
 	// Update is called once per frame
 	void Update () {
-		if(anim == 3)
-			backAnim.SetActive (true);
         SetLoadingText("LOADING - " + Manager.Instance.GetProgress().ToString() + " %");
 	}
 }

@@ -8,24 +8,18 @@ public class EarthScript : MonoBehaviour
 {
     public int Speed;		//rotate speed
 
-	public static bool leftRotate;
-	public static bool rightRotate;
-	public static bool guideTrigger=true;
-
     public void Start()
     {
-		leftRotate = false;
-		rightRotate = false;
         Speed = 10;
     }
 
     void Update()
     {
-		if (leftRotate)
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(Vector3.up, Speed * Time.deltaTime * 5, Space.Self);
         }
-		if (rightRotate)
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Rotate(Vector3.down, Speed * Time.deltaTime * 5, Space.Self);
         }

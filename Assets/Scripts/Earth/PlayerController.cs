@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     /// If true, tracking data from a child OVRCameraRig will update the direction of movement.
     /// </summary>
     public bool HmdRotatesY = true;
-
-    private float MoveScale = 1.0f;
     private Vector3 MoveThrottle = Vector3.zero;
     private OVRPose? InitialPose;
 

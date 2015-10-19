@@ -3,8 +3,6 @@
 #define USE_NEW_GUI
 #endif
 
-using System;
-using System.Collections;
 using UnityEngine;
 #if USE_NEW_GUI
 using UnityEngine.UI;
@@ -21,11 +19,11 @@ public class OVRThumbnailUI : MonoBehaviour
 	public bool ScenesVisible   	= false;
 	
 	// Spacing for scenes menu
-	private int    	resolutionX			= 1280;
-	private int    	resolutionY			= 800;
+	//private int    	resolutionX			= 1280;
+	//private int    	resolutionY			= 800;
 
     private int screenCenterX = 640;
-    private int screenCenterY = 400;
+    //private int screenCenterY = 400;
 
 	// Handle to OVRCameraRig
 	private OVRCameraRig CameraController = null;

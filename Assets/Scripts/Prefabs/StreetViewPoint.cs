@@ -79,7 +79,7 @@ public class StreetViewPoint : MonoBehaviour
 	{
         EarthManager.Instance.thumbnailText = myThumbnailText;
         EarthManager.Instance.thumbnailImg = myThumbnailImg;
-        Manager.Instance.panoramaID = panoID;
+        Manager.Instance.SetPlaceID(panoID);
 
         print(wikiText);
 

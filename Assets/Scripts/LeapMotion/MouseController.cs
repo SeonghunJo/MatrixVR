@@ -25,12 +25,10 @@ public class MouseController : MonoBehaviour {
 				if(hit.collider.gameObject.tag == "StreetviewPoint")
 				{
 					StreetView_Pointed = hit.collider.gameObject.GetComponent<StreetViewPoint>();
-					Debug.Log (StreetView_Pointed.name);
 					if(StreetView_Pointed != null)
 					{
 						// TODO : Mouse Enter (SHJO)
-						//StreetView_Pointed.gameObject.renderer.material.color=Color.blue;
-						StreetView_Pointed.Pointed() ;
+						StreetView_Pointed.gameObject.renderer.material.color=Color.blue;
 						
 					}
 
@@ -38,8 +36,7 @@ public class MouseController : MonoBehaviour {
 				else
 				{
                     if(StreetView_Pointed != null)
-					    //StreetView_Pointed.gameObject.renderer.material.color=Color.red;
-						StreetView_Pointed.PointedOut() ;
+					    StreetView_Pointed.gameObject.renderer.material.color=Color.red;
 					StreetView_Pointed = null;
 				}
 			}
@@ -49,8 +46,7 @@ public class MouseController : MonoBehaviour {
 			// TODO : Mouse Exit (SHJO)
 			if(StreetView_Pointed != null)
 			{
-				//StreetView_Pointed.gameObject.renderer.material.color=Color.red;
-				StreetView_Pointed.PointedOut() ;
+				StreetView_Pointed.gameObject.renderer.material.color=Color.red;
 				StreetView_Pointed = null;
 			}
 		}
@@ -58,7 +54,8 @@ public class MouseController : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 
 			if(StreetView_Pointed != null)
-			{				
+			{
+				
 				Application.LoadLevel("StreetViewer");
 			}
 
