@@ -16,7 +16,7 @@ public class OVRLoadingScreen : MonoBehaviour
 	public UnityEngine.Texture 	FadeInTexture 	= null;
 	public Font 	FontReplace		= null;
     public Font     FontTitle       = null;
-	public KeyCode ToggleKey		= KeyCode.L;
+	public KeyCode ToggleKey		= KeyCode.Space;
 	public KeyCode	QuitKey			= KeyCode.Escape;
 
 	public bool ScenesVisible   	= false;
@@ -366,11 +366,9 @@ public class OVRLoadingScreen : MonoBehaviour
         GuiHelper.SetFontReplace(FontTitle);
 
         //Draw Loading text
-		//string loading = "L O A D I N G ...";
-        //GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight + 5, ref loading, Color.white);
+		string loading = "L O A D I N G ...";
+        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight + 5, ref loading, Color.white);
 
-        string loadingText = Manager.Instance.GetLoadingText();
-        GuiHelper.StereoBox(screenCenterX - boxWidth / 2, 340, boxWidth, boxHeight + 5, ref loadingText, Color.white);
         //Draw People
         if(loadingset % 2 ==0)
             GuiHelper.StereoDrawTexture(screenCenterX - 40, 400, 80, 80, ref loadingImg1, new Color(0.5f, 0.5f, 0.5f, 1f));                                                                                   
@@ -378,7 +376,7 @@ public class OVRLoadingScreen : MonoBehaviour
             GuiHelper.StereoDrawTexture(screenCenterX - 40, 400, 80, 80, ref loadingImg2, new Color(0.5f, 0.5f, 0.5f, 1f));
         
         //Draw Progress
-        int process = Manager.Instance.GetProgress();
+        int process = Manager.Instance.GetProgress() * 3;
         if (process > 100)
             process = 100;
         string locationText = process.ToString() + " %";

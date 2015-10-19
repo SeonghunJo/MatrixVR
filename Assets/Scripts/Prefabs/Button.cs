@@ -49,7 +49,7 @@ public class Button : MonoBehaviour {
     {
         print("Touch");
         
-        Manager.Instance.SetPlaceID(panoramaID);
+        Manager.Instance.panoramaID = panoramaID;
         GameObject streetViewManager = GameObject.Find("StreetViewManager");
         streetViewManager.GetComponent<StreetViewRenderer>().StartRenderStreetView();
     }
