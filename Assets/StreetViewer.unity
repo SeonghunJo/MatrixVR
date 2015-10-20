@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .1953125, g: .1953125, b: .1953125, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e, type: 3}
+    m_Font: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .1953125, g: .1953125, b: .1953125, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e, type: 3}
+    m_Font: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd, type: 3}
     m_FontSize: 80
     m_FontStyle: 1
     m_BestFit: 0
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .1953125, g: .1953125, b: .1953125, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e, type: 3}
+    m_Font: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -1948,7 +1948,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .1953125, g: .1953125, b: .1953125, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e, type: 3}
+    m_Font: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -2320,7 +2320,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .1953125, g: .1953125, b: .1953125, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e, type: 3}
+    m_Font: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
@@ -2723,7 +2723,7 @@ Prefab:
     - target: {fileID: 11400012, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e,
+      objectReference: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd,
         type: 3}
     - target: {fileID: 11400012, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_FontData.m_FontSize
@@ -2732,27 +2732,27 @@ Prefab:
     - target: {fileID: 11400010, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e,
+      objectReference: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd,
         type: 3}
     - target: {fileID: 11400014, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e,
+      objectReference: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd,
         type: 3}
     - target: {fileID: 11400000, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e,
+      objectReference: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd,
         type: 3}
     - target: {fileID: 11400002, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e,
+      objectReference: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd,
         type: 3}
     - target: {fileID: 11400022, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e,
+      objectReference: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd,
         type: 3}
     - target: {fileID: 11400020, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_Color.a
@@ -2813,7 +2813,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: .1953125, g: .1953125, b: .1953125, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 788a8e537a50a6844af262e0fe11589e, type: 3}
+    m_Font: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
