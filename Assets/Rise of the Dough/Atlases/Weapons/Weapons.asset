@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: Weapons
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 115619ae7425c584a9524bb4365a7bd5, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: .53515625
+    y: 0
+    width: .15625
+    height: .71875
+  - serializedVersion: 2
+    x: .328125
+    y: 0
+    width: .205078125
+    height: .8046875
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .326171875
+    height: .83203125
+  textureGUIDs:
+  - 7c6bedf98c8be284a8f0cb2f96968404
+  - 8904d9938ea10b04c9eb694a32e2096d
+  - 146369471eeea4442ad12dfd950cf66a
+  textureSizes:
+  - {x: 80, y: 184}
+  - {x: 105, y: 206}
+  - {x: 167, y: 213}
+  defaultPivotOffsets:
+  - {x: .187980771, y: -.442307681}
+  - {x: .217638955, y: -.45096463}
+  - {x: .396428555, y: -.438921034}
+  textureNames:
+  - knife
+  - rolling_pin
+  - cleaver
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Weapons/knife.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Weapons/rolling_pin.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Weapons/cleaver.psd
+  lastBuildID: 20130421105905909
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

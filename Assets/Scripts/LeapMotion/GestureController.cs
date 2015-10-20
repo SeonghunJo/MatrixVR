@@ -28,10 +28,12 @@ public class GestureController : MonoBehaviour
 	
 	string swipestart = "none";
 	StreetViewPoint StreetView_Pointed = null;
-
+	
 	bool sceneZoomIn = true;  // 신전환시 ZoomIn효과 트리거.
 	bool sceneZoomOut = false; // 신전환시 ZoomOut효과 트리거.
 	
+	Ray r;
+	RaycastHit hit;
 	// Use this for initializatio
 	void Start()
 	{
@@ -43,9 +45,9 @@ public class GestureController : MonoBehaviour
 		target.renderer.material.color = Color.blue;
 		controller = new Controller();  //립모션 컨트롤러 할당 
 		
-		SetGesture (controller);
+		SetGesture(controller);
 	}
-
+	
 	// Update is called once per frame
 	void Update()
 	{
@@ -53,79 +55,32 @@ public class GestureController : MonoBehaviour
 		GestureList gestures = frame.Gestures(); //frame 안의 gesture 인식
 		HandList hands = frame.Hands;    //frame 안의 hands 인식
 		int num_hands = hands.Count;    //hand의 수
-
-		if (sceneZoomIn == true)	//f
-		{
-			SceneChangeZoom(sceneZoomIn,sceneZoomOut);			
-		}
-
-		if (num_hands < 1) // 인식된 손이 없다면
+		
+		if (sceneZoomIn == true)	SceneChangeZoom(sceneZoomIn,sceneZoomOut);		//
+		
+		
+		if (num_hands < 1)
 		{
 			return;
 		}
 		else
 		{
-			FingerList fingerList = hands.Leftmost.Fingers;   //왼쪽 손의 손가락들!
-			Finger leftFinger = fingerList.Frontmost;  //왼손에서 제일 앞에 있는 손가락
+			//FingerList fingerList = hands.Leftmost.Fingers;   //왼쪽 손의 손가락들!
+			//Finger leftFinger = fingerList.Frontmost;  //왼손에서 제일 앞에 있는 손가락
 			
-			rigid = GameObject.Find("RigidHand(Clone)");
-			if (rigid == null)
+			if(FindAndDisableRigidHand() == true)
 			{
-				//Debug.Log ("Rigid finded");
-				//Vector3 temp = Tipping();  //팁핑 포지션으로 커서를 이동
-				//cursorModel.transform.position = temp;
-				Debug.LogWarning("RigidHand is null");
-				return;
-			}
-			
-			cursorPointer = GameObject.Find("RigidHand(Clone)/index/bone3");
-			if (cursorPointer == null)
-			{
-				Debug.LogWarning("CursorPointer is null");
-				return;
-			}
-			
-			//여기에서 립모션 손모양 오븥젝트의 Collision 을 해체하여 Raycast에 충돌 하지 않게 한다.
-			Collider[] cols = rigid.GetComponentsInChildren<Collider>();
-			for (int i = 0; i < cols.Length; i++)
-			{
-				cols[i].enabled = false;
+				//손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
+				
+				if(RayFromCursor() ==true )
+				{
+					RayPoint (); // able  Pointed Object
+				}
+				else
+				{
+					RayPointedOut(); // Disable Pointed Object
+				}
 			}		
-			
-			//손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
-			Vector2 screenPoint = leftCamera.camera.WorldToScreenPoint(cursorPointer.transform.position);
-			Ray r = leftCamera.camera.ScreenPointToRay(screenPoint);      // ScreentPoint로부터 Ray를 쏜다
-			Debug.DrawRay(r.origin, r.direction * 1000, Color.red);
-			
-			RaycastHit hit; //rayCast에서 부딛힌 객체 관리
-			
-			if (Physics.Raycast(r, out hit, Mathf.Infinity))
-			{
-				if(hit.collider != null)
-				{
-					target.transform.position = hit.transform.position;
-					if(hit.collider.gameObject.tag == "StreetviewPoint")
-					{
-						StreetView_Pointed = hit.collider.gameObject.GetComponent<StreetViewPoint>();
-						if(StreetView_Pointed != null)
-						{
-							// TODO : Mouse Enter (SHJO)
-							StreetView_Pointed.Pointed() ;
-							
-						}
-					}
-				}
-			}
-			else
-			{
-				// TODO : Mouse Exit (SHJO)
-				if(StreetView_Pointed != null)
-				{
-					StreetView_Pointed.PointedOut();
-					StreetView_Pointed = null;
-				}
-			}
-			
 			//립모션 제스쳐 감지 
 			for (int i = 0; i < gestures.Count; i++)
 			{
@@ -150,15 +105,15 @@ public class GestureController : MonoBehaviour
 				case 2:
 					ZoomInOut(gesture,handsForGesture);
 					break;
-
+					
 				}				
 				// ZOOM IN OUT Motion
-			
+				
 			} // END OF GESTURE RECOGNITION LOOP
 			
 		} // END OF IF
 	}
-
+	
 	//Get Tipping postion
 	Vector3 GetTippingPos() // 현재 포인터 끝이 되는 오브젝트의 
 	{
@@ -174,7 +129,7 @@ public class GestureController : MonoBehaviour
 		}
 		
 	}
-
+	
 	//Zoom In Out Effect for Scene changing
 	public void SceneChangeZoom(bool zoomIn,bool zoomOut)
 	{
@@ -183,7 +138,7 @@ public class GestureController : MonoBehaviour
 			//gameObject.transform.localScale -= new Vector3(Time.deltaTime*35F,Time.deltaTime*30F,0);
 			leftCamera.camera.fieldOfView -=Time.deltaTime*9F;
 			rightCamera.camera.fieldOfView-=Time.deltaTime*9f;
-		
+			
 			if (leftCamera.camera.fieldOfView < 106) 
 			{
 				sceneZoomIn=false;	
@@ -194,7 +149,7 @@ public class GestureController : MonoBehaviour
 		{
 			leftCamera.camera.fieldOfView +=Time.deltaTime*9F;
 			rightCamera.camera.fieldOfView +=Time.deltaTime*9f;
-
+			
 			if (leftCamera.camera.fieldOfView > 177) 
 			{
 				sceneZoomOut=false;
@@ -202,7 +157,7 @@ public class GestureController : MonoBehaviour
 			}
 		}
 	}	
-
+	
 	//Gesture Event for Keytap 
 	void KeyTap(Gesture gesture)
 	{
@@ -302,10 +257,10 @@ public class GestureController : MonoBehaviour
 				temp = zoomScale * -1; ;				
 			}			
 		}		
-
+		
 		leftCamera.camera.fieldOfView += temp;
 		rightCamera.camera.fieldOfView += temp;	
-
+		
 	}
 	//Enable LeapMotion Gesture
 	void SetGesture(Controller controller)
@@ -343,8 +298,93 @@ public class GestureController : MonoBehaviour
 		}
 	}
 	
+	bool FindAndDisableRigidHand()
+	{
+		rigid = GameObject.Find("RigidHand(Clone)");
+		if (rigid == null)
+		{
+			//Debug.Log ("Rigid finded");
+			//Vector3 temp = Tipping();  //팁핑 포지션으로 커서를 이동
+			//cursorModel.transform.position = temp;
+			Debug.LogWarning("RigidHand is null");
+			return false;
+		}
+		
+		if (GetCursorPointer() == false) 
+		{
+			return false;
+		}		
+		//여기에서 립모션 손모양 오븥젝트의 Collision 을 해체하여 Raycast에 충돌 하지 않게 한다.
+		Collider[] cols = rigid.GetComponentsInChildren<Collider>();
+		for (int i = 0; i < cols.Length; i++)
+		{
+			cols[i].enabled = false;
+		}
+		
+		return true;
+	}
+	
+	bool GetCursorPointer()
+	{
+		cursorPointer = GameObject.Find("RigidHand(Clone)/index/bone3");
+		if (cursorPointer == null)
+		{
+			Debug.LogWarning("CursorPointer is null");
+			return false;
+		}
+		return true;
+	}
+	
+	bool RayFromCursor()
+	{
+		//손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
+		Vector2 screenPoint = leftCamera.camera.WorldToScreenPoint(cursorPointer.transform.position);
+		r = leftCamera.camera.ScreenPointToRay(screenPoint);      // ScreentPoint로부터 Ray를 쏜다
+		Debug.DrawRay(r.origin, r.direction * 1000, Color.red);
+		
+		//rayCast에서 부딛힌 객체 관리
+		if (Physics.Raycast (r, out hit, Mathf.Infinity) == true)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	void RayPoint()
+	{
+		if(hit.collider != null)
+		{
+			target.transform.position = hit.transform.position;
+			if(hit.collider.gameObject.tag == "StreetviewPoint")
+			{
+				StreetView_Pointed = hit.collider.gameObject.GetComponent<StreetViewPoint>();
+				if(StreetView_Pointed != null)
+				{
+					// TODO : Mouse Enter (SHJO)
+					StreetView_Pointed.Pointed() ;					
+				}
+				
+			}
+			else
+			{
+				RayPointedOut();
+			}
+			
+		}
+	}
+	
+	void RayPointedOut()
+	{
+		// TODO : Mouse Exit (SHJO)
+		if(StreetView_Pointed != null)
+		{
+			StreetView_Pointed.PointedOut();
+			StreetView_Pointed = null;
+		}
+	}
 }
-
-
 
 

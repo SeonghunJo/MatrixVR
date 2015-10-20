@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: Chef
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 4a86a37a9d8c09140aeecb92fe667cd5, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: .272460938
+    y: .333984375
+    width: .192382812
+    height: .359375
+  - serializedVersion: 2
+    x: .272460938
+    y: 0
+    width: .256835938
+    height: .33203125
+  - serializedVersion: 2
+    x: .834960938
+    y: 0
+    width: .08203125
+    height: .2109375
+  - serializedVersion: 2
+    x: .530273438
+    y: .263671875
+    width: .15625
+    height: .34375
+  - serializedVersion: 2
+    x: .530273438
+    y: .609375
+    width: .149414062
+    height: .35546875
+  - serializedVersion: 2
+    x: .91796875
+    y: 0
+    width: .0703125
+    height: .203125
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .271484375
+    height: .46484375
+  - serializedVersion: 2
+    x: .272460938
+    y: .6953125
+    width: .228515625
+    height: .2734375
+  - serializedVersion: 2
+    x: 0
+    y: .466796875
+    width: .223632812
+    height: .390625
+  - serializedVersion: 2
+    x: .6875
+    y: .263671875
+    width: .0859375
+    height: .189453125
+  - serializedVersion: 2
+    x: .75
+    y: 0
+    width: .083984375
+    height: .20703125
+  - serializedVersion: 2
+    x: .530273438
+    y: 0
+    width: .21875
+    height: .26171875
+  - serializedVersion: 2
+    x: .06640625
+    y: .859375
+    width: .0625
+    height: .080078125
+  - serializedVersion: 2
+    x: 0
+    y: .859375
+    width: .0654296875
+    height: .0859375
+  textureGUIDs:
+  - 0382200432a80e24d9d8e58b0ee4a04c
+  - 99d4e0be7e4203c47a26f771b06e04fa
+  - 68c78de5e754a09428833ff0fd8ab585
+  - 064512219cfcccc4d80cf398fd606356
+  - 56c4e1435ddf72140992dadfd7ec640c
+  - effd02336c045454381f167508528ef3
+  - e4d76d8f97f362c4a90cdd0bd5228e3a
+  - eceff5451b1b74044aa6583a35034c5a
+  - 3979e2f0f868f554f9903f102319bc89
+  - ed6423f559fef4f47805459d1e9f3a9a
+  - 736104327af10714a983efde225fb5e2
+  - 4b5e2f84f0a69fa48bb414b8b6b8301c
+  - e0e14dbc75f6a134db568740c77ce967
+  - 036d9c0e14f07c14aad2d184c6769a74
+  textureSizes:
+  - {x: 197, y: 184}
+  - {x: 263, y: 170}
+  - {x: 84, y: 108}
+  - {x: 160, y: 176}
+  - {x: 153, y: 182}
+  - {x: 72, y: 104}
+  - {x: 278, y: 238}
+  - {x: 234, y: 140}
+  - {x: 229, y: 200}
+  - {x: 88, y: 97}
+  - {x: 86, y: 106}
+  - {x: 224, y: 134}
+  - {x: 64, y: 41}
+  - {x: 67, y: 44}
+  defaultPivotOffsets:
+  - {x: -.0160714276, y: .441644043}
+  - {x: -.032142859, y: -.414390773}
+  - {x: .0895408094, y: .466071427}
+  - {x: .388235301, y: .353571445}
+  - {x: -.363235295, y: .358928561}
+  - {x: -.20892857, y: .396428555}
+  - {x: 0, y: 0}
+  - {x: -.0267857127, y: -.313392878}
+  - {x: .0696428567, y: -.380303591}
+  - {x: .0354301967, y: -.0749999955}
+  - {x: 0, y: -.112500004}
+  - {x: -.021428572, y: .447761208}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  textureNames:
+  - kerchief_front
+  - hat
+  - leg_right
+  - arm_right
+  - arm_left
+  - leg_left
+  - body
+  - kerchief_back
+  - head
+  - hand_left
+  - hand_right
+  - waist
+  - eyebrow_right
+  - eyebrow_left
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/kerchief_front.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/hat.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/leg_right.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/arm_right.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/arm_left.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/leg_left.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/body.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/kerchief_back.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/head.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/hand_left.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/hand_right.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/waist.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/eyebrow_right.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Chef/eyebrow_left.psd
+  lastBuildID: 20130421110127934
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

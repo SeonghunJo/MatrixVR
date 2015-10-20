@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: GUI
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 5156e45bce1918c428fbc409a99de036, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: 0
+    y: .294921875
+    width: .5
+    height: .25
+  - serializedVersion: 2
+    x: .78515625
+    y: .294921875
+    width: .05859375
+    height: .064453125
+  - serializedVersion: 2
+    x: .6171875
+    y: .412109375
+    width: .0390625
+    height: .064453125
+  - serializedVersion: 2
+    x: .72265625
+    y: .294921875
+    width: .05859375
+    height: .064453125
+  - serializedVersion: 2
+    x: .66015625
+    y: .294921875
+    width: .05859375
+    height: .064453125
+  - serializedVersion: 2
+    x: .56640625
+    y: .458984375
+    width: .0390625
+    height: .064453125
+  - serializedVersion: 2
+    x: .50390625
+    y: .458984375
+    width: .05859375
+    height: .064453125
+  - serializedVersion: 2
+    x: .58984375
+    y: 0
+    width: .125
+    height: .115234375
+  - serializedVersion: 2
+    x: .6171875
+    y: .294921875
+    width: .0390625
+    height: .115234375
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .5859375
+    height: .29296875
+  - serializedVersion: 2
+    x: .71875
+    y: 0
+    width: .12890625
+    height: .0859375
+  - serializedVersion: 2
+    x: .72265625
+    y: .19921875
+    width: .1171875
+    height: .080078125
+  - serializedVersion: 2
+    x: .84375
+    y: .19921875
+    width: .11328125
+    height: .080078125
+  - serializedVersion: 2
+    x: .50390625
+    y: .376953125
+    width: .08984375
+    height: .080078125
+  - serializedVersion: 2
+    x: .50390625
+    y: .294921875
+    width: .109375
+    height: .080078125
+  - serializedVersion: 2
+    x: .58984375
+    y: .19921875
+    width: .12890625
+    height: .080078125
+  - serializedVersion: 2
+    x: .58984375
+    y: .1171875
+    width: .12890625
+    height: .080078125
+  - serializedVersion: 2
+    x: .8515625
+    y: 0
+    width: .1328125
+    height: .08203125
+  - serializedVersion: 2
+    x: .72265625
+    y: .1171875
+    width: .12109375
+    height: .080078125
+  - serializedVersion: 2
+    x: .84765625
+    y: .1171875
+    width: .1171875
+    height: .080078125
+  - serializedVersion: 2
+    x: .84765625
+    y: .294921875
+    width: .0859375
+    height: .041015625
+  - serializedVersion: 2
+    x: .71875
+    y: .087890625
+    width: .0390625
+    height: .01953125
+  textureGUIDs:
+  - 7ea8c02db3458394088852655470db39
+  - eaac87b62f5497a46adbd41b029d8e71
+  - 3b8b80991a32b6d408695401d4ca7ed5
+  - 3ece742d00718574a872c98954959c50
+  - 709136feec0248242b1d9099529ca844
+  - 05af31e6af618c744a8ac4b46187d8cd
+  - 0f7afd7b679d12944a79d444b7585dbb
+  - 3cd2e9923cd041a4c93a6dca5aa3838e
+  - da02b7e03173ad2428ee7ad7363cf5ec
+  - 917acf1d258a6bd428897ecb19e68477
+  - a4638e9a6dcd9c94d96308f2b7850d06
+  - 47d10e7c775d2f74da07c1da31ade22e
+  - 8e79436df04e6d447a6e13edad6f86b0
+  - 3f95488f4e9e987489a0198d0bdfcd7c
+  - 363b15fd92b0ef24f85cc1b5be18af62
+  - bb0a740da562a364a8c4aec1b94fa6ed
+  - 1b3d76a10ade3ee409798cba4f0ab220
+  - d00c3b99051eb4f44855fc1d70806f56
+  - 629c6d7cc45c7f149a847a31c791f7d7
+  - b143f0f8addca3d488257961482bf5c4
+  - db3187442803f044a9ea854bb6c9fa8f
+  - e95200679d2254d469f9198f99e92ca1
+  textureSizes:
+  - {x: 128, y: 128}
+  - {x: 15, y: 33}
+  - {x: 10, y: 33}
+  - {x: 15, y: 33}
+  - {x: 15, y: 33}
+  - {x: 10, y: 33}
+  - {x: 15, y: 33}
+  - {x: 32, y: 59}
+  - {x: 10, y: 59}
+  - {x: 150, y: 150}
+  - {x: 33, y: 44}
+  - {x: 30, y: 41}
+  - {x: 29, y: 41}
+  - {x: 23, y: 41}
+  - {x: 28, y: 41}
+  - {x: 33, y: 41}
+  - {x: 33, y: 41}
+  - {x: 34, y: 42}
+  - {x: 31, y: 41}
+  - {x: 30, y: 41}
+  - {x: 22, y: 21}
+  - {x: 10, y: 10}
+  defaultPivotOffsets:
+  - {x: -.5, y: .5}
+  - {x: -.5, y: .5}
+  - {x: -.5, y: .5}
+  - {x: -.5, y: .5}
+  - {x: .5, y: .5}
+  - {x: -.5, y: .5}
+  - {x: .5, y: .5}
+  - {x: -.5, y: .5}
+  - {x: .5, y: .5}
+  - {x: .5, y: .5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: 0, y: .5}
+  - {x: 0, y: 0}
+  textureNames:
+  - chef_icon
+  - health_bar_right_on
+  - health_bar_middle_on
+  - health_bar_right_off
+  - health_bar_left_on
+  - health_bar_middle_off
+  - health_bar_left_off
+  - score_right
+  - score_left
+  - pizza_counter
+  - 0
+  - 4
+  - 5
+  - 1
+  - 7
+  - 9
+  - 2
+  - 8
+  - 3
+  - 6
+  - comma
+  - solid_black
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/chef_icon.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/health_bar_right_on.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/health_bar_middle_on.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/health_bar_right_off.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/health_bar_left_on.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/health_bar_middle_off.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/health_bar_left_off.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/score_right.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/score_left.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/pizza_counter.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/0.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/4.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/5.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/1.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/7.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/9.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/2.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/8.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/3.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/6.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/comma.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/GUI/solid_black.psd
+  lastBuildID: 201304211057291008
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

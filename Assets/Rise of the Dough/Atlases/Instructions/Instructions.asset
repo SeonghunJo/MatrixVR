@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: Instructions
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: c651dd414fc08aa4083b7a1f3fa90744, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .9375
+    height: .625
+  textureGUIDs:
+  - 260b2e5b1e7ee364d8e566f50991ab5e
+  textureSizes:
+  - {x: 960, y: 640}
+  defaultPivotOffsets:
+  - {x: 0, y: 0}
+  textureNames:
+  - instructions
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Instructions/instructions.psd
+  lastBuildID: 20130421105738176
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

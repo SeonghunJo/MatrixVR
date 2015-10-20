@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 36ebe4d4e82e34365a1ddc49d2f5fb6a
+labels:
+- 2d
+- animated
+- animation
+- sprite
+- smooth
+- bone
+- skeletal
+- skinned
+- mesh
+- animate
+TextScriptImporter:
+  userData: 

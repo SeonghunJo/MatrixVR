@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: Game Over
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: bf94ea60954e69040a86bacb61b8fc73, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .578125
+    height: .24609375
+  - serializedVersion: 2
+    x: 0
+    y: .248046875
+    width: .517578125
+    height: .244140625
+  - serializedVersion: 2
+    x: .580078125
+    y: 0
+    width: .00390625
+    height: .00390625
+  - serializedVersion: 2
+    x: 0
+    y: .494140625
+    width: .505859375
+    height: .046875
+  textureGUIDs:
+  - 94713a68a3b88ae479cbc913e2e54429
+  - 1b59330db18a5474aadb029b31eaf300
+  - e3ab75e5c308f55418be8492eacff618
+  - 8af3db4463eda1b45a114a9a2b8aa438
+  textureSizes:
+  - {x: 296, y: 126}
+  - {x: 265, y: 125}
+  - {x: 2, y: 2}
+  - {x: 259, y: 24}
+  defaultPivotOffsets:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  textureNames:
+  - game
+  - over
+  - background
+  - tap_screen
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Game Over/game.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Game Over/over.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Game Over/background.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Game Over/tap_screen.psd
+  lastBuildID: 20130421105721883
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

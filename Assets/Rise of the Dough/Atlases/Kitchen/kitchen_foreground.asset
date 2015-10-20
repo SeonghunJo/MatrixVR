@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: kitchen_foreground
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 9bfe36fbac7b88d4d9cf4753aa656ea1, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .2734375
+    height: .965820312
+  - serializedVersion: 2
+    x: .274414062
+    y: 0
+    width: .245117188
+    height: .495117188
+  - serializedVersion: 2
+    x: .520507812
+    y: 0
+    width: .220703125
+    height: .20703125
+  textureGUIDs:
+  - 53821b9c449482a44bfaf48a00d5ecf9
+  - fc87c8b254b0fe04c9b0e20d74d1f902
+  - 9c80eb16c2d968b46b841e453816c90d
+  textureSizes:
+  - {x: 280, y: 989}
+  - {x: 251, y: 507}
+  - {x: 226, y: 212}
+  defaultPivotOffsets:
+  - {x: -.5, y: -.5}
+  - {x: .5, y: -.5}
+  - {x: -.5, y: -.5}
+  textureNames:
+  - left_wall
+  - fridge
+  - oven_open
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/left_wall.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/fridge.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/oven_open.psd
+  lastBuildID: 20130421105746765
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: New Weapon Available
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: f4f6aa200bf2594458952a682945cee9, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: 0
+    y: .4296875
+    width: .37890625
+    height: .21484375
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .91015625
+    height: .20703125
+  - serializedVersion: 2
+    x: 0
+    y: .2109375
+    width: .65234375
+    height: .21484375
+  textureGUIDs:
+  - 29163245ebf2d47b882608972ff96cb6
+  - 68876c9fbf1594eba86a4c70bcba1a6a
+  - 2f7a77f6e5fb3410a8ad11d470e346b3
+  textureSizes:
+  - {x: 97, y: 55}
+  - {x: 233, y: 53}
+  - {x: 167, y: 55}
+  defaultPivotOffsets:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  textureNames:
+  - new
+  - available
+  - weapon
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/New Weapon Available/new.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/New Weapon Available/available.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/New Weapon Available/weapon.psd
+  lastBuildID: 20130421105818991
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0
