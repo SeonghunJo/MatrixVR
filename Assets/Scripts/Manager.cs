@@ -27,10 +27,11 @@ public class Manager {
 	public string[] nextIDs;
 	public string[] nextDegrees;
 
-    private int progress;
+    private int progress; 
     private string loadingText;
 
     public bool enableAutoImageCache = false; // if true, auto image caching
+
 
     public void SetLoadingText(string text)
     {

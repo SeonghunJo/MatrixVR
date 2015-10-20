@@ -262,7 +262,6 @@ public class CreateTarget : MonoBehaviour
 
 		for (int i = 0; i < panoramas.Count; i++)
         {           
-            
 			PanoramaInfo info = panoramas[i];	
 
 			EarthManager.Instance.viewIndex = i;

@@ -36,12 +36,10 @@ public class JInformation : MonoBehaviour
     private int processBarLocation = 0;
     
     public Texture flagImg;
-    public Texture bar;
-    public Texture foot1;
-    public Texture foot2;
 
     public int loadingset = 0;
 
+	public InformationList infoList;
 	// Handle to OVRCameraRig
 	private OVRCameraRig CameraController = null;
 	// Handle to OVRPlayerController
@@ -119,7 +117,9 @@ public class JInformation : MonoBehaviour
 	void Start()
 	{		
 		ScenesVisible  = false;
-		
+
+		infoList = new InformationList ();
+
 		// Set the GUI target
 		GUIRenderObject = GameObject.Instantiate(Resources.Load("OVRGUIObjectMain")) as GameObject;
 		
@@ -373,32 +373,50 @@ public class JInformation : MonoBehaviour
 				yield return new WaitForSeconds(0.5f);
 		}        
 	}
+
 	//텍스트
 	void GUIDrawLoadingScreen()
 	{   
 		int index = 0;// = EarthManager.Instance.viewIndex;
-
+		
 		//배경 
 		GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), FadeInTexture);
-
+		
 		//국기 이미지 (좌측상단)
-		GuiHelper.StereoDrawTexture(screenCenterX - 200, 200, 90, 60, ref flagImg, new Color(0.5f, 0.5f, 0.5f, 1f));  
-
-		//print (index);
+		GuiHelper.StereoDrawTexture(screenCenterX - 180, 150, 120, 80, ref flagImg, new Color(0.5f, 0.5f, 0.5f, 1f));  
+		
 		//국가명, 지역명, 설명 불러옴.
-		string country = InformationList.placelist [0].country;
-		//string area = InformationList.placelist [index].area;
-		//string feature = InformationList.placelist [index].feature;
+		string country = infoList.placelist [index].country;
+		string area = infoList.placelist [index].area;
+		string feature = infoList.placelist [index].feature;
 
-		print (index + " / " + country);
 		//국가명 출력
-		//GuiHelper.StereoBox(screenCenterX+100, height, 400 , 30, ref country, Color.black);
+		GuiHelper.StereoBox(screenCenterX, 150, 200 , 30, ref country, Color.black);
 
 		//지역명 출력
-		//GuiHelper.StereoBox(screenCenterX+100, height, 400 , 30, ref area, Color.black);
-		
+		GuiHelper.StereoBox(screenCenterX, 200, 200 , 30, ref area, Color.black);
+
+		int start = 0;
+		int length = 15;
+		int totalLength = feature.Length;
+		bool loop = true;
+
+
 		//설명 출력
-		//GuiHelper.StereoBox(screenCenterX-200, height, 400 , 30, ref feature, Color.black);
+		while (start+length < totalLength) {
+			string sub = feature.Substring (start, length);
+
+			GuiHelper.StereoBox (screenCenterX - 200, 250, 400, 200, ref sub, Color.black);
+
+			start += length;
+		}
+		while (start+length > totalLength) {
+			length--;
+		}
+		GuiHelper.StereoBox (screenCenterX - 200, 250, 400, 200, ref feature.Substring(start,length), Color.black);
+
+		//GuiHelper.StereoBox(screenCenterX-200, 250, 400 , 200, ref feature, Color.black);
+		//GuiHelper.StereoBox(screenCenterX-200, 250, 400 , 200, ref feature, Color.black);
 
 
 		//int totalLine = line * 30;
