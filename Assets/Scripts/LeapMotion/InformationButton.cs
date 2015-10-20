@@ -15,6 +15,7 @@ public class InformationButton : MonoBehaviour {
 	void start()
 	{
 
+
 	}
 
 	public void Clicked()

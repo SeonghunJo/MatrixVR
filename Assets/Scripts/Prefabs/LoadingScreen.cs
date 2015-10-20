@@ -56,6 +56,8 @@ public class LoadingScreen : MonoBehaviour {
 	public GameObject progressBar;
 	public GameObject locationText;
 
+	public InformationButton informationButton;
+
 	static LoadingScreen _instance;
 
 	public GameObject backAnim;
@@ -94,6 +96,10 @@ public class LoadingScreen : MonoBehaviour {
 		_instance.progressBar.SetActive(false);
 		_instance.locationText.SetActive(false);
 		anim += 1;
+
+		_instance.informationButton.Pointed ();
+		//_instance.GetComponent<InformationButton> ().Pointed ();
+
 	}
 
 	private void StartAnim()

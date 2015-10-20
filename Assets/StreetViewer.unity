@@ -1759,6 +1759,10 @@ Prefab:
       propertyPath: backAnim
       value: 
       objectReference: {fileID: 1342671710}
+    - target: {fileID: 11400000, guid: a456a38b353c67140a4b6896ec4c5352, type: 2}
+      propertyPath: informationButton
+      value: 
+      objectReference: {fileID: 1060676459}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a456a38b353c67140a4b6896ec4c5352, type: 2}
   m_RootGameObject: {fileID: 1341978684}
@@ -2764,7 +2768,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22400012, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_SizeDelta.x
@@ -3006,6 +3010,7 @@ MonoBehaviour:
   text: {fileID: 1220268202}
   progressBar: {fileID: 1203416168}
   locationText: {fileID: 1128640341}
+  informationButton: {fileID: 1060676459}
   backAnim: {fileID: 1342671710}
 --- !u!1 &1342671710
 GameObject:
@@ -4099,7 +4104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1955717366
 RectTransform:
   m_ObjectHideFlags: 0
