@@ -9320,7 +9320,7 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  animationData: {fileID: 0}
+  animationData: {fileID: 11400000, guid: 5e004da0cd4bc9943b203a851c147d5d, type: 2}
   animationDataGUID: 5e004da0cd4bc9943b203a851c147d5d
   mMaterialSource:
   - {fileID: 2100000, guid: 45b3d5dc943bb0446ba94427a3d65894, type: 2}
@@ -13399,7 +13399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FadeInTime: 2
   FadeInTexture: {fileID: 2800000, guid: daa862b7c8b652747b677022fbd8c532, type: 3}
-  FontReplace: {fileID: 12800000, guid: 7593bfee3a73d8a45a6872032ab4e086, type: 3}
+  FontReplace: {fileID: 12800000, guid: b26584aebd934f24d97f4ec833ac8bdd, type: 3}
   ToggleKey: 32
   QuitKey: 27
   ScenesVisible: 0
