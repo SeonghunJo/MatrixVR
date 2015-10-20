@@ -9,9 +9,12 @@ public class InformationButton : MonoBehaviour {
 	public GameObject country;
 	public GameObject area;
 	public GameObject contents;
+	public GameObject image;
+	public Sprite flag;
 
 	void start()
 	{
+
 	}
 
 	public void Clicked()
@@ -21,6 +24,14 @@ public class InformationButton : MonoBehaviour {
 
 	public void Pointed()
 	{
+
+		flag = Resources.Load<Sprite> (EarthManager.Instance.info_flag_path);
+
+		Image tempImage=image.GetComponent<Image> ();
+
+		tempImage.sprite = flag;
+
+		//tempImage.sprite.texture
 		//Text temp = GetComponent<Text> ();
 		Text temp = title.GetComponent<Text> ();
 		temp.text = EarthManager.Instance.title;

@@ -2127,6 +2127,8 @@ MonoBehaviour:
   country: {fileID: 1170244119}
   area: {fileID: 183409934}
   contents: {fileID: 1307589571}
+  image: {fileID: 1175226415}
+  flag: {fileID: 0}
 --- !u!23 &1060676460
 Renderer:
   m_ObjectHideFlags: 0

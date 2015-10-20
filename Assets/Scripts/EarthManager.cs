@@ -26,6 +26,7 @@ public class EarthManager {
 	public string country;
 	public string area;
 	public string contents;
+	public string info_flag_path;
 
     // FOR CAMERA RIG
     public Vector3 CameraRotation;

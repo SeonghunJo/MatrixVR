@@ -19,6 +19,10 @@ public class StreetViewPoint : MonoBehaviour
 	public string info_area;
 	public string info_contents;
 
+	//파일경로
+
+	public string info_flag_path;
+
     //Thumbnail image URL & Streetview name URL
 	public string thumbnailURL = "http://maps.google.com/cbk?output=thumbnail&panoid=";
 	public string metaURL = "http://maps.google.com/cbk?output=json&panoid=";
@@ -91,7 +95,8 @@ public class StreetViewPoint : MonoBehaviour
 		EarthManager.Instance.country=info_country;
 		EarthManager.Instance.area=info_area;
 		EarthManager.Instance.contents=info_contents;
-        print(wikiText);
+		EarthManager.Instance.info_flag_path = info_flag_path;
+		print(EarthManager.Instance.info_flag_path);
 
         if (wikiText != null)
             EarthManager.Instance.wikiText = wikiText;
@@ -127,6 +132,7 @@ public class StreetViewPoint : MonoBehaviour
         Lng = -(_rotation.y);
 		panoID = panoInfo.panoid;
 		this.impo = panoInfo.impo;
+		info_flag_path = panoInfo.info_flag_path;
 
 		info_title = panoInfo.title;
 		info_country = panoInfo.country;
