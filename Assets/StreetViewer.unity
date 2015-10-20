@@ -970,7 +970,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 1.70000005
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &300560537
 MeshFilter:
@@ -1510,7 +1510,7 @@ Transform:
   m_GameObject: {fileID: 797627112}
   m_LocalRotation: {x: .0135193402, y: -.999904513, z: -.00279927067, w: -.000677741366}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .370370239, y: .370370358, z: .370370239}
+  m_LocalScale: {x: .25032571, y: .250370413, z: .250370204}
   m_Children: []
   m_Father: {fileID: 300560532}
   m_RootOrder: 1
@@ -3050,7 +3050,7 @@ Transform:
   m_GameObject: {fileID: 1342671710}
   m_LocalRotation: {x: .0135193402, y: -.999904513, z: -.00279927067, w: -.000677741366}
   m_LocalPosition: {x: 2.28999996, y: 2.3499999, z: .00999999978}
-  m_LocalScale: {x: .00370370224, y: .00370370341, z: .00370370224}
+  m_LocalScale: {x: .00203701993, y: .00203702995, z: .00203701993}
   m_Children:
   - {fileID: 56621805}
   m_Father: {fileID: 300560532}
@@ -3146,7 +3146,7 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  animationData: {fileID: 0}
+  animationData: {fileID: 11400000, guid: ac701a62e714f99499f7e6501f5b10d8, type: 2}
   animationDataGUID: ac701a62e714f99499f7e6501f5b10d8
   mMaterialSource:
   - {fileID: 2100000, guid: 45b3d5dc943bb0446ba94427a3d65894, type: 2}
