@@ -407,7 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nativeTextureScale: 1
   virtualTextureScale: 1
-  usePositionTracking: 1
+  usePositionTracking: 0
   eyeTextureFormat: 7
   eyeTextureDepth: 24
   timeWarp: 0
@@ -2636,6 +2636,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: dd3831a83e889bb46908cc2d4d0338ac, type: 2}
+      propertyPath: usePositionTracking
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd3831a83e889bb46908cc2d4d0338ac, type: 2}
   m_RootGameObject: {fileID: 30103676}
@@ -2757,6 +2761,10 @@ Prefab:
     - target: {fileID: 11400020, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
       propertyPath: m_Color.a
       value: .627451003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a328352de9f9544a95f8cf14a4c2b66, type: 2}
@@ -4063,7 +4071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1955717366
 RectTransform:
   m_ObjectHideFlags: 0
