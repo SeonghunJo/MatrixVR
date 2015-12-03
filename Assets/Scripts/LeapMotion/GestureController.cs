@@ -56,9 +56,8 @@ public class GestureController : MonoBehaviour
 		HandList hands = frame.Hands;    //frame 안의 hands 인식
 		int num_hands = hands.Count;    //hand의 수
 		
-		if (sceneZoomIn == true)	SceneChangeZoom(sceneZoomIn,sceneZoomOut);		//
-		
-		
+		if (sceneZoomIn == true)	SceneChangeZoom(sceneZoomIn,sceneZoomOut);	//
+
 		if (num_hands < 1)
 		{
 			return;
@@ -139,7 +138,7 @@ public class GestureController : MonoBehaviour
 			leftCamera.camera.fieldOfView -=Time.deltaTime*9F;
 			rightCamera.camera.fieldOfView-=Time.deltaTime*9f;
 			
-			if (leftCamera.camera.fieldOfView < 106) 
+			if (leftCamera.camera.fieldOfView < 120) 
 			{
 				sceneZoomIn=false;	
 				sceneZoomOut=true;

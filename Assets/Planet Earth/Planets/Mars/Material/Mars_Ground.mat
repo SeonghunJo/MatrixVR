@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Mars_Ground
+  m_Shader: {fileID: 4800000, guid: 7cb733f6e517d2b4cba60c78874682eb, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 64b0424ebfc1b2c4aacdee6a2ef1d3a3, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normals
+        second:
+          m_Texture: {fileID: 2800000, guid: b81235c119d5c2c4c9bbae47a19df70d, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MainTex0
+        second:
+          m_Texture: {fileID: 2800000, guid: f5d4774a6caa0114a8f16de4e35a6e75, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MainTex1
+        second:
+          m_Texture: {fileID: 2800000, guid: e5f578352b9ea954eac48b75adf25d31, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MainTex2
+        second:
+          m_Texture: {fileID: 2800000, guid: d3daecee92eece245810693b66523980, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MainTex3
+        second:
+          m_Texture: {fileID: 2800000, guid: e570b55e3e0e0ed4a8203a5055f33820, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normals0
+        second:
+          m_Texture: {fileID: 2800000, guid: 35f34d23ec59b5741827ce820bd944ac, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normals1
+        second:
+          m_Texture: {fileID: 2800000, guid: 192ac83be5ad2044cbd5fdb9f98b2446, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normals2
+        second:
+          m_Texture: {fileID: 2800000, guid: eb9ed59db4e6e9747a8a41d0518e050c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Normals3
+        second:
+          m_Texture: {fileID: 2800000, guid: fc3c7bd02f0296a488689e2d06a5446c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Lights
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Shininess
+        second: 1
+      data:
+        first:
+          name: _NormalStrength
+        second: .600000024
+      data:
+        first:
+          name: _LightScale
+        second: 1
+      data:
+        first:
+          name: _AtmosFalloff
+        second: 1.72000003
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .5, g: .5, b: .5, a: 1}
+      data:
+        first:
+          name: _AtmosNear
+        second: {r: .514705896, g: .456240296, b: .382244825, a: 0}
+      data:
+        first:
+          name: _AtmosFar
+        second: {r: .514705896, g: .456240296, b: .382244825, a: 0}
+      data:
+        first:
+          name: _ReflectionColor
+        second: {r: .5, g: .5, b: .340000004, a: 1}
