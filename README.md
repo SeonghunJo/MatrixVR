@@ -1,12 +1,12 @@
 # Matrix
 ## 2015 Capstone Design by Team MATRIX
 ### Kookmin Univ. Seoul, Korea
-### Members
-+ Seonghun Jo
-+ Hongjoon Jeon
-+ Jinwoo Choi
-+ Heo Jin
-+ Hyunsun Yang
+### Members & Contact us
++ Seonghun Jo - jsh4051@gmail.com
++ Hongjoon Jeon - kyarate@naver.com
++ Heo Jin - hjin421@gmail.com
++ Jinwoo Choi - choijw0528@naver.com
++ Hyunsun Yang - vpqm@naver.com
 
 ### Description
 1. The Summary of project
