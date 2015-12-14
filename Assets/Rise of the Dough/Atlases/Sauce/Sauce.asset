@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: Sauce
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 8beeca4e6b78a4a4e94a7e6aaad86dfa, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: .390625
+    y: .181640625
+    width: .390625
+    height: .078125
+  - serializedVersion: 2
+    x: .390625
+    y: 0
+    width: .48828125
+    height: .1796875
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .38671875
+    height: .265625
+  - serializedVersion: 2
+    x: 0
+    y: .35546875
+    width: .671875
+    height: .041015625
+  - serializedVersion: 2
+    x: 0
+    y: .267578125
+    width: .79296875
+    height: .0859375
+  textureGUIDs:
+  - 816dcf96da3485b41a15f195ccadbad0
+  - da54346554f03ca40b7b4b8eacc62810
+  - bd7d4143f866e804896b5e76919eb90d
+  - 6023337968ce8c94f92cfcce5cabc998
+  - ec8c47d3e2b4eba4a9c82aab6e2ce072
+  textureSizes:
+  - {x: 100, y: 40}
+  - {x: 125, y: 92}
+  - {x: 99, y: 136}
+  - {x: 172, y: 21}
+  - {x: 203, y: 44}
+  defaultPivotOffsets:
+  - {x: .487500012, y: -.460473508}
+  - {x: .471428573, y: -.240197971}
+  - {x: .46231544, y: -.350961536}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  textureNames:
+  - sauce_01
+  - sauce_02
+  - sauce_03
+  - splat_02
+  - splat_01
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Sauce/sauce_01.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Sauce/sauce_02.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Sauce/sauce_03.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Sauce/splat_02.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Sauce/splat_01.psd
+  lastBuildID: 20130421105841670
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

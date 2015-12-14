@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: kitchen_pieces
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: beb85d39a13d9466b908c90afccd1ea9, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .91015625
+    height: .662109375
+  - serializedVersion: 2
+    x: 0
+    y: .6640625
+    width: .59375
+    height: .216796875
+  - serializedVersion: 2
+    x: .912109375
+    y: .14453125
+    width: .033203125
+    height: .10546875
+  - serializedVersion: 2
+    x: .595703125
+    y: .6640625
+    width: .103515625
+    height: .173828125
+  - serializedVersion: 2
+    x: .947265625
+    y: .14453125
+    width: .02734375
+    height: .044921875
+  - serializedVersion: 2
+    x: .912109375
+    y: 0
+    width: .060546875
+    height: .142578125
+  - serializedVersion: 2
+    x: 0
+    y: .92578125
+    width: .123046875
+    height: .033203125
+  - serializedVersion: 2
+    x: 0
+    y: .8828125
+    width: .125
+    height: .041015625
+  - serializedVersion: 2
+    x: .701171875
+    y: .6640625
+    width: .103515625
+    height: .173828125
+  textureGUIDs:
+  - 35c415189f51042bd8fbe1fb35531ace
+  - dee35219f5ad548c9a9d5728e582597c
+  - 83ab7e31418234cc0945f0c244b1d182
+  - 613aa0a437cf047a09121c03d168d4a9
+  - d16a3709a66234dcbbf005a24e72ab7b
+  - c69a4b49005024f039cc7e2ecdda89a0
+  - cf56cd6e972334156ba0badf3883639a
+  - d49b6ad04dac540408742413b0b0cc54
+  - e0d9b685e2c8a4280b656ed8592ed7f0
+  textureSizes:
+  - {x: 466, y: 339}
+  - {x: 304, y: 111}
+  - {x: 17, y: 54}
+  - {x: 53, y: 89}
+  - {x: 14, y: 23}
+  - {x: 31, y: 73}
+  - {x: 63, y: 17}
+  - {x: 64, y: 21}
+  - {x: 53, y: 89}
+  defaultPivotOffsets:
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: .0364413485, y: -.468929261}
+  - {x: .230357155, y: -.393990785}
+  - {x: .150000006, y: -.467391312}
+  - {x: -.391722709, y: -.483269602}
+  - {x: 0, y: -.5}
+  - {x: 0, y: -.5}
+  - {x: .241071418, y: -.388392836}
+  textureNames:
+  - oven_front
+  - pans
+  - fire_04
+  - fire_03
+  - fire_01
+  - fire_02
+  - bubbles_01
+  - bubbles_02
+  - fire_gas
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/oven_front.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/pans.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/fire_04.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/fire_03.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/fire_01.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/fire_02.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/bubbles_01.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/bubbles_02.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/fire_gas.psd
+  lastBuildID: 20130421105802534
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

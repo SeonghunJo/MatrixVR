@@ -22,6 +22,12 @@ public class EarthManager {
     public Texture2D thumbnailImg;
     public string wikiText;
 
+	public string title;
+	public string country;
+	public string area;
+	public string contents;
+	public string info_flag_path;
+
     // FOR CAMERA RIG
     public Vector3 CameraRotation;
     public Quaternion CameraOrientation;

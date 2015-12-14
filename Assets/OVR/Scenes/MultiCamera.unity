@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &3664027
 GameObject:
@@ -7056,7 +7057,6 @@ MonoBehaviour:
   usePositionTracking: 1
   eyeTextureFormat: 7
   eyeTextureDepth: 24
-  mirrorToMainWindow: 1
   timeWarp: 1
   freezeTimeWarp: 0
   resetTrackerOnLoad: 1
@@ -7073,6 +7073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StopUpdateAnchors: 0
 --- !u!1 &349606542
 GameObject:
   m_ObjectHideFlags: 0
@@ -35267,7 +35268,6 @@ MonoBehaviour:
   usePositionTracking: 1
   eyeTextureFormat: 7
   eyeTextureDepth: 24
-  mirrorToMainWindow: 1
   timeWarp: 1
   freezeTimeWarp: 0
   resetTrackerOnLoad: 1
@@ -35284,6 +35284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StopUpdateAnchors: 0
 --- !u!1 &1673459333
 GameObject:
   m_ObjectHideFlags: 0

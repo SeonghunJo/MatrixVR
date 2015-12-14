@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: Weapon Animation
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: f28e286e91d910946930c2a98b67363a, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: .693359375
+    y: 0
+    width: .2578125
+    height: .20703125
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .69140625
+    height: .36328125
+  - serializedVersion: 2
+    x: 0
+    y: .364257812
+    width: .431640625
+    height: .26953125
+  textureGUIDs:
+  - 47f41d3150f86cc478ac5cd95e33f87c
+  - 386b973ffa54d554c90dca164cc6b383
+  - 11a49f270d2afc04db6b5c83f091c421
+  textureSizes:
+  - {x: 132, y: 212}
+  - {x: 354, y: 372}
+  - {x: 221, y: 276}
+  defaultPivotOffsets:
+  - {x: -.356328547, y: -.479903549}
+  - {x: .0214285702, y: -.0229406692}
+  - {x: -.0321428552, y: -.486869156}
+  textureNames:
+  - knife
+  - sparkles
+  - cleaver
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Weapon Animation/knife.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Weapon Animation/sparkles.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Weapon Animation/cleaver.psd
+  lastBuildID: 20130421105858349
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

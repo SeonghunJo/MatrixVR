@@ -31,7 +31,7 @@ public class GestureControllerStreetView : MonoBehaviour
 	Information Information_pointed = null;
 	InformationButton InformationButton_pointed = null;
 	InformationCanvas InfoCanvas_pointed = null;
-
+	
 	
 	Ray r;
 	RaycastHit hit;
@@ -53,8 +53,8 @@ public class GestureControllerStreetView : MonoBehaviour
 		GestureList gestures = frame.Gestures(); //frame 안의 gesture 인식
 		HandList hands = frame.Hands;    //frame 안의 hands 인식
 		int num_hands = hands.Count;    //hand의 수
-
-
+		
+		
 		if (num_hands < 1)
 		{
 			return;
@@ -77,7 +77,7 @@ public class GestureControllerStreetView : MonoBehaviour
 					RayPointedOut(); // Disable Pointed Object
 				}
 			}		
-
+			
 			for (int i = 0; i < gestures.Count; i++)
 			{
 				Gesture gesture = gestures[i];
@@ -268,7 +268,7 @@ public class GestureControllerStreetView : MonoBehaviour
 			controller.Config.Save();
 		}
 	}
-
+	
 	bool FindAndDisableRigidHand()
 	{
 		rigid = GameObject.Find("RigidHand(Clone)");
@@ -370,7 +370,7 @@ public class GestureControllerStreetView : MonoBehaviour
 					InfoCanvas_pointed.Pointed();
 				}
 			}
-
+			
 		}
 	}
 	
@@ -404,9 +404,10 @@ public class GestureControllerStreetView : MonoBehaviour
 			InfoCanvas_pointed = null;
 		}
 	}
-
-
+	
+	
 }
+
 
 
 

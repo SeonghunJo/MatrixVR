@@ -28,10 +28,10 @@ public class GestureController : MonoBehaviour
 	
 	string swipestart = "none";
 	StreetViewPoint StreetView_Pointed = null;
-
+	
 	bool sceneZoomIn = true;  // 신전환시 ZoomIn효과 트리거.
 	bool sceneZoomOut = false; // 신전환시 ZoomOut효과 트리거.
-
+	
 	Ray r;
 	RaycastHit hit;
 	// Use this for initializatio
@@ -47,7 +47,7 @@ public class GestureController : MonoBehaviour
 		
 		SetGesture(controller);
 	}
-
+	
 	// Update is called once per frame
 	void Update()
 	{
@@ -55,9 +55,8 @@ public class GestureController : MonoBehaviour
 		GestureList gestures = frame.Gestures(); //frame 안의 gesture 인식
 		HandList hands = frame.Hands;    //frame 안의 hands 인식
 		int num_hands = hands.Count;    //hand의 수
-
-		if (sceneZoomIn == true)	SceneChangeZoom(sceneZoomIn,sceneZoomOut);		//
-
+		
+		if (sceneZoomIn == true)	SceneChangeZoom(sceneZoomIn,sceneZoomOut);	//
 
 		if (num_hands < 1)
 		{
@@ -67,7 +66,7 @@ public class GestureController : MonoBehaviour
 		{
 			//FingerList fingerList = hands.Leftmost.Fingers;   //왼쪽 손의 손가락들!
 			//Finger leftFinger = fingerList.Frontmost;  //왼손에서 제일 앞에 있는 손가락
-
+			
 			if(FindAndDisableRigidHand() == true)
 			{
 				//손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
@@ -105,15 +104,15 @@ public class GestureController : MonoBehaviour
 				case 2:
 					ZoomInOut(gesture,handsForGesture);
 					break;
-
+					
 				}				
 				// ZOOM IN OUT Motion
-			
+				
 			} // END OF GESTURE RECOGNITION LOOP
 			
 		} // END OF IF
 	}
-
+	
 	//Get Tipping postion
 	Vector3 GetTippingPos() // 현재 포인터 끝이 되는 오브젝트의 
 	{
@@ -129,7 +128,7 @@ public class GestureController : MonoBehaviour
 		}
 		
 	}
-
+	
 	//Zoom In Out Effect for Scene changing
 	public void SceneChangeZoom(bool zoomIn,bool zoomOut)
 	{
@@ -138,8 +137,8 @@ public class GestureController : MonoBehaviour
 			//gameObject.transform.localScale -= new Vector3(Time.deltaTime*35F,Time.deltaTime*30F,0);
 			leftCamera.camera.fieldOfView -=Time.deltaTime*9F;
 			rightCamera.camera.fieldOfView-=Time.deltaTime*9f;
-		
-			if (leftCamera.camera.fieldOfView < 106) 
+			
+			if (leftCamera.camera.fieldOfView < 120) 
 			{
 				sceneZoomIn=false;	
 				sceneZoomOut=true;
@@ -149,7 +148,7 @@ public class GestureController : MonoBehaviour
 		{
 			leftCamera.camera.fieldOfView +=Time.deltaTime*9F;
 			rightCamera.camera.fieldOfView +=Time.deltaTime*9f;
-
+			
 			if (leftCamera.camera.fieldOfView > 177) 
 			{
 				sceneZoomOut=false;
@@ -157,7 +156,7 @@ public class GestureController : MonoBehaviour
 			}
 		}
 	}	
-
+	
 	//Gesture Event for Keytap 
 	void KeyTap(Gesture gesture)
 	{
@@ -257,10 +256,10 @@ public class GestureController : MonoBehaviour
 				temp = zoomScale * -1; ;				
 			}			
 		}		
-
+		
 		leftCamera.camera.fieldOfView += temp;
 		rightCamera.camera.fieldOfView += temp;	
-
+		
 	}
 	//Enable LeapMotion Gesture
 	void SetGesture(Controller controller)
@@ -297,7 +296,7 @@ public class GestureController : MonoBehaviour
 			//하하하 
 		}
 	}
-
+	
 	bool FindAndDisableRigidHand()
 	{
 		rigid = GameObject.Find("RigidHand(Clone)");
@@ -309,7 +308,7 @@ public class GestureController : MonoBehaviour
 			Debug.LogWarning("RigidHand is null");
 			return false;
 		}
-
+		
 		if (GetCursorPointer() == false) 
 		{
 			return false;
@@ -320,10 +319,10 @@ public class GestureController : MonoBehaviour
 		{
 			cols[i].enabled = false;
 		}
-
+		
 		return true;
 	}
-
+	
 	bool GetCursorPointer()
 	{
 		cursorPointer = GameObject.Find("RigidHand(Clone)/index/bone3");
@@ -334,7 +333,7 @@ public class GestureController : MonoBehaviour
 		}
 		return true;
 	}
-
+	
 	bool RayFromCursor()
 	{
 		//손바닥을 UnityScale로 좌표 변환 , Handcontroller TransformPoint로 Transform 형식에 맞게 변환, 이후 왼쪽 카메라 기준으로 월드 스크린으로 변환 
@@ -352,7 +351,7 @@ public class GestureController : MonoBehaviour
 			return false;
 		}
 	}
-
+	
 	void RayPoint()
 	{
 		if(hit.collider != null)
@@ -366,16 +365,16 @@ public class GestureController : MonoBehaviour
 					// TODO : Mouse Enter (SHJO)
 					StreetView_Pointed.Pointed() ;					
 				}
-
+				
 			}
 			else
 			{
 				RayPointedOut();
 			}
-
+			
 		}
 	}
-
+	
 	void RayPointedOut()
 	{
 		// TODO : Mouse Exit (SHJO)
@@ -386,7 +385,5 @@ public class GestureController : MonoBehaviour
 		}
 	}
 }
-
-
 
 

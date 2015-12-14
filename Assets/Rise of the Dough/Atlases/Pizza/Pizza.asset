@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: Pizza
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: d7d9fd120d804ee46b3cf59cf4e8c8b0, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: .970703125
+    y: 0
+    width: .02734375
+    height: .013671875
+  - serializedVersion: 2
+    x: .53515625
+    y: .0869140625
+    width: .1015625
+    height: .0478515625
+  - serializedVersion: 2
+    x: .826171875
+    y: .0869140625
+    width: .09375
+    height: .033203125
+  - serializedVersion: 2
+    x: .732421875
+    y: .0869140625
+    width: .091796875
+    height: .03515625
+  - serializedVersion: 2
+    x: 0
+    y: .1640625
+    width: .689453125
+    height: .091796875
+  - serializedVersion: 2
+    x: .359375
+    y: .349609375
+    width: .287109375
+    height: .166015625
+  - serializedVersion: 2
+    x: .638671875
+    y: .0869140625
+    width: .091796875
+    height: .04296875
+  - serializedVersion: 2
+    x: 0
+    y: .349609375
+    width: .357421875
+    height: .168945312
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .533203125
+    height: .163085938
+  - serializedVersion: 2
+    x: .939453125
+    y: 0
+    width: .029296875
+    height: .0146484375
+  - serializedVersion: 2
+    x: 0
+    y: .256835938
+    width: .689453125
+    height: .091796875
+  - serializedVersion: 2
+    x: .53515625
+    y: 0
+    width: .40234375
+    height: .0859375
+  textureGUIDs:
+  - d2da5d3851ac2b5428f6931bdc2ca7e2
+  - 950fdb613e990824092ed44f4437a243
+  - 099c6e1b3c4f5294fb87b374efeb1f77
+  - 03af784546b40424fac169423525dca8
+  - 20ef95bd3d0e0d64aa03f1533aa57b6c
+  - 4a2458c2aeb8eb84189b350b3c487b99
+  - bc9fef43bcc3895458723e46a5477168
+  - 9c209fb3f5aadd24aa884b8f4289ea4d
+  - db09735b3d4027c4bbd204092e66f736
+  - fd7c5a53c8fb49449b7170233bc7da52
+  - 72768e41f1c6db6409fe9e0c5697a8d8
+  - 1bc68637a43d8a94f9cd49444448eac8
+  textureSizes:
+  - {x: 14, y: 14}
+  - {x: 52, y: 49}
+  - {x: 48, y: 34}
+  - {x: 47, y: 36}
+  - {x: 353, y: 94}
+  - {x: 147, y: 170}
+  - {x: 47, y: 44}
+  - {x: 183, y: 173}
+  - {x: 273, y: 167}
+  - {x: 15, y: 15}
+  - {x: 353, y: 94}
+  - {x: 206, y: 88}
+  defaultPivotOffsets:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: -.0109100239, y: -.476415098}
+  - {x: 0, y: 0}
+  - {x: .294642836, y: -.430677116}
+  - {x: .0267857127, y: -.499176651}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: .00535714254, y: -.171428561}
+  textureNames:
+  - pupil_right
+  - eye_left
+  - eyelid_left
+  - eyelid_right
+  - crust
+  - mouth
+  - eye_right
+  - head
+  - body
+  - pupil_left
+  - crust_loaded
+  - dome
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/pupil_right.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/eye_left.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/eyelid_left.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/eyelid_right.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/crust.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/mouth.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/eye_right.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/head.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/body.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/pupil_left.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/crust_loaded.psd
+  - Assets/Rise of the Dough/Atlas Base Textures/Pizza/dome.psd
+  lastBuildID: 20130421105826314
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

@@ -13,6 +13,16 @@ public class StreetViewPoint : MonoBehaviour
     public string panoID;
 	public bool impo;
 
+	//정보창 여행지 정보 
+	public string info_title;
+	public string info_country;
+	public string info_area;
+	public string info_contents;
+
+	//파일경로
+
+	public string info_flag_path;
+
     //Thumbnail image URL & Streetview name URL
 	public string thumbnailURL = "http://maps.google.com/cbk?output=thumbnail&panoid=";
 	public string metaURL = "http://maps.google.com/cbk?output=json&panoid=";
@@ -81,7 +91,12 @@ public class StreetViewPoint : MonoBehaviour
         EarthManager.Instance.thumbnailImg = myThumbnailImg;
         Manager.Instance.SetPlaceID(panoID);
 
-        print(wikiText);
+		EarthManager.Instance.title=info_title;
+		EarthManager.Instance.country=info_country;
+		EarthManager.Instance.area=info_area;
+		EarthManager.Instance.contents=info_contents;
+		EarthManager.Instance.info_flag_path = info_flag_path;
+		print(EarthManager.Instance.info_flag_path);
 
         if (wikiText != null)
             EarthManager.Instance.wikiText = wikiText;
@@ -117,6 +132,12 @@ public class StreetViewPoint : MonoBehaviour
         Lng = -(_rotation.y);
 		panoID = panoInfo.panoid;
 		this.impo = panoInfo.impo;
+		info_flag_path = panoInfo.info_flag_path;
+
+		info_title = panoInfo.title;
+		info_country = panoInfo.country;
+		info_area = panoInfo.area;
+		info_contents = panoInfo.contents;
 
 
 		thumbnailURL = thumbnailURL + panoID;

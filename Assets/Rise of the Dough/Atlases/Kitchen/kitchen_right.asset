@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: kitchen_right
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 16e63c63d3ec84de2a2e5953f8e965c7, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .5
+    height: .5
+  textureGUIDs:
+  - d6f3a6146de9b4f5dbd09269448df688
+  textureSizes:
+  - {x: 1024, y: 1024}
+  defaultPivotOffsets:
+  - {x: -.5, y: -.5}
+  textureNames:
+  - kitchen_right
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Kitchen/kitchen_right.png
+  lastBuildID: 20130421105811912
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

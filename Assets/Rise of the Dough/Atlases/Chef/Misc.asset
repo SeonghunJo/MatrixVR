@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 529336600, guid: 289bab7cc27a12745b5df9b71d7b06c4, type: 3}
+  m_Name: Misc
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 05c6c59d8b2ee463eac3ec5b747807f8, type: 2}
+  uvs:
+  - serializedVersion: 2
+    x: 0
+    y: 0
+    width: .72265625
+    height: .306640625
+  textureGUIDs:
+  - f420ca5a512664efb8a8fb346ab4baae
+  textureSizes:
+  - {x: 370, y: 157}
+  defaultPivotOffsets:
+  - {x: 0, y: 0}
+  textureNames:
+  - Shadow
+  texturePaths:
+  - Assets/Rise of the Dough/Atlas Base Textures/Misc/Shadow.psd
+  lastBuildID: 20130421105713750
+  needsRebuilt: 0
+  dataVersion: 4
+  maxAtlasSize: 4096
+  padding: 1
+  forceSquare: 0

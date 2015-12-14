@@ -6,31 +6,31 @@ using System.Collections;
 //Mouse test
 public class EarthScript : MonoBehaviour
 {
-	public int Speed;		//rotate speed
-	
+    public int Speed;		//rotate speed
+
 	public static bool leftRotate;
 	public static bool rightRotate;
 	public static bool guideTrigger=true;
-	
-	public void Start()
-	{
+
+    public void Start()
+    {
 		leftRotate = false;
 		rightRotate = false;
-		Speed = 10;
-	}
-	
-	void Update()
-	{
+        Speed = 10;
+    }
+
+    void Update()
+    {
 		if (leftRotate)
-		{
-			transform.Rotate(Vector3.up, Speed * Time.deltaTime * 5, Space.Self);
-		}
+        {
+            transform.Rotate(Vector3.up, Speed * Time.deltaTime * 5, Space.Self);
+        }
 		if (rightRotate)
-		{
-			transform.Rotate(Vector3.down, Speed * Time.deltaTime * 5, Space.Self);
-		}
-		
-		/*
+        {
+            transform.Rotate(Vector3.down, Speed * Time.deltaTime * 5, Space.Self);
+        }
+
+        /*
         if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.Rotate(Vector3.left, Speed * Time.deltaTime * 5, Space.Self);
@@ -40,10 +40,11 @@ public class EarthScript : MonoBehaviour
             transform.Rotate(Vector3.right, Speed * Time.deltaTime * 5, Space.Self);
         }
         */
-		
-	}
-	
-	
+        
+    }
+
+
 }
+
 
 
